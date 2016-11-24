@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: android | Jackie Liu&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Tag: android | Jackie Liu&#39;s Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
   
@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
   
     <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
-
   
 
 </head>
@@ -89,7 +88,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwj7sdh00038cu07qbh3zol/">数据存储</a></h2>
+		    <h2 class="post_h"><a href="/Life/civwm7oha0000n8u0fv6nj8j5/">数据存储</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -226,7 +225,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwj7sdw00048cu0r03fmcay/">服务</a></h2>
+		    <h2 class="post_h"><a href="/Tech/civwm7oi20007n8u0e94yfo7l/">服务</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -330,6 +329,78 @@ public void onServiceConnected(ComponentName name, IBinder service) {
   
     
     
+    	<article id="post-笔记4" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         11/24
+	        </div>
+	        <div class="post_t_u">
+	         11:33
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Life/civwm7oi70008n8u0plqn03kc/">网络编程</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>#网络编程</p>
+<p>##网络请求的通用步骤</p>
+<ol>
+<li>得到一个URL对象.<pre><code>URL url = new URL(path);
+</code></pre></li>
+<li>通过URL对象获取一个连接 urlConnection<pre><code>HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+</code></pre></li>
+<li>设置http请求的参数<pre><code>conn.setRequestMethod(&quot;GET&quot;);//设置get请求
+conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
+</code></pre></li>
+<li>获取服务器返回的信息<pre><code>conn.getResponseCode(); 获取服务器返回的状态码
+2XX请求成功 3XX资源重定向 4XX资源找不到 5XX服务器错误
+</code></pre></li>
+<li>获取服务器返回的流<pre><code>conn.getInputStream();
+//保存到本地
+//BitmapFactory.decodeStream(is);
+</code></pre></li>
+</ol>
+<p>##NetWorkOnMainThread异常</p>
+<blockquote>
+<p>网络在主线程异常<br>访问网络是一个可能比较耗时的操作.在低版本的android系统谷歌没有考虑到用户体验的问题.<br>在android4.0版本开始,谷歌android系统开始检查,如果在主线程里面访问网络,强制的抛出异常.</p>
+<p>在android应用程序里面所有的用户交互的操作都是在主线程里面执行<br>按钮点击事件,界面的渲染和显示,触摸事件</p>
+</blockquote>
+<p>##ANR (application not response)</p>
+<blockquote>
+<p>应用程序无响应<br>如何避免: 不要把耗时的操作放在主线程里面执行<br>网络请求, 大文件的读取, 耗时的计算, 都应该子线程里面.</p>
+</blockquote>
+<p>##子线程常见异常</p>
+<blockquote>
+<p>android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.<br>在错误的线程里面被调用的异常, 谁创建的view谁才可以修改view里面的内容.<br>android系统约定了一个规则: 默认只有主线程才可以修改应用程序的ui</p>
+</blockquote>
+<p>##子线程更新ui的步骤</p>
+<ol>
+<li>创建一个消息处理器Handler(一定要在主线程new出来)<pre><code>private Handler handler = new Handler() {};
+</code></pre></li>
+<li>在子线程利用handler发送消息给主线程的消息队列<pre><code>handler.sendMessage(msg);
+</code></pre></li>
+<li>在主线程的消息处理器里面,处理这个消息<pre><code>public void handleMessage(Message msg) {}
+</code></pre></li>
+<li>特殊情况 传递数据<pre><code>Message.obj 携带数据
+</code></pre></li>
+</ol>
+<p>##在android系统默认的码表utf-8<br>为了保证应用程序不显示乱码,保证android端和服务器端采用相同的文件编码.</p>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-笔记" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -341,7 +412,7 @@ public void onServiceConnected(ComponentName name, IBinder service) {
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwj7sec00078cu0vvsl0gvq/">其他布局LinearLayo</a></h2>
+		    <h2 class="post_h"><a href="/Life/civwm7oig000bn8u0mm0oue9t/">其他布局LinearLayo</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -534,78 +605,6 @@ parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
   
     
     
-    	<article id="post-笔记4" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwj7sec00098cu0gujc4nor/">网络编程</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Life/">Life</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>#网络编程</p>
-<p>##网络请求的通用步骤</p>
-<ol>
-<li>得到一个URL对象.<pre><code>URL url = new URL(path);
-</code></pre></li>
-<li>通过URL对象获取一个连接 urlConnection<pre><code>HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-</code></pre></li>
-<li>设置http请求的参数<pre><code>conn.setRequestMethod(&quot;GET&quot;);//设置get请求
-conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
-</code></pre></li>
-<li>获取服务器返回的信息<pre><code>conn.getResponseCode(); 获取服务器返回的状态码
-2XX请求成功 3XX资源重定向 4XX资源找不到 5XX服务器错误
-</code></pre></li>
-<li>获取服务器返回的流<pre><code>conn.getInputStream();
-//保存到本地
-//BitmapFactory.decodeStream(is);
-</code></pre></li>
-</ol>
-<p>##NetWorkOnMainThread异常</p>
-<blockquote>
-<p>网络在主线程异常<br>访问网络是一个可能比较耗时的操作.在低版本的android系统谷歌没有考虑到用户体验的问题.<br>在android4.0版本开始,谷歌android系统开始检查,如果在主线程里面访问网络,强制的抛出异常.</p>
-<p>在android应用程序里面所有的用户交互的操作都是在主线程里面执行<br>按钮点击事件,界面的渲染和显示,触摸事件</p>
-</blockquote>
-<p>##ANR (application not response)</p>
-<blockquote>
-<p>应用程序无响应<br>如何避免: 不要把耗时的操作放在主线程里面执行<br>网络请求, 大文件的读取, 耗时的计算, 都应该子线程里面.</p>
-</blockquote>
-<p>##子线程常见异常</p>
-<blockquote>
-<p>android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.<br>在错误的线程里面被调用的异常, 谁创建的view谁才可以修改view里面的内容.<br>android系统约定了一个规则: 默认只有主线程才可以修改应用程序的ui</p>
-</blockquote>
-<p>##子线程更新ui的步骤</p>
-<ol>
-<li>创建一个消息处理器Handler(一定要在主线程new出来)<pre><code>private Handler handler = new Handler() {};
-</code></pre></li>
-<li>在子线程利用handler发送消息给主线程的消息队列<pre><code>handler.sendMessage(msg);
-</code></pre></li>
-<li>在主线程的消息处理器里面,处理这个消息<pre><code>public void handleMessage(Message msg) {}
-</code></pre></li>
-<li>特殊情况 传递数据<pre><code>Message.obj 携带数据
-</code></pre></li>
-</ol>
-<p>##在android系统默认的码表utf-8<br>为了保证应用程序不显示乱码,保证android端和服务器端采用相同的文件编码.</p>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
     	<article id="post-笔记5" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -617,7 +616,7 @@ conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwj7sec000d8cu0v6ji76k0/">httpGet的请求从服务器获取数据</a></h2>
+		    <h2 class="post_h"><a href="/Life/civwm7oii000en8u048jb42uf/">httpGet的请求从服务器获取数据</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>

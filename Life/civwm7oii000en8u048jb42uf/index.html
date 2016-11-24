@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   
-  <title>liu | Jackie Liu&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>httpGet的请求从服务器获取数据 | Jackie Liu&#39;s Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
   
@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
   
     <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
-
   
 
 </head>
@@ -65,7 +64,7 @@
     <div id="content"> 
 	
 
-		<article id="post-liu" class="article article-type-post" itemscope itemprop="blogPost">
+		<article id="post-笔记5" class="article article-type-post" itemscope itemprop="blogPost">
   <hgroup class="post_hctn"> 
     <div class="post_time">
         <div class="post_t_d">
@@ -76,22 +75,76 @@
         </div>
     </div>
    <div class="post_h_l"> 
-   <h2 class="post_h"><a href="/Tech/civwj7sec00088cu03hbsv509/">liu</a></h2>
+   <h2 class="post_h"><a href="/Life/civwm7oii000en8u048jb42uf/">httpGet的请求从服务器获取数据</a></h2>
     <div class="post_tag"> 
-      <a class="article-category-link" href="/categories/Tech/">Tech</a>
-      
+      <a class="article-category-link" href="/categories/Life/">Life</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
     </div>
    </div> 
   </hgroup>
   <div class="post_t">
     <p>      
-       
+       <p>#httpGet的请求从服务器获取数据</p>
+<ul>
+<li>从服务器获取文本</li>
+<li>从服务器获取图片</li>
+<li>新闻客户端</li>
+<li>SmartImageView</li>
+</ul>
+<p>#httpGet的请求提交简单的数据到服务器</p>
+<ul>
+<li>组拼url的路径在路径后面拼装 name=?&amp;password=?</li>
+</ul>
+<p>#httpPost的方式提交数据到服务</p>
+<p>##常见乱码<br>如果是gbk的编码以utf-8的方式显示了</p>
+<blockquote>
+<p>��½�ɹ�� ������</p>
+</blockquote>
+<p>如果是utf-8的编码以gbk的方式显示了</p>
+<blockquote>
+<p>鐧婚檰鎴愬姛鍟� 鍝堝搱鍝�</p>
+</blockquote>
+<p>一个悲剧的情况</p>
+<blockquote>
+<p>烤斤烤斤烤斤  </p>
+</blockquote>
+<p>##开源项目httpclient</p>
+<blockquote>
+<p>Apache 开源项目组织<br>相当于一个轻量级的纯java代码浏览器</p>
+</blockquote>
+<ol>
+<li>打开浏览器<pre><code>HttpClient client = new DefaultHttpClient();
+</code></pre></li>
+<li>输入数据<pre><code>HttpGet 只需要设置请求的路径就ok
+HttpPost 不仅需要设置请求的路径,还需要设置数据的内容
+httpPost.setEntity(new UrlEncodedFormEntity(parameters,&quot;utf-8&quot;));
+</code></pre></li>
+<li>敲回车<pre><code>client.execute(get/post)
+</code></pre></li>
+<li>得到请求的相应<pre><code>response.getStatusLine().getStatusCode();得到状态码
+response.getEntity().getContent();得到数据实体
+</code></pre></li>
+</ol>
+<p>##开源的asynchttpclient</p>
+<blockquote>
+<p>android里面的开源项目 github</p>
+</blockquote>
+<p>##多线程下载</p>
+<ul>
+<li>什么时候需要多线程下载</li>
+<li>为什么多线程下载可以提高速度</li>
+</ul>
+<p>##多线程断点下载</p>
+<ul>
+<li>记录上一次你下载了多少的数据,再去开启从上一次的位置接着下载</li>
+</ul>
+
     </p>
   </div>
     
     <ul class="post-near">
       
-        <li>上一篇: <a href="/Life/civwj7sec00078cu0vvsl0gvq/" >            
+        <li>上一篇: <a href="/Life/civwm7oig000bn8u0mm0oue9t/" >            
             
               其他布局LinearLayo
             
@@ -99,9 +152,9 @@
         </li>
       
       
-        <li>下一篇: <a href="/Life/civwj7sec00098cu0gujc4nor/" >            
+        <li>下一篇: <a href="/Life/civwm7oiq000in8u04y4oixrq/" >            
             
-              网络编程
+              多个界面的应用开发
             
           </a>
         </li>

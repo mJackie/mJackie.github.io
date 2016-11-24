@@ -1119,8 +1119,7 @@ img {
 	min-height:1px !important
 }
 #page {
-	margin:0
-auto 0 auto;
+	margin:0 auto 0 auto;
 	text-align:left
 }
 #float {
@@ -1155,18 +1154,14 @@ auto 0 auto;
 }
 #nav
 li {
-	padding:0
-8px 0 0;
-	margin:8px
-2px 8px 2px;
+	padding:0 8px 0 0;
+	margin:8px 2px 8px 2px;
 	display:inline-block
 }
 #next
 li {
-	padding:0
-8px 0 0;
-	margin:3px
-2px 3px 2px;
+	padding:0 8px 0 0;
+	margin:3px 2px 3px 2px;
 	display:inline-block
 }
 #nav li:hover,#next li:hover {
@@ -1191,8 +1186,7 @@ a {
 	text-align:center
 }
 #title {
-	margin:0
-0 5px 0;
+	margin:0 0 5px 0;
 	float:none;
 	text-align:center
 }
@@ -1347,8 +1341,7 @@ li {
 #footer {
 	float:none;
 	margin:auto;
-	padding:10px
-0;
+	padding:10px 0;
 	width:auto;
 	text-align:center
 }
@@ -1446,7 +1439,6 @@ pre {
 	overflow:auto;
 }
 pre code {
-	padding:3px;
 	color:#444;
 }
 blockquote {
