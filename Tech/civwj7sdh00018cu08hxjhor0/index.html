@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jackie Liu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-biji " class="article article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         11/24
+        </div>
+        <div class="post_t_u">
+         11:30
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/civwj7sdh00018cu08hxjhor0/"></a></h2>
+    <div class="post_tag"> 
+      
+      
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>#Android体系结构</p>
+<ul>
+<li>底层Linux操作系统</li>
+<li>library c/c++的函数库</li>
+<li>应用程序框架层 java提供的函数库</li>
+<li>应用程序</li>
+</ul>
+<p>#jvm和dvm的区别</p>
+<ul>
+<li><p>版权问题</p>
+</li>
+<li><p>效率问题</p>
+</li>
+</ul>
+<p>#下载Android开发的sdk</p>
+<ul>
+<li>什么是sdk<blockquote>
+<p>standard develop kits 标准开发工具集</p>
+</blockquote>
+</li>
+</ul>
+<p>下载选择32位或者64位的版本<br>直接解压下载下来的zip包</p>
+<p>#Android sdk的目录结构</p>
+<ul>
+<li>eclipse  开发工具ide 订制版本的eclipse</li>
+<li>sdk 开发工具集合</li>
+<li>SDK Manager.exe sdk管理器,提供sdk的更新</li>
+</ul>
+<p>#sdk文件夹的目录结构</p>
+<ul>
+<li><p>extras 额外工具</p>
+<ul>
+<li>Android support library 向下兼容提供的函数库</li>
+<li>usb driver 真实手机的驱动(只有谷歌的亲儿子才可用 nexus s)</li>
+<li>intel HAM intel的硬件加速(只有是intel的处理器,adm处理器不可用)</li>
+</ul>
+</li>
+<li><p>模拟器要想在电脑上运行需要有系统的镜像</p>
+<ul>
+<li>arm system image (在电脑上模拟运行速度比较慢)</li>
+<li>x86 system image (在电脑上模拟运行速度比较快)</li>
+</ul>
+</li>
+<li><p>doc 离线文档(包含全部的api的说明)</p>
+</li>
+<li><p>platforms 不同版本sdk的开发android.jar包 </p>
+</li>
+<li><p>platform-tools 平台工具</p>
+<ul>
+<li>adb.exe Android debug bridge(安卓开发调试桥)</li>
+<li>dx.bat 把.class的字节码转化成.dex的字节码</li>
+</ul>
+</li>
+<li><p>samples 开发用的示例代码</p>
+</li>
+<li><p>sources sdk的全套源码</p>
+</li>
+<li><p>system-images 系统镜像</p>
+</li>
+<li><p>tools 模拟器的应用程序就存放在这个文件夹里面</p>
+</li>
+</ul>
+<p>##强烈推荐使用4.1.2版本的模拟器.最稳定.</p>
+<p>##千万不要使用4.2版本的模拟器,bug非常多</p>
+<p>##常见分辨率</p>
+<ul>
+<li>VGA 640x480 </li>
+<li>HVGA 480x320</li>
+<li>QVGA 320x240</li>
+<li>WVGA 800x480</li>
+<li>FWVGA 854x480</li>
+</ul>
+<p>##模拟器名称<br>*5554 端口号 一个模拟器占用两个端口号</p>
+<p>##DDMS</p>
+<ul>
+<li>dalvik debug manager system</li>
+</ul>
+<p>##ADT</p>
+<blockquote>
+<p>Android Developer Tools 安卓开发工具集(eclipse的一个插件)<br>21.1.0.v20130206 不要升级adt的版本<br>会帮着我们自动创建Android的工程结构,帮我们编译应用程序–&gt;apk—&gt;部署手机–&gt;运行</p>
+</blockquote>
+<p>##Android工程的目录结构</p>
+<ul>
+<li>.settings eclipse创建的文件夹 记录工程的配置信息</li>
+<li>assets 资产目录 打包一些文件到应用程序里面(数据库文件,网页文件,配置文件)</li>
+<li>bin eclipse编译的二进制文件,把java–&gt;class—&gt;dex–&gt;res打包–&gt;.apk</li>
+<li>gen 自动生成的代码</li>
+<li>libs android-support-v4.jar 安卓的支持jar包</li>
+<li>res 应用程序的资源目录 图标 文本 颜色资源<ul>
+<li>drawable 存放应用程序的图片资源</li>
+<li>layout 存放应用程序的布局文件 xml文件</li>
+<li></li>
+</ul>
+</li>
+<li>src 我们编写的java代码</li>
+<li>.classpath eclipse配置文件</li>
+<li>.project eclipse配置文件</li>
+<li>manifest.xml 非常重要是应用程序的清单文件 配置应用程序的版本号,图标,名称</li>
+<li>project.properties 工程的配置文件</li>
+</ul>
+<p>##Android应用程序开发的步骤</p>
+<ol>
+<li>创建工程,配置应用程序工程名称,包名,图标.</li>
+<li>编写应用程序的ui界面, res–&gt;layout—&gt;main_activity.xml<blockquote>
+<p>布局都是xml文件编写的,支持图形化的拖拽</p>
+</blockquote>
+</li>
+<li><p>写java代码.在src目录下 MainActivity.java</p>
+<pre><code>@Override
+ protected void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+ //设置应用程序显示的界面
+     setContentView(R.layout.activity_main);
+ //TODO:查找我们关心的控件,实现控件的点击事件
+ }
+</code></pre></li>
+<li>必须给关心的控件设置id. 这个id会在R.java文件里面生成一个引用</li>
+<li>在java代码 findViewById(R.id.xxxx);</li>
+<li><p>设置控件的点击事件</p>
+<pre><code>bt_click.setOnClickListener(new MyButtonListener());
+</code></pre></li>
+<li><p>打印土司</p>
+<pre><code>Toast.makeText(MainActivity.this, &quot;hahahah,我被点击了.&quot;, Toast.LENGTH_SHORT).show();
+</code></pre></li>
+</ol>
+<p>##应用程序编译安装的过程.<br>一. 把所有的.java文件编译成.class文件 </p>
+<blockquote>
+<p>jdk 的 javac.exe</p>
+</blockquote>
+<p>二. 把所有的.class字节码文件打包合成一个文件 classes.dex</p>
+<blockquote>
+<p>sdk中的dx.bat文件 把.class –&gt;.dex</p>
+</blockquote>
+<p>三. 根据资源的id,生成一个资源文件resources.ap_ 保存全部的资源文件的信息</p>
+<p>四. 把.dex文件 res目录下的资源文件 resources.ap_的引用 asset目录下的文件<br>合成在一起打成一个apk的压缩包</p>
+<blockquote>
+<p>使用的是 aapt.exe</p>
+</blockquote>
+<p>五. adb.exe 负责把生成好的apk文件上传安装到手机里面.</p>
+<blockquote>
+<p>Android debug bridge 安卓调试桥,负责上传安装apk</p>
+</blockquote>
+<p>##常见的adb命令</p>
+<ul>
+<li><p>安装一个应用程序</p>
+<blockquote>
+<p>adb install xxx.apk</p>
+</blockquote>
+</li>
+<li><p>卸载一个应用程序</p>
+<blockquote>
+<p>adb uninstall com.itheima.clickme&lt;包名&gt;</p>
+</blockquote>
+</li>
+<li><p>进入到手机终端里面</p>
+<blockquote>
+<p>adb shell<br>进入手机终端之后就可以执行Linux命令 kill 杀死一个进程 ps 列出来进程 ls 列出来文件</p>
+</blockquote>
+</li>
+<li><p>杀死adb的调试桥</p>
+<blockquote>
+<p>adb kill-server<br>adb的调试桥不稳定,经常掉线,如果掉线了,执行adb kill-server把调试桥杀死</p>
+</blockquote>
+</li>
+<li><p>启动adb的调试桥</p>
+<blockquote>
+<p>adb start-server</p>
+</blockquote>
+</li>
+<li><p>查看连接在电脑上的设备</p>
+<blockquote>
+<p>adb devices<br>adb start-server这个方法比较笨,如果一次启动不成功,就不启动了.通常使用adb devices来代替adb start-server</p>
+</blockquote>
+</li>
+<li><p>指定设备执行adb指令</p>
+<blockquote>
+<p>adb -s emulator-5556 install xxx.apk</p>
+</blockquote>
+</li>
+</ul>
+<p>##URI &amp;&amp; URL</p>
+<ul>
+<li><p>URL 统一资源定位符(网址,ftp,rtsp)</p>
+<blockquote>
+<p><a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br><a href="http://www.itheima.com" target="_blank" rel="external">http://www.itheima.com</a></p>
+</blockquote>
+</li>
+<li><p>URI 统一资源标识符(范围更加广泛)</p>
+<blockquote>
+<p>tel://110<br>content://</p>
+</blockquote>
+</li>
+</ul>
+<p>##权限模型的目的</p>
+<ul>
+<li>给用户一个提醒,让用户知道你安装的软件需要干什么操作.</li>
+<li>只有敏感操作才需要申请权限(钱,设备安全,隐私)</li>
+<li>避免潜在法律诉讼</li>
+</ul>
+<p>##点击事件的四种写法</p>
+<ul>
+<li>内部类</li>
+<li>匿名内部类</li>
+<li>让activity实现onclickListener接口</li>
+<li>在布局xml文件里面绑定点击事件</li>
+</ul>
+<p>##常见的布局</p>
+<ul>
+<li>LinearLayout 线性布局<blockquote>
+<p>线性布局的朝向 vertical|horizontal<br>线性布局的权重 weight 和 0dip一起使用</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>RelativeLayout 相对布局 都是按照相对位置排列的</li>
+</ul>
+<ul>
+<li>FrameLayout 帧布局<blockquote>
+<p>布局层层叠加覆盖的<br>DIV </p>
+</blockquote>
+</li>
+</ul>
+
+    </p>
+  </div>
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/civwj7sfn000w8cu0aa6gnjaz/" >            
+            
+              其他布局
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

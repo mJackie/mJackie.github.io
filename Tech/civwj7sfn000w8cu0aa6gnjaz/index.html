@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>其他布局 | Jackie Liu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-笔记dd" class="article article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         11/24
+        </div>
+        <div class="post_t_u">
+         11:33
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/civwj7sfn000w8cu0aa6gnjaz/">其他布局</a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>##其他布局</p>
+<ul>
+<li>LinearLayout</li>
+<li>RelativeLayout </li>
+<li>FrameLayout </li>
+<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
+<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
+</ul>
+<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
+<p>##logcat</p>
+<blockquote>
+<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
+</blockquote>
+<p>##程序测试</p>
+<blockquote>
+<p>好的应用程序不是写出来的,是测出来了</p>
+</blockquote>
+<p>根据是否知道应用程序的源代码</p>
+<ul>
+<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
+<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
+</ul>
+<p>根据测试的粒度(精细程度)</p>
+<ul>
+<li>方法测试 function test</li>
+<li>单元测试 unit test</li>
+<li>集成测试 intergration test </li>
+<li>系统测试 system test</li>
+</ul>
+<p>根据测试的暴力程度</p>
+<ul>
+<li>压力测试 pressure test 单位时间内的频繁测试</li>
+<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
+<p>monkey 1000</p>
+</blockquote>
+</li>
+</ul>
+<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
+<blockquote>
+<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
+</blockquote>
+<p>##Android下junit测试代码的写法</p>
+<ol>
+<li>写一个业务方法</li>
+<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
+<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
+</code></pre></li>
+<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
+&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
+&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
+android:targetPackage=&quot;com.itheima.junit&quot;
+&gt;&lt;/instrumentation&gt;
+</code></pre></li>
+<li><p>在application节点里面配置</p>
+<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
+&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
+</code></pre></li>
+<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
+</li>
+<li>根据红条还是绿条判断测试结果</li>
+</ol>
+<p>##输入输出</p>
+<blockquote>
+<p>从文件里面读取数据<br>把数据写到文件</p>
+</blockquote>
+<p>##输入输出的应用场景</p>
+<blockquote>
+<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
+<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
+getCacheDir();               /data/data/包名/cache
+</code></pre></blockquote>
+<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
+<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
+<p>##手机存储空间的划分</p>
+<ul>
+<li>手机内部存储 Environment.getDataDirectory()<blockquote>
+<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
+<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
+</blockquote>
+</li>
+</ul>
+<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
+<p>chmod : change mode 修改模式</p>
+<blockquote>
+<p>chmod 777</p>
+<p><img src="tu2.png" alt=""></p>
+<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
+</blockquote>
+<p>##共享参数 SharedPerference</p>
+<ol>
+<li>声明sp<pre><code>private SharedPreferences sp;
+</code></pre></li>
+<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
+</code></pre></li>
+<li>使用sp<pre><code>Editor editor = sp.edit();
+editor.putString(&quot;qq&quot;, qq);
+editor.putString(&quot;password&quot;, password);
+//一定不要忘记 提交数据
+editor.commit();//提交数据. 类似关闭流,事务
+</code></pre></li>
+<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的生成</p>
+<ol>
+<li>采用组拼字符串生成xml文件.<blockquote>
+<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
+</blockquote>
+</li>
+<li><p>利用android序列化(生成)xml文件的api</p>
+<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
+2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
+3. 写文件的头
+    serializer.startDocument(&quot;utf-8&quot;, true);
+    serializer.endDocument();//写文件的末尾
+4. 写节点
+    serializer.startTag(null, &quot;info&quot;);
+    serializer.endTag(null, &quot;info&quot;);
+5. 写属性
+    serializer.attribute(null, &quot;id&quot;, id);
+6. 写节点里面的文本
+    serializer.text(&quot;文本&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的解析</p>
+<ol>
+<li><p>DOM解析 </p>
+<blockquote>
+<p>树状的xml结构</p>
+</blockquote>
+</li>
+<li><p>Dom4j</p>
+</li>
+<li><p>SAX </p>
+<blockquote>
+<p>基于事件解析,自上而下的解析</p>
+</blockquote>
+</li>
+<li><p>Pull解析</p>
+<blockquote>
+<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
+</blockquote>
+</li>
+</ol>
+<p>##pull解析</p>
+<ol>
+<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
+</code></pre></li>
+<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
+</code></pre></li>
+<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
+</code></pre></li>
+<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
+    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
+}
+</code></pre></li>
+<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
+parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
+parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
+</code></pre></li>
+<li>得到数据,完成界面的展现</li>
+</ol>
+<p>##断点调试应用程序</p>
+<ol>
+<li>双击在代码的左边打一个断点</li>
+<li>右键,debug as android application</li>
+<li>右键 watch 查看数据  </li>
+<li>watch 一段代码</li>
+<li>清空原来的调试断点</li>
+</ol>
+
+    </p>
+  </div>
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/civwj7ses000l8cu0pafthz5w/" >            
+            
+              四大组件
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/civwj7sdh00018cu08hxjhor0/" >            
+            
+              无标题
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

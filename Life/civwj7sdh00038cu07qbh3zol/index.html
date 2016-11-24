@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据存储 | Jackie Liu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-day03_笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         11/24
+        </div>
+        <div class="post_t_u">
+         11:33
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Life/civwj7sdh00038cu07qbh3zol/">数据存储</a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Life/">Life</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>##数据存储</p>
+<ul>
+<li>文件<blockquote>
+<p>存数据</p>
+</blockquote>
+</li>
+<li>SharedPerference<blockquote>
+<p>当有一个或者多个配置信息需要保存</p>
+</blockquote>
+</li>
+<li>数据库(特殊的文件,带索引)<blockquote>
+<p>当我们有大量的相似结构的数据存放,实现增删改查,推荐使用数据库.</p>
+</blockquote>
+</li>
+</ul>
+<p>##Android下的数据库</p>
+<blockquote>
+<p>Sqlite数据库, 移动平台轻量级嵌入式的数据库.</p>
+</blockquote>
+<p>##如何创建</p>
+<blockquote>
+<p>创建文件</p>
+</blockquote>
+<pre><code>//声明了一个文件对象,文件的句柄        
+File file  = new File(&quot;文件名&quot;);
+//重要的一步
+FileOutputStream fos = new FileOutputStream(file);
+//通过输出流写数据文件才被创建
+fos.write(&quot;gagagaga&quot;.getBytes());
+</code></pre><blockquote>
+<p>创建数据库</p>
+</blockquote>
+<pre><code>//1.声明数据库的文件对象
+MyDBOpenHelper helper = new MyDBOpenHelper(this);
+//2.关键代码,必须通过帮助类 获取一个数据库文件
+helper.getWritableDatabase();
+//只有获取了可写或者是可读的数据库 ,数据库文件才会被创建
+</code></pre><p>##如何定义数据库的表结构</p>
+<blockquote>
+<p>数据库创建的帮助类SQLiteOpenHelper里面,有两个重要的方法</p>
+<ol>
+<li>onCreate() 数据库第一次被创建的时候调用的方法<pre><code>适合做数据库表结构的初始化
+</code></pre></li>
+<li>onUpgrade() 数据库的版本号增加的时候调用的方法<pre><code>如果旧的数据库表结构定义的不是特别合理,修改数据库的表结构
+</code></pre></li>
+</ol>
+</blockquote>
+<p>在onCreate()和onUpgrade()方法里面都有一个参数 db ,代表的是当前的数据库<br>得到数据库 执行sql语句</p>
+<pre><code>db.execSQL(&quot;create table contactinfo (id integer primary key autoincrement, name varchar(20), phone varchar(20))&quot;);
+</code></pre><p>##增删改查的sql语句</p>
+<ul>
+<li>增<pre><code>insert into contactinfo (name,phone) values (&apos;zhangsan&apos;,&apos;110&apos;)
+</code></pre></li>
+<li>删<pre><code>delete from contactinfo where id=&apos;1&apos;
+</code></pre></li>
+<li>改<pre><code>update contactinfo set phone =&apos;119&apos; where name=&apos;zhangsan&apos;
+</code></pre></li>
+<li>查<pre><code>select phone from contactinfo where name=&apos;zhangsan&apos;
+</code></pre></li>
+</ul>
+<p>*　利用谷歌api实现增删改查(内部工作的原理,组拼sql语句)</p>
+<blockquote>
+<p>推荐大家使用谷歌的api实现增删改查,有返回值处理方便,避免了手写sql语句出错的问题.</p>
+</blockquote>
+<p>##修改cmd的默认编码</p>
+<blockquote>
+<p>chcp 65001 改成utf-8的编码<br>chcp 936 修改为gbk的编码</p>
+</blockquote>
+<p>##ListView<br>使用步骤:</p>
+<ol>
+<li>在布局文件里面声明listview<pre><code>    &lt;ListView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:id=&quot;@+id/lv&quot; /&gt;
+</code></pre></li>
+<li>在代码寻找listview<pre><code>lv = (ListView) findViewById(R.id.lv);
+</code></pre></li>
+<li><p>设置listview的数据适配器(controller)</p>
+<pre><code>写一个类继承BaseAdapter,重写里面两个方法
+
+@Override
+public int getCount() {
+    //返回listview一共有多少条记录
+}
+
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
+    //返回当前位置用户看到的view对象.
+}
+</code></pre></li>
+<li>给listview设置数据适配器<pre><code>lv.setAdapter(adapter);
+</code></pre></li>
+<li>如果有需求对listview进行优化,使用convertView,别回收的view的对象.</li>
+</ol>
+<p>##打气筒把xml文件转化成view<br>View view = View.inflate(getApplicationContext(), R.layout.item, null);</p>
+<p>##常见对话框</p>
+<p>##样式<br>css样式 </p>
+<blockquote>
+<p>作用在某个控件上的.</p>
+</blockquote>
+<p>##主题</p>
+<blockquote>
+<p>主题的写法和样式的写法是完全一样的.<br>区别是作用范围不同<br>作用在整个应用程序上,或者是应用程序里面的activity上的</p>
+</blockquote>
+<p>##动画</p>
+<ul>
+<li>帧动画</li>
+</ul>
+
+    </p>
+  </div>
+    
+    <ul class="post-near">
+      
+      
+        <li>下一篇: <a href="/Tech/civwj7sdw00048cu0r03fmcay/" >            
+            
+              服务
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

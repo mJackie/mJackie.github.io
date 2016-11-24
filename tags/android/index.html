@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: Tech | Jackie Liu&#39;s Blog</title>
+  <title>Tag: android | Jackie Liu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
@@ -77,6 +77,143 @@
           <a href="/archives/2016" class="archive-year">2016</a>
         </div>
         <div class="archives">
+    
+    	<article id="post-day03_笔记" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         11/24
+	        </div>
+	        <div class="post_t_u">
+	         11:33
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Life/civwj7sdh00038cu07qbh3zol/">数据存储</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>##数据存储</p>
+<ul>
+<li>文件<blockquote>
+<p>存数据</p>
+</blockquote>
+</li>
+<li>SharedPerference<blockquote>
+<p>当有一个或者多个配置信息需要保存</p>
+</blockquote>
+</li>
+<li>数据库(特殊的文件,带索引)<blockquote>
+<p>当我们有大量的相似结构的数据存放,实现增删改查,推荐使用数据库.</p>
+</blockquote>
+</li>
+</ul>
+<p>##Android下的数据库</p>
+<blockquote>
+<p>Sqlite数据库, 移动平台轻量级嵌入式的数据库.</p>
+</blockquote>
+<p>##如何创建</p>
+<blockquote>
+<p>创建文件</p>
+</blockquote>
+<pre><code>//声明了一个文件对象,文件的句柄        
+File file  = new File(&quot;文件名&quot;);
+//重要的一步
+FileOutputStream fos = new FileOutputStream(file);
+//通过输出流写数据文件才被创建
+fos.write(&quot;gagagaga&quot;.getBytes());
+</code></pre><blockquote>
+<p>创建数据库</p>
+</blockquote>
+<pre><code>//1.声明数据库的文件对象
+MyDBOpenHelper helper = new MyDBOpenHelper(this);
+//2.关键代码,必须通过帮助类 获取一个数据库文件
+helper.getWritableDatabase();
+//只有获取了可写或者是可读的数据库 ,数据库文件才会被创建
+</code></pre><p>##如何定义数据库的表结构</p>
+<blockquote>
+<p>数据库创建的帮助类SQLiteOpenHelper里面,有两个重要的方法</p>
+<ol>
+<li>onCreate() 数据库第一次被创建的时候调用的方法<pre><code>适合做数据库表结构的初始化
+</code></pre></li>
+<li>onUpgrade() 数据库的版本号增加的时候调用的方法<pre><code>如果旧的数据库表结构定义的不是特别合理,修改数据库的表结构
+</code></pre></li>
+</ol>
+</blockquote>
+<p>在onCreate()和onUpgrade()方法里面都有一个参数 db ,代表的是当前的数据库<br>得到数据库 执行sql语句</p>
+<pre><code>db.execSQL(&quot;create table contactinfo (id integer primary key autoincrement, name varchar(20), phone varchar(20))&quot;);
+</code></pre><p>##增删改查的sql语句</p>
+<ul>
+<li>增<pre><code>insert into contactinfo (name,phone) values (&apos;zhangsan&apos;,&apos;110&apos;)
+</code></pre></li>
+<li>删<pre><code>delete from contactinfo where id=&apos;1&apos;
+</code></pre></li>
+<li>改<pre><code>update contactinfo set phone =&apos;119&apos; where name=&apos;zhangsan&apos;
+</code></pre></li>
+<li>查<pre><code>select phone from contactinfo where name=&apos;zhangsan&apos;
+</code></pre></li>
+</ul>
+<p>*　利用谷歌api实现增删改查(内部工作的原理,组拼sql语句)</p>
+<blockquote>
+<p>推荐大家使用谷歌的api实现增删改查,有返回值处理方便,避免了手写sql语句出错的问题.</p>
+</blockquote>
+<p>##修改cmd的默认编码</p>
+<blockquote>
+<p>chcp 65001 改成utf-8的编码<br>chcp 936 修改为gbk的编码</p>
+</blockquote>
+<p>##ListView<br>使用步骤:</p>
+<ol>
+<li>在布局文件里面声明listview<pre><code>    &lt;ListView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:id=&quot;@+id/lv&quot; /&gt;
+</code></pre></li>
+<li>在代码寻找listview<pre><code>lv = (ListView) findViewById(R.id.lv);
+</code></pre></li>
+<li><p>设置listview的数据适配器(controller)</p>
+<pre><code>写一个类继承BaseAdapter,重写里面两个方法
+
+@Override
+public int getCount() {
+    //返回listview一共有多少条记录
+}
+
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
+    //返回当前位置用户看到的view对象.
+}
+</code></pre></li>
+<li>给listview设置数据适配器<pre><code>lv.setAdapter(adapter);
+</code></pre></li>
+<li>如果有需求对listview进行优化,使用convertView,别回收的view的对象.</li>
+</ol>
+<p>##打气筒把xml文件转化成view<br>View view = View.inflate(getApplicationContext(), R.layout.item, null);</p>
+<p>##常见对话框</p>
+<p>##样式<br>css样式 </p>
+<blockquote>
+<p>作用在某个控件上的.</p>
+</blockquote>
+<p>##主题</p>
+<blockquote>
+<p>主题的写法和样式的写法是完全一样的.<br>区别是作用范围不同<br>作用在整个应用程序上,或者是应用程序里面的activity上的</p>
+</blockquote>
+<p>##动画</p>
+<ul>
+<li>帧动画</li>
+</ul>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
     
     	<article id="post-day08_笔记" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
@@ -193,7 +330,7 @@ public void onServiceConnected(ComponentName name, IBinder service) {
   
     
     
-    	<article id="post-liu" class="article post article-type-post" itemscope itemprop="blogPost">
+    	<article id="post-笔记" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
@@ -204,177 +341,9 @@ public void onServiceConnected(ComponentName name, IBinder service) {
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwj7sec00088cu03hbsv509/">liu</a></h2>
+		    <h2 class="post_h"><a href="/Life/civwj7sec00078cu0vvsl0gvq/">其他布局LinearLayo</a></h2>
 		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-笔记7" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwj7ses000l8cu0pafthz5w/">四大组件</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>#四大组件</p>
-<ul>
-<li>Activity 活动</li>
-<li>BroadcastReceiver 广播接受者</li>
-<li>Service 后台的服务</li>
-<li>ContentProvider 内容提供者</li>
-</ul>
-<p>#广播接受者</p>
-<ul>
-<li>什么是广播?<blockquote>
-<ol>
-<li>广播电台(发送广播信号)</li>
-<li>收音机(接受广播信号)</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>为什么安卓设计了广播事件和广播接受者?<br>系统很很多消息需要通知给每一个应用程序,电量不足,网络状态变化,sd卡被拔出插入,有新的apk被安装…如果这应用程序需要关心这个事件,需要注册一个广播接受者.</p>
-</blockquote>
-<p>接受广播的4个条件</p>
-<ol>
-<li>买个收音机<pre><code>class MyBroadcastReceiver extends BroadcastReceiver
-</code></pre></li>
-<li>装好电池<pre><code>&lt;receiver android:name=&quot;com.itheima.receiverdemo.MyBroadcastReceiver&quot; &gt;
-</code></pre></li>
-<li>调到某个频道 FM934, 收听广播<pre><code>&lt;action android:name=&quot;android.intent.action.NEW_OUTGOING_CALL&quot;/&gt;
-</code></pre></li>
-<li>某些广播需要配置权限<pre><code>&lt;uses-permission android:name=&quot;android.permission.PROCESS_OUTGOING_CALLS&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##重要的广播接受者</p>
-<ol>
-<li>电话外拨<pre><code>android.intent.action.NEW_OUTGOING_CALL 有序广播
-</code></pre></li>
-<li><p>sd卡状态</p>
-<pre><code>&lt;action android:name=&quot;android.intent.action.MEDIA_UNMOUNTED&quot;/&gt;
-&lt;action android:name=&quot;android.intent.action.MEDIA_MOUNTED&quot;/&gt;
-&lt;data android:scheme=&quot;file&quot;/&gt;
-</code></pre></li>
-<li><p>短信到来</p>
-<pre><code>android.provider.Telephony.SMS_RECEIVED 有序广播
-</code></pre></li>
-<li><p>应用程序安装</p>
-<pre><code>卸载
- &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
-安装
- &lt;action android:name=&quot;android.intent.action.PACKAGE_ADDED&quot;/&gt;
- &lt;data android:scheme=&quot;package&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##发送自定义的广播</p>
-<blockquote>
-<p>买个电台,对外发消息</p>
-</blockquote>
-<p>##自定义广播的两种类型</p>
-<ul>
-<li>无序广播<blockquote>
-<p>CCTV 广播电台  所有的人同时接收到消息,无法拦截.</p>
-</blockquote>
-</li>
-<li>有序广播<blockquote>
-<p>发布一个文件–一级一级向下传达的–上一级就可以修改下一级的数据<br>高优先级的可以拦截广播,可以修改广播的数据.</p>
-</blockquote>
-</li>
-</ul>
-<p>##广播接受者的代码也是运行在主线程的</p>
-<blockquote>
-<p>在广播接受者代码的onreceive方法里面不可以执行耗时的操作.<br>如果执行了耗时的操作,会导致主线程anr(无响应) </p>
-</blockquote>
-<p>##服务service<br>一个没有界面的应用程序,长期的在后台运行,给用户提供一些功能,实现一些逻辑.</p>
-<p>Activity—界面<br>Service – 后台,没有界面.用户看不到</p>
-<p>##电话窃听器</p>
-<blockquote>
-<p>是一个后台的服务,<br>服务开启</p>
-</blockquote>
-<pre><code>startService(intent);
-</code></pre><blockquote>
-<p>服务停止</p>
-</blockquote>
-<pre><code>stopService(intent);
-</code></pre><p>##服务和子线程之间的关系</p>
-<ul>
-<li>服务是长期的在后台运行</li>
-<li><p>开启一个用真的死循环的子线程也是在后台长期运行</p>
-</li>
-<li><p>如果一个应用程序有后台的服务在运行,即使你杀掉进程,进程和服务还会自动的复活.</p>
-</li>
-<li>如果是一个应用程序只有后台的子线程运行,杀掉进程,子线程就挂了,进程也挂了.</li>
-<li>如果你要保证一个后台的操作长期运行, 1.开启服务 2.在服务里面创建子线程.</li>
-<li>★ 服务也是运行在主线程里面的,服务是不可以直接写耗时的逻辑的,所有的耗时逻辑应该放在服务的子线程里面执行.</li>
-</ul>
-<p>##如果一个广播事件产生的很频繁</p>
-<blockquote>
-<p>屏幕锁屏, 屏幕解锁, 电量变化<br>这个广播事件在清单文件中注册就不可用</p>
-<p>Activity com.itheima.screenreceiver.MainActivity has <strong>leaked</strong> IntentReceiver com.itheima.screenreceiver.ScreenStatusReceiver@b6409e50 that was originally registered here. Are you missing a call to unregisterReceiver()?</p>
-</blockquote>
-<p>##进程的优先级<br>Android系统会尽量的长期保持每一个进程不被回收.<br>The Android system tries to maintain an application process for as long as possible<br>importance hierarchy 进程的优先级</p>
-<ol>
-<li>Foreground process 前台进程<pre><code>用户在操作的应用程序所在的进程就是前台进程
-</code></pre></li>
-<li>Visible process 可见进程<pre><code>用户仍然可以看到界面,但是里面的按钮点击不了了.
-</code></pre></li>
-<li>Service process 服务进程<pre><code>进程里面有一个服务正处于运行状态
-</code></pre></li>
-<li>Background process 后台进程<pre><code>如果一个应用程序没有服务处于运行状态,界面最小化. onstop();
-</code></pre></li>
-<li>Empty process<pre><code>应用程序没有任何活动的组件.没有服务,Activity也ondestry了
-</code></pre></li>
-</ol>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-笔记dd" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwj7sfn000w8cu0aa6gnjaz/">其他布局</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
 		    </div>
 	    </div> 
@@ -563,10 +532,169 @@ parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
 	  </div> 
 	</article>
   
+    
+    
+    	<article id="post-笔记4" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         11/24
+	        </div>
+	        <div class="post_t_u">
+	         11:33
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Life/civwj7sec00098cu0gujc4nor/">网络编程</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>#网络编程</p>
+<p>##网络请求的通用步骤</p>
+<ol>
+<li>得到一个URL对象.<pre><code>URL url = new URL(path);
+</code></pre></li>
+<li>通过URL对象获取一个连接 urlConnection<pre><code>HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+</code></pre></li>
+<li>设置http请求的参数<pre><code>conn.setRequestMethod(&quot;GET&quot;);//设置get请求
+conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
+</code></pre></li>
+<li>获取服务器返回的信息<pre><code>conn.getResponseCode(); 获取服务器返回的状态码
+2XX请求成功 3XX资源重定向 4XX资源找不到 5XX服务器错误
+</code></pre></li>
+<li>获取服务器返回的流<pre><code>conn.getInputStream();
+//保存到本地
+//BitmapFactory.decodeStream(is);
+</code></pre></li>
+</ol>
+<p>##NetWorkOnMainThread异常</p>
+<blockquote>
+<p>网络在主线程异常<br>访问网络是一个可能比较耗时的操作.在低版本的android系统谷歌没有考虑到用户体验的问题.<br>在android4.0版本开始,谷歌android系统开始检查,如果在主线程里面访问网络,强制的抛出异常.</p>
+<p>在android应用程序里面所有的用户交互的操作都是在主线程里面执行<br>按钮点击事件,界面的渲染和显示,触摸事件</p>
+</blockquote>
+<p>##ANR (application not response)</p>
+<blockquote>
+<p>应用程序无响应<br>如何避免: 不要把耗时的操作放在主线程里面执行<br>网络请求, 大文件的读取, 耗时的计算, 都应该子线程里面.</p>
+</blockquote>
+<p>##子线程常见异常</p>
+<blockquote>
+<p>android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.<br>在错误的线程里面被调用的异常, 谁创建的view谁才可以修改view里面的内容.<br>android系统约定了一个规则: 默认只有主线程才可以修改应用程序的ui</p>
+</blockquote>
+<p>##子线程更新ui的步骤</p>
+<ol>
+<li>创建一个消息处理器Handler(一定要在主线程new出来)<pre><code>private Handler handler = new Handler() {};
+</code></pre></li>
+<li>在子线程利用handler发送消息给主线程的消息队列<pre><code>handler.sendMessage(msg);
+</code></pre></li>
+<li>在主线程的消息处理器里面,处理这个消息<pre><code>public void handleMessage(Message msg) {}
+</code></pre></li>
+<li>特殊情况 传递数据<pre><code>Message.obj 携带数据
+</code></pre></li>
+</ol>
+<p>##在android系统默认的码表utf-8<br>为了保证应用程序不显示乱码,保证android端和服务器端采用相同的文件编码.</p>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-笔记5" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         11/24
+	        </div>
+	        <div class="post_t_u">
+	         11:33
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Life/civwj7sec000d8cu0v6ji76k0/">httpGet的请求从服务器获取数据</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>#httpGet的请求从服务器获取数据</p>
+<ul>
+<li>从服务器获取文本</li>
+<li>从服务器获取图片</li>
+<li>新闻客户端</li>
+<li>SmartImageView</li>
+</ul>
+<p>#httpGet的请求提交简单的数据到服务器</p>
+<ul>
+<li>组拼url的路径在路径后面拼装 name=?&amp;password=?</li>
+</ul>
+<p>#httpPost的方式提交数据到服务</p>
+<p>##常见乱码<br>如果是gbk的编码以utf-8的方式显示了</p>
+<blockquote>
+<p>��½�ɹ�� ������</p>
+</blockquote>
+<p>如果是utf-8的编码以gbk的方式显示了</p>
+<blockquote>
+<p>鐧婚檰鎴愬姛鍟� 鍝堝搱鍝�</p>
+</blockquote>
+<p>一个悲剧的情况</p>
+<blockquote>
+<p>烤斤烤斤烤斤  </p>
+</blockquote>
+<p>##开源项目httpclient</p>
+<blockquote>
+<p>Apache 开源项目组织<br>相当于一个轻量级的纯java代码浏览器</p>
+</blockquote>
+<ol>
+<li>打开浏览器<pre><code>HttpClient client = new DefaultHttpClient();
+</code></pre></li>
+<li>输入数据<pre><code>HttpGet 只需要设置请求的路径就ok
+HttpPost 不仅需要设置请求的路径,还需要设置数据的内容
+httpPost.setEntity(new UrlEncodedFormEntity(parameters,&quot;utf-8&quot;));
+</code></pre></li>
+<li>敲回车<pre><code>client.execute(get/post)
+</code></pre></li>
+<li>得到请求的相应<pre><code>response.getStatusLine().getStatusCode();得到状态码
+response.getEntity().getContent();得到数据实体
+</code></pre></li>
+</ol>
+<p>##开源的asynchttpclient</p>
+<blockquote>
+<p>android里面的开源项目 github</p>
+</blockquote>
+<p>##多线程下载</p>
+<ul>
+<li>什么时候需要多线程下载</li>
+<li>为什么多线程下载可以提高速度</li>
+</ul>
+<p>##多线程断点下载</p>
+<ul>
+<li>记录上一次你下载了多少的数据,再去开启从上一次的位置接着下载</li>
+</ul>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
   
     </div></section>
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/tags/android/page/2/">2</a><a class="extend next" rel="next" href="/tags/android/page/2/">__('next') &raquo;</a>
+  </nav>
 
 
 

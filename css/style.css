@@ -125,8 +125,6 @@ sub {
 ul,ol {
 	margin:1em
 0;
-	padding:0
-0 0 40px
 }
 dd {
 	margin:0
@@ -1392,7 +1390,6 @@ li {
 	width:202px;
 }
 .post{
-	border-bottom: 1px dashed #DDD;
 	padding-bottom: 30px;
 	margin-bottom: 30px;
 }
@@ -1429,9 +1426,9 @@ img.avatar {
     font-size: 15px;
 }
 .post-near {
-	margin: 0px;
-	padding: 0px;
 	list-style: none;
+	border-top: 1px dashed #DDD;
+	padding-top: 30px;
 }
 pre,code {
 	background:#F3F3F0;
@@ -1458,3 +1455,14 @@ blockquote {
     border-left: 4px solid #F3F3F0;
 }
 
+.post_tag-list, .article-tag-list{
+	margin: 1em 0;
+	padding: 0 0 0 0px;
+	list-style: none;
+	display: inline-block;
+	display: inline-block;
+}
+
+.post_tag-list-item, .article-tag-list-item{
+	display: inline-block;
+}

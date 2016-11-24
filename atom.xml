@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2016-11-23T15:35:23.972Z</updated>
+  <updated>2016-11-24T15:36:24.782Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,1722 +16,1404 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ddd</title>
-    <link href="http://mjackie.github.io/uncategorized/civv5kaep000jpsu0hwhr8bif/"/>
-    <id>http://mjackie.github.io/uncategorized/civv5kaep000jpsu0hwhr8bif/</id>
-    <published>2016-11-23T15:35:23.000Z</published>
-    <updated>2016-11-23T15:35:23.972Z</updated>
+    <title>数据存储</title>
+    <link href="http://mjackie.github.io/Life/civwj7sdh00038cu07qbh3zol/"/>
+    <id>http://mjackie.github.io/Life/civwj7sdh00038cu07qbh3zol/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:36:24.782Z</updated>
+    
+    <content type="html"><![CDATA[<p>##数据存储</p>
+<ul>
+<li>文件<blockquote>
+<p>存数据</p>
+</blockquote>
+</li>
+<li>SharedPerference<blockquote>
+<p>当有一个或者多个配置信息需要保存</p>
+</blockquote>
+</li>
+<li>数据库(特殊的文件,带索引)<blockquote>
+<p>当我们有大量的相似结构的数据存放,实现增删改查,推荐使用数据库.</p>
+</blockquote>
+</li>
+</ul>
+<p>##Android下的数据库</p>
+<blockquote>
+<p>Sqlite数据库, 移动平台轻量级嵌入式的数据库.</p>
+</blockquote>
+<p>##如何创建</p>
+<blockquote>
+<p>创建文件</p>
+</blockquote>
+<pre><code>//声明了一个文件对象,文件的句柄        
+File file  = new File(&quot;文件名&quot;);
+//重要的一步
+FileOutputStream fos = new FileOutputStream(file);
+//通过输出流写数据文件才被创建
+fos.write(&quot;gagagaga&quot;.getBytes());
+</code></pre><blockquote>
+<p>创建数据库</p>
+</blockquote>
+<pre><code>//1.声明数据库的文件对象
+MyDBOpenHelper helper = new MyDBOpenHelper(this);
+//2.关键代码,必须通过帮助类 获取一个数据库文件
+helper.getWritableDatabase();
+//只有获取了可写或者是可读的数据库 ,数据库文件才会被创建
+</code></pre><p>##如何定义数据库的表结构</p>
+<blockquote>
+<p>数据库创建的帮助类SQLiteOpenHelper里面,有两个重要的方法</p>
+<ol>
+<li>onCreate() 数据库第一次被创建的时候调用的方法<pre><code>适合做数据库表结构的初始化
+</code></pre></li>
+<li>onUpgrade() 数据库的版本号增加的时候调用的方法<pre><code>如果旧的数据库表结构定义的不是特别合理,修改数据库的表结构
+</code></pre></li>
+</ol>
+</blockquote>
+<p>在onCreate()和onUpgrade()方法里面都有一个参数 db ,代表的是当前的数据库<br>得到数据库 执行sql语句</p>
+<pre><code>db.execSQL(&quot;create table contactinfo (id integer primary key autoincrement, name varchar(20), phone varchar(20))&quot;);
+</code></pre><p>##增删改查的sql语句</p>
+<ul>
+<li>增<pre><code>insert into contactinfo (name,phone) values (&apos;zhangsan&apos;,&apos;110&apos;)
+</code></pre></li>
+<li>删<pre><code>delete from contactinfo where id=&apos;1&apos;
+</code></pre></li>
+<li>改<pre><code>update contactinfo set phone =&apos;119&apos; where name=&apos;zhangsan&apos;
+</code></pre></li>
+<li>查<pre><code>select phone from contactinfo where name=&apos;zhangsan&apos;
+</code></pre></li>
+</ul>
+<p>*　利用谷歌api实现增删改查(内部工作的原理,组拼sql语句)</p>
+<blockquote>
+<p>推荐大家使用谷歌的api实现增删改查,有返回值处理方便,避免了手写sql语句出错的问题.</p>
+</blockquote>
+<p>##修改cmd的默认编码</p>
+<blockquote>
+<p>chcp 65001 改成utf-8的编码<br>chcp 936 修改为gbk的编码</p>
+</blockquote>
+<p>##ListView<br>使用步骤:</p>
+<ol>
+<li>在布局文件里面声明listview<pre><code>    &lt;ListView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:id=&quot;@+id/lv&quot; /&gt;
+</code></pre></li>
+<li>在代码寻找listview<pre><code>lv = (ListView) findViewById(R.id.lv);
+</code></pre></li>
+<li><p>设置listview的数据适配器(controller)</p>
+<pre><code>写一个类继承BaseAdapter,重写里面两个方法
+
+@Override
+public int getCount() {
+    //返回listview一共有多少条记录
+}
+
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
+    //返回当前位置用户看到的view对象.
+}
+</code></pre></li>
+<li>给listview设置数据适配器<pre><code>lv.setAdapter(adapter);
+</code></pre></li>
+<li>如果有需求对listview进行优化,使用convertView,别回收的view的对象.</li>
+</ol>
+<p>##打气筒把xml文件转化成view<br>View view = View.inflate(getApplicationContext(), R.layout.item, null);</p>
+<p>##常见对话框</p>
+<p>##样式<br>css样式 </p>
+<blockquote>
+<p>作用在某个控件上的.</p>
+</blockquote>
+<p>##主题</p>
+<blockquote>
+<p>主题的写法和样式的写法是完全一样的.<br>区别是作用范围不同<br>作用在整个应用程序上,或者是应用程序里面的activity上的</p>
+</blockquote>
+<p>##动画</p>
+<ul>
+<li>帧动画</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;##数据存储&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文件&lt;blockquote&gt;
+&lt;p&gt;存数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;SharedPerference&lt;blockquote&gt;
+&lt;p&gt;当有一个或者多个配置信息需要保存&lt;/p&gt;
+&lt;/blockquote&gt;
+
+    
     </summary>
     
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
     
   </entry>
   
   <entry>
-    <title>cccc</title>
-    <link href="http://mjackie.github.io/uncategorized/civv5kaei000cpsu0me0y0cri/"/>
-    <id>http://mjackie.github.io/uncategorized/civv5kaei000cpsu0me0y0cri/</id>
-    <published>2016-11-23T15:35:19.000Z</published>
-    <updated>2016-11-23T15:35:19.418Z</updated>
+    <title>服务</title>
+    <link href="http://mjackie.github.io/Tech/civwj7sdw00048cu0r03fmcay/"/>
+    <id>http://mjackie.github.io/Tech/civwj7sdw00048cu0r03fmcay/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:35:51.196Z</updated>
+    
+    <content type="html"><![CDATA[<p>#服务</p>
+<ul>
+<li>startService(intent)</li>
+<li>stopService(intent)</li>
+</ul>
+<p>##服务的生命周期</p>
+<ul>
+<li>如果采用start的方式开启服务<blockquote>
+<p>oncreate()—&gt;onstartcommand()—&gt;onstart()—&gt;onDestroy();<br>服务如果已经被开启,不会重复的创建,多次调用startService方法,服务的oncreate方法始终只会执行一次.<br>oncreate()—&gt;onstartcommand()—&gt;onstart()—&gt;onstartcommand()—onstart()—&gt;onDestroy();<br>服务只会被停止一次,多次的调用stopservice的方法,是无效的.<br>start的方式可以多次调用 多次开启服务<br>一旦开启,就没关系了,及时Activity挂了,服务还是很好的在后台运行.<br>不可以调用服务的方法</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>如果采用的是bind的方式开启服务<blockquote>
+<p>oncreate() —&gt;onbind() –&gt;onunbind()—-&gt;ondestry();<br>bind的方式 只可以调用一次,一旦成功绑定了,就不能重复的绑定,否则解绑就会失败<br>bind的方式, 服务只可以被解绑一次,多次的解绑服务,应用程序会异常退出.<br>不求同时生,但求同时死.(Activity挂了,服务就挂了)<br>可以调用服务的方法</p>
+</blockquote>
+</li>
+</ul>
+<p>##混合调用服务的生命周期处理<br>为了保证服务长期的运行,又想调用服务的方法.<br>startService() 保证服务长期后台运行<br>bindService() 绑定服务 ,调用服务的方法<br>unbindservice() 解绑服务,不需要再去调用方法了<br>stopService() 停止服务</p>
+<p>##start方式开启服务的缺点</p>
+<blockquote>
+<p>无法调用服务里面的方法, 无法得到服务的引用</p>
+</blockquote>
+<p>##bind方式开启服务</p>
+<ol>
+<li>采用bind的方法绑定开启服务<pre><code>bindService(intent, conn, BIND_AUTO_CREATE);
+</code></pre></li>
+<li>服务内部实现一个代理人类<pre><code>private class MyBinder2 extends Binder implements IService{}
+</code></pre></li>
+<li>定义IService的接口<pre><code>服务的中间人想暴露什么方法,就怎么定义接口
+</code></pre></li>
+<li>返回代理人对象<pre><code>public IBinder onBind(Intent intent) {}
+</code></pre></li>
+<li>实现serviceConnection接口里面的方法<pre><code>private class MyConn implements ServiceConnection{
+@Override
+public void onServiceConnected(ComponentName name, IBinder service) {
+    myBinder = (IService) service;
+    System.out.println(&quot;Activity,得到代理人对象&quot;);
+}
+</code></pre></li>
+<li>调用接口里面的方法</li>
+</ol>
+<p>##绑定服务的应用常见</p>
+<ul>
+<li>提供一个服务,后台运行,里面有一些公共的逻辑供调用.<blockquote>
+<ol>
+<li>微信支付, 微信有一个支付的服务,绑定,调用支付的方法</li>
+<li>sony手机,人脸识别的服务,绑定到这个服务,传递一个照片,就会把人脸标记出来</li>
+<li>音乐播放器,后台服务里面播放音乐,绑定服务,暂停,下一曲,上一曲</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p>##远程服务&amp;本地服务</p>
+<ul>
+<li>远程,服务在别的apk应用程序里面的服务,叫远程服务</li>
+<li>本地,服务在你的apk应用程序的内部的服务,叫本地服务</li>
+</ul>
+<p>##IPC</p>
+<blockquote>
+<p>inter process communication<br>进程间通讯</p>
+</blockquote>
+<p>##AIDL</p>
+<blockquote>
+<p>android interface definition language<br>安卓接口定义语言,绑定远程服务的写法</p>
+</blockquote>
+<ol>
+<li>采用bind的方法绑定开启服务 <pre><code>intent 隐式的意图 intent.setAction(&quot;action&quot;);
+bindService(intent, conn, BIND_AUTO_CREATE);
+</code></pre></li>
+<li>服务内部实现一个代理人类<pre><code>定义一个aidl文件,删除public的访问修饰符,修改文件的扩展名为aidl
+private class MyBinder2 extends IService.Sub{}
+</code></pre></li>
+<li>定义IService的接口,通过aidl文件生成的<pre><code>服务的中间人想暴露什么方法,就怎么定义接口
+</code></pre></li>
+<li>返回代理人对象<pre><code>public IBinder onBind(Intent intent) {}
+</code></pre></li>
+<li>实现serviceConnection接口里面的方法<pre><code>private class MyConn implements ServiceConnection{
+@Override
+public void onServiceConnected(ComponentName name, IBinder service) {
+    IService.Sub.asInterface(service);
+    System.out.println(&quot;Activity,得到代理人对象&quot;);
+}
+</code></pre></li>
+<li>调用接口里面的方法</li>
+</ol>
+]]></content>
     
     <summary type="html">
     
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>bbbb</title>
-    <link href="http://mjackie.github.io/uncategorized/civv5kaee000apsu0zwg9zpxq/"/>
-    <id>http://mjackie.github.io/uncategorized/civv5kaee000apsu0zwg9zpxq/</id>
-    <published>2016-11-23T15:35:14.000Z</published>
-    <updated>2016-11-23T15:35:14.403Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>aaa</title>
-    <link href="http://mjackie.github.io/uncategorized/civv5kae90007psu0i7i69l1k/"/>
-    <id>http://mjackie.github.io/uncategorized/civv5kae90007psu0i7i69l1k/</id>
-    <published>2016-11-23T15:35:03.000Z</published>
-    <updated>2016-11-23T15:35:03.883Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PHPSession实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/civv5kado0001psu0y1alss7e/"/>
-    <id>http://mjackie.github.io/Tech/civv5kado0001psu0y1alss7e/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:32.771Z</updated>
-    
-    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre><a id="more"></a>
-<p>check.php</p>
-<pre><code>&lt;?php
-//  防止全局变量造成安全隐患
-$admin = false;
-//  启动会话，这步必不可少
-session_start();
-//  判断是否登陆
-if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
-    echo &quot;您已经成功登陆&quot;;
-} else {
-    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
-    $_SESSION[&quot;admin&quot;] = false;
-    die(&quot;您无权访问&quot;);
-}
-?&gt;
-</code></pre><p>exit.php</p>
-<pre><code>&lt;?php
-session_start();
-//  这种方法是将原来注册的某个变量销毁
-unset($_SESSION[&apos;admin&apos;]);
-//  这种方法是销毁整个 Session 文件
-session_destroy();
-?&gt;
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
-&lt;p&gt;login.php&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&amp;gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&amp;quot;password&amp;quot;]);
-$username = $posts[&amp;quot;username&amp;quot;]; 
-
-$query = &amp;quot;SELECT `username` FROM `user` WHERE `password` = &amp;apos;$password&amp;apos; AND `username` = &amp;apos;$username&amp;apos;&amp;quot;;
-//  取得查询结果
-$userInfo = $DB-&amp;gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&amp;quot;admin&amp;quot;] = true;
-} else {
-    die(&amp;quot;用户名密码错误&amp;quot;);
-}
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;p&gt;#服务&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;startService(intent)&lt;/li&gt;
+&lt;li&gt;stopService(intent)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##服务的生命周期&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果采用start的方式开启服务&lt;blockquote&gt;
+&lt;p&gt;o
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
-    
-      <category term="session" scheme="http://mjackie.github.io/tags/session/"/>
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
     
   </entry>
   
   <entry>
-    <title>PHPSession实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/civv5kae10005psu0mblh2tt1/"/>
-    <id>http://mjackie.github.io/Tech/civv5kae10005psu0mblh2tt1/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:32.771Z</updated>
+    <title>其他布局LinearLayo</title>
+    <link href="http://mjackie.github.io/Life/civwj7sec00078cu0vvsl0gvq/"/>
+    <id>http://mjackie.github.io/Life/civwj7sec00078cu0vvsl0gvq/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:36:42.174Z</updated>
     
-    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
+    <content type="html"><![CDATA[<p>##其他布局</p>
+<ul>
+<li>LinearLayout</li>
+<li>RelativeLayout </li>
+<li>FrameLayout </li>
+<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
+<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
+</ul>
+<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
+<p>##logcat</p>
+<blockquote>
+<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
+</blockquote>
+<p>##程序测试</p>
+<blockquote>
+<p>好的应用程序不是写出来的,是测出来了</p>
+</blockquote>
+<p>根据是否知道应用程序的源代码</p>
+<ul>
+<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
+<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
+</ul>
+<p>根据测试的粒度(精细程度)</p>
+<ul>
+<li>方法测试 function test</li>
+<li>单元测试 unit test</li>
+<li>集成测试 intergration test </li>
+<li>系统测试 system test</li>
+</ul>
+<p>根据测试的暴力程度</p>
+<ul>
+<li>压力测试 pressure test 单位时间内的频繁测试</li>
+<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
+<p>monkey 1000</p>
+</blockquote>
+</li>
+</ul>
+<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
+<blockquote>
+<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
+</blockquote>
+<p>##Android下junit测试代码的写法</p>
+<ol>
+<li>写一个业务方法</li>
+<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
+<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
+</code></pre></li>
+<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
+&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
+&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
+android:targetPackage=&quot;com.itheima.junit&quot;
+&gt;&lt;/instrumentation&gt;
+</code></pre></li>
+<li><p>在application节点里面配置</p>
+<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
+&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
+</code></pre></li>
+<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
+</li>
+<li>根据红条还是绿条判断测试结果</li>
+</ol>
+<p>##输入输出</p>
+<blockquote>
+<p>从文件里面读取数据<br>把数据写到文件</p>
+</blockquote>
+<p>##输入输出的应用场景</p>
+<blockquote>
+<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
+<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
+getCacheDir();               /data/data/包名/cache
+</code></pre></blockquote>
+<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
+<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
+<p>##手机存储空间的划分</p>
+<ul>
+<li>手机内部存储 Environment.getDataDirectory()<blockquote>
+<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
+<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
+</blockquote>
+</li>
+</ul>
+<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
+<p>chmod : change mode 修改模式</p>
+<blockquote>
+<p>chmod 777</p>
+<p><img src="tu2.png" alt=""></p>
+<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
+</blockquote>
+<p>##共享参数 SharedPerference</p>
+<ol>
+<li>声明sp<pre><code>private SharedPreferences sp;
+</code></pre></li>
+<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
+</code></pre></li>
+<li>使用sp<pre><code>Editor editor = sp.edit();
+editor.putString(&quot;qq&quot;, qq);
+editor.putString(&quot;password&quot;, password);
+//一定不要忘记 提交数据
+editor.commit();//提交数据. 类似关闭流,事务
+</code></pre></li>
+<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的生成</p>
+<ol>
+<li>采用组拼字符串生成xml文件.<blockquote>
+<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
+</blockquote>
+</li>
+<li><p>利用android序列化(生成)xml文件的api</p>
+<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
+2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
+3. 写文件的头
+    serializer.startDocument(&quot;utf-8&quot;, true);
+    serializer.endDocument();//写文件的末尾
+4. 写节点
+    serializer.startTag(null, &quot;info&quot;);
+    serializer.endTag(null, &quot;info&quot;);
+5. 写属性
+    serializer.attribute(null, &quot;id&quot;, id);
+6. 写节点里面的文本
+    serializer.text(&quot;文本&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的解析</p>
+<ol>
+<li><p>DOM解析 </p>
+<blockquote>
+<p>树状的xml结构</p>
+</blockquote>
+</li>
+<li><p>Dom4j</p>
+</li>
+<li><p>SAX </p>
+<blockquote>
+<p>基于事件解析,自上而下的解析</p>
+</blockquote>
+</li>
+<li><p>Pull解析</p>
+<blockquote>
+<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
+</blockquote>
+</li>
+</ol>
+<p>##pull解析</p>
+<ol>
+<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
+</code></pre></li>
+<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
+</code></pre></li>
+<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
+</code></pre></li>
+<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
+    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
 }
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre><a id="more"></a>
-<p>check.php</p>
-<pre><code>&lt;?php
-//  防止全局变量造成安全隐患
-$admin = false;
-//  启动会话，这步必不可少
-session_start();
-//  判断是否登陆
-if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
-    echo &quot;您已经成功登陆&quot;;
-} else {
-    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
-    $_SESSION[&quot;admin&quot;] = false;
-    die(&quot;您无权访问&quot;);
-}
-?&gt;
-</code></pre><p>exit.php</p>
-<pre><code>&lt;?php
-session_start();
-//  这种方法是将原来注册的某个变量销毁
-unset($_SESSION[&apos;admin&apos;]);
-//  这种方法是销毁整个 Session 文件
-session_destroy();
-?&gt;
-</code></pre>]]></content>
+</code></pre></li>
+<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
+parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
+parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
+</code></pre></li>
+<li>得到数据,完成界面的展现</li>
+</ol>
+<p>##断点调试应用程序</p>
+<ol>
+<li>双击在代码的左边打一个断点</li>
+<li>右键,debug as android application</li>
+<li>右键 watch 查看数据  </li>
+<li>watch 一段代码</li>
+<li>清空原来的调试断点</li>
+</ol>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
-&lt;p&gt;login.php&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&amp;gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&amp;quot;password&amp;quot;]);
-$username = $posts[&amp;quot;username&amp;quot;]; 
-
-$query = &amp;quot;SELECT `username` FROM `user` WHERE `password` = &amp;apos;$password&amp;apos; AND `username` = &amp;apos;$username&amp;apos;&amp;quot;;
-//  取得查询结果
-$userInfo = $DB-&amp;gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&amp;quot;admin&amp;quot;] = true;
-} else {
-    die(&amp;quot;用户名密码错误&amp;quot;);
-}
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;p&gt;##其他布局&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LinearLayout&lt;/li&gt;
+&lt;li&gt;RelativeLayout &lt;/li&gt;
+&lt;li&gt;FrameLayout &lt;/li&gt;
+&lt;li&gt;AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  &lt;/
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>liu</title>
+    <link href="http://mjackie.github.io/Tech/civwj7sec00088cu03hbsv509/"/>
+    <id>http://mjackie.github.io/Tech/civwj7sec00088cu03hbsv509/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:34:05.682Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
+  </entry>
+  
+  <entry>
+    <title>网络编程</title>
+    <link href="http://mjackie.github.io/Life/civwj7sec00098cu0gujc4nor/"/>
+    <id>http://mjackie.github.io/Life/civwj7sec00098cu0gujc4nor/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:38:01.600Z</updated>
     
-      <category term="session" scheme="http://mjackie.github.io/tags/session/"/>
+    <content type="html"><![CDATA[<p>#网络编程</p>
+<p>##网络请求的通用步骤</p>
+<ol>
+<li>得到一个URL对象.<pre><code>URL url = new URL(path);
+</code></pre></li>
+<li>通过URL对象获取一个连接 urlConnection<pre><code>HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+</code></pre></li>
+<li>设置http请求的参数<pre><code>conn.setRequestMethod(&quot;GET&quot;);//设置get请求
+conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
+</code></pre></li>
+<li>获取服务器返回的信息<pre><code>conn.getResponseCode(); 获取服务器返回的状态码
+2XX请求成功 3XX资源重定向 4XX资源找不到 5XX服务器错误
+</code></pre></li>
+<li>获取服务器返回的流<pre><code>conn.getInputStream();
+//保存到本地
+//BitmapFactory.decodeStream(is);
+</code></pre></li>
+</ol>
+<p>##NetWorkOnMainThread异常</p>
+<blockquote>
+<p>网络在主线程异常<br>访问网络是一个可能比较耗时的操作.在低版本的android系统谷歌没有考虑到用户体验的问题.<br>在android4.0版本开始,谷歌android系统开始检查,如果在主线程里面访问网络,强制的抛出异常.</p>
+<p>在android应用程序里面所有的用户交互的操作都是在主线程里面执行<br>按钮点击事件,界面的渲染和显示,触摸事件</p>
+</blockquote>
+<p>##ANR (application not response)</p>
+<blockquote>
+<p>应用程序无响应<br>如何避免: 不要把耗时的操作放在主线程里面执行<br>网络请求, 大文件的读取, 耗时的计算, 都应该子线程里面.</p>
+</blockquote>
+<p>##子线程常见异常</p>
+<blockquote>
+<p>android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.<br>在错误的线程里面被调用的异常, 谁创建的view谁才可以修改view里面的内容.<br>android系统约定了一个规则: 默认只有主线程才可以修改应用程序的ui</p>
+</blockquote>
+<p>##子线程更新ui的步骤</p>
+<ol>
+<li>创建一个消息处理器Handler(一定要在主线程new出来)<pre><code>private Handler handler = new Handler() {};
+</code></pre></li>
+<li>在子线程利用handler发送消息给主线程的消息队列<pre><code>handler.sendMessage(msg);
+</code></pre></li>
+<li>在主线程的消息处理器里面,处理这个消息<pre><code>public void handleMessage(Message msg) {}
+</code></pre></li>
+<li>特殊情况 传递数据<pre><code>Message.obj 携带数据
+</code></pre></li>
+</ol>
+<p>##在android系统默认的码表utf-8<br>为了保证应用程序不显示乱码,保证android端和服务器端采用相同的文件编码.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#网络编程&lt;/p&gt;
+&lt;p&gt;##网络请求的通用步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;得到一个URL对象.&lt;pre&gt;&lt;code&gt;URL url = new URL(path);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;通过URL对象获取一个连接 urlConnection&lt;pr
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
     
   </entry>
   
   <entry>
-    <title>PHPSession实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/civv5kae80006psu07cnps9bi/"/>
-    <id>http://mjackie.github.io/Tech/civv5kae80006psu07cnps9bi/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:32.771Z</updated>
+    <title>httpGet的请求从服务器获取数据</title>
+    <link href="http://mjackie.github.io/Life/civwj7sec000d8cu0v6ji76k0/"/>
+    <id>http://mjackie.github.io/Life/civwj7sec000d8cu0v6ji76k0/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:37:43.707Z</updated>
     
-    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre><a id="more"></a>
-<p>check.php</p>
-<pre><code>&lt;?php
-//  防止全局变量造成安全隐患
-$admin = false;
-//  启动会话，这步必不可少
-session_start();
-//  判断是否登陆
-if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
-    echo &quot;您已经成功登陆&quot;;
-} else {
-    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
-    $_SESSION[&quot;admin&quot;] = false;
-    die(&quot;您无权访问&quot;);
-}
-?&gt;
-</code></pre><p>exit.php</p>
-<pre><code>&lt;?php
-session_start();
-//  这种方法是将原来注册的某个变量销毁
-unset($_SESSION[&apos;admin&apos;]);
-//  这种方法是销毁整个 Session 文件
-session_destroy();
-?&gt;
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>#httpGet的请求从服务器获取数据</p>
+<ul>
+<li>从服务器获取文本</li>
+<li>从服务器获取图片</li>
+<li>新闻客户端</li>
+<li>SmartImageView</li>
+</ul>
+<p>#httpGet的请求提交简单的数据到服务器</p>
+<ul>
+<li>组拼url的路径在路径后面拼装 name=?&amp;password=?</li>
+</ul>
+<p>#httpPost的方式提交数据到服务</p>
+<p>##常见乱码<br>如果是gbk的编码以utf-8的方式显示了</p>
+<blockquote>
+<p>��½�ɹ�� ������</p>
+</blockquote>
+<p>如果是utf-8的编码以gbk的方式显示了</p>
+<blockquote>
+<p>鐧婚檰鎴愬姛鍟� 鍝堝搱鍝�</p>
+</blockquote>
+<p>一个悲剧的情况</p>
+<blockquote>
+<p>烤斤烤斤烤斤  </p>
+</blockquote>
+<p>##开源项目httpclient</p>
+<blockquote>
+<p>Apache 开源项目组织<br>相当于一个轻量级的纯java代码浏览器</p>
+</blockquote>
+<ol>
+<li>打开浏览器<pre><code>HttpClient client = new DefaultHttpClient();
+</code></pre></li>
+<li>输入数据<pre><code>HttpGet 只需要设置请求的路径就ok
+HttpPost 不仅需要设置请求的路径,还需要设置数据的内容
+httpPost.setEntity(new UrlEncodedFormEntity(parameters,&quot;utf-8&quot;));
+</code></pre></li>
+<li>敲回车<pre><code>client.execute(get/post)
+</code></pre></li>
+<li>得到请求的相应<pre><code>response.getStatusLine().getStatusCode();得到状态码
+response.getEntity().getContent();得到数据实体
+</code></pre></li>
+</ol>
+<p>##开源的asynchttpclient</p>
+<blockquote>
+<p>android里面的开源项目 github</p>
+</blockquote>
+<p>##多线程下载</p>
+<ul>
+<li>什么时候需要多线程下载</li>
+<li>为什么多线程下载可以提高速度</li>
+</ul>
+<p>##多线程断点下载</p>
+<ul>
+<li>记录上一次你下载了多少的数据,再去开启从上一次的位置接着下载</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
-&lt;p&gt;login.php&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&amp;gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&amp;quot;password&amp;quot;]);
-$username = $posts[&amp;quot;username&amp;quot;]; 
+      &lt;p&gt;#httpGet的请求从服务器获取数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从服务器获取文本&lt;/li&gt;
+&lt;li&gt;从服务器获取图片&lt;/li&gt;
+&lt;li&gt;新闻客户端&lt;/li&gt;
+&lt;li&gt;SmartImageView&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#httpGet的请求提交简单的数据到服务器&lt;/
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多个界面的应用开发</title>
+    <link href="http://mjackie.github.io/Life/civwj7ses000g8cu05at8lrj3/"/>
+    <id>http://mjackie.github.io/Life/civwj7ses000g8cu05at8lrj3/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:37:56.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>##多个界面的应用开发</p>
+<p>###多个页面应用程序开发的步骤</p>
+<ol>
+<li>写一个新的activity,继承activity的父类</li>
+<li>重写activity的oncreate方法,设置新的界面的ui</li>
+<li>在清单文件中manifest.xml文件中配置</li>
+<li>设置意图过滤器 intent-filter</li>
+<li>在java代码里面 new出来一个Intent意图对象,设置action,cotagery</li>
+<li>startActivity(intent);</li>
+</ol>
+<p>###如何把数据传递个第二个界面</p>
+<ol>
+<li><p>设置intent的数据</p>
+<pre><code>intent.putExtra(&quot;key&quot;,&quot;value&quot;);
+value支持很多种的类型
+int []
+byte []
+short []
+double []
+boolean []
+long []
+float []
+char[]
+String[]
+字符串
+Serializable  序列化到硬盘 自己实现的序列化的类
+Parcelable 序列化到内存 bitmap
+//传递一个map集合
+Bundle extras = new Bundle();
+extras.putChar(key, value)
+intent.putExtras(extras);
+</code></pre></li>
+<li><p>获取数据</p>
+<pre><code>Intent intent = getIntent();//获取激活当前页面的意图对象
+intent.getStringExtra();
+intent.getIntExtra();
+intent.getDoubleExtra();
+...
+intent.getExtras();
+</code></pre></li>
+</ol>
+<p>##显式意图和隐式意图</p>
+<ol>
+<li><p>显式意图: 显式的指定要开启的界面的包名和类名</p>
+<pre><code>Intent intent = new Intent();
+intent.setClassName(&quot;com.itheima.intent&quot;,
+        &quot;com.itheima.intent.SecondActivity&quot;);//类名必须是全路径
+startActivity(intent);
 
-$query = &amp;quot;SELECT `username` FROM `user` WHERE `password` = &amp;apos;$password&amp;apos; AND `username` = &amp;apos;$username&amp;apos;&amp;quot;;
-//  取得查询结果
-$userInfo = $DB-&amp;gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&amp;quot;admin&amp;quot;] = true;
-} else {
-    die(&amp;quot;用户名密码错误&amp;quot;);
+Intent intent = new Intent(this,SecondActivity.class);
+startActivity(intent);//方便的写法
+</code></pre><blockquote>
+<p>如果你要激活自己应用程序的里面的界面,推荐使用显式意图</p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>隐式意图: 通过指定应用程序的动作,数据和类别来去开启界面<pre><code>清单文件里面这个界面必须配置的有意图过滤器(intent-filter)
+根据intent-filter开启界面
+开启更加灵活,精准,并且可以携带匹配的数据
+1. 设置数据的类型
+    intent.setType(&quot;text/plain&quot;);
+    &lt;data android:mimeType=&quot;text/plain&quot;&gt;&lt;/data&gt;
+2. 设置数据的格式
+     &lt;data android:scheme=&quot;http&quot;&gt;&lt;/data&gt;
+    指定数据的头必须以什么开始
+    intent.setData(Uri.parse(&quot;http://xxxx.com&quot;));
+    &lt;data android:scheme=&quot;http&quot;
+            android:host=&quot;www.itheima.com&quot;
+            android:port=&quot;8080&quot;
+             android:path=&quot;/java&quot;
+     &gt;&lt;/data&gt;
+     intent.setData(Uri.parse(&quot;http://www.itheima.com:8080/java&quot;));
+</code></pre><blockquote>
+<p>如果要激活别的应用程序的界面,推荐使用隐式意图<br>或者是你的应用程序的一个界面想被别的应用程序激活,需要使用隐式意图.</p>
+</blockquote>
+</li>
+</ol>
+<p>##短信发送的意图<br>           <intent-filter><br>                <action android:name="android.intent.action.VIEW"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>            </data></data></category></category></action></action></intent-filter></p>
+<p>##开启新的界面获取新的界面的返回值</p>
+<ol>
+<li>开启方式发生变化,调用开启界面获取返回值的api<pre><code>startActivityForResult(intent, 0); 
+</code></pre></li>
+<li>在被开启的Activity里面设置结果数据<pre><code>Intent data = new Intent();
+data.putExtra(&quot;text&quot;, text);//把数据设置到意图对象里面
+setResult(0, data);
+finish();//关闭当前的界面  ★一定记得关闭界面,数据才会被返回
+</code></pre></li>
+<li>在开启的Activity里面重写获取返回值的方法<pre><code>protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    //3.在第二个界面关闭的时候调用,返回数据放在data里面
+    String text = data.getStringExtra(&quot;text&quot;);
+    tv_content.setText(text);
+    super.onActivityResult(requestCode, resultCode, data);
 }
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre></li>
+</ol>
+<p>##Activity的生命周期</p>
+<blockquote>
+<p>生命周期: 一个对象从被new出来 到 jvm把他垃圾回收这一个阶段必须会执行的方法.</p>
+</blockquote>
+<ul>
+<li>oncreate() Activity对象被创建的时候调用的方法</li>
+<li>onDestory() Activity对象被销毁的时候调用的方法</li>
+<li>onStart() Activity界面被用户可见调用的方法</li>
+<li>onStop() Activity界面用户不可见调用的方法</li>
+<li>onresume() Activity获取焦点</li>
+<li>onpause() Activity失去焦点</li>
+<li>onRestart() 界面被最小化并且没有被关闭,重新打开会执行onRestart();</li>
+</ul>
+<ul>
+<li><p>完整生命周期</p>
+<blockquote>
+<p>oncreate–&gt;onstart–&gt;onresume–&gt;onpause–&gt;onstop–&gt;ondestry</p>
+</blockquote>
+</li>
+<li><p>可视生命周期</p>
+<blockquote>
+<p>onstart–&gt;onresume–&gt;onpause–&gt;onstop</p>
+</blockquote>
+</li>
+<li><p>前台生命周期</p>
+<blockquote>
+<p>onresume–&gt;onpause</p>
+</blockquote>
+</li>
+</ul>
+<p>##横竖屏切换的生命周期(ctrl+F11)</p>
+<ul>
+<li>默认横竖屏切换Activity被销毁又重新创建</li>
+<li>可以把屏幕的朝向写死<pre><code>android:screenOrientation=&quot;landscape&quot; 横屏
+android:screenOrientation=&quot;portrait&quot; 竖屏
+</code></pre></li>
+<li>让操作系统忽略掉屏幕切换的变化<pre><code>android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot;
+</code></pre></li>
+</ul>
+<p>##启动模式和任务栈</p>
+<blockquote>
+<p>什么是栈 :   后进先出的数据结构. 吃了吐出来<br>什么是队列:  先进先出的数据结构.  吃了拉出了</p>
+</blockquote>
+<p>任务: 用户操作的界面.<br>任务栈:就是用来记录用户操作的先后顺序,如果任务栈清空,应用程序就被关闭了.</p>
+<p>#启动模式</p>
+<ul>
+<li>standard 默认的启动模式,标准模式<blockquote>
+<p>开启这个Activity,系统就会new一个新的Activity,这个Activity的引用就会出现在任务栈的顶部</p>
+</blockquote>
+</li>
+<li><p>singletop 单一顶部模式</p>
+<blockquote>
+<p>如果开启的Activity已经存在一个实例在任务栈的顶部,再去开启这个Activity,系统就不会创建新的Activity的实例了,而是复用已经存在的这个Activity<br>目的: 避免奇怪的用户体验<br>案例: 浏览器的书签</p>
+</blockquote>
+</li>
+<li><p>singleTask 单一任务栈</p>
+<blockquote>
+<p>如果任务栈里面已经存在要激活的Activity,就不会重新创建.<br>直接复用这个已经存在的Activity,并且把这个Activity上面其他的所有的Activity清空掉.<br>使用案例: 浏览器的BrowserActivity<br>目的: 如果一个Activity非常笨重(开销非常大) </p>
+</blockquote>
+</li>
+<li><p>singleInstance 单一实例(单例)</p>
+<blockquote>
+<p>在整个手机操作系统里面就只有一个实例存在,并且这个实例是在他自己单独的任务栈里面,不会用默认的任务栈.<br>有道词典的快速取词<br>电话呼叫InCallScreen</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##多个界面的应用开发&lt;/p&gt;
+&lt;p&gt;###多个页面应用程序开发的步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;写一个新的activity,继承activity的父类&lt;/li&gt;
+&lt;li&gt;重写activity的oncreate方法,设置新的界面的ui&lt;/li&gt;
+&lt;li&gt;在清单文件中mani
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>四大组件</title>
+    <link href="http://mjackie.github.io/Tech/civwj7ses000l8cu0pafthz5w/"/>
+    <id>http://mjackie.github.io/Tech/civwj7ses000l8cu0pafthz5w/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:35:06.030Z</updated>
+    
+    <content type="html"><![CDATA[<p>#四大组件</p>
+<ul>
+<li>Activity 活动</li>
+<li>BroadcastReceiver 广播接受者</li>
+<li>Service 后台的服务</li>
+<li>ContentProvider 内容提供者</li>
+</ul>
+<p>#广播接受者</p>
+<ul>
+<li>什么是广播?<blockquote>
+<ol>
+<li>广播电台(发送广播信号)</li>
+<li>收音机(接受广播信号)</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>为什么安卓设计了广播事件和广播接受者?<br>系统很很多消息需要通知给每一个应用程序,电量不足,网络状态变化,sd卡被拔出插入,有新的apk被安装…如果这应用程序需要关心这个事件,需要注册一个广播接受者.</p>
+</blockquote>
+<p>接受广播的4个条件</p>
+<ol>
+<li>买个收音机<pre><code>class MyBroadcastReceiver extends BroadcastReceiver
+</code></pre></li>
+<li>装好电池<pre><code>&lt;receiver android:name=&quot;com.itheima.receiverdemo.MyBroadcastReceiver&quot; &gt;
+</code></pre></li>
+<li>调到某个频道 FM934, 收听广播<pre><code>&lt;action android:name=&quot;android.intent.action.NEW_OUTGOING_CALL&quot;/&gt;
+</code></pre></li>
+<li>某些广播需要配置权限<pre><code>&lt;uses-permission android:name=&quot;android.permission.PROCESS_OUTGOING_CALLS&quot;/&gt;
+</code></pre></li>
+</ol>
+<p>##重要的广播接受者</p>
+<ol>
+<li>电话外拨<pre><code>android.intent.action.NEW_OUTGOING_CALL 有序广播
+</code></pre></li>
+<li><p>sd卡状态</p>
+<pre><code>&lt;action android:name=&quot;android.intent.action.MEDIA_UNMOUNTED&quot;/&gt;
+&lt;action android:name=&quot;android.intent.action.MEDIA_MOUNTED&quot;/&gt;
+&lt;data android:scheme=&quot;file&quot;/&gt;
+</code></pre></li>
+<li><p>短信到来</p>
+<pre><code>android.provider.Telephony.SMS_RECEIVED 有序广播
+</code></pre></li>
+<li><p>应用程序安装</p>
+<pre><code>卸载
+ &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
+安装
+ &lt;action android:name=&quot;android.intent.action.PACKAGE_ADDED&quot;/&gt;
+ &lt;data android:scheme=&quot;package&quot;/&gt;
+</code></pre></li>
+</ol>
+<p>##发送自定义的广播</p>
+<blockquote>
+<p>买个电台,对外发消息</p>
+</blockquote>
+<p>##自定义广播的两种类型</p>
+<ul>
+<li>无序广播<blockquote>
+<p>CCTV 广播电台  所有的人同时接收到消息,无法拦截.</p>
+</blockquote>
+</li>
+<li>有序广播<blockquote>
+<p>发布一个文件–一级一级向下传达的–上一级就可以修改下一级的数据<br>高优先级的可以拦截广播,可以修改广播的数据.</p>
+</blockquote>
+</li>
+</ul>
+<p>##广播接受者的代码也是运行在主线程的</p>
+<blockquote>
+<p>在广播接受者代码的onreceive方法里面不可以执行耗时的操作.<br>如果执行了耗时的操作,会导致主线程anr(无响应) </p>
+</blockquote>
+<p>##服务service<br>一个没有界面的应用程序,长期的在后台运行,给用户提供一些功能,实现一些逻辑.</p>
+<p>Activity—界面<br>Service – 后台,没有界面.用户看不到</p>
+<p>##电话窃听器</p>
+<blockquote>
+<p>是一个后台的服务,<br>服务开启</p>
+</blockquote>
+<pre><code>startService(intent);
+</code></pre><blockquote>
+<p>服务停止</p>
+</blockquote>
+<pre><code>stopService(intent);
+</code></pre><p>##服务和子线程之间的关系</p>
+<ul>
+<li>服务是长期的在后台运行</li>
+<li><p>开启一个用真的死循环的子线程也是在后台长期运行</p>
+</li>
+<li><p>如果一个应用程序有后台的服务在运行,即使你杀掉进程,进程和服务还会自动的复活.</p>
+</li>
+<li>如果是一个应用程序只有后台的子线程运行,杀掉进程,子线程就挂了,进程也挂了.</li>
+<li>如果你要保证一个后台的操作长期运行, 1.开启服务 2.在服务里面创建子线程.</li>
+<li>★ 服务也是运行在主线程里面的,服务是不可以直接写耗时的逻辑的,所有的耗时逻辑应该放在服务的子线程里面执行.</li>
+</ul>
+<p>##如果一个广播事件产生的很频繁</p>
+<blockquote>
+<p>屏幕锁屏, 屏幕解锁, 电量变化<br>这个广播事件在清单文件中注册就不可用</p>
+<p>Activity com.itheima.screenreceiver.MainActivity has <strong>leaked</strong> IntentReceiver com.itheima.screenreceiver.ScreenStatusReceiver@b6409e50 that was originally registered here. Are you missing a call to unregisterReceiver()?</p>
+</blockquote>
+<p>##进程的优先级<br>Android系统会尽量的长期保持每一个进程不被回收.<br>The Android system tries to maintain an application process for as long as possible<br>importance hierarchy 进程的优先级</p>
+<ol>
+<li>Foreground process 前台进程<pre><code>用户在操作的应用程序所在的进程就是前台进程
+</code></pre></li>
+<li>Visible process 可见进程<pre><code>用户仍然可以看到界面,但是里面的按钮点击不了了.
+</code></pre></li>
+<li>Service process 服务进程<pre><code>进程里面有一个服务正处于运行状态
+</code></pre></li>
+<li>Background process 后台进程<pre><code>如果一个应用程序没有服务处于运行状态,界面最小化. onstop();
+</code></pre></li>
+<li>Empty process<pre><code>应用程序没有任何活动的组件.没有服务,Activity也ondestry了
+</code></pre></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#四大组件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Activity 活动&lt;/li&gt;
+&lt;li&gt;BroadcastReceiver 广播接受者&lt;/li&gt;
+&lt;li&gt;Service 后台的服务&lt;/li&gt;
+&lt;li&gt;ContentProvider 内容提供者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#广播接受
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
-    
-      <category term="session" scheme="http://mjackie.github.io/tags/session/"/>
-    
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://mjackie.github.io/code/civv5kaen000gpsu0mbw4zt8m/"/>
-    <id>http://mjackie.github.io/code/civv5kaen000gpsu0mbw4zt8m/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:20:20.451Z</updated>
+    <title>其他布局</title>
+    <link href="http://mjackie.github.io/Tech/civwj7sfn000w8cu0aa6gnjaz/"/>
+    <id>http://mjackie.github.io/Tech/civwj7sfn000w8cu0aa6gnjaz/</id>
+    <published>2016-11-24T15:33:23.000Z</published>
+    <updated>2016-11-24T15:36:05.891Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>##其他布局</p>
+<ul>
+<li>LinearLayout</li>
+<li>RelativeLayout </li>
+<li>FrameLayout </li>
+<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
+<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
+</ul>
+<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
+<p>##logcat</p>
+<blockquote>
+<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
+</blockquote>
+<p>##程序测试</p>
+<blockquote>
+<p>好的应用程序不是写出来的,是测出来了</p>
+</blockquote>
+<p>根据是否知道应用程序的源代码</p>
+<ul>
+<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
+<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
+</ul>
+<p>根据测试的粒度(精细程度)</p>
+<ul>
+<li>方法测试 function test</li>
+<li>单元测试 unit test</li>
+<li>集成测试 intergration test </li>
+<li>系统测试 system test</li>
+</ul>
+<p>根据测试的暴力程度</p>
+<ul>
+<li>压力测试 pressure test 单位时间内的频繁测试</li>
+<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
+<p>monkey 1000</p>
+</blockquote>
+</li>
+</ul>
+<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
+<blockquote>
+<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
+</blockquote>
+<p>##Android下junit测试代码的写法</p>
+<ol>
+<li>写一个业务方法</li>
+<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
+<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
+</code></pre></li>
+<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
+&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
+&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
+android:targetPackage=&quot;com.itheima.junit&quot;
+&gt;&lt;/instrumentation&gt;
+</code></pre></li>
+<li><p>在application节点里面配置</p>
+<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
+&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
+</code></pre></li>
+<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
+</li>
+<li>根据红条还是绿条判断测试结果</li>
+</ol>
+<p>##输入输出</p>
+<blockquote>
+<p>从文件里面读取数据<br>把数据写到文件</p>
+</blockquote>
+<p>##输入输出的应用场景</p>
+<blockquote>
+<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
+<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
+getCacheDir();               /data/data/包名/cache
+</code></pre></blockquote>
+<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
+<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
+<p>##手机存储空间的划分</p>
+<ul>
+<li>手机内部存储 Environment.getDataDirectory()<blockquote>
+<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
+<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
+</blockquote>
+</li>
+</ul>
+<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
+<p>chmod : change mode 修改模式</p>
+<blockquote>
+<p>chmod 777</p>
+<p><img src="tu2.png" alt=""></p>
+<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
+</blockquote>
+<p>##共享参数 SharedPerference</p>
+<ol>
+<li>声明sp<pre><code>private SharedPreferences sp;
+</code></pre></li>
+<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
+</code></pre></li>
+<li>使用sp<pre><code>Editor editor = sp.edit();
+editor.putString(&quot;qq&quot;, qq);
+editor.putString(&quot;password&quot;, password);
+//一定不要忘记 提交数据
+editor.commit();//提交数据. 类似关闭流,事务
+</code></pre></li>
+<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的生成</p>
+<ol>
+<li>采用组拼字符串生成xml文件.<blockquote>
+<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
+</blockquote>
+</li>
+<li><p>利用android序列化(生成)xml文件的api</p>
+<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
+2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
+3. 写文件的头
+    serializer.startDocument(&quot;utf-8&quot;, true);
+    serializer.endDocument();//写文件的末尾
+4. 写节点
+    serializer.startTag(null, &quot;info&quot;);
+    serializer.endTag(null, &quot;info&quot;);
+5. 写属性
+    serializer.attribute(null, &quot;id&quot;, id);
+6. 写节点里面的文本
+    serializer.text(&quot;文本&quot;);
+</code></pre></li>
+</ol>
+<p>##xml的解析</p>
+<ol>
+<li><p>DOM解析 </p>
+<blockquote>
+<p>树状的xml结构</p>
+</blockquote>
+</li>
+<li><p>Dom4j</p>
+</li>
+<li><p>SAX </p>
+<blockquote>
+<p>基于事件解析,自上而下的解析</p>
+</blockquote>
+</li>
+<li><p>Pull解析</p>
+<blockquote>
+<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
+</blockquote>
+</li>
+</ol>
+<p>##pull解析</p>
+<ol>
+<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
+</code></pre></li>
+<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
+</code></pre></li>
+<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
+</code></pre></li>
+<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
+    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
+}
+</code></pre></li>
+<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
+parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
+parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
+</code></pre></li>
+<li>得到数据,完成界面的展现</li>
+</ol>
+<p>##断点调试应用程序</p>
+<ol>
+<li>双击在代码的左边打一个断点</li>
+<li>右键,debug as android application</li>
+<li>右键 watch 查看数据  </li>
+<li>watch 一段代码</li>
+<li>清空原来的调试断点</li>
+</ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PHPSession实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/civv5kadt0002psu01cuwk9kc/"/>
-    <id>http://mjackie.github.io/Tech/civv5kadt0002psu01cuwk9kc/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:32.771Z</updated>
-    
-    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre><a id="more"></a>
-<p>check.php</p>
-<pre><code>&lt;?php
-//  防止全局变量造成安全隐患
-$admin = false;
-//  启动会话，这步必不可少
-session_start();
-//  判断是否登陆
-if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
-    echo &quot;您已经成功登陆&quot;;
-} else {
-    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
-    $_SESSION[&quot;admin&quot;] = false;
-    die(&quot;您无权访问&quot;);
-}
-?&gt;
-</code></pre><p>exit.php</p>
-<pre><code>&lt;?php
-session_start();
-//  这种方法是将原来注册的某个变量销毁
-unset($_SESSION[&apos;admin&apos;]);
-//  这种方法是销毁整个 Session 文件
-session_destroy();
-?&gt;
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
-&lt;p&gt;login.php&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&amp;gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&amp;quot;password&amp;quot;]);
-$username = $posts[&amp;quot;username&amp;quot;]; 
-
-$query = &amp;quot;SELECT `username` FROM `user` WHERE `password` = &amp;apos;$password&amp;apos; AND `username` = &amp;apos;$username&amp;apos;&amp;quot;;
-//  取得查询结果
-$userInfo = $DB-&amp;gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&amp;quot;admin&amp;quot;] = true;
-} else {
-    die(&amp;quot;用户名密码错误&amp;quot;);
-}
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;p&gt;##其他布局&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LinearLayout&lt;/li&gt;
+&lt;li&gt;RelativeLayout &lt;/li&gt;
+&lt;li&gt;FrameLayout &lt;/li&gt;
+&lt;li&gt;AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  &lt;/
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
-    
-      <category term="session" scheme="http://mjackie.github.io/tags/session/"/>
+      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://mjackie.github.io/code/civv5kaev000npsu095u7zy3p/"/>
-    <id>http://mjackie.github.io/code/civv5kaev000npsu095u7zy3p/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:20:20.451Z</updated>
+    <title></title>
+    <link href="http://mjackie.github.io/Tech/civwj7sdh00018cu08hxjhor0/"/>
+    <id>http://mjackie.github.io/Tech/civwj7sdh00018cu08hxjhor0/</id>
+    <published>2016-11-24T15:30:54.915Z</published>
+    <updated>2015-01-08T09:09:49.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>#Android体系结构</p>
+<ul>
+<li>底层Linux操作系统</li>
+<li>library c/c++的函数库</li>
+<li>应用程序框架层 java提供的函数库</li>
+<li>应用程序</li>
+</ul>
+<p>#jvm和dvm的区别</p>
+<ul>
+<li><p>版权问题</p>
+</li>
+<li><p>效率问题</p>
+</li>
+</ul>
+<p>#下载Android开发的sdk</p>
+<ul>
+<li>什么是sdk<blockquote>
+<p>standard develop kits 标准开发工具集</p>
+</blockquote>
+</li>
+</ul>
+<p>下载选择32位或者64位的版本<br>直接解压下载下来的zip包</p>
+<p>#Android sdk的目录结构</p>
+<ul>
+<li>eclipse  开发工具ide 订制版本的eclipse</li>
+<li>sdk 开发工具集合</li>
+<li>SDK Manager.exe sdk管理器,提供sdk的更新</li>
+</ul>
+<p>#sdk文件夹的目录结构</p>
+<ul>
+<li><p>extras 额外工具</p>
+<ul>
+<li>Android support library 向下兼容提供的函数库</li>
+<li>usb driver 真实手机的驱动(只有谷歌的亲儿子才可用 nexus s)</li>
+<li>intel HAM intel的硬件加速(只有是intel的处理器,adm处理器不可用)</li>
+</ul>
+</li>
+<li><p>模拟器要想在电脑上运行需要有系统的镜像</p>
+<ul>
+<li>arm system image (在电脑上模拟运行速度比较慢)</li>
+<li>x86 system image (在电脑上模拟运行速度比较快)</li>
+</ul>
+</li>
+<li><p>doc 离线文档(包含全部的api的说明)</p>
+</li>
+<li><p>platforms 不同版本sdk的开发android.jar包 </p>
+</li>
+<li><p>platform-tools 平台工具</p>
+<ul>
+<li>adb.exe Android debug bridge(安卓开发调试桥)</li>
+<li>dx.bat 把.class的字节码转化成.dex的字节码</li>
+</ul>
+</li>
+<li><p>samples 开发用的示例代码</p>
+</li>
+<li><p>sources sdk的全套源码</p>
+</li>
+<li><p>system-images 系统镜像</p>
+</li>
+<li><p>tools 模拟器的应用程序就存放在这个文件夹里面</p>
+</li>
+</ul>
+<p>##强烈推荐使用4.1.2版本的模拟器.最稳定.</p>
+<p>##千万不要使用4.2版本的模拟器,bug非常多</p>
+<p>##常见分辨率</p>
+<ul>
+<li>VGA 640x480 </li>
+<li>HVGA 480x320</li>
+<li>QVGA 320x240</li>
+<li>WVGA 800x480</li>
+<li>FWVGA 854x480</li>
+</ul>
+<p>##模拟器名称<br>*5554 端口号 一个模拟器占用两个端口号</p>
+<p>##DDMS</p>
+<ul>
+<li>dalvik debug manager system</li>
+</ul>
+<p>##ADT</p>
+<blockquote>
+<p>Android Developer Tools 安卓开发工具集(eclipse的一个插件)<br>21.1.0.v20130206 不要升级adt的版本<br>会帮着我们自动创建Android的工程结构,帮我们编译应用程序–&gt;apk—&gt;部署手机–&gt;运行</p>
+</blockquote>
+<p>##Android工程的目录结构</p>
+<ul>
+<li>.settings eclipse创建的文件夹 记录工程的配置信息</li>
+<li>assets 资产目录 打包一些文件到应用程序里面(数据库文件,网页文件,配置文件)</li>
+<li>bin eclipse编译的二进制文件,把java–&gt;class—&gt;dex–&gt;res打包–&gt;.apk</li>
+<li>gen 自动生成的代码</li>
+<li>libs android-support-v4.jar 安卓的支持jar包</li>
+<li>res 应用程序的资源目录 图标 文本 颜色资源<ul>
+<li>drawable 存放应用程序的图片资源</li>
+<li>layout 存放应用程序的布局文件 xml文件</li>
+<li></li>
+</ul>
+</li>
+<li>src 我们编写的java代码</li>
+<li>.classpath eclipse配置文件</li>
+<li>.project eclipse配置文件</li>
+<li>manifest.xml 非常重要是应用程序的清单文件 配置应用程序的版本号,图标,名称</li>
+<li>project.properties 工程的配置文件</li>
+</ul>
+<p>##Android应用程序开发的步骤</p>
+<ol>
+<li>创建工程,配置应用程序工程名称,包名,图标.</li>
+<li>编写应用程序的ui界面, res–&gt;layout—&gt;main_activity.xml<blockquote>
+<p>布局都是xml文件编写的,支持图形化的拖拽</p>
+</blockquote>
+</li>
+<li><p>写java代码.在src目录下 MainActivity.java</p>
+<pre><code>@Override
+ protected void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+ //设置应用程序显示的界面
+     setContentView(R.layout.activity_main);
+ //TODO:查找我们关心的控件,实现控件的点击事件
+ }
+</code></pre></li>
+<li>必须给关心的控件设置id. 这个id会在R.java文件里面生成一个引用</li>
+<li>在java代码 findViewById(R.id.xxxx);</li>
+<li><p>设置控件的点击事件</p>
+<pre><code>bt_click.setOnClickListener(new MyButtonListener());
+</code></pre></li>
+<li><p>打印土司</p>
+<pre><code>Toast.makeText(MainActivity.this, &quot;hahahah,我被点击了.&quot;, Toast.LENGTH_SHORT).show();
+</code></pre></li>
+</ol>
+<p>##应用程序编译安装的过程.<br>一. 把所有的.java文件编译成.class文件 </p>
+<blockquote>
+<p>jdk 的 javac.exe</p>
+</blockquote>
+<p>二. 把所有的.class字节码文件打包合成一个文件 classes.dex</p>
+<blockquote>
+<p>sdk中的dx.bat文件 把.class –&gt;.dex</p>
+</blockquote>
+<p>三. 根据资源的id,生成一个资源文件resources.ap_ 保存全部的资源文件的信息</p>
+<p>四. 把.dex文件 res目录下的资源文件 resources.ap_的引用 asset目录下的文件<br>合成在一起打成一个apk的压缩包</p>
+<blockquote>
+<p>使用的是 aapt.exe</p>
+</blockquote>
+<p>五. adb.exe 负责把生成好的apk文件上传安装到手机里面.</p>
+<blockquote>
+<p>Android debug bridge 安卓调试桥,负责上传安装apk</p>
+</blockquote>
+<p>##常见的adb命令</p>
+<ul>
+<li><p>安装一个应用程序</p>
+<blockquote>
+<p>adb install xxx.apk</p>
+</blockquote>
+</li>
+<li><p>卸载一个应用程序</p>
+<blockquote>
+<p>adb uninstall com.itheima.clickme&lt;包名&gt;</p>
+</blockquote>
+</li>
+<li><p>进入到手机终端里面</p>
+<blockquote>
+<p>adb shell<br>进入手机终端之后就可以执行Linux命令 kill 杀死一个进程 ps 列出来进程 ls 列出来文件</p>
+</blockquote>
+</li>
+<li><p>杀死adb的调试桥</p>
+<blockquote>
+<p>adb kill-server<br>adb的调试桥不稳定,经常掉线,如果掉线了,执行adb kill-server把调试桥杀死</p>
+</blockquote>
+</li>
+<li><p>启动adb的调试桥</p>
+<blockquote>
+<p>adb start-server</p>
+</blockquote>
+</li>
+<li><p>查看连接在电脑上的设备</p>
+<blockquote>
+<p>adb devices<br>adb start-server这个方法比较笨,如果一次启动不成功,就不启动了.通常使用adb devices来代替adb start-server</p>
+</blockquote>
+</li>
+<li><p>指定设备执行adb指令</p>
+<blockquote>
+<p>adb -s emulator-5556 install xxx.apk</p>
+</blockquote>
+</li>
+</ul>
+<p>##URI &amp;&amp; URL</p>
+<ul>
+<li><p>URL 统一资源定位符(网址,ftp,rtsp)</p>
+<blockquote>
+<p><a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br><a href="http://www.itheima.com" target="_blank" rel="external">http://www.itheima.com</a></p>
+</blockquote>
+</li>
+<li><p>URI 统一资源标识符(范围更加广泛)</p>
+<blockquote>
+<p>tel://110<br>content://</p>
+</blockquote>
+</li>
+</ul>
+<p>##权限模型的目的</p>
+<ul>
+<li>给用户一个提醒,让用户知道你安装的软件需要干什么操作.</li>
+<li>只有敏感操作才需要申请权限(钱,设备安全,隐私)</li>
+<li>避免潜在法律诉讼</li>
+</ul>
+<p>##点击事件的四种写法</p>
+<ul>
+<li>内部类</li>
+<li>匿名内部类</li>
+<li>让activity实现onclickListener接口</li>
+<li>在布局xml文件里面绑定点击事件</li>
+</ul>
+<p>##常见的布局</p>
+<ul>
+<li>LinearLayout 线性布局<blockquote>
+<p>线性布局的朝向 vertical|horizontal<br>线性布局的权重 weight 和 0dip一起使用</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>RelativeLayout 相对布局 都是按照相对位置排列的</li>
+</ul>
+<ul>
+<li>FrameLayout 帧布局<blockquote>
+<p>布局层层叠加覆盖的<br>DIV </p>
+</blockquote>
+</li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;#Android体系结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;底层Linux操作系统&lt;/li&gt;
+&lt;li&gt;library c/c++的函数库&lt;/li&gt;
+&lt;li&gt;应用程序框架层 java提供的函数库&lt;/li&gt;
+&lt;li&gt;应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#jvm和dvm的区别&lt;/p&gt;
+
     
     </summary>
     
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://mjackie.github.io/code/civv5kaez000ppsu0exa71wnr/"/>
-    <id>http://mjackie.github.io/code/civv5kaez000ppsu0exa71wnr/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:20:20.451Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://mjackie.github.io/code/civv5kaf3000rpsu0oz7p34xg/"/>
-    <id>http://mjackie.github.io/code/civv5kaf3000rpsu0oz7p34xg/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:20:20.451Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>词法分析器</title>
-    <link href="http://mjackie.github.io/code/civv5kaf6000upsu0z17rs269/"/>
-    <id>http://mjackie.github.io/code/civv5kaf6000upsu0z17rs269/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:04.123Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
-<pre><code>/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-</code></pre><a id="more"></a>
-<pre><code>package foc;
-
-import java.util.Scanner;
-
-public class cffxq {
-    char ch;
-    StringBuffer strToken;
-    static int flag_getchar = 0; //搜索指示器
-    String str;   //字符串
-    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
-    String[][] chart_id = new String[100][2];
-    int flag_id = 0; //标识符指针
-    String[] chart_const = new String[100];
-    int flag_const = 0; //常数指针
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        StringBuffer stb = new StringBuffer(sc.nextLine());
-        stb.append(&quot; &quot;);
-        String str = stb.toString();
-        cffxq c = new cffxq();
-        while(flag_getchar&lt;str.length()-1){
-            c.begin(str);
-        }
-
-    }
-
-    private void GetChar(){
-        ch = str.charAt(flag_getchar);
-        flag_getchar++;
-    } 
-
-    public void begin(String str) {
-        this.str = str;
-
-        int code,value;
-        strToken = new StringBuffer(&quot;&quot;);
-        GetChar();
-        GetBC();
-        if(IsLetter()){
-            while(IsLetter()||IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            code = Reserve();
-            if(code &lt; 0){
-                value = InsertId(strToken.toString());
-                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
-                return;
-            }
-            else if(code == 0){
-                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
-                return;
-            }
-            else{
-                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
-                return;
-            }
-        }
-
-        else if(IsDigit()){
-            while(IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            value = InsertConst(strToken.toString());
-            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
-            return;
-        }
-
-        else if(ch == &apos;+&apos;){
-            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;-&apos;){
-            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;*&apos;){
-            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;/&apos;){
-            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;=&apos;){
-            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;,&apos;){
-            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;.&apos;){
-            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;(&apos;){
-            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;)&apos;){
-            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;;&apos;){
-            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;:&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
-        }
-        else if(ch == &apos;&gt;&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;&lt;&apos;){
-            GetChar();
-            if(ch == &apos;&gt;&apos;){
-                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
-                return;
-            }
-            else if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-
-    }
-
-    private void GetBC(){
-        if(ch==&apos; &apos;){
-            GetChar();
-            GetBC();
-        }
-    }
-
-    private void Concat(){
-        strToken.append(ch);
-    }
-
-    private boolean IsLetter(){
-        if(Character.isLetter(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private boolean IsDigit(){
-        if(Character.isDigit(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private int Reserve(){
-        for(int i=0;i&lt;gjz.length; i++){
-            if(gjz[i].equals(strToken.toString()))
-                return i;
-        }
-        return -1;   //返回数组索引，否则返回-1
-    }
-
-    private void Retract(){
-        flag_getchar--;
-        ch = &apos; &apos;;
-    }
-
-    private int InsertId(String strToken){
-        for(int i=0;i&lt;flag_id;i++){
-            if(chart_id[i][0].equals(strToken))
-                return i;
-        }
-        chart_id[flag_id][0] = strToken;
-        flag_id++;
-        return flag_id-1;
-    }
-
-    private int InsertConst(String strToken){
-        for(int i=0;i&lt;flag_const;i++){
-            if(chart_const[i].equals(strToken))
-                return i;
-        }
-        chart_const[flag_const] = strToken;
-        flag_const++;
-        return flag_const-1;
-    }
-    private void ProcError(){
-        System.out.println(&quot;词法错误！&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
-    
-      <category term="编译原理" scheme="http://mjackie.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>词法分析器</title>
-    <link href="http://mjackie.github.io/code/civv5kafe000ypsu0kgvtl5uq/"/>
-    <id>http://mjackie.github.io/code/civv5kafe000ypsu0kgvtl5uq/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:04.123Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
-<pre><code>/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-</code></pre><a id="more"></a>
-<pre><code>package foc;
-
-import java.util.Scanner;
-
-public class cffxq {
-    char ch;
-    StringBuffer strToken;
-    static int flag_getchar = 0; //搜索指示器
-    String str;   //字符串
-    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
-    String[][] chart_id = new String[100][2];
-    int flag_id = 0; //标识符指针
-    String[] chart_const = new String[100];
-    int flag_const = 0; //常数指针
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        StringBuffer stb = new StringBuffer(sc.nextLine());
-        stb.append(&quot; &quot;);
-        String str = stb.toString();
-        cffxq c = new cffxq();
-        while(flag_getchar&lt;str.length()-1){
-            c.begin(str);
-        }
-
-    }
-
-    private void GetChar(){
-        ch = str.charAt(flag_getchar);
-        flag_getchar++;
-    } 
-
-    public void begin(String str) {
-        this.str = str;
-
-        int code,value;
-        strToken = new StringBuffer(&quot;&quot;);
-        GetChar();
-        GetBC();
-        if(IsLetter()){
-            while(IsLetter()||IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            code = Reserve();
-            if(code &lt; 0){
-                value = InsertId(strToken.toString());
-                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
-                return;
-            }
-            else if(code == 0){
-                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
-                return;
-            }
-            else{
-                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
-                return;
-            }
-        }
-
-        else if(IsDigit()){
-            while(IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            value = InsertConst(strToken.toString());
-            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
-            return;
-        }
-
-        else if(ch == &apos;+&apos;){
-            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;-&apos;){
-            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;*&apos;){
-            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;/&apos;){
-            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;=&apos;){
-            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;,&apos;){
-            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;.&apos;){
-            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;(&apos;){
-            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;)&apos;){
-            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;;&apos;){
-            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;:&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
-        }
-        else if(ch == &apos;&gt;&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;&lt;&apos;){
-            GetChar();
-            if(ch == &apos;&gt;&apos;){
-                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
-                return;
-            }
-            else if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-
-    }
-
-    private void GetBC(){
-        if(ch==&apos; &apos;){
-            GetChar();
-            GetBC();
-        }
-    }
-
-    private void Concat(){
-        strToken.append(ch);
-    }
-
-    private boolean IsLetter(){
-        if(Character.isLetter(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private boolean IsDigit(){
-        if(Character.isDigit(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private int Reserve(){
-        for(int i=0;i&lt;gjz.length; i++){
-            if(gjz[i].equals(strToken.toString()))
-                return i;
-        }
-        return -1;   //返回数组索引，否则返回-1
-    }
-
-    private void Retract(){
-        flag_getchar--;
-        ch = &apos; &apos;;
-    }
-
-    private int InsertId(String strToken){
-        for(int i=0;i&lt;flag_id;i++){
-            if(chart_id[i][0].equals(strToken))
-                return i;
-        }
-        chart_id[flag_id][0] = strToken;
-        flag_id++;
-        return flag_id-1;
-    }
-
-    private int InsertConst(String strToken){
-        for(int i=0;i&lt;flag_const;i++){
-            if(chart_const[i].equals(strToken))
-                return i;
-        }
-        chart_const[flag_const] = strToken;
-        flag_const++;
-        return flag_const-1;
-    }
-    private void ProcError(){
-        System.out.println(&quot;词法错误！&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
-    
-      <category term="编译原理" scheme="http://mjackie.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>词法分析器</title>
-    <link href="http://mjackie.github.io/code/civv5kafk0010psu0icgsi4xl/"/>
-    <id>http://mjackie.github.io/code/civv5kafk0010psu0icgsi4xl/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:04.123Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
-<pre><code>/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-</code></pre><a id="more"></a>
-<pre><code>package foc;
-
-import java.util.Scanner;
-
-public class cffxq {
-    char ch;
-    StringBuffer strToken;
-    static int flag_getchar = 0; //搜索指示器
-    String str;   //字符串
-    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
-    String[][] chart_id = new String[100][2];
-    int flag_id = 0; //标识符指针
-    String[] chart_const = new String[100];
-    int flag_const = 0; //常数指针
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        StringBuffer stb = new StringBuffer(sc.nextLine());
-        stb.append(&quot; &quot;);
-        String str = stb.toString();
-        cffxq c = new cffxq();
-        while(flag_getchar&lt;str.length()-1){
-            c.begin(str);
-        }
-
-    }
-
-    private void GetChar(){
-        ch = str.charAt(flag_getchar);
-        flag_getchar++;
-    } 
-
-    public void begin(String str) {
-        this.str = str;
-
-        int code,value;
-        strToken = new StringBuffer(&quot;&quot;);
-        GetChar();
-        GetBC();
-        if(IsLetter()){
-            while(IsLetter()||IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            code = Reserve();
-            if(code &lt; 0){
-                value = InsertId(strToken.toString());
-                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
-                return;
-            }
-            else if(code == 0){
-                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
-                return;
-            }
-            else{
-                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
-                return;
-            }
-        }
-
-        else if(IsDigit()){
-            while(IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            value = InsertConst(strToken.toString());
-            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
-            return;
-        }
-
-        else if(ch == &apos;+&apos;){
-            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;-&apos;){
-            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;*&apos;){
-            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;/&apos;){
-            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;=&apos;){
-            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;,&apos;){
-            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;.&apos;){
-            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;(&apos;){
-            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;)&apos;){
-            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;;&apos;){
-            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;:&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
-        }
-        else if(ch == &apos;&gt;&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;&lt;&apos;){
-            GetChar();
-            if(ch == &apos;&gt;&apos;){
-                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
-                return;
-            }
-            else if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-
-    }
-
-    private void GetBC(){
-        if(ch==&apos; &apos;){
-            GetChar();
-            GetBC();
-        }
-    }
-
-    private void Concat(){
-        strToken.append(ch);
-    }
-
-    private boolean IsLetter(){
-        if(Character.isLetter(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private boolean IsDigit(){
-        if(Character.isDigit(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private int Reserve(){
-        for(int i=0;i&lt;gjz.length; i++){
-            if(gjz[i].equals(strToken.toString()))
-                return i;
-        }
-        return -1;   //返回数组索引，否则返回-1
-    }
-
-    private void Retract(){
-        flag_getchar--;
-        ch = &apos; &apos;;
-    }
-
-    private int InsertId(String strToken){
-        for(int i=0;i&lt;flag_id;i++){
-            if(chart_id[i][0].equals(strToken))
-                return i;
-        }
-        chart_id[flag_id][0] = strToken;
-        flag_id++;
-        return flag_id-1;
-    }
-
-    private int InsertConst(String strToken){
-        for(int i=0;i&lt;flag_const;i++){
-            if(chart_const[i].equals(strToken))
-                return i;
-        }
-        chart_const[flag_const] = strToken;
-        flag_const++;
-        return flag_const-1;
-    }
-    private void ProcError(){
-        System.out.println(&quot;词法错误！&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
-    
-      <category term="编译原理" scheme="http://mjackie.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>词法分析器</title>
-    <link href="http://mjackie.github.io/code/civv5kafq0013psu0grdjm4ge/"/>
-    <id>http://mjackie.github.io/code/civv5kafq0013psu0grdjm4ge/</id>
-    <published>2016-11-23T15:18:12.000Z</published>
-    <updated>2016-11-23T15:21:04.123Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
-<pre><code>/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-</code></pre><a id="more"></a>
-<pre><code>package foc;
-
-import java.util.Scanner;
-
-public class cffxq {
-    char ch;
-    StringBuffer strToken;
-    static int flag_getchar = 0; //搜索指示器
-    String str;   //字符串
-    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
-    String[][] chart_id = new String[100][2];
-    int flag_id = 0; //标识符指针
-    String[] chart_const = new String[100];
-    int flag_const = 0; //常数指针
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        StringBuffer stb = new StringBuffer(sc.nextLine());
-        stb.append(&quot; &quot;);
-        String str = stb.toString();
-        cffxq c = new cffxq();
-        while(flag_getchar&lt;str.length()-1){
-            c.begin(str);
-        }
-
-    }
-
-    private void GetChar(){
-        ch = str.charAt(flag_getchar);
-        flag_getchar++;
-    } 
-
-    public void begin(String str) {
-        this.str = str;
-
-        int code,value;
-        strToken = new StringBuffer(&quot;&quot;);
-        GetChar();
-        GetBC();
-        if(IsLetter()){
-            while(IsLetter()||IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            code = Reserve();
-            if(code &lt; 0){
-                value = InsertId(strToken.toString());
-                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
-                return;
-            }
-            else if(code == 0){
-                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
-                return;
-            }
-            else{
-                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
-                return;
-            }
-        }
-
-        else if(IsDigit()){
-            while(IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            value = InsertConst(strToken.toString());
-            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
-            return;
-        }
-
-        else if(ch == &apos;+&apos;){
-            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;-&apos;){
-            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;*&apos;){
-            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;/&apos;){
-            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;=&apos;){
-            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;,&apos;){
-            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;.&apos;){
-            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;(&apos;){
-            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;)&apos;){
-            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;;&apos;){
-            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;:&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
-        }
-        else if(ch == &apos;&gt;&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;&lt;&apos;){
-            GetChar();
-            if(ch == &apos;&gt;&apos;){
-                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
-                return;
-            }
-            else if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-
-    }
-
-    private void GetBC(){
-        if(ch==&apos; &apos;){
-            GetChar();
-            GetBC();
-        }
-    }
-
-    private void Concat(){
-        strToken.append(ch);
-    }
-
-    private boolean IsLetter(){
-        if(Character.isLetter(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private boolean IsDigit(){
-        if(Character.isDigit(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private int Reserve(){
-        for(int i=0;i&lt;gjz.length; i++){
-            if(gjz[i].equals(strToken.toString()))
-                return i;
-        }
-        return -1;   //返回数组索引，否则返回-1
-    }
-
-    private void Retract(){
-        flag_getchar--;
-        ch = &apos; &apos;;
-    }
-
-    private int InsertId(String strToken){
-        for(int i=0;i&lt;flag_id;i++){
-            if(chart_id[i][0].equals(strToken))
-                return i;
-        }
-        chart_id[flag_id][0] = strToken;
-        flag_id++;
-        return flag_id-1;
-    }
-
-    private int InsertConst(String strToken){
-        for(int i=0;i&lt;flag_const;i++){
-            if(chart_const[i].equals(strToken))
-                return i;
-        }
-        chart_const[flag_const] = strToken;
-        flag_const++;
-        return flag_const-1;
-    }
-    private void ProcError(){
-        System.out.println(&quot;词法错误！&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="http://mjackie.github.io/categories/code/"/>
-    
-    
-      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
-    
-      <category term="编译原理" scheme="http://mjackie.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
