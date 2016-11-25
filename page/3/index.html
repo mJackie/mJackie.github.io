@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Jotting">Jotting</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		
+	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/13
+	        </div>
+	        <div class="post_t_u">
+	         6:50
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3tyw001blgu0un1gdt9b/">成绩查询系统</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a><br><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
+<hr>
+<p>下面是源代码，一共两个文件：<br>index.php</p>
+<pre><code>&lt;html&gt;
+&lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+?&gt;
+&lt;head&gt;
+    &lt;title&gt;成绩查询&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {background:#eee;}
+        ul {padding:0; margin:0;}
+        li {list-style:none;}
+        #container {margin: 0 auto; width: 80%;}
+        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
+        a {color:#146fdf; text-decoration: none}
+        a:hover {color: black; text-decoration: underline}
+        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
+        #g_u,#g_p {position:relative}
+        #g_u {border-bottom:1px solid #eaeaea}
+        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
+        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
+        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
+            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
+                &lt;ul  id=&quot;g_list&quot;&gt;
+                    &lt;li  id=&quot;g_u&quot;&gt;
+                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
+
+                    &lt;/li&gt;
+                    &lt;li  id=&quot;g_p&quot;&gt;
+                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
+
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
+            &lt;script language=javascript&gt;  
+                function chkfs(){ 
+                var frm = document.forms[&apos;cf&apos;];  
+                frm.action=&quot;search.php&quot;;
+                return true;  
+                }
+            &lt;/script&gt;
+        &lt;/form&gt;
+
+        &lt;div id=&quot;notice&quot;&gt;
+            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
+            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
+        &lt;p align=center&gt;
+            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/civxx3tyw001blgu0un1gdt9b/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-SAE开启gzip加速" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/16
+	        </div>
+	        <div class="post_t_u">
+	         11:00
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3txt000hlgu05zgfjqjc/">SAE上博客开启gzip加速</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/SAE/">SAE</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
+<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
+<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="http://liu13-liu13.stor.sinaapp.com/3515319199.png" alt="gzip1.PNG"></p>
+	          	<p class="read-more"><a href="/Tech/civxx3txt000hlgu05zgfjqjc/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-PHP网页版简单计算器" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/15
+	        </div>
+	        <div class="post_t_u">
+	         7:06
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3txl000blgu0aioxccdi/">PHP网页版简单计算器</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>php写的一个网页版简单计算器，实现了基本的加、减、乘、除、求余运算。</p>
+<pre><code>&lt;?php
+    //error_reporting(E_ALL &amp; ~[E_NOTICE]);
+    if(isset($_POST[&apos;sub&apos;])) {
+        //echo &quot;用户提交了&quot;;
+
+        $bz = true;
+        $errormess = &quot;有以下问题：&lt;br&gt;&quot;;
+
+        if($_POST[num1] == &quot;&quot;) {
+            $bz = false;
+            $errormess .= &quot;第一个数不能为空&lt;br&gt;&quot;;
+        } else {
+            if(!is_numeric($_POST[num1])) {
+            $bz = false;
+            $errormess .= &quot;第一个数不是数字&lt;br&gt;&quot;;
+            }
+        }
+
+
+        if($_POST[num2] == &quot;&quot;) {
+            $bz = false;
+            $errormess .= &quot;第二个数不能为空&lt;br&gt;&quot;;
+        } else {
+            if(!is_numeric($_POST[num2])) {
+            $bz = false;
+            $errormess .= &quot;第二个数不是数字&lt;br&gt;&quot;;
+            }
+        }
+
+
+        if($bz) {
+
+            $sum = &quot;&quot;;
+
+            //判断运算符
+            switch($_POST[ysf]) {
+            case &apos;+&apos; : $sum = $_POST[num1] + $_POST[num2];break;
+            case &apos;-&apos; : $sum = $_POST[num1] - $_POST[num2];break;
+            case &apos;*&apos; : $sum = $_POST[num1] * $_POST[num2];break;
+            case &apos;/&apos; : $sum = $_POST[num1] / $_POST[num2];break;
+            case &apos;%&apos; : $sum = $_POST[num1] % $_POST[num2];break;    
+            }
+        }
+    }
+?&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;简单计算器&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;table border=&quot;0&quot; width=&quot;400&quot; align=&quot;center&quot;&gt;
+        &lt;form action=&quot;caculator.php&quot; method=&quot;post&quot;&gt;
+            &lt;caption&gt;&lt;h1&gt;简单计算器&lt;/h1&gt;&lt;/caption&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num1&quot; value=&quot;&lt;?php echo $_POST[num1] ?&gt;&quot;&gt; &lt;br&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;select name=&quot;ysf&quot;&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;+&quot;) echo &quot;selected&quot; ?&gt; value=&quot;+&quot;&gt; + &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;-&quot;) echo &quot;selected&quot; ?&gt; value=&quot;-&quot;&gt; - &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;*&quot;) echo &quot;selected&quot; ?&gt; value=&quot;*&quot;&gt; * &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;/&quot;) echo &quot;selected&quot; ?&gt; value=&quot;/&quot;&gt; / &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;%&quot;) echo &quot;selected&quot; ?&gt; value=&quot;%&quot;&gt; % &lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num2&quot; value=&quot;&lt;?php echo $_POST[num2] ?&gt;&quot;&gt; &lt;br&gt;    
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;input type=&quot;submit&quot; name=&quot;sub&quot; value=&quot;计算&quot;&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td colspan=&quot;4&quot;&gt;
+                    &lt;?php
+                        if($bz) {
+                            echo &quot;计算结果：{$_POST[num1]} {$_POST[ysf]} {$_POST[num2]} =  {$sum}&quot;;
+                        } else {
+                        echo $errormess;
+                        }
+
+                    ?&gt;
+            &lt;/tr&gt;
+        &lt;/form&gt;
+        &lt;/table&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-Typecho上的好用插件" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/7
+	        </div>
+	        <div class="post_t_u">
+	         12:00
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3txy000nlgu0mqcn0hm3/">Typecho上的好用插件</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Typecho/">Typecho</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
+<hr>
+<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。<br><img src="http://liu13-liu13.stor.sinaapp.com/4114528848.png" alt="CommentFilter.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3814922710.rar">CommentFilter v1.0.2.rar</a></em></p>
+<hr>
+<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。<br><img src="http://liu13-liu13.stor.sinaapp.com/2796197493.png" alt="saeupload.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/634045075.zip">SaeUpload.zip</a></em></p>
+<hr>
+<p><strong>3.友情链接插件（links）</strong><br>建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。<br>在主页或需要插入友链的地方插入如下代码即可调用：</p>
+<pre><code>&lt;?php if (!empty($this-&gt;options-&gt;sidebarBlock) &amp;&amp; in_array(&apos;ShowFriend&apos;, $this-&gt;options-&gt;sidebarBlock)): ?&gt;
+&lt;section class=&quot;block friend-list&quot;&gt;
+&lt;p class=&quot;ui &lt;?php $this-&gt;options-&gt;labelColor() ?&gt; ribbon label&quot;&gt;友情链接&lt;/p&gt;
+&lt;div class=&quot;animated list friend&quot;&gt;
+&lt;?php Links_Plugin::output(&quot;&lt;a class=\&quot;item\&quot; href=\&quot;{url}\&quot; title=\&quot;{title}\&quot; target=\&quot;_blank\&quot;&gt;&lt;div class=\&quot;content\&quot;&gt;&lt;p class=\&quot;header\&quot;&gt;{name}&lt;/p&gt;&lt;p&gt;{description}&lt;/p&gt;&lt;/div&gt;&lt;/a&gt;\n&quot;, 10); ?&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/civxx3txy000nlgu0mqcn0hm3/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-JAVA知识点及细节注意" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/24
+	        </div>
+	        <div class="post_t_u">
+	         8:00
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3tx20002lgu0xrgedgs0/">Typecho在SAE上的伪静态化</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Java/">Java</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>JAVA语言初学者注意的一些细节:</p>
+<hr>
+<p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
+<pre><code>class derived extends base｛...}    //java
+class derived:public base｛...}    //c
+</code></pre><p>◇类修饰符只有public与default（省略不写）.<br><img src="http://liu13-liu13.stor.sinaapp.com/3069698391.jpg" alt="public-default.jpg"></p>
+	          	<p class="read-more"><a href="/Tech/civxx3tx20002lgu0xrgedgs0/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+
+  <nav id="page_nav">
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+  </nav>
+
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

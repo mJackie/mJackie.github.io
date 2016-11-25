@@ -46,7 +46,11 @@
     <nav id="nav" role="navigation">
      <div>
       <ul class="menu">
-       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Jotting">Jotting</a></li>
+        
       </ul>
      </div>
     </nav>
@@ -65,629 +69,20 @@
 	
 
 		
-	<article id="post-笔记5" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-姿态角" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         11/24
+	         3/28
 	        </div>
 	        <div class="post_t_u">
-	         11:33
+	         11:17
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwm7oii000en8u048jb42uf/">httpGet的请求从服务器获取数据</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Life/">Life</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>#httpGet的请求从服务器获取数据</p>
-<ul>
-<li>从服务器获取文本</li>
-<li>从服务器获取图片</li>
-<li>新闻客户端</li>
-<li>SmartImageView</li>
-</ul>
-<p>#httpGet的请求提交简单的数据到服务器</p>
-<ul>
-<li>组拼url的路径在路径后面拼装 name=?&amp;password=?</li>
-</ul>
-<p>#httpPost的方式提交数据到服务</p>
-<p>##常见乱码<br>如果是gbk的编码以utf-8的方式显示了</p>
-<blockquote>
-<p>��½�ɹ�� ������</p>
-</blockquote>
-<p>如果是utf-8的编码以gbk的方式显示了</p>
-<blockquote>
-<p>鐧婚檰鎴愬姛鍟� 鍝堝搱鍝�</p>
-</blockquote>
-<p>一个悲剧的情况</p>
-<blockquote>
-<p>烤斤烤斤烤斤  </p>
-</blockquote>
-<p>##开源项目httpclient</p>
-<blockquote>
-<p>Apache 开源项目组织<br>相当于一个轻量级的纯java代码浏览器</p>
-</blockquote>
-<ol>
-<li>打开浏览器<pre><code>HttpClient client = new DefaultHttpClient();
-</code></pre></li>
-<li>输入数据<pre><code>HttpGet 只需要设置请求的路径就ok
-HttpPost 不仅需要设置请求的路径,还需要设置数据的内容
-httpPost.setEntity(new UrlEncodedFormEntity(parameters,&quot;utf-8&quot;));
-</code></pre></li>
-<li>敲回车<pre><code>client.execute(get/post)
-</code></pre></li>
-<li>得到请求的相应<pre><code>response.getStatusLine().getStatusCode();得到状态码
-response.getEntity().getContent();得到数据实体
-</code></pre></li>
-</ol>
-<p>##开源的asynchttpclient</p>
-<blockquote>
-<p>android里面的开源项目 github</p>
-</blockquote>
-<p>##多线程下载</p>
-<ul>
-<li>什么时候需要多线程下载</li>
-<li>为什么多线程下载可以提高速度</li>
-</ul>
-<p>##多线程断点下载</p>
-<ul>
-<li>记录上一次你下载了多少的数据,再去开启从上一次的位置接着下载</li>
-</ul>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-笔记6" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/civwm7oiq000in8u04y4oixrq/">多个界面的应用开发</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Life/">Life</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>##多个界面的应用开发</p>
-<p>###多个页面应用程序开发的步骤</p>
-<ol>
-<li>写一个新的activity,继承activity的父类</li>
-<li>重写activity的oncreate方法,设置新的界面的ui</li>
-<li>在清单文件中manifest.xml文件中配置</li>
-<li>设置意图过滤器 intent-filter</li>
-<li>在java代码里面 new出来一个Intent意图对象,设置action,cotagery</li>
-<li>startActivity(intent);</li>
-</ol>
-<p>###如何把数据传递个第二个界面</p>
-<ol>
-<li><p>设置intent的数据</p>
-<pre><code>intent.putExtra(&quot;key&quot;,&quot;value&quot;);
-value支持很多种的类型
-int []
-byte []
-short []
-double []
-boolean []
-long []
-float []
-char[]
-String[]
-字符串
-Serializable  序列化到硬盘 自己实现的序列化的类
-Parcelable 序列化到内存 bitmap
-//传递一个map集合
-Bundle extras = new Bundle();
-extras.putChar(key, value)
-intent.putExtras(extras);
-</code></pre></li>
-<li><p>获取数据</p>
-<pre><code>Intent intent = getIntent();//获取激活当前页面的意图对象
-intent.getStringExtra();
-intent.getIntExtra();
-intent.getDoubleExtra();
-...
-intent.getExtras();
-</code></pre></li>
-</ol>
-<p>##显式意图和隐式意图</p>
-<ol>
-<li><p>显式意图: 显式的指定要开启的界面的包名和类名</p>
-<pre><code>Intent intent = new Intent();
-intent.setClassName(&quot;com.itheima.intent&quot;,
-        &quot;com.itheima.intent.SecondActivity&quot;);//类名必须是全路径
-startActivity(intent);
-
-Intent intent = new Intent(this,SecondActivity.class);
-startActivity(intent);//方便的写法
-</code></pre><blockquote>
-<p>如果你要激活自己应用程序的里面的界面,推荐使用显式意图</p>
-</blockquote>
-</li>
-</ol>
-<ol>
-<li>隐式意图: 通过指定应用程序的动作,数据和类别来去开启界面<pre><code>清单文件里面这个界面必须配置的有意图过滤器(intent-filter)
-根据intent-filter开启界面
-开启更加灵活,精准,并且可以携带匹配的数据
-1. 设置数据的类型
-    intent.setType(&quot;text/plain&quot;);
-    &lt;data android:mimeType=&quot;text/plain&quot;&gt;&lt;/data&gt;
-2. 设置数据的格式
-     &lt;data android:scheme=&quot;http&quot;&gt;&lt;/data&gt;
-    指定数据的头必须以什么开始
-    intent.setData(Uri.parse(&quot;http://xxxx.com&quot;));
-    &lt;data android:scheme=&quot;http&quot;
-            android:host=&quot;www.itheima.com&quot;
-            android:port=&quot;8080&quot;
-             android:path=&quot;/java&quot;
-     &gt;&lt;/data&gt;
-     intent.setData(Uri.parse(&quot;http://www.itheima.com:8080/java&quot;));
-</code></pre><blockquote>
-<p>如果要激活别的应用程序的界面,推荐使用隐式意图<br>或者是你的应用程序的一个界面想被别的应用程序激活,需要使用隐式意图.</p>
-</blockquote>
-</li>
-</ol>
-<p>##短信发送的意图<br>           <intent-filter><br>                <action android:name="android.intent.action.VIEW"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>            </data></data></category></category></action></action></intent-filter></p>
-<p>##开启新的界面获取新的界面的返回值</p>
-<ol>
-<li>开启方式发生变化,调用开启界面获取返回值的api<pre><code>startActivityForResult(intent, 0); 
-</code></pre></li>
-<li>在被开启的Activity里面设置结果数据<pre><code>Intent data = new Intent();
-data.putExtra(&quot;text&quot;, text);//把数据设置到意图对象里面
-setResult(0, data);
-finish();//关闭当前的界面  ★一定记得关闭界面,数据才会被返回
-</code></pre></li>
-<li>在开启的Activity里面重写获取返回值的方法<pre><code>protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //3.在第二个界面关闭的时候调用,返回数据放在data里面
-    String text = data.getStringExtra(&quot;text&quot;);
-    tv_content.setText(text);
-    super.onActivityResult(requestCode, resultCode, data);
-}
-</code></pre></li>
-</ol>
-<p>##Activity的生命周期</p>
-<blockquote>
-<p>生命周期: 一个对象从被new出来 到 jvm把他垃圾回收这一个阶段必须会执行的方法.</p>
-</blockquote>
-<ul>
-<li>oncreate() Activity对象被创建的时候调用的方法</li>
-<li>onDestory() Activity对象被销毁的时候调用的方法</li>
-<li>onStart() Activity界面被用户可见调用的方法</li>
-<li>onStop() Activity界面用户不可见调用的方法</li>
-<li>onresume() Activity获取焦点</li>
-<li>onpause() Activity失去焦点</li>
-<li>onRestart() 界面被最小化并且没有被关闭,重新打开会执行onRestart();</li>
-</ul>
-<ul>
-<li><p>完整生命周期</p>
-<blockquote>
-<p>oncreate–&gt;onstart–&gt;onresume–&gt;onpause–&gt;onstop–&gt;ondestry</p>
-</blockquote>
-</li>
-<li><p>可视生命周期</p>
-<blockquote>
-<p>onstart–&gt;onresume–&gt;onpause–&gt;onstop</p>
-</blockquote>
-</li>
-<li><p>前台生命周期</p>
-<blockquote>
-<p>onresume–&gt;onpause</p>
-</blockquote>
-</li>
-</ul>
-<p>##横竖屏切换的生命周期(ctrl+F11)</p>
-<ul>
-<li>默认横竖屏切换Activity被销毁又重新创建</li>
-<li>可以把屏幕的朝向写死<pre><code>android:screenOrientation=&quot;landscape&quot; 横屏
-android:screenOrientation=&quot;portrait&quot; 竖屏
-</code></pre></li>
-<li>让操作系统忽略掉屏幕切换的变化<pre><code>android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot;
-</code></pre></li>
-</ul>
-<p>##启动模式和任务栈</p>
-<blockquote>
-<p>什么是栈 :   后进先出的数据结构. 吃了吐出来<br>什么是队列:  先进先出的数据结构.  吃了拉出了</p>
-</blockquote>
-<p>任务: 用户操作的界面.<br>任务栈:就是用来记录用户操作的先后顺序,如果任务栈清空,应用程序就被关闭了.</p>
-<p>#启动模式</p>
-<ul>
-<li>standard 默认的启动模式,标准模式<blockquote>
-<p>开启这个Activity,系统就会new一个新的Activity,这个Activity的引用就会出现在任务栈的顶部</p>
-</blockquote>
-</li>
-<li><p>singletop 单一顶部模式</p>
-<blockquote>
-<p>如果开启的Activity已经存在一个实例在任务栈的顶部,再去开启这个Activity,系统就不会创建新的Activity的实例了,而是复用已经存在的这个Activity<br>目的: 避免奇怪的用户体验<br>案例: 浏览器的书签</p>
-</blockquote>
-</li>
-<li><p>singleTask 单一任务栈</p>
-<blockquote>
-<p>如果任务栈里面已经存在要激活的Activity,就不会重新创建.<br>直接复用这个已经存在的Activity,并且把这个Activity上面其他的所有的Activity清空掉.<br>使用案例: 浏览器的BrowserActivity<br>目的: 如果一个Activity非常笨重(开销非常大) </p>
-</blockquote>
-</li>
-<li><p>singleInstance 单一实例(单例)</p>
-<blockquote>
-<p>在整个手机操作系统里面就只有一个实例存在,并且这个实例是在他自己单独的任务栈里面,不会用默认的任务栈.<br>有道词典的快速取词<br>电话呼叫InCallScreen</p>
-</blockquote>
-</li>
-</ul>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-笔记dd" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwm7oiu000ln8u05ufqsdvg/">其他布局</a></h2>
+		    <h2 class="post_h"><a href="/Tech/civxx3tym0015lgu0ntb7onw7/">姿态角</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>##其他布局</p>
-<ul>
-<li>LinearLayout</li>
-<li>RelativeLayout </li>
-<li>FrameLayout </li>
-<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
-<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
-</ul>
-<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
-<p>##logcat</p>
-<blockquote>
-<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
-</blockquote>
-<p>##程序测试</p>
-<blockquote>
-<p>好的应用程序不是写出来的,是测出来了</p>
-</blockquote>
-<p>根据是否知道应用程序的源代码</p>
-<ul>
-<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
-<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
-</ul>
-<p>根据测试的粒度(精细程度)</p>
-<ul>
-<li>方法测试 function test</li>
-<li>单元测试 unit test</li>
-<li>集成测试 intergration test </li>
-<li>系统测试 system test</li>
-</ul>
-<p>根据测试的暴力程度</p>
-<ul>
-<li>压力测试 pressure test 单位时间内的频繁测试</li>
-<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
-<p>monkey 1000</p>
-</blockquote>
-</li>
-</ul>
-<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
-<blockquote>
-<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
-</blockquote>
-<p>##Android下junit测试代码的写法</p>
-<ol>
-<li>写一个业务方法</li>
-<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
-<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
-</code></pre></li>
-<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
-&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
-&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
-android:targetPackage=&quot;com.itheima.junit&quot;
-&gt;&lt;/instrumentation&gt;
-</code></pre></li>
-<li><p>在application节点里面配置</p>
-<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
-&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
-</code></pre></li>
-<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
-</li>
-<li>根据红条还是绿条判断测试结果</li>
-</ol>
-<p>##输入输出</p>
-<blockquote>
-<p>从文件里面读取数据<br>把数据写到文件</p>
-</blockquote>
-<p>##输入输出的应用场景</p>
-<blockquote>
-<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
-<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
-getCacheDir();               /data/data/包名/cache
-</code></pre></blockquote>
-<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
-<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
-<p>##手机存储空间的划分</p>
-<ul>
-<li>手机内部存储 Environment.getDataDirectory()<blockquote>
-<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
-<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
-</blockquote>
-</li>
-</ul>
-<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
-<p>chmod : change mode 修改模式</p>
-<blockquote>
-<p>chmod 777</p>
-<p><img src="tu2.png" alt=""></p>
-<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
-</blockquote>
-<p>##共享参数 SharedPerference</p>
-<ol>
-<li>声明sp<pre><code>private SharedPreferences sp;
-</code></pre></li>
-<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
-</code></pre></li>
-<li>使用sp<pre><code>Editor editor = sp.edit();
-editor.putString(&quot;qq&quot;, qq);
-editor.putString(&quot;password&quot;, password);
-//一定不要忘记 提交数据
-editor.commit();//提交数据. 类似关闭流,事务
-</code></pre></li>
-<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的生成</p>
-<ol>
-<li>采用组拼字符串生成xml文件.<blockquote>
-<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
-</blockquote>
-</li>
-<li><p>利用android序列化(生成)xml文件的api</p>
-<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
-2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
-3. 写文件的头
-    serializer.startDocument(&quot;utf-8&quot;, true);
-    serializer.endDocument();//写文件的末尾
-4. 写节点
-    serializer.startTag(null, &quot;info&quot;);
-    serializer.endTag(null, &quot;info&quot;);
-5. 写属性
-    serializer.attribute(null, &quot;id&quot;, id);
-6. 写节点里面的文本
-    serializer.text(&quot;文本&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的解析</p>
-<ol>
-<li><p>DOM解析 </p>
-<blockquote>
-<p>树状的xml结构</p>
-</blockquote>
-</li>
-<li><p>Dom4j</p>
-</li>
-<li><p>SAX </p>
-<blockquote>
-<p>基于事件解析,自上而下的解析</p>
-</blockquote>
-</li>
-<li><p>Pull解析</p>
-<blockquote>
-<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
-</blockquote>
-</li>
-</ol>
-<p>##pull解析</p>
-<ol>
-<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
-</code></pre></li>
-<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
-</code></pre></li>
-<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
-</code></pre></li>
-<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
-    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
-}
-</code></pre></li>
-<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
-parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
-parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
-</code></pre></li>
-<li>得到数据,完成界面的展现</li>
-</ol>
-<p>##断点调试应用程序</p>
-<ol>
-<li>双击在代码的左边打一个断点</li>
-<li>右键,debug as android application</li>
-<li>右键 watch 查看数据  </li>
-<li>watch 一段代码</li>
-<li>清空原来的调试断点</li>
-</ol>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-笔记7" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:33
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwm7oj6000un8u0yb3g1o4x/">四大组件</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>#四大组件</p>
-<ul>
-<li>Activity 活动</li>
-<li>BroadcastReceiver 广播接受者</li>
-<li>Service 后台的服务</li>
-<li>ContentProvider 内容提供者</li>
-</ul>
-<p>#广播接受者</p>
-<ul>
-<li>什么是广播?<blockquote>
-<ol>
-<li>广播电台(发送广播信号)</li>
-<li>收音机(接受广播信号)</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>为什么安卓设计了广播事件和广播接受者?<br>系统很很多消息需要通知给每一个应用程序,电量不足,网络状态变化,sd卡被拔出插入,有新的apk被安装…如果这应用程序需要关心这个事件,需要注册一个广播接受者.</p>
-</blockquote>
-<p>接受广播的4个条件</p>
-<ol>
-<li>买个收音机<pre><code>class MyBroadcastReceiver extends BroadcastReceiver
-</code></pre></li>
-<li>装好电池<pre><code>&lt;receiver android:name=&quot;com.itheima.receiverdemo.MyBroadcastReceiver&quot; &gt;
-</code></pre></li>
-<li>调到某个频道 FM934, 收听广播<pre><code>&lt;action android:name=&quot;android.intent.action.NEW_OUTGOING_CALL&quot;/&gt;
-</code></pre></li>
-<li>某些广播需要配置权限<pre><code>&lt;uses-permission android:name=&quot;android.permission.PROCESS_OUTGOING_CALLS&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##重要的广播接受者</p>
-<ol>
-<li>电话外拨<pre><code>android.intent.action.NEW_OUTGOING_CALL 有序广播
-</code></pre></li>
-<li><p>sd卡状态</p>
-<pre><code>&lt;action android:name=&quot;android.intent.action.MEDIA_UNMOUNTED&quot;/&gt;
-&lt;action android:name=&quot;android.intent.action.MEDIA_MOUNTED&quot;/&gt;
-&lt;data android:scheme=&quot;file&quot;/&gt;
-</code></pre></li>
-<li><p>短信到来</p>
-<pre><code>android.provider.Telephony.SMS_RECEIVED 有序广播
-</code></pre></li>
-<li><p>应用程序安装</p>
-<pre><code>卸载
- &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
-安装
- &lt;action android:name=&quot;android.intent.action.PACKAGE_ADDED&quot;/&gt;
- &lt;data android:scheme=&quot;package&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##发送自定义的广播</p>
-<blockquote>
-<p>买个电台,对外发消息</p>
-</blockquote>
-<p>##自定义广播的两种类型</p>
-<ul>
-<li>无序广播<blockquote>
-<p>CCTV 广播电台  所有的人同时接收到消息,无法拦截.</p>
-</blockquote>
-</li>
-<li>有序广播<blockquote>
-<p>发布一个文件–一级一级向下传达的–上一级就可以修改下一级的数据<br>高优先级的可以拦截广播,可以修改广播的数据.</p>
-</blockquote>
-</li>
-</ul>
-<p>##广播接受者的代码也是运行在主线程的</p>
-<blockquote>
-<p>在广播接受者代码的onreceive方法里面不可以执行耗时的操作.<br>如果执行了耗时的操作,会导致主线程anr(无响应) </p>
-</blockquote>
-<p>##服务service<br>一个没有界面的应用程序,长期的在后台运行,给用户提供一些功能,实现一些逻辑.</p>
-<p>Activity—界面<br>Service – 后台,没有界面.用户看不到</p>
-<p>##电话窃听器</p>
-<blockquote>
-<p>是一个后台的服务,<br>服务开启</p>
-</blockquote>
-<pre><code>startService(intent);
-</code></pre><blockquote>
-<p>服务停止</p>
-</blockquote>
-<pre><code>stopService(intent);
-</code></pre><p>##服务和子线程之间的关系</p>
-<ul>
-<li>服务是长期的在后台运行</li>
-<li><p>开启一个用真的死循环的子线程也是在后台长期运行</p>
-</li>
-<li><p>如果一个应用程序有后台的服务在运行,即使你杀掉进程,进程和服务还会自动的复活.</p>
-</li>
-<li>如果是一个应用程序只有后台的子线程运行,杀掉进程,子线程就挂了,进程也挂了.</li>
-<li>如果你要保证一个后台的操作长期运行, 1.开启服务 2.在服务里面创建子线程.</li>
-<li>★ 服务也是运行在主线程里面的,服务是不可以直接写耗时的逻辑的,所有的耗时逻辑应该放在服务的子线程里面执行.</li>
-</ul>
-<p>##如果一个广播事件产生的很频繁</p>
-<blockquote>
-<p>屏幕锁屏, 屏幕解锁, 电量变化<br>这个广播事件在清单文件中注册就不可用</p>
-<p>Activity com.itheima.screenreceiver.MainActivity has <strong>leaked</strong> IntentReceiver com.itheima.screenreceiver.ScreenStatusReceiver@b6409e50 that was originally registered here. Are you missing a call to unregisterReceiver()?</p>
-</blockquote>
-<p>##进程的优先级<br>Android系统会尽量的长期保持每一个进程不被回收.<br>The Android system tries to maintain an application process for as long as possible<br>importance hierarchy 进程的优先级</p>
-<ol>
-<li>Foreground process 前台进程<pre><code>用户在操作的应用程序所在的进程就是前台进程
-</code></pre></li>
-<li>Visible process 可见进程<pre><code>用户仍然可以看到界面,但是里面的按钮点击不了了.
-</code></pre></li>
-<li>Service process 服务进程<pre><code>进程里面有一个服务正处于运行状态
-</code></pre></li>
-<li>Background process 后台进程<pre><code>如果一个应用程序没有服务处于运行状态,界面最小化. onstop();
-</code></pre></li>
-<li>Empty process<pre><code>应用程序没有任何活动的组件.没有服务,Activity也ondestry了
-</code></pre></li>
-</ol>
-
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-biji " class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         11/24
-	        </div>
-	        <div class="post_t_u">
-	         11:30
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/civwm7ohl0002n8u0tgrc3nqd/"></a></h2>
-		    <div class="post_tag"> 
-		      
 		      
 		    </div>
 	    </div> 
@@ -695,229 +90,240 @@ parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>#Android体系结构</p>
-<ul>
-<li>底层Linux操作系统</li>
-<li>library c/c++的函数库</li>
-<li>应用程序框架层 java提供的函数库</li>
-<li>应用程序</li>
-</ul>
-<p>#jvm和dvm的区别</p>
-<ul>
-<li><p>版权问题</p>
-</li>
-<li><p>效率问题</p>
-</li>
-</ul>
-<p>#下载Android开发的sdk</p>
-<ul>
-<li>什么是sdk<blockquote>
-<p>standard develop kits 标准开发工具集</p>
-</blockquote>
-</li>
-</ul>
-<p>下载选择32位或者64位的版本<br>直接解压下载下来的zip包</p>
-<p>#Android sdk的目录结构</p>
-<ul>
-<li>eclipse  开发工具ide 订制版本的eclipse</li>
-<li>sdk 开发工具集合</li>
-<li>SDK Manager.exe sdk管理器,提供sdk的更新</li>
-</ul>
-<p>#sdk文件夹的目录结构</p>
-<ul>
-<li><p>extras 额外工具</p>
-<ul>
-<li>Android support library 向下兼容提供的函数库</li>
-<li>usb driver 真实手机的驱动(只有谷歌的亲儿子才可用 nexus s)</li>
-<li>intel HAM intel的硬件加速(只有是intel的处理器,adm处理器不可用)</li>
-</ul>
-</li>
-<li><p>模拟器要想在电脑上运行需要有系统的镜像</p>
-<ul>
-<li>arm system image (在电脑上模拟运行速度比较慢)</li>
-<li>x86 system image (在电脑上模拟运行速度比较快)</li>
-</ul>
-</li>
-<li><p>doc 离线文档(包含全部的api的说明)</p>
-</li>
-<li><p>platforms 不同版本sdk的开发android.jar包 </p>
-</li>
-<li><p>platform-tools 平台工具</p>
-<ul>
-<li>adb.exe Android debug bridge(安卓开发调试桥)</li>
-<li>dx.bat 把.class的字节码转化成.dex的字节码</li>
-</ul>
-</li>
-<li><p>samples 开发用的示例代码</p>
-</li>
-<li><p>sources sdk的全套源码</p>
-</li>
-<li><p>system-images 系统镜像</p>
-</li>
-<li><p>tools 模拟器的应用程序就存放在这个文件夹里面</p>
-</li>
-</ul>
-<p>##强烈推荐使用4.1.2版本的模拟器.最稳定.</p>
-<p>##千万不要使用4.2版本的模拟器,bug非常多</p>
-<p>##常见分辨率</p>
-<ul>
-<li>VGA 640x480 </li>
-<li>HVGA 480x320</li>
-<li>QVGA 320x240</li>
-<li>WVGA 800x480</li>
-<li>FWVGA 854x480</li>
-</ul>
-<p>##模拟器名称<br>*5554 端口号 一个模拟器占用两个端口号</p>
-<p>##DDMS</p>
-<ul>
-<li>dalvik debug manager system</li>
-</ul>
-<p>##ADT</p>
-<blockquote>
-<p>Android Developer Tools 安卓开发工具集(eclipse的一个插件)<br>21.1.0.v20130206 不要升级adt的版本<br>会帮着我们自动创建Android的工程结构,帮我们编译应用程序–&gt;apk—&gt;部署手机–&gt;运行</p>
-</blockquote>
-<p>##Android工程的目录结构</p>
-<ul>
-<li>.settings eclipse创建的文件夹 记录工程的配置信息</li>
-<li>assets 资产目录 打包一些文件到应用程序里面(数据库文件,网页文件,配置文件)</li>
-<li>bin eclipse编译的二进制文件,把java–&gt;class—&gt;dex–&gt;res打包–&gt;.apk</li>
-<li>gen 自动生成的代码</li>
-<li>libs android-support-v4.jar 安卓的支持jar包</li>
-<li>res 应用程序的资源目录 图标 文本 颜色资源<ul>
-<li>drawable 存放应用程序的图片资源</li>
-<li>layout 存放应用程序的布局文件 xml文件</li>
-<li></li>
-</ul>
-</li>
-<li>src 我们编写的java代码</li>
-<li>.classpath eclipse配置文件</li>
-<li>.project eclipse配置文件</li>
-<li>manifest.xml 非常重要是应用程序的清单文件 配置应用程序的版本号,图标,名称</li>
-<li>project.properties 工程的配置文件</li>
-</ul>
-<p>##Android应用程序开发的步骤</p>
-<ol>
-<li>创建工程,配置应用程序工程名称,包名,图标.</li>
-<li>编写应用程序的ui界面, res–&gt;layout—&gt;main_activity.xml<blockquote>
-<p>布局都是xml文件编写的,支持图形化的拖拽</p>
-</blockquote>
-</li>
-<li><p>写java代码.在src目录下 MainActivity.java</p>
-<pre><code>@Override
- protected void onCreate(Bundle savedInstanceState) {
-     super.onCreate(savedInstanceState);
- //设置应用程序显示的界面
-     setContentView(R.layout.activity_main);
- //TODO:查找我们关心的控件,实现控件的点击事件
- }
-</code></pre></li>
-<li>必须给关心的控件设置id. 这个id会在R.java文件里面生成一个引用</li>
-<li>在java代码 findViewById(R.id.xxxx);</li>
-<li><p>设置控件的点击事件</p>
-<pre><code>bt_click.setOnClickListener(new MyButtonListener());
-</code></pre></li>
-<li><p>打印土司</p>
-<pre><code>Toast.makeText(MainActivity.this, &quot;hahahah,我被点击了.&quot;, Toast.LENGTH_SHORT).show();
-</code></pre></li>
-</ol>
-<p>##应用程序编译安装的过程.<br>一. 把所有的.java文件编译成.class文件 </p>
-<blockquote>
-<p>jdk 的 javac.exe</p>
-</blockquote>
-<p>二. 把所有的.class字节码文件打包合成一个文件 classes.dex</p>
-<blockquote>
-<p>sdk中的dx.bat文件 把.class –&gt;.dex</p>
-</blockquote>
-<p>三. 根据资源的id,生成一个资源文件resources.ap_ 保存全部的资源文件的信息</p>
-<p>四. 把.dex文件 res目录下的资源文件 resources.ap_的引用 asset目录下的文件<br>合成在一起打成一个apk的压缩包</p>
-<blockquote>
-<p>使用的是 aapt.exe</p>
-</blockquote>
-<p>五. adb.exe 负责把生成好的apk文件上传安装到手机里面.</p>
-<blockquote>
-<p>Android debug bridge 安卓调试桥,负责上传安装apk</p>
-</blockquote>
-<p>##常见的adb命令</p>
-<ul>
-<li><p>安装一个应用程序</p>
-<blockquote>
-<p>adb install xxx.apk</p>
-</blockquote>
-</li>
-<li><p>卸载一个应用程序</p>
-<blockquote>
-<p>adb uninstall com.itheima.clickme&lt;包名&gt;</p>
-</blockquote>
-</li>
-<li><p>进入到手机终端里面</p>
-<blockquote>
-<p>adb shell<br>进入手机终端之后就可以执行Linux命令 kill 杀死一个进程 ps 列出来进程 ls 列出来文件</p>
-</blockquote>
-</li>
-<li><p>杀死adb的调试桥</p>
-<blockquote>
-<p>adb kill-server<br>adb的调试桥不稳定,经常掉线,如果掉线了,执行adb kill-server把调试桥杀死</p>
-</blockquote>
-</li>
-<li><p>启动adb的调试桥</p>
-<blockquote>
-<p>adb start-server</p>
-</blockquote>
-</li>
-<li><p>查看连接在电脑上的设备</p>
-<blockquote>
-<p>adb devices<br>adb start-server这个方法比较笨,如果一次启动不成功,就不启动了.通常使用adb devices来代替adb start-server</p>
-</blockquote>
-</li>
-<li><p>指定设备执行adb指令</p>
-<blockquote>
-<p>adb -s emulator-5556 install xxx.apk</p>
-</blockquote>
-</li>
-</ul>
-<p>##URI &amp;&amp; URL</p>
-<ul>
-<li><p>URL 统一资源定位符(网址,ftp,rtsp)</p>
-<blockquote>
-<p><a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br><a href="http://www.itheima.com" target="_blank" rel="external">http://www.itheima.com</a></p>
-</blockquote>
-</li>
-<li><p>URI 统一资源标识符(范围更加广泛)</p>
-<blockquote>
-<p>tel://110<br>content://</p>
-</blockquote>
-</li>
-</ul>
-<p>##权限模型的目的</p>
-<ul>
-<li>给用户一个提醒,让用户知道你安装的软件需要干什么操作.</li>
-<li>只有敏感操作才需要申请权限(钱,设备安全,隐私)</li>
-<li>避免潜在法律诉讼</li>
-</ul>
-<p>##点击事件的四种写法</p>
-<ul>
-<li>内部类</li>
-<li>匿名内部类</li>
-<li>让activity实现onclickListener接口</li>
-<li>在布局xml文件里面绑定点击事件</li>
-</ul>
-<p>##常见的布局</p>
-<ul>
-<li>LinearLayout 线性布局<blockquote>
-<p>线性布局的朝向 vertical|horizontal<br>线性布局的权重 weight 和 0dip一起使用</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>RelativeLayout 相对布局 都是按照相对位置排列的</li>
-</ul>
-<ul>
-<li>FrameLayout 帧布局<blockquote>
-<p>布局层层叠加覆盖的<br>DIV </p>
-</blockquote>
-</li>
-</ul>
+	        	<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/3086121131.gif" alt="yaw.gif"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；</p>
+<hr>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/2936638328.gif" alt="pitch.gif"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
+<hr>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/2624363739.gif" alt="roll.gif"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
 
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-JavaWeb微博" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/12
+	        </div>
+	        <div class="post_t_u">
+	         1:44
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3txe0006lgu078osu2u1/">JavaWeb微博</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Javaweb/">Javaweb</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
+<p>下面是应用截图：<br><img src="http://liu13-liu13.stor.sinaapp.com/2637202576.jpg" alt="1.jpg"></p>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/1659680042.jpg" alt="2.jpg"></p>
+	          	<p class="read-more"><a href="/Tech/civxx3txe0006lgu078osu2u1/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-北京蓝桥之行" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         6/5
+	        </div>
+	        <div class="post_t_u">
+	         10:46
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Jotting/civxx3tyh000ylgu0xn4saxr5/">北京蓝桥之行</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Jotting/">Jotting</a>
+		      
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>想起当初报名还是在上个学期过年以前，当时还在考虑要不要交300块钱报个名，自己对于算法，数据结构也是一窍不通，好在在老师的鼓励下，和寝室的张一块报了名。倘若当初没有报名，也就不会有了这次北京之行，更不会得奖，所以万事都要积勇于尝试，争取，正如《高效能人士的七个习惯》中的第一个习惯——积极主动。</p>
+<p>寒假在实验室呆了几天，太闷了，实在待不下去了，和张晚上看了《霍比特人3》，第二天背着书包便回家了。当当上买了一本java的数据结构书，想着寒假好好看看，可惜计划赶不上变化，过年事也多，整个假期过去了，也没看几页(其实看了也没多大用，蓝桥杯主要考算法，还是多练题有效果)。</p>
+<p>4月份在郑州轻工业学院省赛，根本没有准备，也就前一个晚上看了几道历年题，想着能拿个奖就不错了。一星期后结果出来了，省一等奖。<br><img src="http://liu13-liu13.stor.sinaapp.com/3752285059.jpg" alt="IMG_20150531_131941_11.jpg"><br>5月29日晚上9点35分，迈上了一直向往的城市——北京的第一步。</p>
+<p>去的一路上人不多，三国杀，大富翁，又看了一部电影，很快就过了。</p>
+<p>去之前的前一个星期，课余时间都在做官网上的练习题，一共做了大概30道题。</p>
+<p>第二天早上吃完饭9点多，时间不太够，也没有出去浪，比赛是在下午2点到6点，考试还发了一杆笔，一盒奶，一瓶水，一个面包，很贴心。要说的就是一定不能浪费太多时间在一道题上，有些弄不懂的越扣越浪费时间，还不如直接跳过。</p>
+<p>比赛完坐地铁直接去了天安门，正巧赶上降旗仪式，人很多，也看不太清楚，郁闷的是天安门广场有围栏护着，不让进。我们几个绕着马路走了一路，又到王府井小吃街逛了一圈，买了一串糖葫芦，10块。</p>
+<p>晚上回去在郭房间三国杀，也没看时间直接到了一点多。王去找他舅了，我拿着房间钥匙，回房间路上想着阮不会在门外等吧，还好他找楼下的开了门，进了房间。</p>
+<p>第二天，阮提前去清华听讲座了，等王回来后，一块做地铁去奥体中心绕着鸟巢，水立方压马路。</p>
+<p>下午颁奖典礼在北大邱德拔体育馆举行，河大民生学院的一个学生和曾经教过我的吴老师竟然得了特等奖，很赞。水木年华的缪杰唱了《为梦而生》，《一生有你》。</p>
+<p>二等奖，也算是自己之前想象的最好的结果了，很满意。郝和郭一等奖，很赞。</p>
+<p>晚上火车正好赶上了农民工返乡，人超多，难受。</p>
+<p>也许是自己之前期望太高，眼中的北京并没有想象中的好，其实天南海北都是一样的，就像人与人之间，马云和我也一样长着两个眼睛一张嘴嘛。</p>
+<p>天外有天，楼外楼，自己要多加努力，勤奋上进。<br>最后还是要抓住眼前，从现在做起，英语六级，网络作业，期末考试……</p>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-Git学习笔记" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         4/6
+	        </div>
+	        <div class="post_t_u">
+	         6:24
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3twx0001lgu0vjcidi4p/">Git学习笔记</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Git/">Git</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。分布式的git相比于集中式的svn最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。<br>git构架上分为3个区，工作区，暂存区与版本库。用户在工作区的更改通过git add命令添加至暂存区，暂存区的数据通过git commit提交到版本库。用户通过git checkout从版本库中检出数据。<br>git的远程协作需要先fork开源项目，然后本地git clone该项目，通过git pull，git push编辑项目，通过git remote获取原作者的更新，pull request为该项目做贡献。</p>
+<p>git 双击table自动完成</p>
+<pre><code>git config --help
+git help config
+
+git config user.name 查看用户名
+git config --global user.name liu13
+git config --global --add user.name liu13
+git config --get user.name
+git init name
+git init --bare name
+git clone name/ name
+
+git add
+git add .
+git commit -m &quot;&quot;
+git status 
+git rm --cached name
+git mv
+git reset HEAD name
+gitignore
+
+git config --global alias.lol &quot;git log --oneline --decorate --graph --all&quot;
+git merge origin/master
+
+git branch name 创建分支
+git checkout baranchname 切换分支
+git tag &quot;tagname&quot; hash
+git tag -a &quot;INITIAL_COMMIT&quot; -m&quot;&quot; hash
+git show tagname
+git checkout -b branchname 创建并切换分支
+git stash save -a stash_name 保存暂存区
+git stash list
+git stash pop --index stash_name 暂存区也返回
+git stash apply --index stash_name 暂存区也返回且保存stash
+git stash drop stash_name 
+git stash clear 一次性清理
+
+git merge branch_name
+git merge --abort
+
+git show branch_name^
+
+git diff 工作区与暂存区区别
+git diff --cached 暂存区与历史提交差异
+git diff --color-words
+
+git checkout （HEAD） --文件名  撤销修改
+git reset 文件名  还原暂存区
+
+git clean -n 查看git clean 将要移除的文件
+git clean -f 清理无用文件，不清理ignore文件中指定的文件
+
+git clone 获取远程仓库
+git fetch（ origin 分支名） 获取更新（分支，数据）
+git pull = git fetch + git merge
+git push --tag 推送tag
+git push origin :分支名  
+git push --delete origin 分支名 删除远程分支
+
+pull request 没被关闭 不需重复pull request
+git remote add 仓库名 http路径
+git remote -v
+git fetch 仓库名
+git remote rm
+git remote rename
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/29
+	        </div>
+	        <div class="post_t_u">
+	         6:37
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/civxx3txv000klgu0qbfj86iz/">The First ASM</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
+<hr>
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
+</code></pre>
 	      	
 	    </p>
 	  </div> 
@@ -925,7 +331,7 @@ parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
 
 
   <nav id="page_nav">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
 
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2016-11-24T15:36:24.782Z</updated>
+  <updated>2016-11-25T14:57:38.843Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,152 +16,282 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>数据存储</title>
-    <link href="http://mjackie.github.io/Life/civwm7oha0000n8u0fv6nj8j5/"/>
-    <id>http://mjackie.github.io/Life/civwm7oha0000n8u0fv6nj8j5/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:36:24.782Z</updated>
+    <title>词法分析器</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tz2001elgu0jux58ik4/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tz2001elgu0jux58ik4/</id>
+    <published>2016-04-27T16:46:00.000Z</published>
+    <updated>2016-11-25T14:57:38.843Z</updated>
     
-    <content type="html"><![CDATA[<p>##数据存储</p>
-<ul>
-<li>文件<blockquote>
-<p>存数据</p>
-</blockquote>
-</li>
-<li>SharedPerference<blockquote>
-<p>当有一个或者多个配置信息需要保存</p>
-</blockquote>
-</li>
-<li>数据库(特殊的文件,带索引)<blockquote>
-<p>当我们有大量的相似结构的数据存放,实现增删改查,推荐使用数据库.</p>
-</blockquote>
-</li>
-</ul>
-<p>##Android下的数据库</p>
-<blockquote>
-<p>Sqlite数据库, 移动平台轻量级嵌入式的数据库.</p>
-</blockquote>
-<p>##如何创建</p>
-<blockquote>
-<p>创建文件</p>
-</blockquote>
-<pre><code>//声明了一个文件对象,文件的句柄        
-File file  = new File(&quot;文件名&quot;);
-//重要的一步
-FileOutputStream fos = new FileOutputStream(file);
-//通过输出流写数据文件才被创建
-fos.write(&quot;gagagaga&quot;.getBytes());
-</code></pre><blockquote>
-<p>创建数据库</p>
-</blockquote>
-<pre><code>//1.声明数据库的文件对象
-MyDBOpenHelper helper = new MyDBOpenHelper(this);
-//2.关键代码,必须通过帮助类 获取一个数据库文件
-helper.getWritableDatabase();
-//只有获取了可写或者是可读的数据库 ,数据库文件才会被创建
-</code></pre><p>##如何定义数据库的表结构</p>
-<blockquote>
-<p>数据库创建的帮助类SQLiteOpenHelper里面,有两个重要的方法</p>
-<ol>
-<li>onCreate() 数据库第一次被创建的时候调用的方法<pre><code>适合做数据库表结构的初始化
-</code></pre></li>
-<li>onUpgrade() 数据库的版本号增加的时候调用的方法<pre><code>如果旧的数据库表结构定义的不是特别合理,修改数据库的表结构
-</code></pre></li>
-</ol>
-</blockquote>
-<p>在onCreate()和onUpgrade()方法里面都有一个参数 db ,代表的是当前的数据库<br>得到数据库 执行sql语句</p>
-<pre><code>db.execSQL(&quot;create table contactinfo (id integer primary key autoincrement, name varchar(20), phone varchar(20))&quot;);
-</code></pre><p>##增删改查的sql语句</p>
-<ul>
-<li>增<pre><code>insert into contactinfo (name,phone) values (&apos;zhangsan&apos;,&apos;110&apos;)
-</code></pre></li>
-<li>删<pre><code>delete from contactinfo where id=&apos;1&apos;
-</code></pre></li>
-<li>改<pre><code>update contactinfo set phone =&apos;119&apos; where name=&apos;zhangsan&apos;
-</code></pre></li>
-<li>查<pre><code>select phone from contactinfo where name=&apos;zhangsan&apos;
-</code></pre></li>
-</ul>
-<p>*　利用谷歌api实现增删改查(内部工作的原理,组拼sql语句)</p>
-<blockquote>
-<p>推荐大家使用谷歌的api实现增删改查,有返回值处理方便,避免了手写sql语句出错的问题.</p>
-</blockquote>
-<p>##修改cmd的默认编码</p>
-<blockquote>
-<p>chcp 65001 改成utf-8的编码<br>chcp 936 修改为gbk的编码</p>
-</blockquote>
-<p>##ListView<br>使用步骤:</p>
-<ol>
-<li>在布局文件里面声明listview<pre><code>    &lt;ListView
-android:layout_width=&quot;match_parent&quot;
-android:layout_height=&quot;match_parent&quot;
-android:id=&quot;@+id/lv&quot; /&gt;
-</code></pre></li>
-<li>在代码寻找listview<pre><code>lv = (ListView) findViewById(R.id.lv);
-</code></pre></li>
-<li><p>设置listview的数据适配器(controller)</p>
-<pre><code>写一个类继承BaseAdapter,重写里面两个方法
+    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
+<pre><code>/* 编译原理实验-词法分析器
+ * 刘嘉琦-20160325
+ * 1、PL/0语言的单词结构
+//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
+//标识符：字母序列，最大长度10
+//常数：整型常数
+//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
+//2、单词的种别划分
+//    标识符 作为一种
+//    常数 作为一种
+//    算符和界符每个单词作为一个单独种别
+//3、PL/0的语言的词法分析器将要完成以下工作：
+//（1）    跳过分隔符（如空格，回车，制表符）；
+//（2）    识别诸如begin，end，if，while等保留字；
+//（3）    识别非保留字的一般标识符。
+//（4）    识别数字序列。
+//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
+//4、词法分析器的实现方式：
+//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
+//5、词法分析器的输出形式
+//   （种别，属性值）
+//其中：种别在“2、单词的种别”中进行了定义；
+//      属性值：若单词种别只代表唯一单词，属性值为空；
+//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
+//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
+**/
+</code></pre><a id="more"></a>
+<pre><code>package foc;
 
-@Override
-public int getCount() {
-    //返回listview一共有多少条记录
-}
+import java.util.Scanner;
 
-@Override
-public View getView(int position, View convertView, ViewGroup parent) {
-    //返回当前位置用户看到的view对象.
+public class cffxq {
+    char ch;
+    StringBuffer strToken;
+    static int flag_getchar = 0; //搜索指示器
+    String str;   //字符串
+    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
+    String[][] chart_id = new String[100][2];
+    int flag_id = 0; //标识符指针
+    String[] chart_const = new String[100];
+    int flag_const = 0; //常数指针
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        StringBuffer stb = new StringBuffer(sc.nextLine());
+        stb.append(&quot; &quot;);
+        String str = stb.toString();
+        cffxq c = new cffxq();
+        while(flag_getchar&lt;str.length()-1){
+            c.begin(str);
+        }
+
+    }
+
+    private void GetChar(){
+        ch = str.charAt(flag_getchar);
+        flag_getchar++;
+    } 
+
+    public void begin(String str) {
+        this.str = str;
+
+        int code,value;
+        strToken = new StringBuffer(&quot;&quot;);
+        GetChar();
+        GetBC();
+        if(IsLetter()){
+            while(IsLetter()||IsDigit()){
+                Concat();
+                GetChar();
+            }
+            Retract();
+            code = Reserve();
+            if(code &lt; 0){
+                value = InsertId(strToken.toString());
+                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
+                return;
+            }
+            else if(code == 0){
+                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
+                return;
+            }
+            else{
+                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
+                return;
+            }
+        }
+
+        else if(IsDigit()){
+            while(IsDigit()){
+                Concat();
+                GetChar();
+            }
+            Retract();
+            value = InsertConst(strToken.toString());
+            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
+            return;
+        }
+
+        else if(ch == &apos;+&apos;){
+            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;-&apos;){
+            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;*&apos;){
+            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;/&apos;){
+            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;=&apos;){
+            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;,&apos;){
+            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;.&apos;){
+            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;(&apos;){
+            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;)&apos;){
+            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;;&apos;){
+            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;:&apos;){
+            GetChar();
+            if(ch == &apos;=&apos;){
+                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
+                return;
+            }
+            Retract();
+            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
+        }
+        else if(ch == &apos;&gt;&apos;){
+            GetChar();
+            if(ch == &apos;=&apos;){
+                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
+                return;
+            }
+            Retract();
+            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
+            return;
+        }
+        else if(ch == &apos;&lt;&apos;){
+            GetChar();
+            if(ch == &apos;&gt;&apos;){
+                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
+                return;
+            }
+            else if(ch == &apos;=&apos;){
+                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
+                return;
+            }
+            Retract();
+            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
+            return;
+        }
+
+    }
+
+    private void GetBC(){
+        if(ch==&apos; &apos;){
+            GetChar();
+            GetBC();
+        }
+    }
+
+    private void Concat(){
+        strToken.append(ch);
+    }
+
+    private boolean IsLetter(){
+        if(Character.isLetter(ch))
+            return true;
+        else
+            return false;
+    } 
+
+    private boolean IsDigit(){
+        if(Character.isDigit(ch))
+            return true;
+        else
+            return false;
+    } 
+
+    private int Reserve(){
+        for(int i=0;i&lt;gjz.length; i++){
+            if(gjz[i].equals(strToken.toString()))
+                return i;
+        }
+        return -1;   //返回数组索引，否则返回-1
+    }
+
+    private void Retract(){
+        flag_getchar--;
+        ch = &apos; &apos;;
+    }
+
+    private int InsertId(String strToken){
+        for(int i=0;i&lt;flag_id;i++){
+            if(chart_id[i][0].equals(strToken))
+                return i;
+        }
+        chart_id[flag_id][0] = strToken;
+        flag_id++;
+        return flag_id-1;
+    }
+
+    private int InsertConst(String strToken){
+        for(int i=0;i&lt;flag_const;i++){
+            if(chart_const[i].equals(strToken))
+                return i;
+        }
+        chart_const[flag_const] = strToken;
+        flag_const++;
+        return flag_const-1;
+    }
+    private void ProcError(){
+        System.out.println(&quot;词法错误！&quot;);
+    }
+
 }
-</code></pre></li>
-<li>给listview设置数据适配器<pre><code>lv.setAdapter(adapter);
-</code></pre></li>
-<li>如果有需求对listview进行优化,使用convertView,别回收的view的对象.</li>
-</ol>
-<p>##打气筒把xml文件转化成view<br>View view = View.inflate(getApplicationContext(), R.layout.item, null);</p>
-<p>##常见对话框</p>
-<p>##样式<br>css样式 </p>
-<blockquote>
-<p>作用在某个控件上的.</p>
-</blockquote>
-<p>##主题</p>
-<blockquote>
-<p>主题的写法和样式的写法是完全一样的.<br>区别是作用范围不同<br>作用在整个应用程序上,或者是应用程序里面的activity上的</p>
-</blockquote>
-<p>##动画</p>
-<ul>
-<li>帧动画</li>
-</ul>
-]]></content>
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;##数据存储&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;文件&lt;blockquote&gt;
-&lt;p&gt;存数据&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;SharedPerference&lt;blockquote&gt;
-&lt;p&gt;当有一个或者多个配置信息需要保存&lt;/p&gt;
-&lt;/blockquote&gt;
-
-    
-    </summary>
-    
-      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>liu</title>
-    <link href="http://mjackie.github.io/Tech/civwm7ohx0006n8u039cu0g6f/"/>
-    <id>http://mjackie.github.io/Tech/civwm7ohx0006n8u039cu0g6f/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:34:05.682Z</updated>
-    
-    <summary type="html">
+      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
+ * 刘嘉琦-20160325
+ * 1、PL/0语言的单词结构
+//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
+//标识符：字母序列，最大长度10
+//常数：整型常数
+//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
+//2、单词的种别划分
+//    标识符 作为一种
+//    常数 作为一种
+//    算符和界符每个单词作为一个单独种别
+//3、PL/0的语言的词法分析器将要完成以下工作：
+//（1）    跳过分隔符（如空格，回车，制表符）；
+//（2）    识别诸如begin，end，if，while等保留字；
+//（3）    识别非保留字的一般标识符。
+//（4）    识别数字序列。
+//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
+//4、词法分析器的实现方式：
+//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
+//5、词法分析器的输出形式
+//   （种别，属性值）
+//其中：种别在“2、单词的种别”中进行了定义；
+//      属性值：若单词种别只代表唯一单词，属性值为空；
+//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
+//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
+**/
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -171,1251 +301,1143 @@ public View getView(int position, View convertView, ViewGroup parent) {
   </entry>
   
   <entry>
-    <title>服务</title>
-    <link href="http://mjackie.github.io/Tech/civwm7oi20007n8u0e94yfo7l/"/>
-    <id>http://mjackie.github.io/Tech/civwm7oi20007n8u0e94yfo7l/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:35:51.196Z</updated>
+    <title>关于党课学习系统</title>
+    <link href="http://mjackie.github.io/Tech/civxx3ty9000wlgu0h7zmgnyt/"/>
+    <id>http://mjackie.github.io/Tech/civxx3ty9000wlgu0h7zmgnyt/</id>
+    <published>2016-04-15T14:19:00.000Z</published>
+    <updated>2016-11-25T14:29:16.516Z</updated>
     
-    <content type="html"><![CDATA[<p>#服务</p>
-<ul>
-<li>startService(intent)</li>
-<li>stopService(intent)</li>
-</ul>
-<p>##服务的生命周期</p>
-<ul>
-<li>如果采用start的方式开启服务<blockquote>
-<p>oncreate()—&gt;onstartcommand()—&gt;onstart()—&gt;onDestroy();<br>服务如果已经被开启,不会重复的创建,多次调用startService方法,服务的oncreate方法始终只会执行一次.<br>oncreate()—&gt;onstartcommand()—&gt;onstart()—&gt;onstartcommand()—onstart()—&gt;onDestroy();<br>服务只会被停止一次,多次的调用stopservice的方法,是无效的.<br>start的方式可以多次调用 多次开启服务<br>一旦开启,就没关系了,及时Activity挂了,服务还是很好的在后台运行.<br>不可以调用服务的方法</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>如果采用的是bind的方式开启服务<blockquote>
-<p>oncreate() —&gt;onbind() –&gt;onunbind()—-&gt;ondestry();<br>bind的方式 只可以调用一次,一旦成功绑定了,就不能重复的绑定,否则解绑就会失败<br>bind的方式, 服务只可以被解绑一次,多次的解绑服务,应用程序会异常退出.<br>不求同时生,但求同时死.(Activity挂了,服务就挂了)<br>可以调用服务的方法</p>
-</blockquote>
-</li>
-</ul>
-<p>##混合调用服务的生命周期处理<br>为了保证服务长期的运行,又想调用服务的方法.<br>startService() 保证服务长期后台运行<br>bindService() 绑定服务 ,调用服务的方法<br>unbindservice() 解绑服务,不需要再去调用方法了<br>stopService() 停止服务</p>
-<p>##start方式开启服务的缺点</p>
-<blockquote>
-<p>无法调用服务里面的方法, 无法得到服务的引用</p>
-</blockquote>
-<p>##bind方式开启服务</p>
-<ol>
-<li>采用bind的方法绑定开启服务<pre><code>bindService(intent, conn, BIND_AUTO_CREATE);
-</code></pre></li>
-<li>服务内部实现一个代理人类<pre><code>private class MyBinder2 extends Binder implements IService{}
-</code></pre></li>
-<li>定义IService的接口<pre><code>服务的中间人想暴露什么方法,就怎么定义接口
-</code></pre></li>
-<li>返回代理人对象<pre><code>public IBinder onBind(Intent intent) {}
-</code></pre></li>
-<li>实现serviceConnection接口里面的方法<pre><code>private class MyConn implements ServiceConnection{
-@Override
-public void onServiceConnected(ComponentName name, IBinder service) {
-    myBinder = (IService) service;
-    System.out.println(&quot;Activity,得到代理人对象&quot;);
-}
-</code></pre></li>
-<li>调用接口里面的方法</li>
-</ol>
-<p>##绑定服务的应用常见</p>
-<ul>
-<li>提供一个服务,后台运行,里面有一些公共的逻辑供调用.<blockquote>
-<ol>
-<li>微信支付, 微信有一个支付的服务,绑定,调用支付的方法</li>
-<li>sony手机,人脸识别的服务,绑定到这个服务,传递一个照片,就会把人脸标记出来</li>
-<li>音乐播放器,后台服务里面播放音乐,绑定服务,暂停,下一曲,上一曲</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<p>##远程服务&amp;本地服务</p>
-<ul>
-<li>远程,服务在别的apk应用程序里面的服务,叫远程服务</li>
-<li>本地,服务在你的apk应用程序的内部的服务,叫本地服务</li>
-</ul>
-<p>##IPC</p>
-<blockquote>
-<p>inter process communication<br>进程间通讯</p>
-</blockquote>
-<p>##AIDL</p>
-<blockquote>
-<p>android interface definition language<br>安卓接口定义语言,绑定远程服务的写法</p>
-</blockquote>
-<ol>
-<li>采用bind的方法绑定开启服务 <pre><code>intent 隐式的意图 intent.setAction(&quot;action&quot;);
-bindService(intent, conn, BIND_AUTO_CREATE);
-</code></pre></li>
-<li>服务内部实现一个代理人类<pre><code>定义一个aidl文件,删除public的访问修饰符,修改文件的扩展名为aidl
-private class MyBinder2 extends IService.Sub{}
-</code></pre></li>
-<li>定义IService的接口,通过aidl文件生成的<pre><code>服务的中间人想暴露什么方法,就怎么定义接口
-</code></pre></li>
-<li>返回代理人对象<pre><code>public IBinder onBind(Intent intent) {}
-</code></pre></li>
-<li>实现serviceConnection接口里面的方法<pre><code>private class MyConn implements ServiceConnection{
-@Override
-public void onServiceConnected(ComponentName name, IBinder service) {
-    IService.Sub.asInterface(service);
-    System.out.println(&quot;Activity,得到代理人对象&quot;);
-}
-</code></pre></li>
-<li>调用接口里面的方法</li>
-</ol>
+    <content type="html"><![CDATA[<p>学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统<br>学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时<br>将网页保存到本地后，发现了名为LearnControl.js的javascrip文件，找到了如下的一段代码</p>
+<pre><code>$scope.saveLearnTime = function (learnTime, auto) {
+    if ($scope.studentId != &quot;&quot;) {
+        $http.get(servicePath + &apos;/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=&apos; + learnTime).success(function (data) {
+            console.log(&quot;保存时间：&quot; + data);
+            if (!auto) {
+                $scope.tishiMessage = &apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;;
+                //$(&apos;#tishi&apos;).modal(&apos;toggle&apos;)
+                alert($scope.tishiMessage);
+                //alert(&apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;);
+            }
+        });
+    }
+};
+</code></pre><p>看到了get请求！<br>尝试着拼凑链接，试了几次，成功了！</p>
+<pre><code>http://202.196.96.221/partyStudy/Main/Services/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=8000
+</code></pre><p>8000为秒数，直接提交请求即可，即为学习了8000秒，然后不要点击保存学习时间，直接返回首页，再进去时学习时间已经够了<br>之后是章节测试<br>用同样的方法，查看了下页面的js，发现测试分数是在服务器计算的，这就没有办法了</p>
+<p>虽然学习系统是有漏洞的，但还是要认真学习下内容，不能偷懒啊</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#服务&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;startService(intent)&lt;/li&gt;
-&lt;li&gt;stopService(intent)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;##服务的生命周期&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果采用start的方式开启服务&lt;blockquote&gt;
-&lt;p&gt;o
+      &lt;p&gt;学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统&lt;br&gt;学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时&lt;br&gt;将网页保存到本
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
+      <category term="Javascript" scheme="http://mjackie.github.io/tags/Javascript/"/>
     
   </entry>
   
   <entry>
-    <title>网络编程</title>
-    <link href="http://mjackie.github.io/Life/civwm7oi70008n8u0plqn03kc/"/>
-    <id>http://mjackie.github.io/Life/civwm7oi70008n8u0plqn03kc/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:38:01.600Z</updated>
+    <title>PHP Session实现用户登陆功能</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txh0007lgu0fn6895e6/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txh0007lgu0fn6895e6/</id>
+    <published>2016-04-07T15:35:00.000Z</published>
+    <updated>2016-11-25T14:27:03.365Z</updated>
     
-    <content type="html"><![CDATA[<p>#网络编程</p>
-<p>##网络请求的通用步骤</p>
-<ol>
-<li>得到一个URL对象.<pre><code>URL url = new URL(path);
-</code></pre></li>
-<li>通过URL对象获取一个连接 urlConnection<pre><code>HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-</code></pre></li>
-<li>设置http请求的参数<pre><code>conn.setRequestMethod(&quot;GET&quot;);//设置get请求
-conn.setRequestProperty(&quot;User-Agent&quot;, &quot;大板砖&quot;);
-</code></pre></li>
-<li>获取服务器返回的信息<pre><code>conn.getResponseCode(); 获取服务器返回的状态码
-2XX请求成功 3XX资源重定向 4XX资源找不到 5XX服务器错误
-</code></pre></li>
-<li>获取服务器返回的流<pre><code>conn.getInputStream();
-//保存到本地
-//BitmapFactory.decodeStream(is);
-</code></pre></li>
-</ol>
-<p>##NetWorkOnMainThread异常</p>
-<blockquote>
-<p>网络在主线程异常<br>访问网络是一个可能比较耗时的操作.在低版本的android系统谷歌没有考虑到用户体验的问题.<br>在android4.0版本开始,谷歌android系统开始检查,如果在主线程里面访问网络,强制的抛出异常.</p>
-<p>在android应用程序里面所有的用户交互的操作都是在主线程里面执行<br>按钮点击事件,界面的渲染和显示,触摸事件</p>
-</blockquote>
-<p>##ANR (application not response)</p>
-<blockquote>
-<p>应用程序无响应<br>如何避免: 不要把耗时的操作放在主线程里面执行<br>网络请求, 大文件的读取, 耗时的计算, 都应该子线程里面.</p>
-</blockquote>
-<p>##子线程常见异常</p>
-<blockquote>
-<p>android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.<br>在错误的线程里面被调用的异常, 谁创建的view谁才可以修改view里面的内容.<br>android系统约定了一个规则: 默认只有主线程才可以修改应用程序的ui</p>
-</blockquote>
-<p>##子线程更新ui的步骤</p>
-<ol>
-<li>创建一个消息处理器Handler(一定要在主线程new出来)<pre><code>private Handler handler = new Handler() {};
-</code></pre></li>
-<li>在子线程利用handler发送消息给主线程的消息队列<pre><code>handler.sendMessage(msg);
-</code></pre></li>
-<li>在主线程的消息处理器里面,处理这个消息<pre><code>public void handleMessage(Message msg) {}
-</code></pre></li>
-<li>特殊情况 传递数据<pre><code>Message.obj 携带数据
-</code></pre></li>
-</ol>
-<p>##在android系统默认的码表utf-8<br>为了保证应用程序不显示乱码,保证android端和服务器端采用相同的文件编码.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#网络编程&lt;/p&gt;
-&lt;p&gt;##网络请求的通用步骤&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;得到一个URL对象.&lt;pre&gt;&lt;code&gt;URL url = new URL(path);
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;通过URL对象获取一个连接 urlConnection&lt;pr
-    
-    </summary>
-    
-      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>其他布局LinearLayo</title>
-    <link href="http://mjackie.github.io/Life/civwm7oig000bn8u0mm0oue9t/"/>
-    <id>http://mjackie.github.io/Life/civwm7oig000bn8u0mm0oue9t/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:36:42.174Z</updated>
-    
-    <content type="html"><![CDATA[<p>##其他布局</p>
-<ul>
-<li>LinearLayout</li>
-<li>RelativeLayout </li>
-<li>FrameLayout </li>
-<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
-<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
-</ul>
-<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
-<p>##logcat</p>
-<blockquote>
-<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
-</blockquote>
-<p>##程序测试</p>
-<blockquote>
-<p>好的应用程序不是写出来的,是测出来了</p>
-</blockquote>
-<p>根据是否知道应用程序的源代码</p>
-<ul>
-<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
-<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
-</ul>
-<p>根据测试的粒度(精细程度)</p>
-<ul>
-<li>方法测试 function test</li>
-<li>单元测试 unit test</li>
-<li>集成测试 intergration test </li>
-<li>系统测试 system test</li>
-</ul>
-<p>根据测试的暴力程度</p>
-<ul>
-<li>压力测试 pressure test 单位时间内的频繁测试</li>
-<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
-<p>monkey 1000</p>
-</blockquote>
-</li>
-</ul>
-<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
-<blockquote>
-<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
-</blockquote>
-<p>##Android下junit测试代码的写法</p>
-<ol>
-<li>写一个业务方法</li>
-<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
-<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
-</code></pre></li>
-<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
-&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
-&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
-android:targetPackage=&quot;com.itheima.junit&quot;
-&gt;&lt;/instrumentation&gt;
-</code></pre></li>
-<li><p>在application节点里面配置</p>
-<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
-&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
-</code></pre></li>
-<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
-</li>
-<li>根据红条还是绿条判断测试结果</li>
-</ol>
-<p>##输入输出</p>
-<blockquote>
-<p>从文件里面读取数据<br>把数据写到文件</p>
-</blockquote>
-<p>##输入输出的应用场景</p>
-<blockquote>
-<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
-<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
-getCacheDir();               /data/data/包名/cache
-</code></pre></blockquote>
-<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
-<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
-<p>##手机存储空间的划分</p>
-<ul>
-<li>手机内部存储 Environment.getDataDirectory()<blockquote>
-<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
-<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
-</blockquote>
-</li>
-</ul>
-<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
-<p>chmod : change mode 修改模式</p>
-<blockquote>
-<p>chmod 777</p>
-<p><img src="tu2.png" alt=""></p>
-<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
-</blockquote>
-<p>##共享参数 SharedPerference</p>
-<ol>
-<li>声明sp<pre><code>private SharedPreferences sp;
-</code></pre></li>
-<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
-</code></pre></li>
-<li>使用sp<pre><code>Editor editor = sp.edit();
-editor.putString(&quot;qq&quot;, qq);
-editor.putString(&quot;password&quot;, password);
-//一定不要忘记 提交数据
-editor.commit();//提交数据. 类似关闭流,事务
-</code></pre></li>
-<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的生成</p>
-<ol>
-<li>采用组拼字符串生成xml文件.<blockquote>
-<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
-</blockquote>
-</li>
-<li><p>利用android序列化(生成)xml文件的api</p>
-<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
-2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
-3. 写文件的头
-    serializer.startDocument(&quot;utf-8&quot;, true);
-    serializer.endDocument();//写文件的末尾
-4. 写节点
-    serializer.startTag(null, &quot;info&quot;);
-    serializer.endTag(null, &quot;info&quot;);
-5. 写属性
-    serializer.attribute(null, &quot;id&quot;, id);
-6. 写节点里面的文本
-    serializer.text(&quot;文本&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的解析</p>
-<ol>
-<li><p>DOM解析 </p>
-<blockquote>
-<p>树状的xml结构</p>
-</blockquote>
-</li>
-<li><p>Dom4j</p>
-</li>
-<li><p>SAX </p>
-<blockquote>
-<p>基于事件解析,自上而下的解析</p>
-</blockquote>
-</li>
-<li><p>Pull解析</p>
-<blockquote>
-<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
-</blockquote>
-</li>
-</ol>
-<p>##pull解析</p>
-<ol>
-<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
-</code></pre></li>
-<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
-</code></pre></li>
-<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
-</code></pre></li>
-<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
-    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
+    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
+<p>login.php</p>
+<pre><code>&lt;?php
+//  表单提交后...
+$posts = $_POST;
+//  清除一些空白符号
+foreach ($posts as $key =&gt; $value) {
+    $posts[$key] = trim($value);
 }
-</code></pre></li>
-<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
-parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
-parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
-</code></pre></li>
-<li>得到数据,完成界面的展现</li>
-</ol>
-<p>##断点调试应用程序</p>
-<ol>
-<li>双击在代码的左边打一个断点</li>
-<li>右键,debug as android application</li>
-<li>右键 watch 查看数据  </li>
-<li>watch 一段代码</li>
-<li>清空原来的调试断点</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;##其他布局&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;LinearLayout&lt;/li&gt;
-&lt;li&gt;RelativeLayout &lt;/li&gt;
-&lt;li&gt;FrameLayout &lt;/li&gt;
-&lt;li&gt;AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  &lt;/
-    
-    </summary>
-    
-      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>httpGet的请求从服务器获取数据</title>
-    <link href="http://mjackie.github.io/Life/civwm7oii000en8u048jb42uf/"/>
-    <id>http://mjackie.github.io/Life/civwm7oii000en8u048jb42uf/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:37:43.707Z</updated>
-    
-    <content type="html"><![CDATA[<p>#httpGet的请求从服务器获取数据</p>
-<ul>
-<li>从服务器获取文本</li>
-<li>从服务器获取图片</li>
-<li>新闻客户端</li>
-<li>SmartImageView</li>
-</ul>
-<p>#httpGet的请求提交简单的数据到服务器</p>
-<ul>
-<li>组拼url的路径在路径后面拼装 name=?&amp;password=?</li>
-</ul>
-<p>#httpPost的方式提交数据到服务</p>
-<p>##常见乱码<br>如果是gbk的编码以utf-8的方式显示了</p>
-<blockquote>
-<p>��½�ɹ�� ������</p>
-</blockquote>
-<p>如果是utf-8的编码以gbk的方式显示了</p>
-<blockquote>
-<p>鐧婚檰鎴愬姛鍟� 鍝堝搱鍝�</p>
-</blockquote>
-<p>一个悲剧的情况</p>
-<blockquote>
-<p>烤斤烤斤烤斤  </p>
-</blockquote>
-<p>##开源项目httpclient</p>
-<blockquote>
-<p>Apache 开源项目组织<br>相当于一个轻量级的纯java代码浏览器</p>
-</blockquote>
-<ol>
-<li>打开浏览器<pre><code>HttpClient client = new DefaultHttpClient();
-</code></pre></li>
-<li>输入数据<pre><code>HttpGet 只需要设置请求的路径就ok
-HttpPost 不仅需要设置请求的路径,还需要设置数据的内容
-httpPost.setEntity(new UrlEncodedFormEntity(parameters,&quot;utf-8&quot;));
-</code></pre></li>
-<li>敲回车<pre><code>client.execute(get/post)
-</code></pre></li>
-<li>得到请求的相应<pre><code>response.getStatusLine().getStatusCode();得到状态码
-response.getEntity().getContent();得到数据实体
-</code></pre></li>
-</ol>
-<p>##开源的asynchttpclient</p>
-<blockquote>
-<p>android里面的开源项目 github</p>
-</blockquote>
-<p>##多线程下载</p>
-<ul>
-<li>什么时候需要多线程下载</li>
-<li>为什么多线程下载可以提高速度</li>
-</ul>
-<p>##多线程断点下载</p>
-<ul>
-<li>记录上一次你下载了多少的数据,再去开启从上一次的位置接着下载</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#httpGet的请求从服务器获取数据&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;从服务器获取文本&lt;/li&gt;
-&lt;li&gt;从服务器获取图片&lt;/li&gt;
-&lt;li&gt;新闻客户端&lt;/li&gt;
-&lt;li&gt;SmartImageView&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;#httpGet的请求提交简单的数据到服务器&lt;/
-    
-    </summary>
-    
-      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多个界面的应用开发</title>
-    <link href="http://mjackie.github.io/Life/civwm7oiq000in8u04y4oixrq/"/>
-    <id>http://mjackie.github.io/Life/civwm7oiq000in8u04y4oixrq/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:37:56.786Z</updated>
-    
-    <content type="html"><![CDATA[<p>##多个界面的应用开发</p>
-<p>###多个页面应用程序开发的步骤</p>
-<ol>
-<li>写一个新的activity,继承activity的父类</li>
-<li>重写activity的oncreate方法,设置新的界面的ui</li>
-<li>在清单文件中manifest.xml文件中配置</li>
-<li>设置意图过滤器 intent-filter</li>
-<li>在java代码里面 new出来一个Intent意图对象,设置action,cotagery</li>
-<li>startActivity(intent);</li>
-</ol>
-<p>###如何把数据传递个第二个界面</p>
-<ol>
-<li><p>设置intent的数据</p>
-<pre><code>intent.putExtra(&quot;key&quot;,&quot;value&quot;);
-value支持很多种的类型
-int []
-byte []
-short []
-double []
-boolean []
-long []
-float []
-char[]
-String[]
-字符串
-Serializable  序列化到硬盘 自己实现的序列化的类
-Parcelable 序列化到内存 bitmap
-//传递一个map集合
-Bundle extras = new Bundle();
-extras.putChar(key, value)
-intent.putExtras(extras);
-</code></pre></li>
-<li><p>获取数据</p>
-<pre><code>Intent intent = getIntent();//获取激活当前页面的意图对象
-intent.getStringExtra();
-intent.getIntExtra();
-intent.getDoubleExtra();
-...
-intent.getExtras();
-</code></pre></li>
-</ol>
-<p>##显式意图和隐式意图</p>
-<ol>
-<li><p>显式意图: 显式的指定要开启的界面的包名和类名</p>
-<pre><code>Intent intent = new Intent();
-intent.setClassName(&quot;com.itheima.intent&quot;,
-        &quot;com.itheima.intent.SecondActivity&quot;);//类名必须是全路径
-startActivity(intent);
+$password = md5($posts[&quot;password&quot;]);
+$username = $posts[&quot;username&quot;]; 
 
-Intent intent = new Intent(this,SecondActivity.class);
-startActivity(intent);//方便的写法
-</code></pre><blockquote>
-<p>如果你要激活自己应用程序的里面的界面,推荐使用显式意图</p>
-</blockquote>
-</li>
-</ol>
-<ol>
-<li>隐式意图: 通过指定应用程序的动作,数据和类别来去开启界面<pre><code>清单文件里面这个界面必须配置的有意图过滤器(intent-filter)
-根据intent-filter开启界面
-开启更加灵活,精准,并且可以携带匹配的数据
-1. 设置数据的类型
-    intent.setType(&quot;text/plain&quot;);
-    &lt;data android:mimeType=&quot;text/plain&quot;&gt;&lt;/data&gt;
-2. 设置数据的格式
-     &lt;data android:scheme=&quot;http&quot;&gt;&lt;/data&gt;
-    指定数据的头必须以什么开始
-    intent.setData(Uri.parse(&quot;http://xxxx.com&quot;));
-    &lt;data android:scheme=&quot;http&quot;
-            android:host=&quot;www.itheima.com&quot;
-            android:port=&quot;8080&quot;
-             android:path=&quot;/java&quot;
-     &gt;&lt;/data&gt;
-     intent.setData(Uri.parse(&quot;http://www.itheima.com:8080/java&quot;));
-</code></pre><blockquote>
-<p>如果要激活别的应用程序的界面,推荐使用隐式意图<br>或者是你的应用程序的一个界面想被别的应用程序激活,需要使用隐式意图.</p>
-</blockquote>
-</li>
-</ol>
-<p>##短信发送的意图<br>           <intent-filter><br>                <action android:name="android.intent.action.VIEW"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>            </data></data></category></category></action></action></intent-filter></p>
-<p>##开启新的界面获取新的界面的返回值</p>
-<ol>
-<li>开启方式发生变化,调用开启界面获取返回值的api<pre><code>startActivityForResult(intent, 0); 
-</code></pre></li>
-<li>在被开启的Activity里面设置结果数据<pre><code>Intent data = new Intent();
-data.putExtra(&quot;text&quot;, text);//把数据设置到意图对象里面
-setResult(0, data);
-finish();//关闭当前的界面  ★一定记得关闭界面,数据才会被返回
-</code></pre></li>
-<li>在开启的Activity里面重写获取返回值的方法<pre><code>protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //3.在第二个界面关闭的时候调用,返回数据放在data里面
-    String text = data.getStringExtra(&quot;text&quot;);
-    tv_content.setText(text);
-    super.onActivityResult(requestCode, resultCode, data);
-}
-</code></pre></li>
-</ol>
-<p>##Activity的生命周期</p>
-<blockquote>
-<p>生命周期: 一个对象从被new出来 到 jvm把他垃圾回收这一个阶段必须会执行的方法.</p>
-</blockquote>
-<ul>
-<li>oncreate() Activity对象被创建的时候调用的方法</li>
-<li>onDestory() Activity对象被销毁的时候调用的方法</li>
-<li>onStart() Activity界面被用户可见调用的方法</li>
-<li>onStop() Activity界面用户不可见调用的方法</li>
-<li>onresume() Activity获取焦点</li>
-<li>onpause() Activity失去焦点</li>
-<li>onRestart() 界面被最小化并且没有被关闭,重新打开会执行onRestart();</li>
-</ul>
-<ul>
-<li><p>完整生命周期</p>
-<blockquote>
-<p>oncreate–&gt;onstart–&gt;onresume–&gt;onpause–&gt;onstop–&gt;ondestry</p>
-</blockquote>
-</li>
-<li><p>可视生命周期</p>
-<blockquote>
-<p>onstart–&gt;onresume–&gt;onpause–&gt;onstop</p>
-</blockquote>
-</li>
-<li><p>前台生命周期</p>
-<blockquote>
-<p>onresume–&gt;onpause</p>
-</blockquote>
-</li>
-</ul>
-<p>##横竖屏切换的生命周期(ctrl+F11)</p>
-<ul>
-<li>默认横竖屏切换Activity被销毁又重新创建</li>
-<li>可以把屏幕的朝向写死<pre><code>android:screenOrientation=&quot;landscape&quot; 横屏
-android:screenOrientation=&quot;portrait&quot; 竖屏
-</code></pre></li>
-<li>让操作系统忽略掉屏幕切换的变化<pre><code>android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot;
-</code></pre></li>
-</ul>
-<p>##启动模式和任务栈</p>
-<blockquote>
-<p>什么是栈 :   后进先出的数据结构. 吃了吐出来<br>什么是队列:  先进先出的数据结构.  吃了拉出了</p>
-</blockquote>
-<p>任务: 用户操作的界面.<br>任务栈:就是用来记录用户操作的先后顺序,如果任务栈清空,应用程序就被关闭了.</p>
-<p>#启动模式</p>
-<ul>
-<li>standard 默认的启动模式,标准模式<blockquote>
-<p>开启这个Activity,系统就会new一个新的Activity,这个Activity的引用就会出现在任务栈的顶部</p>
-</blockquote>
-</li>
-<li><p>singletop 单一顶部模式</p>
-<blockquote>
-<p>如果开启的Activity已经存在一个实例在任务栈的顶部,再去开启这个Activity,系统就不会创建新的Activity的实例了,而是复用已经存在的这个Activity<br>目的: 避免奇怪的用户体验<br>案例: 浏览器的书签</p>
-</blockquote>
-</li>
-<li><p>singleTask 单一任务栈</p>
-<blockquote>
-<p>如果任务栈里面已经存在要激活的Activity,就不会重新创建.<br>直接复用这个已经存在的Activity,并且把这个Activity上面其他的所有的Activity清空掉.<br>使用案例: 浏览器的BrowserActivity<br>目的: 如果一个Activity非常笨重(开销非常大) </p>
-</blockquote>
-</li>
-<li><p>singleInstance 单一实例(单例)</p>
-<blockquote>
-<p>在整个手机操作系统里面就只有一个实例存在,并且这个实例是在他自己单独的任务栈里面,不会用默认的任务栈.<br>有道词典的快速取词<br>电话呼叫InCallScreen</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;##多个界面的应用开发&lt;/p&gt;
-&lt;p&gt;###多个页面应用程序开发的步骤&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;写一个新的activity,继承activity的父类&lt;/li&gt;
-&lt;li&gt;重写activity的oncreate方法,设置新的界面的ui&lt;/li&gt;
-&lt;li&gt;在清单文件中mani
-    
-    </summary>
-    
-      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>其他布局</title>
-    <link href="http://mjackie.github.io/Tech/civwm7oiu000ln8u05ufqsdvg/"/>
-    <id>http://mjackie.github.io/Tech/civwm7oiu000ln8u05ufqsdvg/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T15:36:05.891Z</updated>
-    
-    <content type="html"><![CDATA[<p>##其他布局</p>
-<ul>
-<li>LinearLayout</li>
-<li>RelativeLayout </li>
-<li>FrameLayout </li>
-<li>AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  </li>
-<li>TableLayout  表格布局 , 办公类的软件 OA 类软件</li>
-</ul>
-<p>##Android下的常见单位<br>px: 像素 真实在屏幕上的大小<br>dp: dip 屏幕宽高和像素的一个比例值 在大屏幕的手机上dp对应的像素多,在小屏幕手机上dp对应的像素就小,在hvga模拟器上 一个dip == 一个px</p>
-<p>##logcat</p>
-<blockquote>
-<p>手机内部的一块内存,环形缓冲区<br>在实际开发的时候不推荐使用system.out() 打印日志,这种方法不容易查找日志的位置<br>推荐使用Log.v d i w e()这样的方法打印日志</p>
-</blockquote>
-<p>##程序测试</p>
-<blockquote>
-<p>好的应用程序不是写出来的,是测出来了</p>
-</blockquote>
-<p>根据是否知道应用程序的源代码</p>
-<ul>
-<li>黑盒测试 不知道程序的源代码,但是知道程序的功能,根据输入测试输出</li>
-<li>白盒测试 知道程序的源代码,写一写测试逻辑跑这个程序的代码</li>
-</ul>
-<p>根据测试的粒度(精细程度)</p>
-<ul>
-<li>方法测试 function test</li>
-<li>单元测试 unit test</li>
-<li>集成测试 intergration test </li>
-<li>系统测试 system test</li>
-</ul>
-<p>根据测试的暴力程度</p>
-<ul>
-<li>压力测试 pressure test 单位时间内的频繁测试</li>
-<li>冒烟测试 smoke test    长时间的重复测试<blockquote>
-<p>monkey 1000</p>
-</blockquote>
-</li>
-</ul>
-<p>android下开发的代码写junit测试用例和普通pc机下的java代码不一样</p>
-<blockquote>
-<p>要把应用程序部署到模拟器或者真实的手机去运行.</p>
-</blockquote>
-<p>##Android下junit测试代码的写法</p>
-<ol>
-<li>写一个业务方法</li>
-<li>测试这个业务方法,写一个类继承AndroidTestCase</li>
-<li>编写测试的代码 <pre><code>assertEquals(期待的结果,真实的结果)
-</code></pre></li>
-<li>配置androidmenifest.xml 清单文件<pre><code>在mefifest节点里面
-&lt;!-- 指定测试框架运行的指令集,告诉模拟器测试我们的应用程序,指定包名 --&gt;
-&lt;instrumentation android:name=&quot;android.test.InstrumentationTestRunner&quot;
-android:targetPackage=&quot;com.itheima.junit&quot;
-&gt;&lt;/instrumentation&gt;
-</code></pre></li>
-<li><p>在application节点里面配置</p>
-<pre><code>      &lt;!-- 引入测试框架的jar包 --&gt;
-&lt;uses-library android:name=&quot;android.test.runner&quot;/&gt;
-</code></pre></li>
-<li><p>运行测试代码,对着方法名点击右键,run as android junit test</p>
-</li>
-<li>根据红条还是绿条判断测试结果</li>
-</ol>
-<p>##输入输出</p>
-<blockquote>
-<p>从文件里面读取数据<br>把数据写到文件</p>
-</blockquote>
-<p>##输入输出的应用场景</p>
-<blockquote>
-<p>qq登陆保存用户名和密码<br>注意: android下应用程序的路径和javase不同,应用程序的数据要保存自己的文件夹里面</p>
-<pre><code>getFileDir(); 获取自己的文件夹 /data/data/包名/files
-getCacheDir();               /data/data/包名/cache
-</code></pre></blockquote>
-<p>谷歌给我们提供了两种应用程序的目录,files目录存放重要的应用程序数据.手机不会自动清理files目录的文件</p>
-<p>cache目录是存放临时的不重要的数据.这个目录有特定,当手机内存空间不足的时候会自动清理cache目录的文件</p>
-<p>##手机存储空间的划分</p>
-<ul>
-<li>手机内部存储 Environment.getDataDirectory()<blockquote>
-<p>file目录 cache目录<br>容量有限,较小,价格比较贵,存储访问速度快<br>创建的文件在手机内部存储空间,<strong>默认</strong>的权限全部都是私有的.<br>只有自己的应用程序可以访问,<br>别的应用程序不可以访问.<br>为什么不需要声明权限?</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>手机外部存储 Environment.getExternalStorageDirectory()<blockquote>
-<p>sd卡<br>容量大,可以更换,价格便宜,32G 不到200块<br>读写声明权限</p>
-</blockquote>
-</li>
-</ul>
-<p>###如果想创建别的权限的文件<br>openFileOutput(“文件名”, “访问模式”);<br>MODE_WORLD_READABLE  全局可读,别的应用程序可以读这个文件<br>MODE_WORLD_WRITEABLE 全局可写,别的应用程序可以写这个文件<br>MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE 全局可读可写,别的应用程序可以自由的访问这个文件</p>
-<p>chmod : change mode 修改模式</p>
-<blockquote>
-<p>chmod 777</p>
-<p><img src="tu2.png" alt=""></p>
-<p>##Context 是什么<br>上下文 : 程序运行的一个依赖的环境. 必须有这个环境,才可以方便的执行代码.<br>应用程序运行的全局的环境.帮助类.</p>
-</blockquote>
-<p>##共享参数 SharedPerference</p>
-<ol>
-<li>声明sp<pre><code>private SharedPreferences sp;
-</code></pre></li>
-<li>初始化sp<pre><code>sp = this.getSharedPreferences(&quot;config&quot;, MODE_PRIVATE);
-</code></pre></li>
-<li>使用sp<pre><code>Editor editor = sp.edit();
-editor.putString(&quot;qq&quot;, qq);
-editor.putString(&quot;password&quot;, password);
-//一定不要忘记 提交数据
-editor.commit();//提交数据. 类似关闭流,事务
-</code></pre></li>
-<li>读取sp<pre><code>sp.getString(&quot;qq&quot;, &quot;&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的生成</p>
-<ol>
-<li>采用组拼字符串生成xml文件.<blockquote>
-<p>组拼字符串 StringBuilder, StringBuffer 注意特殊字符的转义</p>
-</blockquote>
-</li>
-<li><p>利用android序列化(生成)xml文件的api</p>
-<pre><code>1. XmlSerializer serializer = Xml.newSerializer();
-2. serializer.setOutput(&quot;输出流&quot;, &quot;文件编码&quot;);
-3. 写文件的头
-    serializer.startDocument(&quot;utf-8&quot;, true);
-    serializer.endDocument();//写文件的末尾
-4. 写节点
-    serializer.startTag(null, &quot;info&quot;);
-    serializer.endTag(null, &quot;info&quot;);
-5. 写属性
-    serializer.attribute(null, &quot;id&quot;, id);
-6. 写节点里面的文本
-    serializer.text(&quot;文本&quot;);
-</code></pre></li>
-</ol>
-<p>##xml的解析</p>
-<ol>
-<li><p>DOM解析 </p>
-<blockquote>
-<p>树状的xml结构</p>
-</blockquote>
-</li>
-<li><p>Dom4j</p>
-</li>
-<li><p>SAX </p>
-<blockquote>
-<p>基于事件解析,自上而下的解析</p>
-</blockquote>
-</li>
-<li><p>Pull解析</p>
-<blockquote>
-<p>类似sax解析,不过写起来更加的简单,容易理解,内存开销小,速度快</p>
-</blockquote>
-</li>
-</ol>
-<p>##pull解析</p>
-<ol>
-<li>声明一个解析器<pre><code>XmlPullParser parser = Xml.newPullParser();
-</code></pre></li>
-<li>设置解析的数据<pre><code>parser.setInput(&quot;哪个文件的输入流&quot;,&quot;文件编码&quot;);
-</code></pre></li>
-<li>获取解析器发现的事件的类型<pre><code>parser.getEventType(); //第一个事件一定是文档的开头
-</code></pre></li>
-<li>不停的解析所有的节点<pre><code>while(type!=XmlPullParser.END_DOCUMENT){
-    type = parser.next();//只要不解析到文档的末尾就不停的解析下一个节点
-}
-</code></pre></li>
-<li>在解析过程中把我们关心的数据获取出来<pre><code>parser.getName() //得到当前节点的名称
-parser.nextText();  &lt;foo&gt;文本&lt;/foo&gt; //取出两个节点之间的文本    
-parser.getAttributeValue(namespace, 属性名称) 获取某个属性的值
-</code></pre></li>
-<li>得到数据,完成界面的展现</li>
-</ol>
-<p>##断点调试应用程序</p>
-<ol>
-<li>双击在代码的左边打一个断点</li>
-<li>右键,debug as android application</li>
-<li>右键 watch 查看数据  </li>
-<li>watch 一段代码</li>
-<li>清空原来的调试断点</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;##其他布局&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;LinearLayout&lt;/li&gt;
-&lt;li&gt;RelativeLayout &lt;/li&gt;
-&lt;li&gt;FrameLayout &lt;/li&gt;
-&lt;li&gt;AbsoluteLayout (绝对布局, 文档说过时,应用场景机顶盒开发,定制的平板)  &lt;/
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>四大组件</title>
-    <link href="http://mjackie.github.io/Tech/civwm7oj6000un8u0yb3g1o4x/"/>
-    <id>http://mjackie.github.io/Tech/civwm7oj6000un8u0yb3g1o4x/</id>
-    <published>2016-11-24T15:33:23.000Z</published>
-    <updated>2016-11-24T16:07:32.338Z</updated>
-    
-    <content type="html"><![CDATA[<p>#四大组件</p>
-<ul>
-<li>Activity 活动</li>
-<li>BroadcastReceiver 广播接受者</li>
-<li>Service 后台的服务</li>
-<li>ContentProvider 内容提供者</li>
-</ul>
-<p>#广播接受者</p>
-<ul>
-<li>什么是广播?<blockquote>
-<ol>
-<li>广播电台(发送广播信号)</li>
-<li>收音机(接受广播信号)</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>为什么安卓设计了广播事件和广播接受者?<br>系统很很多消息需要通知给每一个应用程序,电量不足,网络状态变化,sd卡被拔出插入,有新的apk被安装…如果这应用程序需要关心这个事件,需要注册一个广播接受者.</p>
-</blockquote>
-<p>接受广播的4个条件</p>
-<ol>
-<li>买个收音机<pre><code>class MyBroadcastReceiver extends BroadcastReceiver
-</code></pre></li>
-<li>装好电池<pre><code>&lt;receiver android:name=&quot;com.itheima.receiverdemo.MyBroadcastReceiver&quot; &gt;
-</code></pre></li>
-<li>调到某个频道 FM934, 收听广播<pre><code>&lt;action android:name=&quot;android.intent.action.NEW_OUTGOING_CALL&quot;/&gt;
-</code></pre></li>
-<li>某些广播需要配置权限<pre><code>&lt;uses-permission android:name=&quot;android.permission.PROCESS_OUTGOING_CALLS&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##重要的广播接受者</p>
-<ol>
-<li>电话外拨<pre><code>android.intent.action.NEW_OUTGOING_CALL 有序广播
-</code></pre></li>
-<li><p>sd卡状态</p>
-<pre><code>&lt;action android:name=&quot;android.intent.action.MEDIA_UNMOUNTED&quot;/&gt;
-&lt;action android:name=&quot;android.intent.action.MEDIA_MOUNTED&quot;/&gt;
-&lt;data android:scheme=&quot;file&quot;/&gt;
-</code></pre></li>
-<li><p>短信到来</p>
-<pre><code>android.provider.Telephony.SMS_RECEIVED 有序广播
-</code></pre></li>
-<li><p>应用程序安装</p>
-<pre><code>卸载
- &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
-安装
- &lt;action android:name=&quot;android.intent.action.PACKAGE_ADDED&quot;/&gt;
- &lt;data android:scheme=&quot;package&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##发送自定义的广播</p>
-<blockquote>
-<p>买个电台,对外发消息</p>
-</blockquote>
-<p>##自定义广播的两种类型</p>
-<ul>
-<li>无序广播<blockquote>
-<p>CCTV 广播电台  所有的人同时接收到消息,无法拦截.</p>
-</blockquote>
-</li>
-<li>有序广播<blockquote>
-<p>发布一个文件–一级一级向下传达的–上一级就可以修改下一级的数据<br>高优先级的可以拦截广播,可以修改广播的数据.</p>
-</blockquote>
-</li>
-</ul>
-<p>##广播接受者的代码也是运行在主线程的</p>
-<blockquote>
-<p>在广播接受者代码的onreceive方法里面不可以执行耗时的操作.<br>如果执行了耗时的操作,会导致主线程anr(无响应) </p>
-</blockquote>
-<p>##服务service<br>一个没有界面的应用程序,长期的在后台运行,给用户提供一些功能,实现一些逻辑.</p>
-<p>Activity—界面<br>Service – 后台,没有界面.用户看不到</p>
-<p>##电话窃听器</p>
-<blockquote>
-<p>是一个后台的服务,<br>服务开启</p>
-</blockquote>
-<pre><code>startService(intent);
-</code></pre><blockquote>
-<p>服务停止</p>
-</blockquote>
-<pre><code>stopService(intent);
-</code></pre><p>##服务和子线程之间的关系</p>
-<ul>
-<li>服务是长期的在后台运行</li>
-<li><p>开启一个用真的死循环的子线程也是在后台长期运行</p>
-</li>
-<li><p>如果一个应用程序有后台的服务在运行,即使你杀掉进程,进程和服务还会自动的复活.</p>
-</li>
-<li>如果是一个应用程序只有后台的子线程运行,杀掉进程,子线程就挂了,进程也挂了.</li>
-<li>如果你要保证一个后台的操作长期运行, 1.开启服务 2.在服务里面创建子线程.</li>
-<li>★ 服务也是运行在主线程里面的,服务是不可以直接写耗时的逻辑的,所有的耗时逻辑应该放在服务的子线程里面执行.</li>
-</ul>
-<p>##如果一个广播事件产生的很频繁</p>
-<blockquote>
-<p>屏幕锁屏, 屏幕解锁, 电量变化<br>这个广播事件在清单文件中注册就不可用</p>
-<p>Activity com.itheima.screenreceiver.MainActivity has <strong>leaked</strong> IntentReceiver com.itheima.screenreceiver.ScreenStatusReceiver@b6409e50 that was originally registered here. Are you missing a call to unregisterReceiver()?</p>
-</blockquote>
-<p>##进程的优先级<br>Android系统会尽量的长期保持每一个进程不被回收.<br>The Android system tries to maintain an application process for as long as possible<br>importance hierarchy 进程的优先级</p>
-<ol>
-<li>Foreground process 前台进程<pre><code>用户在操作的应用程序所在的进程就是前台进程
-</code></pre></li>
-<li>Visible process 可见进程<pre><code>用户仍然可以看到界面,但是里面的按钮点击不了了.
-</code></pre></li>
-<li>Service process 服务进程<pre><code>进程里面有一个服务正处于运行状态
-</code></pre></li>
-<li>Background process 后台进程<pre><code>如果一个应用程序没有服务处于运行状态,界面最小化. onstop();
-</code></pre></li>
-<li>Empty process<pre><code>应用程序没有任何活动的组件.没有服务,Activity也ondestry了
-</code></pre></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#四大组件&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Activity 活动&lt;/li&gt;
-&lt;li&gt;BroadcastReceiver 广播接受者&lt;/li&gt;
-&lt;li&gt;Service 后台的服务&lt;/li&gt;
-&lt;li&gt;ContentProvider 内容提供者&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;#广播接受
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://mjackie.github.io/Tech/civwm7ohl0002n8u0tgrc3nqd/"/>
-    <id>http://mjackie.github.io/Tech/civwm7ohl0002n8u0tgrc3nqd/</id>
-    <published>2016-11-24T15:30:54.915Z</published>
-    <updated>2015-01-08T09:09:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#Android体系结构</p>
-<ul>
-<li>底层Linux操作系统</li>
-<li>library c/c++的函数库</li>
-<li>应用程序框架层 java提供的函数库</li>
-<li>应用程序</li>
-</ul>
-<p>#jvm和dvm的区别</p>
-<ul>
-<li><p>版权问题</p>
-</li>
-<li><p>效率问题</p>
-</li>
-</ul>
-<p>#下载Android开发的sdk</p>
-<ul>
-<li>什么是sdk<blockquote>
-<p>standard develop kits 标准开发工具集</p>
-</blockquote>
-</li>
-</ul>
-<p>下载选择32位或者64位的版本<br>直接解压下载下来的zip包</p>
-<p>#Android sdk的目录结构</p>
-<ul>
-<li>eclipse  开发工具ide 订制版本的eclipse</li>
-<li>sdk 开发工具集合</li>
-<li>SDK Manager.exe sdk管理器,提供sdk的更新</li>
-</ul>
-<p>#sdk文件夹的目录结构</p>
-<ul>
-<li><p>extras 额外工具</p>
-<ul>
-<li>Android support library 向下兼容提供的函数库</li>
-<li>usb driver 真实手机的驱动(只有谷歌的亲儿子才可用 nexus s)</li>
-<li>intel HAM intel的硬件加速(只有是intel的处理器,adm处理器不可用)</li>
-</ul>
-</li>
-<li><p>模拟器要想在电脑上运行需要有系统的镜像</p>
-<ul>
-<li>arm system image (在电脑上模拟运行速度比较慢)</li>
-<li>x86 system image (在电脑上模拟运行速度比较快)</li>
-</ul>
-</li>
-<li><p>doc 离线文档(包含全部的api的说明)</p>
-</li>
-<li><p>platforms 不同版本sdk的开发android.jar包 </p>
-</li>
-<li><p>platform-tools 平台工具</p>
-<ul>
-<li>adb.exe Android debug bridge(安卓开发调试桥)</li>
-<li>dx.bat 把.class的字节码转化成.dex的字节码</li>
-</ul>
-</li>
-<li><p>samples 开发用的示例代码</p>
-</li>
-<li><p>sources sdk的全套源码</p>
-</li>
-<li><p>system-images 系统镜像</p>
-</li>
-<li><p>tools 模拟器的应用程序就存放在这个文件夹里面</p>
-</li>
-</ul>
-<p>##强烈推荐使用4.1.2版本的模拟器.最稳定.</p>
-<p>##千万不要使用4.2版本的模拟器,bug非常多</p>
-<p>##常见分辨率</p>
-<ul>
-<li>VGA 640x480 </li>
-<li>HVGA 480x320</li>
-<li>QVGA 320x240</li>
-<li>WVGA 800x480</li>
-<li>FWVGA 854x480</li>
-</ul>
-<p>##模拟器名称<br>*5554 端口号 一个模拟器占用两个端口号</p>
-<p>##DDMS</p>
-<ul>
-<li>dalvik debug manager system</li>
-</ul>
-<p>##ADT</p>
-<blockquote>
-<p>Android Developer Tools 安卓开发工具集(eclipse的一个插件)<br>21.1.0.v20130206 不要升级adt的版本<br>会帮着我们自动创建Android的工程结构,帮我们编译应用程序–&gt;apk—&gt;部署手机–&gt;运行</p>
-</blockquote>
-<p>##Android工程的目录结构</p>
-<ul>
-<li>.settings eclipse创建的文件夹 记录工程的配置信息</li>
-<li>assets 资产目录 打包一些文件到应用程序里面(数据库文件,网页文件,配置文件)</li>
-<li>bin eclipse编译的二进制文件,把java–&gt;class—&gt;dex–&gt;res打包–&gt;.apk</li>
-<li>gen 自动生成的代码</li>
-<li>libs android-support-v4.jar 安卓的支持jar包</li>
-<li>res 应用程序的资源目录 图标 文本 颜色资源<ul>
-<li>drawable 存放应用程序的图片资源</li>
-<li>layout 存放应用程序的布局文件 xml文件</li>
-<li></li>
-</ul>
-</li>
-<li>src 我们编写的java代码</li>
-<li>.classpath eclipse配置文件</li>
-<li>.project eclipse配置文件</li>
-<li>manifest.xml 非常重要是应用程序的清单文件 配置应用程序的版本号,图标,名称</li>
-<li>project.properties 工程的配置文件</li>
-</ul>
-<p>##Android应用程序开发的步骤</p>
-<ol>
-<li>创建工程,配置应用程序工程名称,包名,图标.</li>
-<li>编写应用程序的ui界面, res–&gt;layout—&gt;main_activity.xml<blockquote>
-<p>布局都是xml文件编写的,支持图形化的拖拽</p>
-</blockquote>
-</li>
-<li><p>写java代码.在src目录下 MainActivity.java</p>
-<pre><code>@Override
- protected void onCreate(Bundle savedInstanceState) {
-     super.onCreate(savedInstanceState);
- //设置应用程序显示的界面
-     setContentView(R.layout.activity_main);
- //TODO:查找我们关心的控件,实现控件的点击事件
- }
-</code></pre></li>
-<li>必须给关心的控件设置id. 这个id会在R.java文件里面生成一个引用</li>
-<li>在java代码 findViewById(R.id.xxxx);</li>
-<li><p>设置控件的点击事件</p>
-<pre><code>bt_click.setOnClickListener(new MyButtonListener());
-</code></pre></li>
-<li><p>打印土司</p>
-<pre><code>Toast.makeText(MainActivity.this, &quot;hahahah,我被点击了.&quot;, Toast.LENGTH_SHORT).show();
-</code></pre></li>
-</ol>
-<p>##应用程序编译安装的过程.<br>一. 把所有的.java文件编译成.class文件 </p>
-<blockquote>
-<p>jdk 的 javac.exe</p>
-</blockquote>
-<p>二. 把所有的.class字节码文件打包合成一个文件 classes.dex</p>
-<blockquote>
-<p>sdk中的dx.bat文件 把.class –&gt;.dex</p>
-</blockquote>
-<p>三. 根据资源的id,生成一个资源文件resources.ap_ 保存全部的资源文件的信息</p>
-<p>四. 把.dex文件 res目录下的资源文件 resources.ap_的引用 asset目录下的文件<br>合成在一起打成一个apk的压缩包</p>
-<blockquote>
-<p>使用的是 aapt.exe</p>
-</blockquote>
-<p>五. adb.exe 负责把生成好的apk文件上传安装到手机里面.</p>
-<blockquote>
-<p>Android debug bridge 安卓调试桥,负责上传安装apk</p>
-</blockquote>
-<p>##常见的adb命令</p>
-<ul>
-<li><p>安装一个应用程序</p>
-<blockquote>
-<p>adb install xxx.apk</p>
-</blockquote>
-</li>
-<li><p>卸载一个应用程序</p>
-<blockquote>
-<p>adb uninstall com.itheima.clickme&lt;包名&gt;</p>
-</blockquote>
-</li>
-<li><p>进入到手机终端里面</p>
-<blockquote>
-<p>adb shell<br>进入手机终端之后就可以执行Linux命令 kill 杀死一个进程 ps 列出来进程 ls 列出来文件</p>
-</blockquote>
-</li>
-<li><p>杀死adb的调试桥</p>
-<blockquote>
-<p>adb kill-server<br>adb的调试桥不稳定,经常掉线,如果掉线了,执行adb kill-server把调试桥杀死</p>
-</blockquote>
-</li>
-<li><p>启动adb的调试桥</p>
-<blockquote>
-<p>adb start-server</p>
-</blockquote>
-</li>
-<li><p>查看连接在电脑上的设备</p>
-<blockquote>
-<p>adb devices<br>adb start-server这个方法比较笨,如果一次启动不成功,就不启动了.通常使用adb devices来代替adb start-server</p>
-</blockquote>
-</li>
-<li><p>指定设备执行adb指令</p>
-<blockquote>
-<p>adb -s emulator-5556 install xxx.apk</p>
-</blockquote>
-</li>
-</ul>
-<p>##URI &amp;&amp; URL</p>
-<ul>
-<li><p>URL 统一资源定位符(网址,ftp,rtsp)</p>
-<blockquote>
-<p><a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br><a href="http://www.itheima.com" target="_blank" rel="external">http://www.itheima.com</a></p>
-</blockquote>
-</li>
-<li><p>URI 统一资源标识符(范围更加广泛)</p>
-<blockquote>
-<p>tel://110<br>content://</p>
-</blockquote>
-</li>
-</ul>
-<p>##权限模型的目的</p>
-<ul>
-<li>给用户一个提醒,让用户知道你安装的软件需要干什么操作.</li>
-<li>只有敏感操作才需要申请权限(钱,设备安全,隐私)</li>
-<li>避免潜在法律诉讼</li>
-</ul>
-<p>##点击事件的四种写法</p>
-<ul>
-<li>内部类</li>
-<li>匿名内部类</li>
-<li>让activity实现onclickListener接口</li>
-<li>在布局xml文件里面绑定点击事件</li>
-</ul>
-<p>##常见的布局</p>
-<ul>
-<li>LinearLayout 线性布局<blockquote>
-<p>线性布局的朝向 vertical|horizontal<br>线性布局的权重 weight 和 0dip一起使用</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>RelativeLayout 相对布局 都是按照相对位置排列的</li>
-</ul>
-<ul>
-<li>FrameLayout 帧布局<blockquote>
-<p>布局层层叠加覆盖的<br>DIV </p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#Android体系结构&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;底层Linux操作系统&lt;/li&gt;
-&lt;li&gt;library c/c++的函数库&lt;/li&gt;
-&lt;li&gt;应用程序框架层 java提供的函数库&lt;/li&gt;
-&lt;li&gt;应用程序&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;#jvm和dvm的区别&lt;/p&gt;
+$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
+//  取得查询结果
+$userInfo = $DB-&gt;getRow($query); 
 
+if (!empty($userInfo)) {
+    //  当验证通过后，启动 Session
+    session_start();
+    //  注册登陆成功的 admin 变量，并赋值 true
+    $_SESSION[&quot;admin&quot;] = true;
+} else {
+    die(&quot;用户名密码错误&quot;);
+}
+?&gt;
+</code></pre><a id="more"></a>
+<p>check.php</p>
+<pre><code>&lt;?php
+//  防止全局变量造成安全隐患
+$admin = false;
+//  启动会话，这步必不可少
+session_start();
+//  判断是否登陆
+if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
+    echo &quot;您已经成功登陆&quot;;
+} else {
+    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
+    $_SESSION[&quot;admin&quot;] = false;
+    die(&quot;您无权访问&quot;);
+}
+?&gt;
+</code></pre><p>exit.php</p>
+<pre><code>&lt;?php
+session_start();
+//  这种方法是将原来注册的某个变量销毁
+unset($_SESSION[&apos;admin&apos;]);
+//  这种方法是销毁整个 Session 文件
+session_destroy();
+?&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
+&lt;p&gt;login.php&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+//  表单提交后...
+$posts = $_POST;
+//  清除一些空白符号
+foreach ($posts as $key =&amp;gt; $value) {
+    $posts[$key] = trim($value);
+}
+$password = md5($posts[&amp;quot;password&amp;quot;]);
+$username = $posts[&amp;quot;username&amp;quot;]; 
+
+$query = &amp;quot;SELECT `username` FROM `user` WHERE `password` = &amp;apos;$password&amp;apos; AND `username` = &amp;apos;$username&amp;apos;&amp;quot;;
+//  取得查询结果
+$userInfo = $DB-&amp;gt;getRow($query); 
+
+if (!empty($userInfo)) {
+    //  当验证通过后，启动 Session
+    session_start();
+    //  注册登陆成功的 admin 变量，并赋值 true
+    $_SESSION[&amp;quot;admin&amp;quot;] = true;
+} else {
+    die(&amp;quot;用户名密码错误&amp;quot;);
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Php" scheme="http://mjackie.github.io/tags/Php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>姿态测算原理</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tyk0012lgu00rydbewm/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tyk0012lgu00rydbewm/</id>
+    <published>2016-04-04T14:03:00.000Z</published>
+    <updated>2016-11-25T14:37:03.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：<br>（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；<br>（2）利用加速度计产生的重力加速度信号和磁力计产生的地磁信号，可分别得到载体航向家、横滚角及航向角，从而得到物体姿态；可通过转换以四元数表示；<br>（3）多个系统捷联组合进行姿态测算，如通过卡尔曼融合算法，将陀螺仪、加速度计和磁力计产生的信号进行合理融合，角速度信号对动态情况下的物体姿态测算优势明显，而加速度与磁力计可对角速度信号的测算进行不定时修正，从而实现传感器之间的互补，使姿态测算更加精确、更适用于各种环境。<br>由于陀螺仪存在零偏及长时间使用后信号漂移等现象，如利用第一种方法进行姿态测算，姿态误差会随时间的推移而不断增大，从而导致无法长期稳定的精确信号输出；加速度计及磁力计皆利用地球本身存在的稳定的外部因素产生输出信号，更容易获得物体的绝对姿态，然而在运动过程中，物体同样会产生加速度，对姿态测算造成干扰，而磁力计也易受磁性物质干扰，因此第二种方法适合物体本身运动幅度较小的情况，不利于在物体快速运动时的姿态测算，即动态性能不好。第三种方法对前两种方法进行融合，能够分别发挥两种方法的优势，虽然采用卡尔曼滤波等信息融合技术，增加了运算量，但能在各种运动情况下获取物体精确姿态，是目前捷联导航系统中最常用的姿态测算方法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：&lt;br&gt;（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；&lt;br&gt;（2）利用加速度计产生的重力加速度信号和磁力计产
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>keybd_event函数</title>
+    <link href="http://mjackie.github.io/Tech/civxx3ty6000tlgu0usm8b8jr/"/>
+    <id>http://mjackie.github.io/Tech/civxx3ty6000tlgu0usm8b8jr/</id>
+    <published>2016-03-30T05:53:00.000Z</published>
+    <updated>2016-11-25T14:25:24.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
+<pre><code>//模拟按下&apos;ALT+F4&apos;键
+keybd_event(18,0,0,0);
+keybd_event(115,0,0,0);
+keybd_event(115,0,KEYEVENTF_KEYUP,0);
+keybd_event(18,0,KEYEVENTF_KEYUP,0);
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。&lt;br&gt;函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);&lt;br&gt;包
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="C++" scheme="http://mjackie.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>姿态角</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tym0015lgu0ntb7onw7/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tym0015lgu0ntb7onw7/</id>
+    <published>2016-03-28T15:17:00.000Z</published>
+    <updated>2016-11-25T14:23:08.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/3086121131.gif" alt="yaw.gif"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；</p>
+<hr>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/2936638328.gif" alt="pitch.gif"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
+<hr>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/2624363739.gif" alt="roll.gif"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/3086121131.gif&quot; 
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb微博</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txe0006lgu078osu2u1/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txe0006lgu078osu2u1/</id>
+    <published>2015-07-12T05:44:00.000Z</published>
+    <updated>2016-11-25T14:20:52.058Z</updated>
+    
+    <content type="html"><![CDATA[<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
+<p>下面是应用截图：<br><img src="http://liu13-liu13.stor.sinaapp.com/2637202576.jpg" alt="1.jpg"></p>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/1659680042.jpg" alt="2.jpg"></p>
+<a id="more"></a>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/1008176180.jpg" alt="3.jpg"></p>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/988741909.jpg" alt="4.jpg"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。&lt;br&gt;本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。&lt;/p&gt;
+&lt;p&gt;下面是应用截图：&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/2637202576.jpg&quot; alt=&quot;1.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/1659680042.jpg&quot; alt=&quot;2.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Javaweb" scheme="http://mjackie.github.io/tags/Javaweb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>北京蓝桥之行</title>
+    <link href="http://mjackie.github.io/Jotting/civxx3tyh000ylgu0xn4saxr5/"/>
+    <id>http://mjackie.github.io/Jotting/civxx3tyh000ylgu0xn4saxr5/</id>
+    <published>2015-06-05T14:46:00.000Z</published>
+    <updated>2016-11-25T14:19:07.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>想起当初报名还是在上个学期过年以前，当时还在考虑要不要交300块钱报个名，自己对于算法，数据结构也是一窍不通，好在在老师的鼓励下，和寝室的张一块报了名。倘若当初没有报名，也就不会有了这次北京之行，更不会得奖，所以万事都要积勇于尝试，争取，正如《高效能人士的七个习惯》中的第一个习惯——积极主动。</p>
+<p>寒假在实验室呆了几天，太闷了，实在待不下去了，和张晚上看了《霍比特人3》，第二天背着书包便回家了。当当上买了一本java的数据结构书，想着寒假好好看看，可惜计划赶不上变化，过年事也多，整个假期过去了，也没看几页(其实看了也没多大用，蓝桥杯主要考算法，还是多练题有效果)。</p>
+<p>4月份在郑州轻工业学院省赛，根本没有准备，也就前一个晚上看了几道历年题，想着能拿个奖就不错了。一星期后结果出来了，省一等奖。<br><img src="http://liu13-liu13.stor.sinaapp.com/3752285059.jpg" alt="IMG_20150531_131941_11.jpg"><br>5月29日晚上9点35分，迈上了一直向往的城市——北京的第一步。</p>
+<p>去的一路上人不多，三国杀，大富翁，又看了一部电影，很快就过了。</p>
+<p>去之前的前一个星期，课余时间都在做官网上的练习题，一共做了大概30道题。</p>
+<p>第二天早上吃完饭9点多，时间不太够，也没有出去浪，比赛是在下午2点到6点，考试还发了一杆笔，一盒奶，一瓶水，一个面包，很贴心。要说的就是一定不能浪费太多时间在一道题上，有些弄不懂的越扣越浪费时间，还不如直接跳过。</p>
+<p>比赛完坐地铁直接去了天安门，正巧赶上降旗仪式，人很多，也看不太清楚，郁闷的是天安门广场有围栏护着，不让进。我们几个绕着马路走了一路，又到王府井小吃街逛了一圈，买了一串糖葫芦，10块。</p>
+<p>晚上回去在郭房间三国杀，也没看时间直接到了一点多。王去找他舅了，我拿着房间钥匙，回房间路上想着阮不会在门外等吧，还好他找楼下的开了门，进了房间。</p>
+<p>第二天，阮提前去清华听讲座了，等王回来后，一块做地铁去奥体中心绕着鸟巢，水立方压马路。</p>
+<p>下午颁奖典礼在北大邱德拔体育馆举行，河大民生学院的一个学生和曾经教过我的吴老师竟然得了特等奖，很赞。水木年华的缪杰唱了《为梦而生》，《一生有你》。</p>
+<p>二等奖，也算是自己之前想象的最好的结果了，很满意。郝和郭一等奖，很赞。</p>
+<p>晚上火车正好赶上了农民工返乡，人超多，难受。</p>
+<p>也许是自己之前期望太高，眼中的北京并没有想象中的好，其实天南海北都是一样的，就像人与人之间，马云和我也一样长着两个眼睛一张嘴嘛。</p>
+<p>天外有天，楼外楼，自己要多加努力，勤奋上进。<br>最后还是要抓住眼前，从现在做起，英语六级，网络作业，期末考试……</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想起当初报名还是在上个学期过年以前，当时还在考虑要不要交300块钱报个名，自己对于算法，数据结构也是一窍不通，好在在老师的鼓励下，和寝室的张一块报了名。倘若当初没有报名，也就不会有了这次北京之行，更不会得奖，所以万事都要积勇于尝试，争取，正如《高效能人士的七个习惯》中的第一
+    
+    </summary>
+    
+      <category term="Jotting" scheme="http://mjackie.github.io/categories/Jotting/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git学习笔记</title>
+    <link href="http://mjackie.github.io/Tech/civxx3twx0001lgu0vjcidi4p/"/>
+    <id>http://mjackie.github.io/Tech/civxx3twx0001lgu0vjcidi4p/</id>
+    <published>2015-04-06T10:24:00.000Z</published>
+    <updated>2016-11-25T14:16:29.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。分布式的git相比于集中式的svn最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。<br>git构架上分为3个区，工作区，暂存区与版本库。用户在工作区的更改通过git add命令添加至暂存区，暂存区的数据通过git commit提交到版本库。用户通过git checkout从版本库中检出数据。<br>git的远程协作需要先fork开源项目，然后本地git clone该项目，通过git pull，git push编辑项目，通过git remote获取原作者的更新，pull request为该项目做贡献。</p>
+<p>git 双击table自动完成</p>
+<pre><code>git config --help
+git help config
+
+git config user.name 查看用户名
+git config --global user.name liu13
+git config --global --add user.name liu13
+git config --get user.name
+git init name
+git init --bare name
+git clone name/ name
+
+git add
+git add .
+git commit -m &quot;&quot;
+git status 
+git rm --cached name
+git mv
+git reset HEAD name
+gitignore
+
+git config --global alias.lol &quot;git log --oneline --decorate --graph --all&quot;
+git merge origin/master
+
+git branch name 创建分支
+git checkout baranchname 切换分支
+git tag &quot;tagname&quot; hash
+git tag -a &quot;INITIAL_COMMIT&quot; -m&quot;&quot; hash
+git show tagname
+git checkout -b branchname 创建并切换分支
+git stash save -a stash_name 保存暂存区
+git stash list
+git stash pop --index stash_name 暂存区也返回
+git stash apply --index stash_name 暂存区也返回且保存stash
+git stash drop stash_name 
+git stash clear 一次性清理
+
+git merge branch_name
+git merge --abort
+
+git show branch_name^
+
+git diff 工作区与暂存区区别
+git diff --cached 暂存区与历史提交差异
+git diff --color-words
+
+git checkout （HEAD） --文件名  撤销修改
+git reset 文件名  还原暂存区
+
+git clean -n 查看git clean 将要移除的文件
+git clean -f 清理无用文件，不清理ignore文件中指定的文件
+
+git clone 获取远程仓库
+git fetch（ origin 分支名） 获取更新（分支，数据）
+git pull = git fetch + git merge
+git push --tag 推送tag
+git push origin :分支名  
+git push --delete origin 分支名 删除远程分支
+
+pull request 没被关闭 不需重复pull request
+git remote add 仓库名 http路径
+git remote -v
+git fetch 仓库名
+git remote rm
+git remote rename
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。分布式的git相比于集中式的svn最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。&lt;br&gt;git构架上分为3个区，工作区，暂存
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Git" scheme="http://mjackie.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The First ASM</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txv000klgu0qbfj86iz/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txv000klgu0qbfj86iz/</id>
+    <published>2014-10-29T10:37:00.000Z</published>
+    <updated>2016-11-25T14:15:01.146Z</updated>
+    
+    <content type="html"><![CDATA[<p>写的第一个汇编程序，发出来纪念一下。</p>
+<hr>
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写的第一个汇编程序，发出来纪念一下。&lt;/p&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="汇编" scheme="http://mjackie.github.io/tags/%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>成绩查询系统</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tyw001blgu0un1gdt9b/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tyw001blgu0un1gdt9b/</id>
+    <published>2014-10-13T10:50:00.000Z</published>
+    <updated>2016-11-25T14:13:04.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com" target="_blank" rel="external">http://cj.liu13.com</a><br><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
+<hr>
+<p>下面是源代码，一共两个文件：<br>index.php</p>
+<pre><code>&lt;html&gt;
+&lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+?&gt;
+&lt;head&gt;
+    &lt;title&gt;成绩查询&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {background:#eee;}
+        ul {padding:0; margin:0;}
+        li {list-style:none;}
+        #container {margin: 0 auto; width: 80%;}
+        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
+        a {color:#146fdf; text-decoration: none}
+        a:hover {color: black; text-decoration: underline}
+        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
+        #g_u,#g_p {position:relative}
+        #g_u {border-bottom:1px solid #eaeaea}
+        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
+        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
+        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
+            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
+                &lt;ul  id=&quot;g_list&quot;&gt;
+                    &lt;li  id=&quot;g_u&quot;&gt;
+                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
+
+                    &lt;/li&gt;
+                    &lt;li  id=&quot;g_p&quot;&gt;
+                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
+
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
+            &lt;script language=javascript&gt;  
+                function chkfs(){ 
+                var frm = document.forms[&apos;cf&apos;];  
+                frm.action=&quot;search.php&quot;;
+                return true;  
+                }
+            &lt;/script&gt;
+        &lt;/form&gt;
+
+        &lt;div id=&quot;notice&quot;&gt;
+            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
+            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
+        &lt;p align=center&gt;
+            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><a id="more"></a>
+<p>search.php</p>
+<pre><code>&lt;html&gt;
+&lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+#运行环境：任何支持PHP的空间，PHP的版本不小于4.0.0
+$numerror=&quot;&lt;font size=4 color=red&gt;请您正确输入学号!&lt;/font&gt;&quot;;            //考号格式输入错误时的信息
+$nonumkey=&quot;&lt;font size=4 color=red&gt;请输入您的学号!&lt;/font&gt;&quot;;              //无输入学号时提示
+$nameerror=&quot;&lt;font size=4 color=red&gt;请您输入正确的姓名!&lt;/font&gt;&quot;;            //姓名格式输入错误时的信息
+$nonamekey=&quot;&lt;font size=4 color=red&gt;请输入您的姓名!&lt;/font&gt;&quot;;                 //无输入时提示
+$notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/font&gt;&quot;                //学号姓名不匹配
+?&gt;
+&lt;head&gt;
+    &lt;title&gt;成绩查询&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;margin-bottom:30px;}
+    body {background:#eee;}
+    #container {margin:0 auto; width: 80%;}
+    a {color:#146fdf; text-decoration: none}
+    a:hover {color: black; text-decoration: underline}
+    .button {border:0px;width:100%; height:100%; color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+    #closewindos {margin-top:60px; width:30%; height:30px; color:#146fdf}
+    #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    table {border:1px solid #eaeaed;}
+    td {font-size:20px;border-bottom:1px solid #eaeaed; color:#246183}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;center&gt;
+        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;
+        &lt;?
+        error_reporting(0);  //禁用错误报告
+
+        $nl=&quot;4&quot;;
+        $nameerr=&quot;&lt;font size=4 color=red&gt;$nameerror&lt;/font&gt;&quot;;
+        if($_POST[pname]==&quot;&quot;) echo $nonamekey;     
+        elseif (eregi(&quot;[&lt;&gt;() ,#|;%/$1234567890\abcdefghijklmnopqrstuvwxyz]&quot;,$_POST[pname])) echo $nameerr;
+        elseif (strlen($_POST[pname])&lt;$nl) echo $nameerr;    //检查输入姓名是否合法
+
+        $numerr=&quot;&lt;font size=4 color=red&gt;$numerror &lt;/font&gt;&quot;;
+        if($_POST[pnum]==&quot;&quot;) echo $nonumkey;     
+        elseif (strlen($_POST[pnum])!=10) echo $numerr;
+        elseif (eregi(&quot;[0123456789]&quot;,$_POST[pnum]))    //检查输入学号是否合法
+        {
+        $db = &quot;data.csv&quot;;   //csv数据文件           
+        $querydb = file($db);
+        $count = count($querydb);
+        for($i=0; $i&lt;$count; $i++) {
+        $detail = explode(&quot;,&quot;,$querydb[$i]);
+        $keyword = explode(&quot; &quot;,$_POST[pnum]);
+        $querycount = count($keyword);
+        $tds = explode(&quot;,&quot;,$querydb[1]);
+        for ($ai=0; $ai&lt;$querycount; $ai++) 
+        {eval(&quot;\$foundnum = eregi(\&quot;$keyword[$ai]\&quot;,\&quot;$detail[0]\&quot;);&quot;);}  
+        if($_POST[pname] == $detail[1]) $match = 1;  //索引学号
+        else $match = 0;
+
+        if($foundnum &amp;&amp; $match == 0) echo $notmatch;   //匹配姓名学号
+        if($foundnum &amp;&amp; $match)
+        {
+        $arrlength=count($tds);
+        echo&quot;&lt;font color=red size=4&gt;$detail[1]童鞋&lt;br&gt;您在计科专业的排名为&lt;br&gt;
+            &lt;font color=#146fdf size=40&gt;$detail[3]&lt;/font&gt;
+            &lt;br&gt;您的加权平均分为$detail[2]
+            &lt;br&gt;击败了$detail[4]的童鞋&lt;/font&gt;
+            &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;font color=#246183&gt;您的各科成绩如下&lt;/font&gt;&quot;;
+        echo&quot;&lt;table&gt;&quot;;
+        for($i=5;$i&lt;$arrlength;$i++)
+        {
+        if($detail[$i]!=&quot;&quot;){
+        echo&quot;&lt;tr&gt;&lt;td&gt;$tds[$i]&lt;/td&gt;
+                  &lt;td&gt;$detail[$i]&lt;/td&gt;&lt;/tr&gt;&quot;;}}
+        echo&quot;&lt;/table&gt;&quot;;break;
+        }}}
+        ?&gt;
+        &lt;div id=&quot;closewindos&quot;&gt;&lt;input type=&quot;button&quot; value=&quot;关闭此页&quot; class=&quot;button&quot; onClick=&quot;javascript:window.close()&quot;&gt;&lt;/div&gt;
+        &lt;/center&gt;
+        &lt;div id=&quot;notice&quot;&gt;
+        &lt;p align=center&gt;Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。&lt;br&gt;演示地址：&lt;a href=&quot;http://cj.liu13.com&quot;&gt;http://cj.liu13.com&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/658067538.jpg&quot; alt=&quot;collage.jpg&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下面是源代码，一共两个文件：&lt;br&gt;index.php&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+&amp;lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+?&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;成绩查询&amp;lt;/title&amp;gt;
+    &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=gb2312&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot; /&amp;gt;
+    &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+        body {background:#eee;}
+        ul {padding:0; margin:0;}
+        li {list-style:none;}
+        #container {margin: 0 auto; width: 80%;}
+        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&amp;quot;YouYuan&amp;quot;; font-weight:bold;margin-top:40px;}
+        a {color:#146fdf; text-decoration: none}
+        a:hover {color: black; text-decoration: underline}
+        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
+        #g_u,#g_p {position:relative}
+        #g_u {border-bottom:1px solid #eaeaea}
+        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
+        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
+        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;
+        &amp;lt;div id=&amp;quot;title&amp;quot;&amp;gt;成绩查询&amp;lt;/div&amp;gt;  
+            &amp;lt;form method=post name=&amp;quot;cf&amp;quot; target=&amp;quot;_blank&amp;quot; onSubmit=javascript:chkfs()&amp;gt;
+                &amp;lt;ul  id=&amp;quot;g_list&amp;quot;&amp;gt;
+                    &amp;lt;li  id=&amp;quot;g_u&amp;quot;&amp;gt;
+                        &amp;lt;div  id=&amp;quot;del_touch&amp;quot;  class=&amp;quot;del_touch&amp;quot;&amp;gt;
+                            &amp;lt;span  id=&amp;quot;del_u&amp;quot;  class=&amp;quot;del_u&amp;quot;  style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                        &amp;lt;input  id=&amp;quot;u&amp;quot;  class=&amp;quot;inputstyle&amp;quot;  name=&amp;quot;pname&amp;quot;  autocomplete=&amp;quot;off&amp;quot;  placeholder=&amp;quot;请输入姓名&amp;quot;&amp;gt;
+
+                    &amp;lt;/li&amp;gt;
+                    &amp;lt;li  id=&amp;quot;g_p&amp;quot;&amp;gt;
+                        &amp;lt;div  id=&amp;quot;del_touch_p&amp;quot;  class=&amp;quot;del_touch&amp;quot;&amp;gt;
+                            &amp;lt;span  id=&amp;quot;del_p&amp;quot;  class=&amp;quot;del_u&amp;quot;  style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                        &amp;lt;input  id=&amp;quot;p&amp;quot;  class=&amp;quot;inputstyle&amp;quot;  maxlength=&amp;quot;10&amp;quot;  name=&amp;quot;pnum&amp;quot;  autocorrect=&amp;quot;off&amp;quot;  placeholder=&amp;quot;请输入学号&amp;quot;&amp;gt;
+
+                    &amp;lt;/li&amp;gt;
+                &amp;lt;/ul&amp;gt;
+            &amp;lt;div id=&amp;quot;cjsubmit&amp;quot;&amp;gt;&amp;lt;input type=submit value=查分 class=&amp;quot;button&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;script language=javascript&amp;gt;  
+                function chkfs(){ 
+                var frm = document.forms[&amp;apos;cf&amp;apos;];  
+                frm.action=&amp;quot;search.php&amp;quot;;
+                return true;  
+                }
+            &amp;lt;/script&amp;gt;
+        &amp;lt;/form&amp;gt;
+
+        &amp;lt;div id=&amp;quot;notice&amp;quot;&amp;gt;
+            仅支持计算机与信息工程学院2013级计科专业学生查询&amp;lt;BR&amp;gt;
+            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&amp;lt;BR&amp;gt;
+        &amp;lt;p align=center&amp;gt;
+            Powered by &amp;lt;a href=http://weibo.com/liu133&amp;gt;刘十三&amp;lt;/a&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Php" scheme="http://mjackie.github.io/tags/Php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SAE上博客开启gzip加速</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txt000hlgu05zgfjqjc/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txt000hlgu05zgfjqjc/</id>
+    <published>2014-09-16T15:00:00.000Z</published>
+    <updated>2016-11-25T14:10:37.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
+<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
+<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="http://liu13-liu13.stor.sinaapp.com/3515319199.png" alt="gzip1.PNG"></p>
+<a id="more"></a>
+<p>在弹出的窗口中点击下侧【确认】与【取消】中间的【高级语法】<br><img src="http://liu13-liu13.stor.sinaapp.com/867320208.png" alt="gzip2.PNG"><br>在AppConfig语法中直接复制以下代码，点击【确认】即可</p>
+<pre><code>compress: if ( out_header[&quot;Content-Length&quot;]&gt;=50) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/css&quot; ) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/javascript&quot; ) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/html&quot; ) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/png&quot; ) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/jpeg&quot; ) compress
+compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/plain&quot; ) compress
+compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
+</code></pre><p><img src="http://liu13-liu13.stor.sinaapp.com/3440231362.png" alt="gzip3.PNG"><br>至此，sae端设置完成</p>
+<hr>
+<pre><code>ob_start(&apos;ob_gzhandler&apos;);
+</code></pre><p>到网站根目录下找到index.php文件<br>Wordpress:找到define(‘WP_USE_THEMES’, true)这一行，在后面加上ob_start(‘ob_gzhandler’);就可以了<br><img src="http://liu13-liu13.stor.sinaapp.com/1052925608.png" alt="gzip4.PNG"><br>Typecho:在任意位置加入ob_start(‘ob_gzhandler’);即可<br><img src="http://liu13-liu13.stor.sinaapp.com/1855713709.png" alt="gzip5.PNG"><br>设置完成后可以上<a href="http://tool.chinaz.com/Gzips/" target="_blank" rel="external">http://tool.chinaz.com/Gzips/</a>查看开启效果，我的博客六石伞www.liu13.com的效果：<br><img src="http://liu13-liu13.stor.sinaapp.com/4116965859.png" alt="gzip6.PNG"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。&lt;/p&gt;
+&lt;p&gt;先来简单的介绍一下gzip压缩：&lt;br&gt;HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。&lt;/p&gt;
+&lt;p&gt;那么sae上如何开启gzip压缩呢？&lt;br&gt;首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面&lt;br&gt;然后点击【页面压缩】功能中的【设置该项】&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/3515319199.png&quot; alt=&quot;gzip1.PNG&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP网页版简单计算器</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txl000blgu0aioxccdi/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txl000blgu0aioxccdi/</id>
+    <published>2014-09-15T11:06:00.000Z</published>
+    <updated>2016-11-25T14:09:31.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>php写的一个网页版简单计算器，实现了基本的加、减、乘、除、求余运算。</p>
+<pre><code>&lt;?php
+    //error_reporting(E_ALL &amp; ~[E_NOTICE]);
+    if(isset($_POST[&apos;sub&apos;])) {
+        //echo &quot;用户提交了&quot;;
+
+        $bz = true;
+        $errormess = &quot;有以下问题：&lt;br&gt;&quot;;
+
+        if($_POST[num1] == &quot;&quot;) {
+            $bz = false;
+            $errormess .= &quot;第一个数不能为空&lt;br&gt;&quot;;
+        } else {
+            if(!is_numeric($_POST[num1])) {
+            $bz = false;
+            $errormess .= &quot;第一个数不是数字&lt;br&gt;&quot;;
+            }
+        }
+
+
+        if($_POST[num2] == &quot;&quot;) {
+            $bz = false;
+            $errormess .= &quot;第二个数不能为空&lt;br&gt;&quot;;
+        } else {
+            if(!is_numeric($_POST[num2])) {
+            $bz = false;
+            $errormess .= &quot;第二个数不是数字&lt;br&gt;&quot;;
+            }
+        }
+
+
+        if($bz) {
+
+            $sum = &quot;&quot;;
+
+            //判断运算符
+            switch($_POST[ysf]) {
+            case &apos;+&apos; : $sum = $_POST[num1] + $_POST[num2];break;
+            case &apos;-&apos; : $sum = $_POST[num1] - $_POST[num2];break;
+            case &apos;*&apos; : $sum = $_POST[num1] * $_POST[num2];break;
+            case &apos;/&apos; : $sum = $_POST[num1] / $_POST[num2];break;
+            case &apos;%&apos; : $sum = $_POST[num1] % $_POST[num2];break;    
+            }
+        }
+    }
+?&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;简单计算器&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;table border=&quot;0&quot; width=&quot;400&quot; align=&quot;center&quot;&gt;
+        &lt;form action=&quot;caculator.php&quot; method=&quot;post&quot;&gt;
+            &lt;caption&gt;&lt;h1&gt;简单计算器&lt;/h1&gt;&lt;/caption&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num1&quot; value=&quot;&lt;?php echo $_POST[num1] ?&gt;&quot;&gt; &lt;br&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;select name=&quot;ysf&quot;&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;+&quot;) echo &quot;selected&quot; ?&gt; value=&quot;+&quot;&gt; + &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;-&quot;) echo &quot;selected&quot; ?&gt; value=&quot;-&quot;&gt; - &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;*&quot;) echo &quot;selected&quot; ?&gt; value=&quot;*&quot;&gt; * &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;/&quot;) echo &quot;selected&quot; ?&gt; value=&quot;/&quot;&gt; / &lt;/option&gt;
+                        &lt;option &lt;?php if($_POST[ysf]==&quot;%&quot;) echo &quot;selected&quot; ?&gt; value=&quot;%&quot;&gt; % &lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num2&quot; value=&quot;&lt;?php echo $_POST[num2] ?&gt;&quot;&gt; &lt;br&gt;    
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;input type=&quot;submit&quot; name=&quot;sub&quot; value=&quot;计算&quot;&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td colspan=&quot;4&quot;&gt;
+                    &lt;?php
+                        if($bz) {
+                            echo &quot;计算结果：{$_POST[num1]} {$_POST[ysf]} {$_POST[num2]} =  {$sum}&quot;;
+                        } else {
+                        echo $errormess;
+                        }
+
+                    ?&gt;
+            &lt;/tr&gt;
+        &lt;/form&gt;
+        &lt;/table&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;php写的一个网页版简单计算器，实现了基本的加、减、乘、除、求余运算。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+    //error_reporting(E_ALL &amp;amp; ~[E_NOTICE]);
+    if(isset($_POST[&amp;apos;sub
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Php" scheme="http://mjackie.github.io/tags/Php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typecho上的好用插件</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txy000nlgu0mqcn0hm3/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txy000nlgu0mqcn0hm3/</id>
+    <published>2014-09-07T04:00:00.000Z</published>
+    <updated>2016-11-25T14:08:04.540Z</updated>
+    
+    <content type="html"><![CDATA[<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
+<hr>
+<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。<br><img src="http://liu13-liu13.stor.sinaapp.com/4114528848.png" alt="CommentFilter.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3814922710.rar" target="_blank" rel="external">CommentFilter v1.0.2.rar</a></em></p>
+<hr>
+<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。<br><img src="http://liu13-liu13.stor.sinaapp.com/2796197493.png" alt="saeupload.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/634045075.zip" target="_blank" rel="external">SaeUpload.zip</a></em></p>
+<hr>
+<p><strong>3.友情链接插件（links）</strong><br>建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。<br>在主页或需要插入友链的地方插入如下代码即可调用：</p>
+<pre><code>&lt;?php if (!empty($this-&gt;options-&gt;sidebarBlock) &amp;&amp; in_array(&apos;ShowFriend&apos;, $this-&gt;options-&gt;sidebarBlock)): ?&gt;
+&lt;section class=&quot;block friend-list&quot;&gt;
+&lt;p class=&quot;ui &lt;?php $this-&gt;options-&gt;labelColor() ?&gt; ribbon label&quot;&gt;友情链接&lt;/p&gt;
+&lt;div class=&quot;animated list friend&quot;&gt;
+&lt;?php Links_Plugin::output(&quot;&lt;a class=\&quot;item\&quot; href=\&quot;{url}\&quot; title=\&quot;{title}\&quot; target=\&quot;_blank\&quot;&gt;&lt;div class=\&quot;content\&quot;&gt;&lt;p class=\&quot;header\&quot;&gt;{name}&lt;/p&gt;&lt;p&gt;{description}&lt;/p&gt;&lt;/div&gt;&lt;/a&gt;\n&quot;, 10); ?&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;?php endif; ?&gt;
+</code></pre><a id="more"></a>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/2898975568.png" alt="links.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3857485027.zip" target="_blank" rel="external">Links-emao.zip</a></em></p>
+<hr>
+<p><strong>4.回复评论邮件及时通知（TimelyNotice）</strong><br>该插件可实现回复评论后即时邮件通知评论者，一次设置，自动发送，方便博主与用户的互动，增强互动性。<br>以我的qq邮箱设置如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/4133697690.png" alt="timelynotice.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/327872410.zip" target="_blank" rel="external">TimelyNotice.zip</a></em></p>
+<hr>
+<p><strong>5.Gravatar 头像缓存插件SAE专版（GravatarCache）</strong><br>gravatar有时会不间断的被强大的中国被K掉，或者访问巨慢。该插件将gravatar头像图片直接缓存到sae的storage，加快头像访问速度，防止打开缓慢。<br><img src="http://liu13-liu13.stor.sinaapp.com/1663951968.png" alt="gravator.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3727237189.zip" target="_blank" rel="external">GravatarCache_SAE.zip</a></em></p>
+<hr>
+<p><strong>6.自动为文章中出现的关键词添加链接（Keywords）</strong><br>懂点seo的人都懂，锚文本的多少直接影响网站权重，站内锚文本更利于搜索引擎的收录。文中若出现与本站标签相同的关键词则自动添加标签页链接。同时还可设置出现频率，还可以自定义关键词。<br><img src="http://liu13-liu13.stor.sinaapp.com/550582185.png" alt="keywords.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/4272815562.zip" target="_blank" rel="external">Keywords.zip</a></em></p>
+<hr>
+<p><strong>7.Google高亮代码（Google Code Prettify）</strong><br>typecho自带的代码显示是白底红字，没有关键字高亮的，该插件提供5中代码高亮风格，支持多种语言关键字。还可自定义css样式风格<br>效果如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/1195674157.png" alt="Google Code Prettify.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/353911742.zip" target="_blank" rel="external">googlecodeprettify.zip</a></em></p>
+<hr>
+<p><strong>8.无缝集成HighSlide双核版实现自动化弹窗与页面相册功能（HighSlide）</strong><br>该插件有基础版和全功能版，功能强大，实现相册弹窗，支持插图幻灯/html弹窗/页面相册等。<br>效果如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/764205108.png" alt="highslidd.PNG"><br><img src="http://liu13-liu13.stor.sinaapp.com/2446581467.png" alt="highslide.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/645140820.zip" target="_blank" rel="external">HighSlide.zip</a></em></p>
+<hr>
+<p><strong>9.嵌入HTML5+Flash视频播放器JW Player6（JWPlayer）</strong><br>JWplayer是老牌开源页面播放器，与HighSlide一样有公司化的商业模式，功能也份大量足毫不含糊。该插件可指定播放器宽度，封面，风格，字幕，标题，多视频列表播放等功能。界面简洁小巧精致。<br><img src="http://liu13-liu13.stor.sinaapp.com/1595989252.png" alt="jwplayer.PNG"><br><img src="http://liu13-liu13.stor.sinaapp.com/195389554.png" alt="jwplay.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/1991512709.zip" target="_blank" rel="external">JWPlayer.zip</a></em></p>
+<hr>
+<p><strong>10.数据备份SAE版（DbManager）</strong><br>该插件可一键备份数据库，方便快捷，拥有备份，导入，优化等功能。可备份至本地或服务器。还可选择单独表，进行单独的备份。<br><img src="http://liu13-liu13.stor.sinaapp.com/51686841.png" alt="DB.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3435084616.zip" target="_blank" rel="external">DbManager_v2.0.0.zip</a></em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。&lt;br&gt;简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;1.评论过滤器（CommentFilter v1.0.2）&lt;/strong&gt;&lt;br&gt;该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/4114528848.png&quot; alt=&quot;CommentFilter.PNG&quot;&gt;&lt;br&gt;&lt;em&gt;下载：&lt;a href=&quot;http://liu13-liu13.stor.sinaapp.com/3814922710.rar&quot;&gt;CommentFilter v1.0.2.rar&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;2.SAEupload&lt;/strong&gt;&lt;br&gt;该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。&lt;br&gt;设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/2796197493.png&quot; alt=&quot;saeupload.PNG&quot;&gt;&lt;br&gt;&lt;em&gt;下载：&lt;a href=&quot;http://liu13-liu13.stor.sinaapp.com/634045075.zip&quot;&gt;SaeUpload.zip&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;3.友情链接插件（links）&lt;/strong&gt;&lt;br&gt;建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。&lt;br&gt;在主页或需要插入友链的地方插入如下代码即可调用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php if (!empty($this-&amp;gt;options-&amp;gt;sidebarBlock) &amp;amp;&amp;amp; in_array(&amp;apos;ShowFriend&amp;apos;, $this-&amp;gt;options-&amp;gt;sidebarBlock)): ?&amp;gt;
+&amp;lt;section class=&amp;quot;block friend-list&amp;quot;&amp;gt;
+&amp;lt;p class=&amp;quot;ui &amp;lt;?php $this-&amp;gt;options-&amp;gt;labelColor() ?&amp;gt; ribbon label&amp;quot;&amp;gt;友情链接&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;animated list friend&amp;quot;&amp;gt;
+&amp;lt;?php Links_Plugin::output(&amp;quot;&amp;lt;a class=\&amp;quot;item\&amp;quot; href=\&amp;quot;{url}\&amp;quot; title=\&amp;quot;{title}\&amp;quot; target=\&amp;quot;_blank\&amp;quot;&amp;gt;&amp;lt;div class=\&amp;quot;content\&amp;quot;&amp;gt;&amp;lt;p class=\&amp;quot;header\&amp;quot;&amp;gt;{name}&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;{description}&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;\n&amp;quot;, 10); ?&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/section&amp;gt;
+&amp;lt;?php endif; ?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Typecho" scheme="http://mjackie.github.io/tags/Typecho/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typecho在SAE上的伪静态化</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tx20002lgu0xrgedgs0/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tx20002lgu0xrgedgs0/</id>
+    <published>2014-08-24T12:00:00.000Z</published>
+    <updated>2016-11-25T14:06:24.678Z</updated>
+    
+    <content type="html"><![CDATA[<p>JAVA语言初学者注意的一些细节:</p>
+<hr>
+<p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
+<pre><code>class derived extends base｛...}    //java
+class derived:public base｛...}    //c
+</code></pre><p>◇类修饰符只有public与default（省略不写）.<br><img src="http://liu13-liu13.stor.sinaapp.com/3069698391.jpg" alt="public-default.jpg"></p>
+<a id="more"></a>
+<p>◇子类构造函数调用父类构造方法必须写在第一行.<br>◇多态要有继承，有重写，父类引用指向子类对象.<br>◇含有抽象方法的类必须被声明为抽象类，必须被继承，方法必须被重写，抽象类不能被实例化.<br>◇final变量值不能被改变（成员变量，局部变量（形参）），final方法不能被重写，final类不能被继承.<br><img src="http://liu13-liu13.stor.sinaapp.com/655658456.jpg" alt="exception.jpg"></p>
+<p>◇接口是抽象方法和常量值的定义的集合，是特殊的抽象类（没有变量和方法的实现） 关键字：implements <interface><br>◇接口中声明的属性默认为public static final（也只能是），只能定义抽象方法默认方法为public（也只能是）.</interface></p>
+<pre><code>String s1 = “helllo”;
+String s2 = “helllo”;
+s1 == s2    //true
+
+s1 = new String(“Hello”);
+s2 = new String(“Hello”);
+s1 == s2    //false
+s1.equals(s2)    //true
+</code></pre><p>◇stringbuffer可以对字符串进行改变，序列可变关键字append,insert<br>◇C里可以 char[] a = “abc”，java里必须char[] a = {‘a’,’b’,’c’}<br>◇基础数据类型包装类，分配到堆空间.<br>◇set没有顺序不可重复，list有顺序可重复（equals）,map一对一对装.<br><img src="http://liu13-liu13.stor.sinaapp.com/41192440.jpg" alt="collection.jpg"></p>
+<p>◇两个对象equals,则hashCode相同。重写equals，则需要重写hashCode<br>◇遍历的简便写法:</p>
+<pre><code>for(int i: arr) {
+    system.out.println(a[i]);
+}
+</code></pre><p>◇能使用泛型尽量使用泛型.<br>◇线程的2种启用方法:</p>
+<pre><code>runner1 r = new runner1();
+thread t = new thread(r)
+t.start();
+class runner1 implements runnable {}    //接口（尽量用接口，更灵活）
+
+runner1 r = new runner1
+r.start();
+class runner1 extends thread {}    //线程
+</code></pre><p>◇TCP可靠稳定，UDP不可靠，速度快.<br>◇能使用继承方法的，不直接继承Frame<br><img src="http://liu13-liu13.stor.sinaapp.com/1608593513.jpg" alt="awt.jpg"><br>◇Frame 默认布局管理器 boderlayout<br>◇Panel默认布局管理器 flowlayout<br><img src="http://liu13-liu13.stor.sinaapp.com/2125014363.jpg" alt="action.jpg"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JAVA语言初学者注意的一些细节:&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;◇wait醒了以后重新找锁，sleep锁还在.&lt;br&gt;◇static在codesegment中, 可用 类名.&lt;em&gt;*&lt;/em&gt; 访问，可计数用.&lt;br&gt;◇static方法不能访问非静态的成员与函数.&lt;br&gt;◇Java使用extends关键字继承，不允许多继承.C中为:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class derived extends base｛...}    //java
+class derived:public base｛...}    //c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;◇类修饰符只有public与default（省略不写）.&lt;br&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/3069698391.jpg&quot; alt=&quot;public-default.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Java" scheme="http://mjackie.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typecho在SAE上的伪静态化</title>
+    <link href="http://mjackie.github.io/Tech/civxx3ty1000qlgu0ykzumjqr/"/>
+    <id>http://mjackie.github.io/Tech/civxx3ty1000qlgu0ykzumjqr/</id>
+    <published>2014-08-10T12:46:00.000Z</published>
+    <updated>2016-11-25T14:05:50.547Z</updated>
+    
+    <content type="html"><![CDATA[<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
+<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：<a href="http://www.liu13.com/typecho-sae-rewrite.html" target="_blank" rel="external">www.liu13.com/typecho-sae-rewrite.html</a><br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
+<p>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
+<pre><code>- rewrite: if(!is_dir() &amp;&amp; !is_file()) goto &quot;index.php?%{QUERY_STRING}&quot;
+</code></pre><p>也可直接在代码管理中打开config.yaml文件添加到最后一行（一定要添加到最后一行）<br>进入Typecho后台&gt;&gt;设置&gt;&gt;永久链接，先修改一下文章自定义路径地址，启用地址重写功能，点击保存，出现红字提示，忽略仍然启用即可。</p>
+<p>出现红字的原因是typecho默认的方法是修改htaccess文件，而sae上用config.yaml代替了。<br>另外修改完成以后想要更换文章自定义路径地址是存在Bug的，需要先关闭地址重写功能，再更换文章自定义路径地址，再启用地址重写功能。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
+    
+      <category term="Typecho" scheme="http://mjackie.github.io/tags/Typecho/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SAE域名绑定问题</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txp000dlgu0cknrokhs/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txp000dlgu0cknrokhs/</id>
+    <published>2014-08-08T16:28:00.000Z</published>
+    <updated>2016-11-25T14:02:23.763Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。<br>新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。</p>
+<p>A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。<br>CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。</p>
+<p>可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。</p>
+<a id="more"></a>
+<p>SAE的域名绑定按照提示先进行一个A验证，在CNAME到所给地址即可。<br>需要说明的是要将带www的与不带www的分别绑定，即绑定<a href="http://www.liu13.com" target="_blank" rel="external">www.liu13.com</a>与<a href="http://www.liu13.com" target="_blank" rel="external">liu13.com</a>。<br>但万网等一些的域名注册商所带的DNS解析是不支持顶级域名（liu13.com无前缀）CNAME的，需要转到其他支持的DNS上，我选择的是DNSPod，推荐大家使用，比较稳定好用。</p>
+<p>SAE域名绑定完成以后，带www的与不带www的访问内容虽然一样，但网址是不同的，为了SEO更好，利于搜索引擎增加权重，最好301重定向其中一个，推荐将不带www的301到带的。SAE上不支持htaccess文件，换成的是SAE的APPConfig。方法如下：<br>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
+<pre><code>- rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
+- rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.sinaapp.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
+</code></pre><p>第一条将 liu13.com 的全部定向到带 www.liu13.com<br>第二条将SAE自带二级域名全部定向到 www.liu13.com</p>
+<p>以上内容将其中的网址根据需要换成您的网址即可。另外未备案绑定域名以后，通过独立域名请求将访问海外数据中心，产生的流量将是原二级域名(liu13.sinaapp.com) 流量的二倍，通过 liu13.sinaapp.com 访问的流量不变。建议您绑定独立域名后，静态资源仍通过liu13.sinaapp.com访问。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。&lt;br&gt;新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。&lt;/p&gt;
+&lt;p&gt;A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。&lt;br&gt;CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。&lt;/p&gt;
+&lt;p&gt;可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速切换IP地址</title>
+    <link href="http://mjackie.github.io/Tech/civxx3tyq0019lgu04ask23yt/"/>
+    <id>http://mjackie.github.io/Tech/civxx3tyq0019lgu04ask23yt/</id>
+    <published>2014-07-21T15:18:00.000Z</published>
+    <updated>2016-11-25T14:02:03.566Z</updated>
+    
+    <content type="html"><![CDATA[<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
+<hr>
+<p>自动获取IP：</p>
+<pre><code>@echo off
+cls
+Echo **********************************************************
+Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
+Echo **********************************************************
+netsh interface ip set address name=&quot;以太网&quot; source=dhcp
+netsh interface ip delete dns &quot;以太网&quot; all
+::将“以太网”换为网络连接名称
+ipconfig /flushdns
+ipconfig /all
+Echo **********************************************************
+Echo          OK！！已修改成功！请按任意键退出…………
+Echo          谢谢您的使用!Design By Liu
+Echo **********************************************************
+Pause
+</code></pre><a id="more"></a>
+<hr>
+<p>设置固定IP：</p>
+<pre><code>@echo off
+cls
+Echo **********************************************************
+Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
+Echo **********************************************************
+cmd /c netsh interface ip set address name=&quot;以太网&quot; source=static addr=125.219.42.14 mask=255.0.0.0 gateway=125.219.42.1 gwmetric=1
+::设置你的IP地址，子网掩码，默认网关
+cmd /c netsh interface ip set dns name=&quot;以太网&quot; source=static addr=202.196.96.131
+::设置dns
+cmd /c netsh interface ip add dns name=&quot;以太网&quot; addr=8.8.8.8 index=2
+::设置备用dns
+ipconfig /all
+Echo **********************************************************
+Echo          OK！！已修改成功！请按任意键退出…………
+Echo          谢谢您的使用！Design By Liu
+Echo **********************************************************
+Pause
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。&lt;br&gt;注意：以管理员身份运行，否则会报错。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;自动获取IP：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@echo off
+cls
+Echo **********************************************************
+Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
+Echo **********************************************************
+netsh interface ip set address name=&amp;quot;以太网&amp;quot; source=dhcp
+netsh interface ip delete dns &amp;quot;以太网&amp;quot; all
+::将“以太网”换为网络连接名称
+ipconfig /flushdns
+ipconfig /all
+Echo **********************************************************
+Echo          OK！！已修改成功！请按任意键退出…………
+Echo          谢谢您的使用!Design By Liu
+Echo **********************************************************
+Pause
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="cmd" scheme="http://mjackie.github.io/tags/cmd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World!</title>
+    <link href="http://mjackie.github.io/Tech/civxx3txa0005lgu01tb1gvvm/"/>
+    <id>http://mjackie.github.io/Tech/civxx3txa0005lgu01tb1gvvm/</id>
+    <published>2014-07-21T07:30:00.000Z</published>
+    <updated>2016-11-25T13:57:29.613Z</updated>
+    
+    <content type="html"><![CDATA[<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名<a href="http://www.liu13.com" target="_blank" rel="external">liu13.sinaapp.com</a>。</p>
+<p>感谢开源代码及作者。</p>
+<p>做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，不求索取，过程便是最好的奖励。</p>
+<p>非同凡响，追求卓越。</p>
+<p>博客于2014年7月21日正式建立，留此纪念。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名&lt;a href=&quot;http://www.liu13.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;liu13.sinaap
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
     
   </entry>
   
