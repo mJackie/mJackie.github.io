@@ -92,7 +92,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43d20007ygu0c16qego6/">PHP Session实现用户登陆功能</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4i9001bcgu01xa5tpse/">PHP Session实现用户登陆功能</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
@@ -103,31 +103,6 @@
 	    <p>      
             
 	        	<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre>
 	        
 	      	
 	    </p>
@@ -157,7 +132,7 @@ if (!empty($userInfo)) {
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43h3001wygu0hoy9vhs5/">成绩查询系统</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4if001hcgu0iv8axemw/">成绩查询系统</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
@@ -167,205 +142,8 @@ if (!empty($userInfo)) {
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a><br><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
-<hr>
-<p>下面是源代码，一共两个文件：<br>index.php</p>
-<pre><code>&lt;html&gt;
-&lt;?
-#########################程序简介##########################
-#程序名称：成绩查询系统
-#版本：       v1.0
-#作者：    刘十三
-#邮箱：    liu13@liu13.com   
-#主页：    http://www.liu13.com
-?&gt;
-&lt;head&gt;
-    &lt;title&gt;成绩查询&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        body {background:#eee;}
-        ul {padding:0; margin:0;}
-        li {list-style:none;}
-        #container {margin: 0 auto; width: 80%;}
-        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
-        a {color:#146fdf; text-decoration: none}
-        a:hover {color: black; text-decoration: underline}
-        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
-        #g_u,#g_p {position:relative}
-        #g_u {border-bottom:1px solid #eaeaea}
-        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
-        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
-        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
-        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;
-        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
-            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
-                &lt;ul  id=&quot;g_list&quot;&gt;
-                    &lt;li  id=&quot;g_u&quot;&gt;
-                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
-
-                    &lt;/li&gt;
-                    &lt;li  id=&quot;g_p&quot;&gt;
-                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
-
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
-            &lt;script language=javascript&gt;  
-                function chkfs(){ 
-                var frm = document.forms[&apos;cf&apos;];  
-                frm.action=&quot;search.php&quot;;
-                return true;  
-                }
-            &lt;/script&gt;
-        &lt;/form&gt;
-
-        &lt;div id=&quot;notice&quot;&gt;
-            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
-            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
-        &lt;p align=center&gt;
-            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a></p>
 	        
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-PHP网页版简单计算器" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         9/15
-	        </div>
-	        <div class="post_t_u">
-	         7:06
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43d2000bygu03cyz1inw/">PHP网页版简单计算器</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>php写的一个网页版简单计算器，实现了基本的加、减、乘、除、求余运算。</p>
-<pre><code>&lt;?php
-    //error_reporting(E_ALL &amp; ~[E_NOTICE]);
-    if(isset($_POST[&apos;sub&apos;])) {
-        //echo &quot;用户提交了&quot;;
-
-        $bz = true;
-        $errormess = &quot;有以下问题：&lt;br&gt;&quot;;
-
-        if($_POST[num1] == &quot;&quot;) {
-            $bz = false;
-            $errormess .= &quot;第一个数不能为空&lt;br&gt;&quot;;
-        } else {
-            if(!is_numeric($_POST[num1])) {
-            $bz = false;
-            $errormess .= &quot;第一个数不是数字&lt;br&gt;&quot;;
-            }
-        }
-
-
-        if($_POST[num2] == &quot;&quot;) {
-            $bz = false;
-            $errormess .= &quot;第二个数不能为空&lt;br&gt;&quot;;
-        } else {
-            if(!is_numeric($_POST[num2])) {
-            $bz = false;
-            $errormess .= &quot;第二个数不是数字&lt;br&gt;&quot;;
-            }
-        }
-
-
-        if($bz) {
-
-            $sum = &quot;&quot;;
-
-            //判断运算符
-            switch($_POST[ysf]) {
-            case &apos;+&apos; : $sum = $_POST[num1] + $_POST[num2];break;
-            case &apos;-&apos; : $sum = $_POST[num1] - $_POST[num2];break;
-            case &apos;*&apos; : $sum = $_POST[num1] * $_POST[num2];break;
-            case &apos;/&apos; : $sum = $_POST[num1] / $_POST[num2];break;
-            case &apos;%&apos; : $sum = $_POST[num1] % $_POST[num2];break;    
-            }
-        }
-    }
-?&gt;
-
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;简单计算器&lt;/title&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;table border=&quot;0&quot; width=&quot;400&quot; align=&quot;center&quot;&gt;
-        &lt;form action=&quot;caculator.php&quot; method=&quot;post&quot;&gt;
-            &lt;caption&gt;&lt;h1&gt;简单计算器&lt;/h1&gt;&lt;/caption&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num1&quot; value=&quot;&lt;?php echo $_POST[num1] ?&gt;&quot;&gt; &lt;br&gt;
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;select name=&quot;ysf&quot;&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;+&quot;) echo &quot;selected&quot; ?&gt; value=&quot;+&quot;&gt; + &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;-&quot;) echo &quot;selected&quot; ?&gt; value=&quot;-&quot;&gt; - &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;*&quot;) echo &quot;selected&quot; ?&gt; value=&quot;*&quot;&gt; * &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;/&quot;) echo &quot;selected&quot; ?&gt; value=&quot;/&quot;&gt; / &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;%&quot;) echo &quot;selected&quot; ?&gt; value=&quot;%&quot;&gt; % &lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num2&quot; value=&quot;&lt;?php echo $_POST[num2] ?&gt;&quot;&gt; &lt;br&gt;    
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;input type=&quot;submit&quot; name=&quot;sub&quot; value=&quot;计算&quot;&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-
-            &lt;tr&gt;
-                &lt;td colspan=&quot;4&quot;&gt;
-                    &lt;?php
-                        if($bz) {
-                            echo &quot;计算结果：{$_POST[num1]} {$_POST[ysf]} {$_POST[num2]} =  {$sum}&quot;;
-                        } else {
-                        echo $errormess;
-                        }
-
-                    ?&gt;
-            &lt;/tr&gt;
-        &lt;/form&gt;
-        &lt;/table&gt;
-
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 	      	
 	    </p>
 	  </div> 

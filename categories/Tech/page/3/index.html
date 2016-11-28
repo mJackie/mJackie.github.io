@@ -81,6 +81,101 @@
         </div>
         <div class="archives">
     
+    	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/29
+	        </div>
+	        <div class="post_t_u">
+	         6:37
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4fo000ecgu06mczu3ua/">The First ASM</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
+<hr>
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/13
+	        </div>
+	        <div class="post_t_u">
+	         6:50
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4if001hcgu0iv8axemw/">成绩查询系统</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a></p>
+	        
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-SAE开启gzip加速" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +187,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43d2000dygu0mstedte4/">SAE上博客开启gzip加速</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4fm000dcgu0b7prwuok/">SAE上博客开启gzip加速</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/SAE/">SAE</a></li></ul>
@@ -104,133 +199,7 @@
             
 	        	<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
 <p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
-<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="http://liu13-liu13.stor.sinaapp.com/3515319199.png" alt="gzip1.PNG"></p>
 	        
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-PHP网页版简单计算器" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         9/15
-	        </div>
-	        <div class="post_t_u">
-	         7:06
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43d2000bygu03cyz1inw/">PHP网页版简单计算器</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>php写的一个网页版简单计算器，实现了基本的加、减、乘、除、求余运算。</p>
-<pre><code>&lt;?php
-    //error_reporting(E_ALL &amp; ~[E_NOTICE]);
-    if(isset($_POST[&apos;sub&apos;])) {
-        //echo &quot;用户提交了&quot;;
-
-        $bz = true;
-        $errormess = &quot;有以下问题：&lt;br&gt;&quot;;
-
-        if($_POST[num1] == &quot;&quot;) {
-            $bz = false;
-            $errormess .= &quot;第一个数不能为空&lt;br&gt;&quot;;
-        } else {
-            if(!is_numeric($_POST[num1])) {
-            $bz = false;
-            $errormess .= &quot;第一个数不是数字&lt;br&gt;&quot;;
-            }
-        }
-
-
-        if($_POST[num2] == &quot;&quot;) {
-            $bz = false;
-            $errormess .= &quot;第二个数不能为空&lt;br&gt;&quot;;
-        } else {
-            if(!is_numeric($_POST[num2])) {
-            $bz = false;
-            $errormess .= &quot;第二个数不是数字&lt;br&gt;&quot;;
-            }
-        }
-
-
-        if($bz) {
-
-            $sum = &quot;&quot;;
-
-            //判断运算符
-            switch($_POST[ysf]) {
-            case &apos;+&apos; : $sum = $_POST[num1] + $_POST[num2];break;
-            case &apos;-&apos; : $sum = $_POST[num1] - $_POST[num2];break;
-            case &apos;*&apos; : $sum = $_POST[num1] * $_POST[num2];break;
-            case &apos;/&apos; : $sum = $_POST[num1] / $_POST[num2];break;
-            case &apos;%&apos; : $sum = $_POST[num1] % $_POST[num2];break;    
-            }
-        }
-    }
-?&gt;
-
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;简单计算器&lt;/title&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;table border=&quot;0&quot; width=&quot;400&quot; align=&quot;center&quot;&gt;
-        &lt;form action=&quot;caculator.php&quot; method=&quot;post&quot;&gt;
-            &lt;caption&gt;&lt;h1&gt;简单计算器&lt;/h1&gt;&lt;/caption&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num1&quot; value=&quot;&lt;?php echo $_POST[num1] ?&gt;&quot;&gt; &lt;br&gt;
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;select name=&quot;ysf&quot;&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;+&quot;) echo &quot;selected&quot; ?&gt; value=&quot;+&quot;&gt; + &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;-&quot;) echo &quot;selected&quot; ?&gt; value=&quot;-&quot;&gt; - &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;*&quot;) echo &quot;selected&quot; ?&gt; value=&quot;*&quot;&gt; * &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;/&quot;) echo &quot;selected&quot; ?&gt; value=&quot;/&quot;&gt; / &lt;/option&gt;
-                        &lt;option &lt;?php if($_POST[ysf]==&quot;%&quot;) echo &quot;selected&quot; ?&gt; value=&quot;%&quot;&gt; % &lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;input type=&quot;text&quot; size=&quot;5&quot; name=&quot;num2&quot; value=&quot;&lt;?php echo $_POST[num2] ?&gt;&quot;&gt; &lt;br&gt;    
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;input type=&quot;submit&quot; name=&quot;sub&quot; value=&quot;计算&quot;&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-
-            &lt;tr&gt;
-                &lt;td colspan=&quot;4&quot;&gt;
-                    &lt;?php
-                        if($bz) {
-                            echo &quot;计算结果：{$_POST[num1]} {$_POST[ysf]} {$_POST[num2]} =  {$sum}&quot;;
-                        } else {
-                        echo $errormess;
-                        }
-
-                    ?&gt;
-            &lt;/tr&gt;
-        &lt;/form&gt;
-        &lt;/table&gt;
-
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 	      	
 	    </p>
 	  </div> 
@@ -249,7 +218,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43eh000tygu0hxnx5e0z/">Typecho上的好用插件</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4g0000jcgu0s7yhm0zg/">Typecho上的好用插件</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Typecho/">Typecho</a></li></ul>
@@ -260,21 +229,6 @@
 	    <p>      
             
 	        	<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
-<hr>
-<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。<br><img src="http://liu13-liu13.stor.sinaapp.com/4114528848.png" alt="CommentFilter.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3814922710.rar">CommentFilter v1.0.2.rar</a></em></p>
-<hr>
-<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。<br><img src="http://liu13-liu13.stor.sinaapp.com/2796197493.png" alt="saeupload.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/634045075.zip">SaeUpload.zip</a></em></p>
-<hr>
-<p><strong>3.友情链接插件（links）</strong><br>建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。<br>在主页或需要插入友链的地方插入如下代码即可调用：</p>
-<pre><code>&lt;?php if (!empty($this-&gt;options-&gt;sidebarBlock) &amp;&amp; in_array(&apos;ShowFriend&apos;, $this-&gt;options-&gt;sidebarBlock)): ?&gt;
-&lt;section class=&quot;block friend-list&quot;&gt;
-&lt;p class=&quot;ui &lt;?php $this-&gt;options-&gt;labelColor() ?&gt; ribbon label&quot;&gt;友情链接&lt;/p&gt;
-&lt;div class=&quot;animated list friend&quot;&gt;
-&lt;?php Links_Plugin::output(&quot;&lt;a class=\&quot;item\&quot; href=\&quot;{url}\&quot; title=\&quot;{title}\&quot; target=\&quot;_blank\&quot;&gt;&lt;div class=\&quot;content\&quot;&gt;&lt;p class=\&quot;header\&quot;&gt;{name}&lt;/p&gt;&lt;p&gt;{description}&lt;/p&gt;&lt;/div&gt;&lt;/a&gt;\n&quot;, 10); ?&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;?php endif; ?&gt;
-</code></pre>
 	        
 	      	
 	    </p>
@@ -294,7 +248,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43d20006ygu0qv6e2std/">Typecho在SAE上的伪静态化</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4hc000vcgu0xkg9eq0z/">Typecho在SAE上的伪静态化</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -309,43 +263,8 @@
 <p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
 <pre><code>class derived extends base｛...}    //java
 class derived:public base｛...}    //c
-</code></pre><p>◇类修饰符只有public与default（省略不写）.<br><img src="http://liu13-liu13.stor.sinaapp.com/3069698391.jpg" alt="public-default.jpg"></p>
+</code></pre>
 	        
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-Typecho在SAE上的伪静态化" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         8/10
-	        </div>
-	        <div class="post_t_u">
-	         8:46
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43dm000kygu0x7p8hpsx/">Typecho在SAE上的伪静态化</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/SAE/">SAE</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Typecho/">Typecho</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
-<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：<a href="http://www.liu13.com/typecho-sae-rewrite.html" target="_blank" rel="external">www.liu13.com/typecho-sae-rewrite.html</a><br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
-<p>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
-<pre><code>- rewrite: if(!is_dir() &amp;&amp; !is_file()) goto &quot;index.php?%{QUERY_STRING}&quot;
-</code></pre><p>也可直接在代码管理中打开config.yaml文件添加到最后一行（一定要添加到最后一行）<br>进入Typecho后台&gt;&gt;设置&gt;&gt;永久链接，先修改一下文章自定义路径地址，启用地址重写功能，点击保存，出现红字提示，忽略仍然启用即可。</p>
-<p>出现红字的原因是typecho默认的方法是修改htaccess文件，而sae上用config.yaml代替了。<br>另外修改完成以后想要更换文章自定义路径地址是存在Bug的，需要先关闭地址重写功能，再更换文章自定义路径地址，再启用地址重写功能。</p>
-
 	      	
 	    </p>
 	  </div> 

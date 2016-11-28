@@ -81,6 +81,40 @@
         </div>
         <div class="archives">
     
+    	<article id="post-js调用.net视图页model的问题" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         11/28
+	        </div>
+	        <div class="post_t_u">
+	         6:03
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4ib001ecgu0egutbcoq/">js调用.net视图页model的问题</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/net/">.net</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>做项目用到折线图，简单看了下 Chart.js 的文档，Chart.js 采用 js 对图表进行赋值。后台 .net Controller 返回带有 model 参数的视图页面，网上查了下js获取 .net 视图页 model<br>的方法如下：</p>
+<pre><code>alert(&apos;@Model&apos;);    #输出对象类型
+alert(&apos;@Model.strarr&apos;);    #输出字符串 System.String[]
+alert(&apos;@Model.strarr[0]&apos;);    #输出strarr[0]的值
+</code></pre><p>无法遍历Model中数组的值，无法采用变量 i 来拼接 ‘@Model.strarr[i]’ </p>
+	        
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-关于党课学习系统" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +126,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43er000wygu0pcuwvm48/">关于党课学习系统</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1y0yrj0005wcu0506e3o1m/">关于党课学习系统</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -103,24 +137,7 @@
 	    <p>      
             
 	        	<p>学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统<br>学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时<br>将网页保存到本地后，发现了名为LearnControl.js的javascrip文件，找到了如下的一段代码</p>
-<pre><code>$scope.saveLearnTime = function (learnTime, auto) {
-    if ($scope.studentId != &quot;&quot;) {
-        $http.get(servicePath + &apos;/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=&apos; + learnTime).success(function (data) {
-            console.log(&quot;保存时间：&quot; + data);
-            if (!auto) {
-                $scope.tishiMessage = &apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;;
-                //$(&apos;#tishi&apos;).modal(&apos;toggle&apos;)
-                alert($scope.tishiMessage);
-                //alert(&apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;);
-            }
-        });
-    }
-};
-</code></pre><p>看到了get请求！<br>尝试着拼凑链接，试了几次，成功了！</p>
-<pre><code>http://202.196.96.221/partyStudy/Main/Services/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=8000
-</code></pre><p>8000为秒数，直接提交请求即可，即为学习了8000秒，然后不要点击保存学习时间，直接返回首页，再进去时学习时间已经够了<br>之后是章节测试<br>用同样的方法，查看了下页面的js，发现测试分数是在服务器计算的，这就没有办法了</p>
-<p>虽然学习系统是有漏洞的，但还是要认真学习下内容，不能偷懒啊</p>
-
+	        
 	      	
 	    </p>
 	  </div> 

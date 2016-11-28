@@ -81,6 +81,71 @@
         </div>
         <div class="archives">
     
+    	<article id="post-姿态测算原理" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         4/4
+	        </div>
+	        <div class="post_t_u">
+	         10:03
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/ciw1y0ypu0000wcu0nq80192v/">姿态测算原理</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：<br>（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；<br>（2）利用加速度计产生的重力加速度信号和磁力计产生的地磁信号，可分别得到载体航向家、横滚角及航向角，从而得到物体姿态；可通过转换以四元数表示；<br>（3）多个系统捷联组合进行姿态测算，如通过卡尔曼融合算法，将陀螺仪、加速度计和磁力计产生的信号进行合理融合，角速度信号对动态情况下的物体姿态测算优势明显，而加速度与磁力计可对角速度信号的测算进行不定时修正，从而实现传感器之间的互补，使姿态测算更加精确、更适用于各种环境。<br>由于陀螺仪存在零偏及长时间使用后信号漂移等现象，如利用第一种方法进行姿态测算，姿态误差会随时间的推移而不断增大，从而导致无法长期稳定的精确信号输出；加速度计及磁力计皆利用地球本身存在的稳定的外部因素产生输出信号，更容易获得物体的绝对姿态，然而在运动过程中，物体同样会产生加速度，对姿态测算造成干扰，而磁力计也易受磁性物质干扰，因此第二种方法适合物体本身运动幅度较小的情况，不利于在物体快速运动时的姿态测算，即动态性能不好。第三种方法对前两种方法进行融合，能够分别发挥两种方法的优势，虽然采用卡尔曼滤波等信息融合技术，增加了运算量，但能在各种运动情况下获取物体精确姿态，是目前捷联导航系统中最常用的姿态测算方法。</p>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-keybd_event函数" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         3/30
+	        </div>
+	        <div class="post_t_u">
+	         1:53
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4g5000kcgu0f2q8lgnl/">keybd_event函数</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/C/">C++</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
+<pre><code>//模拟按下&apos;ALT+F4&apos;键
+keybd_event(18,0,0,0);
+keybd_event(115,0,0,0);
+keybd_event(115,0,KEYEVENTF_KEYUP,0);
+keybd_event(18,0,KEYEVENTF_KEYUP,0);
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-姿态角" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +157,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43fe0012ygu0fwid1acc/">姿态角</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4id001fcgu0apklz9ka/">姿态角</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      
@@ -137,7 +202,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43cg0005ygu0weut7umj/">JavaWeb微博</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4hh000ycgu07qf5ssp2/">JavaWeb微博</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Javaweb/">Javaweb</a></li></ul>
@@ -148,8 +213,6 @@
 	    <p>      
             
 	        	<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
-<p>下面是应用截图：<br><img src="http://liu13-liu13.stor.sinaapp.com/2637202576.jpg" alt="1.jpg"></p>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/1659680042.jpg" alt="2.jpg"></p>
 	        
 	      	
 	    </p>
@@ -169,7 +232,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43cg0000ygu0jkd1en8k/">Git学习笔记</a></h2>
+		    <h2 class="post_h"><a href="/Tech/ciw1xy4h4000pcgu0z6hskrmx/">Git学习笔记</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -181,247 +244,6 @@
             
 	        	<p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。分布式的git相比于集中式的svn最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。<br>git构架上分为3个区，工作区，暂存区与版本库。用户在工作区的更改通过git add命令添加至暂存区，暂存区的数据通过git commit提交到版本库。用户通过git checkout从版本库中检出数据。<br>git的远程协作需要先fork开源项目，然后本地git clone该项目，通过git pull，git push编辑项目，通过git remote获取原作者的更新，pull request为该项目做贡献。</p>
 <p>git 双击table自动完成</p>
-<pre><code>git config --help
-git help config
-
-git config user.name 查看用户名
-git config --global user.name liu13
-git config --global --add user.name liu13
-git config --get user.name
-git init name
-git init --bare name
-git clone name/ name
-
-git add
-git add .
-git commit -m &quot;&quot;
-git status 
-git rm --cached name
-git mv
-git reset HEAD name
-gitignore
-
-git config --global alias.lol &quot;git log --oneline --decorate --graph --all&quot;
-git merge origin/master
-
-git branch name 创建分支
-git checkout baranchname 切换分支
-git tag &quot;tagname&quot; hash
-git tag -a &quot;INITIAL_COMMIT&quot; -m&quot;&quot; hash
-git show tagname
-git checkout -b branchname 创建并切换分支
-git stash save -a stash_name 保存暂存区
-git stash list
-git stash pop --index stash_name 暂存区也返回
-git stash apply --index stash_name 暂存区也返回且保存stash
-git stash drop stash_name 
-git stash clear 一次性清理
-
-git merge branch_name
-git merge --abort
-
-git show branch_name^
-
-git diff 工作区与暂存区区别
-git diff --cached 暂存区与历史提交差异
-git diff --color-words
-
-git checkout （HEAD） --文件名  撤销修改
-git reset 文件名  还原暂存区
-
-git clean -n 查看git clean 将要移除的文件
-git clean -f 清理无用文件，不清理ignore文件中指定的文件
-
-git clone 获取远程仓库
-git fetch（ origin 分支名） 获取更新（分支，数据）
-git pull = git fetch + git merge
-git push --tag 推送tag
-git push origin :分支名  
-git push --delete origin 分支名 删除远程分支
-
-pull request 没被关闭 不需重复pull request
-git remote add 仓库名 http路径
-git remote -v
-git fetch 仓库名
-git remote rm
-git remote rename
-</code></pre>
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         10/29
-	        </div>
-	        <div class="post_t_u">
-	         6:37
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43do000qygu0s8rpsy7e/">The First ASM</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
-<hr>
-<pre><code>;试编写程序，完成下面公式的计算。
-;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
-;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
-
-DATA SEGMENT
-X DD 481
-Y DD 240
-A DW ?
-B DW ?
-Z DW 24
-DATA ENDS
-
-CODE SEGMENT
-    ASSUME DS: DATA, CS: CODE
-START:
-    MOV AX, DATA
-    MOV DS, AX
-    MOV AX, word ptr ds:[0]
-    MOV DX, word ptr ds:[2]
-    MOV BX, word ptr ds:[4]
-    MOV CX, word ptr ds:[6]
-    SUB AX, BX
-    SBB DX, CX
-    ADD AX, 24
-    ADC DX, 0
-    MOV BX, Z
-    IDIV BX
-    MOV A,AX
-    MOV B,DX
-
-    MOV AX, 4C00H
-    INT 21H
-CODE ENDS
-END START
-</code></pre>
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         10/13
-	        </div>
-	        <div class="post_t_u">
-	         6:50
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/ciw0w43h3001wygu0hoy9vhs5/">成绩查询系统</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a><br><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
-<hr>
-<p>下面是源代码，一共两个文件：<br>index.php</p>
-<pre><code>&lt;html&gt;
-&lt;?
-#########################程序简介##########################
-#程序名称：成绩查询系统
-#版本：       v1.0
-#作者：    刘十三
-#邮箱：    liu13@liu13.com   
-#主页：    http://www.liu13.com
-?&gt;
-&lt;head&gt;
-    &lt;title&gt;成绩查询&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        body {background:#eee;}
-        ul {padding:0; margin:0;}
-        li {list-style:none;}
-        #container {margin: 0 auto; width: 80%;}
-        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
-        a {color:#146fdf; text-decoration: none}
-        a:hover {color: black; text-decoration: underline}
-        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
-        #g_u,#g_p {position:relative}
-        #g_u {border-bottom:1px solid #eaeaea}
-        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
-        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
-        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
-        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;
-        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
-            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
-                &lt;ul  id=&quot;g_list&quot;&gt;
-                    &lt;li  id=&quot;g_u&quot;&gt;
-                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
-
-                    &lt;/li&gt;
-                    &lt;li  id=&quot;g_p&quot;&gt;
-                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
-
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
-            &lt;script language=javascript&gt;  
-                function chkfs(){ 
-                var frm = document.forms[&apos;cf&apos;];  
-                frm.action=&quot;search.php&quot;;
-                return true;  
-                }
-            &lt;/script&gt;
-        &lt;/form&gt;
-
-        &lt;div id=&quot;notice&quot;&gt;
-            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
-            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
-        &lt;p align=center&gt;
-            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 	        
 	      	
 	    </p>
