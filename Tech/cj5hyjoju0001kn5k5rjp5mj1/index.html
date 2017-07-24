@@ -116,7 +116,7 @@
 </li>
 </ul>
 <h4 id="图片保存路径"><a href="#图片保存路径" class="headerlink" title="图片保存路径"></a>图片保存路径</h4><p>对于 Markdown 来说，添加图片一直存在一些弊端，一种方法是建立图片文件夹保存在文档目录，采用相对路径进行引用，但这样无法满足发布博文的需求。另一种方法是将图片上传到网上，用url进行引用。在图床的选择上可以用微博相册/GitHub仓库等等，最终我选择了七牛云存储。七牛云为普通用户提供了免费的10GB空间，对于仅仅作为笔记插图的我来收也足够使用，七牛云也较为稳定。</p>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>GitHub Pages 不支持多域名绑定，且不支持泛解析。仅支持以下4种绑定方式：<br><img src="../post_image/GithubPagesDomain.JPG" alt="image"><br>若将域名泛解析到 GitHub Pages 上，可能导致其他人使用你的某个子域名作为其绑定域名。<br>repository 中的 CNAME 文件内容指定了绑定的域名。<br>尝试在 repository 中的 CNAME 文件中加入两个不同域名，结果只有第一行起作用，因此不支持多域名绑定。</p>
+<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>GitHub Pages 不支持多域名绑定，且不支持泛解析。仅支持以下4种绑定方式：<br><img src="/post_image/GithubPagesDomain.JPG" alt="image"><br>若将域名泛解析到 GitHub Pages 上，可能导致其他人使用你的某个子域名作为其绑定域名。<br>repository 中的 CNAME 文件内容指定了绑定的域名。<br>尝试在 repository 中的 CNAME 文件中加入两个不同域名，结果只有第一行起作用，因此不支持多域名绑定。</p>
 <p>域名 <code>JackieLiu.win</code> 是在万网买的，29块买了10年，真的好便宜。在万网解析不了，DS转到了DNSPod，做了两条 CNAME 分别将 <code>@</code> 和 <code>www</code> 指向了 <code>mjackie.github.io</code></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一个博客的好坏不是页面做的多好看，也不是用的技术多么的先进。博客的价值在于博客的<strong>内容</strong>。希望今后自己可以提高更博频率，一方面督促自己不断学习，另一方面可以提升自己的写作、总结能力。</p>
 
@@ -211,18 +211,18 @@
 		i = Math.round(i);      //取整
 		var path = "";
 		switch(i){
-		  //case 0: path = "/img/background0.jpg";break;    //图片位置
-		  //case 1: path = "/img/background1.jpg";break;
-		  //case 2: path = "/img/background2.jpg";break;
-		  //case 3: path = "/img/background3.jpg";break;
-		  //case 4: path = "/img/background4.jpg";break;
-		  //case 5: path = "/img/background5.jpg";break;
-		  //case 6: path = "/img/background6.jpg";break;
-		  //case 7: path = "/img/background7.jpg";break;
-		  //case 8: path = "/img/background8.jpg";break;
-		  //case 9: path = "/img/background9.jpg";break;
-		  //case 10: path = "/img/background10.jpg";break;
-      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
       case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
       case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
       case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
@@ -232,7 +232,7 @@
       case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
       case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
       case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
-      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
     }
     document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
     }
