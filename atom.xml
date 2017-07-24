@@ -17,8 +17,8 @@
   
   <entry>
     <title>Signal框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfm000czw5kibt75lw4/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfm000czw5kibt75lw4/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjol0000ikn5kc21binn3/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjol0000ikn5kc21binn3/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2016-12-06T12:19:33.722Z</updated>
     
@@ -110,8 +110,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfr000lzw5kgaacbw29/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfr000lzw5kgaacbw29/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjole000zkn5k3cxhzttl/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjole000zkn5k3cxhzttl/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2016-11-28T10:31:51.701Z</updated>
     
@@ -165,10 +165,10 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixdj0001zw5k73etnxa2/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixdj0001zw5k73etnxa2/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoju0001kn5k5rjp5mj1/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoju0001kn5k5rjp5mj1/</id>
     <published>2016-11-26T14:03:00.000Z</published>
-    <updated>2016-11-28T10:27:28.598Z</updated>
+    <updated>2017-07-24T09:36:11.428Z</updated>
     
     <content type="html"><![CDATA[<p>也记不清SAE从何时开始不送云豆，自己所剩的1万云豆就逐渐的消耗，中间还有一次被莫名攻击，一天掉了几千豆。加上自己也不知道该写点什么来发布，博客一直处于停摆状态。<br>9月底保研结束，时间也较为充裕，又萌生了持续更新博文的想法。在博客重新搭建的过程中也思考了如下问题：</p>
 <h4 id="CMS的选择"><a href="#CMS的选择" class="headerlink" title="CMS的选择"></a>CMS的选择</h4><ul>
@@ -194,7 +194,7 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
 </li>
 </ul>
 <h4 id="图片保存路径"><a href="#图片保存路径" class="headerlink" title="图片保存路径"></a>图片保存路径</h4><p>对于 Markdown 来说，添加图片一直存在一些弊端，一种方法是建立图片文件夹保存在文档目录，采用相对路径进行引用，但这样无法满足发布博文的需求。另一种方法是将图片上传到网上，用url进行引用。在图床的选择上可以用微博相册/GitHub仓库等等，最终我选择了七牛云存储。七牛云为普通用户提供了免费的10GB空间，对于仅仅作为笔记插图的我来收也足够使用，七牛云也较为稳定。</p>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>GitHub Pages 不支持多域名绑定，且不支持泛解析。仅支持以下4种绑定方式：<br><img src="http://ogzyt1sa2.bkt.clouddn.com/GithubPagesDomain.JPG" alt="image"><br>若将域名泛解析到 GitHub Pages 上，可能导致其他人使用你的某个子域名作为其绑定域名。<br>repository 中的 CNAME 文件内容指定了绑定的域名。<br>尝试在 repository 中的 CNAME 文件中加入两个不同域名，结果只有第一行起作用，因此不支持多域名绑定。</p>
+<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>GitHub Pages 不支持多域名绑定，且不支持泛解析。仅支持以下4种绑定方式：<br><img src="../post_image/GithubPagesDomain.JPG" alt="image"><br>若将域名泛解析到 GitHub Pages 上，可能导致其他人使用你的某个子域名作为其绑定域名。<br>repository 中的 CNAME 文件内容指定了绑定的域名。<br>尝试在 repository 中的 CNAME 文件中加入两个不同域名，结果只有第一行起作用，因此不支持多域名绑定。</p>
 <p>域名 <code>JackieLiu.win</code> 是在万网买的，29块买了10年，真的好便宜。在万网解析不了，DS转到了DNSPod，做了两条 CNAME 分别将 <code>@</code> 和 <code>www</code> 指向了 <code>mjackie.github.io</code></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一个博客的好坏不是页面做的多好看，也不是用的技术多么的先进。博客的价值在于博客的<strong>内容</strong>。希望今后自己可以提高更博频率，一方面督促自己不断学习，另一方面可以提升自己的写作、总结能力。</p>
 ]]></content>
@@ -220,8 +220,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixh30022zw5k40o9usuz/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixh30022zw5k40o9usuz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjolt001gkn5k5aosxojq/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjolt001gkn5k5aosxojq/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -505,8 +505,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixg6000zzw5kpbqwdtf5/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixg6000zzw5kpbqwdtf5/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoli0012kn5k6gkrwaqm/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoli0012kn5k6gkrwaqm/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2016-11-28T10:31:38.711Z</updated>
     
@@ -546,8 +546,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixf90006zw5kl1ri7p09/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixf90006zw5kl1ri7p09/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoks000akn5k32n3uyb5/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoks000akn5k32n3uyb5/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2016-11-28T10:32:23.072Z</updated>
     
@@ -617,8 +617,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixg70012zw5kfhjfep6n/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixg70012zw5kfhjfep6n/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjolk0014kn5kt0rdua2l/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjolk0014kn5kt0rdua2l/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -638,8 +638,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfv000ozw5ksxn1uxaz/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfv000ozw5ksxn1uxaz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjol8000vkn5klxfni2hm/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjol8000vkn5klxfni2hm/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2016-11-25T14:25:24.349Z</updated>
     
@@ -666,8 +666,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixga0018zw5k4zyqryxa/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixga0018zw5k4zyqryxa/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoln0018kn5kbfpjtlkw/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoln0018kn5kbfpjtlkw/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2016-11-25T14:23:08.950Z</updated>
     
@@ -693,8 +693,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfo000gzw5kc7g1in6v/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfo000gzw5kc7g1in6v/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjokp0007kn5ka62lg1z9/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjokp0007kn5ka62lg1z9/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2016-11-28T10:33:06.839Z</updated>
     
@@ -721,8 +721,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixf70005zw5kv1ohdnhv/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixf70005zw5kv1ohdnhv/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoki0005kn5k9w2qw16u/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoki0005kn5k9w2qw16u/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2016-11-28T10:31:56.502Z</updated>
     
@@ -811,8 +811,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfy000szw5kornsjv9t/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfy000szw5kornsjv9t/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjol2000lkn5kwl16e3y4/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjol2000lkn5kwl16e3y4/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -873,8 +873,8 @@ END START
   
   <entry>
     <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixh30023zw5k9vjt203l/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixh30023zw5k9vjt203l/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjolq001dkn5k5n781osr/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjolq001dkn5k5n781osr/</id>
     <published>2014-10-13T10:50:00.000Z</published>
     <updated>2016-11-28T10:34:25.112Z</updated>
     
@@ -1059,8 +1059,8 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
   
   <entry>
     <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfh000azw5kqa0zxua0/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfh000azw5kqa0zxua0/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjoky000gkn5kb3zugx2g/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjoky000gkn5kb3zugx2g/</id>
     <published>2014-09-16T15:00:00.000Z</published>
     <updated>2016-11-28T10:34:54.954Z</updated>
     
@@ -1099,8 +1099,8 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho上的好用插件</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfz000vzw5k886pv2rv/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfz000vzw5k886pv2rv/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjol5000okn5kt3qcivwm/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjol5000okn5kt3qcivwm/</id>
     <published>2014-09-07T04:00:00.000Z</published>
     <updated>2016-11-28T10:36:00.446Z</updated>
     
@@ -1151,8 +1151,8 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfp000izw5kcbxh1vp1/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfp000izw5kcbxh1vp1/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjokl0006kn5kmnlcca6f/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjokl0006kn5kmnlcca6f/</id>
     <published>2014-08-24T12:00:00.000Z</published>
     <updated>2016-11-28T10:36:41.008Z</updated>
     
@@ -1210,8 +1210,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixh40024zw5kk3rvio90/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixh40024zw5kk3rvio90/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjol7000skn5k7yvykmlx/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjol7000skn5k7yvykmlx/</id>
     <published>2014-08-10T12:46:00.000Z</published>
     <updated>2016-11-28T10:37:09.527Z</updated>
     
@@ -1241,8 +1241,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>SAE域名绑定问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixfb0007zw5k7i04jens/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixfb0007zw5k7i04jens/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjokw000ckn5k69qrl5qg/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjokw000ckn5k69qrl5qg/</id>
     <published>2014-08-08T16:28:00.000Z</published>
     <updated>2016-11-25T14:02:23.763Z</updated>
     
@@ -1275,8 +1275,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>快速切换IP地址</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixg80014zw5k9rw2w2mh/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixg80014zw5k9rw2w2mh/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjolo001akn5ka1ip8h2h/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjolo001akn5ka1ip8h2h/</id>
     <published>2014-07-21T15:18:00.000Z</published>
     <updated>2016-11-25T14:02:03.566Z</updated>
     
@@ -1353,8 +1353,8 @@ Pause
   
   <entry>
     <title>Hello World!</title>
-    <link href="http://mjackie.github.io/Tech/cj5hxixf20002zw5k6u6d2twz/"/>
-    <id>http://mjackie.github.io/Tech/cj5hxixf20002zw5k6u6d2twz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hyjokd0002kn5kmt77lqvw/"/>
+    <id>http://mjackie.github.io/Tech/cj5hyjokd0002kn5kmt77lqvw/</id>
     <published>2014-07-21T07:30:00.000Z</published>
     <updated>2016-11-25T13:57:29.614Z</updated>
     

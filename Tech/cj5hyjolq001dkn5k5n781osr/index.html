@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>成绩查询系统 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Jotting">Jotting</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         10/13
+        </div>
+        <div class="post_t_u">
+         6:50
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cj5hyjolq001dkn5k5n781osr/">
+    
+      成绩查询系统
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Php/">Php</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com" target="_blank" rel="external">http://cj.liu13.com</a></p>
+<a id="more"></a>
+<p><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
+<hr>
+<p>下面是源代码，一共两个文件：<br>index.php</p>
+<pre><code>&lt;html&gt;
+&lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+?&gt;
+&lt;head&gt;
+    &lt;title&gt;成绩查询&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {background:#eee;}
+        ul {padding:0; margin:0;}
+        li {list-style:none;}
+        #container {margin: 0 auto; width: 80%;}
+        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
+        a {color:#146fdf; text-decoration: none}
+        a:hover {color: black; text-decoration: underline}
+        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
+        #g_u,#g_p {position:relative}
+        #g_u {border-bottom:1px solid #eaeaea}
+        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
+        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
+        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
+            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
+                &lt;ul  id=&quot;g_list&quot;&gt;
+                    &lt;li  id=&quot;g_u&quot;&gt;
+                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
+
+                    &lt;/li&gt;
+                    &lt;li  id=&quot;g_p&quot;&gt;
+                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
+                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
+
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
+            &lt;script language=javascript&gt;  
+                function chkfs(){ 
+                var frm = document.forms[&apos;cf&apos;];  
+                frm.action=&quot;search.php&quot;;
+                return true;  
+                }
+            &lt;/script&gt;
+        &lt;/form&gt;
+
+        &lt;div id=&quot;notice&quot;&gt;
+            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
+            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
+        &lt;p align=center&gt;
+            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>search.php</p>
+<pre><code>&lt;html&gt;
+&lt;?
+#########################程序简介##########################
+#程序名称：成绩查询系统
+#版本：       v1.0
+#作者：    刘十三
+#邮箱：    liu13@liu13.com   
+#主页：    http://www.liu13.com
+#运行环境：任何支持PHP的空间，PHP的版本不小于4.0.0
+$numerror=&quot;&lt;font size=4 color=red&gt;请您正确输入学号!&lt;/font&gt;&quot;;            //考号格式输入错误时的信息
+$nonumkey=&quot;&lt;font size=4 color=red&gt;请输入您的学号!&lt;/font&gt;&quot;;              //无输入学号时提示
+$nameerror=&quot;&lt;font size=4 color=red&gt;请您输入正确的姓名!&lt;/font&gt;&quot;;            //姓名格式输入错误时的信息
+$nonamekey=&quot;&lt;font size=4 color=red&gt;请输入您的姓名!&lt;/font&gt;&quot;;                 //无输入时提示
+$notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/font&gt;&quot;                //学号姓名不匹配
+?&gt;
+&lt;head&gt;
+    &lt;title&gt;成绩查询&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;margin-bottom:30px;}
+    body {background:#eee;}
+    #container {margin:0 auto; width: 80%;}
+    a {color:#146fdf; text-decoration: none}
+    a:hover {color: black; text-decoration: underline}
+    .button {border:0px;width:100%; height:100%; color:white; background:#146fdf; border-radius:4px; font-size:16px;}
+    #closewindos {margin-top:60px; width:30%; height:30px; color:#146fdf}
+    #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
+    table {border:1px solid #eaeaed;}
+    td {font-size:20px;border-bottom:1px solid #eaeaed; color:#246183}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;center&gt;
+        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;
+        &lt;?
+        error_reporting(0);  //禁用错误报告
+
+        $nl=&quot;4&quot;;
+        $nameerr=&quot;&lt;font size=4 color=red&gt;$nameerror&lt;/font&gt;&quot;;
+        if($_POST[pname]==&quot;&quot;) echo $nonamekey;     
+        elseif (eregi(&quot;[&lt;&gt;() ,#|;%/$1234567890\abcdefghijklmnopqrstuvwxyz]&quot;,$_POST[pname])) echo $nameerr;
+        elseif (strlen($_POST[pname])&lt;$nl) echo $nameerr;    //检查输入姓名是否合法
+
+        $numerr=&quot;&lt;font size=4 color=red&gt;$numerror &lt;/font&gt;&quot;;
+        if($_POST[pnum]==&quot;&quot;) echo $nonumkey;     
+        elseif (strlen($_POST[pnum])!=10) echo $numerr;
+        elseif (eregi(&quot;[0123456789]&quot;,$_POST[pnum]))    //检查输入学号是否合法
+        {
+        $db = &quot;data.csv&quot;;   //csv数据文件           
+        $querydb = file($db);
+        $count = count($querydb);
+        for($i=0; $i&lt;$count; $i++) {
+        $detail = explode(&quot;,&quot;,$querydb[$i]);
+        $keyword = explode(&quot; &quot;,$_POST[pnum]);
+        $querycount = count($keyword);
+        $tds = explode(&quot;,&quot;,$querydb[1]);
+        for ($ai=0; $ai&lt;$querycount; $ai++) 
+        {eval(&quot;\$foundnum = eregi(\&quot;$keyword[$ai]\&quot;,\&quot;$detail[0]\&quot;);&quot;);}  
+        if($_POST[pname] == $detail[1]) $match = 1;  //索引学号
+        else $match = 0;
+
+        if($foundnum &amp;&amp; $match == 0) echo $notmatch;   //匹配姓名学号
+        if($foundnum &amp;&amp; $match)
+        {
+        $arrlength=count($tds);
+        echo&quot;&lt;font color=red size=4&gt;$detail[1]童鞋&lt;br&gt;您在计科专业的排名为&lt;br&gt;
+            &lt;font color=#146fdf size=40&gt;$detail[3]&lt;/font&gt;
+            &lt;br&gt;您的加权平均分为$detail[2]
+            &lt;br&gt;击败了$detail[4]的童鞋&lt;/font&gt;
+            &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;font color=#246183&gt;您的各科成绩如下&lt;/font&gt;&quot;;
+        echo&quot;&lt;table&gt;&quot;;
+        for($i=5;$i&lt;$arrlength;$i++)
+        {
+        if($detail[$i]!=&quot;&quot;){
+        echo&quot;&lt;tr&gt;&lt;td&gt;$tds[$i]&lt;/td&gt;
+                  &lt;td&gt;$detail[$i]&lt;/td&gt;&lt;/tr&gt;&quot;;}}
+        echo&quot;&lt;/table&gt;&quot;;break;
+        }}}
+        ?&gt;
+        &lt;div id=&quot;closewindos&quot;&gt;&lt;input type=&quot;button&quot; value=&quot;关闭此页&quot; class=&quot;button&quot; onClick=&quot;javascript:window.close()&quot;&gt;&lt;/div&gt;
+        &lt;/center&gt;
+        &lt;div id=&quot;notice&quot;&gt;
+        &lt;p align=center&gt;Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </p>
+  </div>
+
+
+
+
+	<div class="theme-next">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/Tech/cj5hyjolq001dkn5k5n781osr/" data-title="成绩查询系统" data-url="http://mjackie.github.io/Tech/cj5hyjolq001dkn5k5n781osr/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jackieliu"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cj5hyjol2000lkn5kwl16e3y4/" >            
+            
+              The First ASM
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cj5hyjoky000gkn5kb3zugx2g/" >            
+            
+              SAE上博客开启gzip加速
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  //case 0: path = "/img/background0.jpg";break;    //图片位置
+		  //case 1: path = "/img/background1.jpg";break;
+		  //case 2: path = "/img/background2.jpg";break;
+		  //case 3: path = "/img/background3.jpg";break;
+		  //case 4: path = "/img/background4.jpg";break;
+		  //case 5: path = "/img/background5.jpg";break;
+		  //case 6: path = "/img/background6.jpg";break;
+		  //case 7: path = "/img/background7.jpg";break;
+		  //case 8: path = "/img/background8.jpg";break;
+		  //case 9: path = "/img/background9.jpg";break;
+		  //case 10: path = "/img/background10.jpg";break;
+      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>
