@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2016-12-06T12:19:33.722Z</updated>
+  <updated>2017-07-24T13:16:11.703Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Signal框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4z3000iqs5kpz3f2v8n/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4z3000iqs5kpz3f2v8n/</id>
+    <title>SignalR框架</title>
+    <link href="http://mjackie.github.io/Tech/cj5i7iur4000jkj5klcow5zd0/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iur4000jkj5klcow5zd0/</id>
     <published>2016-12-04T12:13:00.000Z</published>
-    <updated>2016-12-06T12:19:33.722Z</updated>
+    <updated>2017-07-24T13:16:11.703Z</updated>
     
     <content type="html"><![CDATA[<p>ASP .NET SignalR 是为 ASP .NET 开发人员提供的一个库，可以简化开发人员将实时 Web 功能添加到应用程序的过程。实时 Web 功能是指这样一种功能：当所连接的客户端变得可用时服务器代码可以立即向其推送内容，而不是让服务器等待客户端请求新的数据。</p>
 <p>前端 JS 需要引入，且 <code>/signalr/hubs</code> 必须在 <code>/Scripts/jquery.signalR-2.1.0.js</code> 之后引入</p>
@@ -110,8 +110,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4ze000vqs5kwly2quk3/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4ze000vqs5kwly2quk3/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurl000ykj5kiuggm65z/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurl000ykj5kiuggm65z/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2016-11-28T10:31:51.701Z</updated>
     
@@ -165,8 +165,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4ye0001qs5k93go9w7v/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4ye0001qs5k93go9w7v/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuqa0002kj5k3inl2wws/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuqa0002kj5k3inl2wws/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -220,8 +220,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zw001gqs5ks0yyyn9u/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zw001gqs5ks0yyyn9u/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iury001gkj5kt3bl09fy/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iury001gkj5kt3bl09fy/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -505,8 +505,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zo0012qs5k8zjzn361/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zo0012qs5k8zjzn361/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurm0011kj5k6gxi4mx8/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurm0011kj5k6gxi4mx8/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2016-11-28T10:31:38.711Z</updated>
     
@@ -546,8 +546,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4yw000aqs5kr1eyket8/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4yw000aqs5kr1eyket8/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuqp0007kj5kacgrgcfb/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuqp0007kj5kacgrgcfb/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2016-11-28T10:32:23.072Z</updated>
     
@@ -617,8 +617,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zq0014qs5kan1lvl2p/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zq0014qs5kan1lvl2p/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurp0014kj5kail942jl/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurp0014kj5kail942jl/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -638,8 +638,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zk000zqs5kwc1kusgy/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zk000zqs5kwc1kusgy/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurf000ukj5kzr3cg4rh/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurf000ukj5kzr3cg4rh/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2016-11-25T14:25:24.349Z</updated>
     
@@ -666,23 +666,23 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zt0018qs5kjpf3a6is/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zt0018qs5kjpf3a6is/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurv0018kj5key9ynevw/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurv0018kj5key9ynevw/</id>
     <published>2016-03-28T15:17:00.000Z</published>
-    <updated>2016-11-25T14:23:08.950Z</updated>
+    <updated>2017-07-24T13:25:44.891Z</updated>
     
     <content type="html"><![CDATA[<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/3086121131.gif" alt="yaw.gif"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；</p>
+<p><img src="/post_image/zitaijiao/zitaijiao1.gif" alt="image"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><img src="/post_image/zitaijiao/zitaijiao2.gif" alt="image"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
 <hr>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/2936638328.gif" alt="pitch.gif"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
-<hr>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/2624363739.gif" alt="roll.gif"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
+<p><img src="/post_image/zitaijiao/zitaijiao3.gif" alt="image"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://liu13-liu13.stor.sinaapp.com/3086121131.gif&quot; 
+&lt;p&gt;&lt;img src=&quot;/post_image/zitaijiao/zitaijiao1.gif&quot; alt=&quot;image&quot;&gt;&lt;br&gt;航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
@@ -693,22 +693,23 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4yr0007qs5kaaehx3qn/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4yr0007qs5kaaehx3qn/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuqv000bkj5ka19lyxe5/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuqv000bkj5ka19lyxe5/</id>
     <published>2015-07-12T05:44:00.000Z</published>
-    <updated>2016-11-28T10:33:06.839Z</updated>
+    <updated>2017-07-24T13:26:22.947Z</updated>
     
     <content type="html"><![CDATA[<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
+<p>下面是应用截图：<br><img src="/post_image/weibo/weibo1.png" alt="image"></p>
 <a id="more"></a>
-<p>下面是应用截图：<br><img src="http://liu13-liu13.stor.sinaapp.com/2637202576.jpg" alt="1.jpg"></p>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/1659680042.jpg" alt="2.jpg"></p>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/1008176180.jpg" alt="3.jpg"></p>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/988741909.jpg" alt="4.jpg"></p>
+<p><img src="/post_image/weibo/weibo2.png" alt="image"></p>
+<p><img src="/post_image/weibo/weibo3.png" alt="image"></p>
+<p><img src="/post_image/weibo/weibo4.png" alt="image"></p>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。&lt;br&gt;本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。&lt;/p&gt;
+&lt;p&gt;下面是应用截图：&lt;br&gt;&lt;img src=&quot;/post_image/weibo/weibo1.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -721,8 +722,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4yi0002qs5kc4061l9s/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4yi0002qs5kc4061l9s/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuq60001kj5kou2dxz65/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuq60001kj5kou2dxz65/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2016-11-28T10:31:56.502Z</updated>
     
@@ -811,8 +812,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4za000oqs5knvv4kj5g/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4za000oqs5knvv4kj5g/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iur5000mkj5kom1yqnzw/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iur5000mkj5kom1yqnzw/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -873,14 +874,14 @@ END START
   
   <entry>
     <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zv001dqs5khk73yl83/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zv001dqs5khk73yl83/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurx001dkj5kw6bsjy46/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurx001dkj5kw6bsjy46/</id>
     <published>2014-10-13T10:50:00.000Z</published>
-    <updated>2016-11-28T10:34:25.112Z</updated>
+    <updated>2017-07-24T13:27:59.491Z</updated>
     
     <content type="html"><![CDATA[<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com" target="_blank" rel="external">http://cj.liu13.com</a></p>
+<p><img src="/post_image/chengjichaxun.jpg" alt="image"></p>
 <a id="more"></a>
-<p><img src="http://liu13-liu13.stor.sinaapp.com/658067538.jpg" alt="collage.jpg"></p>
 <hr>
 <p>下面是源代码，一共两个文件：<br>index.php</p>
 <pre><code>&lt;html&gt;
@@ -1047,6 +1048,7 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
     <summary type="html">
     
       &lt;p&gt;学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。&lt;br&gt;演示地址：&lt;a href=&quot;http://cj.liu13.com&quot;&gt;http://cj.liu13.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/post_image/chengjichaxun.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1059,16 +1061,16 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
   
   <entry>
     <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4z2000gqs5kow9ct1eb/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4z2000gqs5kow9ct1eb/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iur2000hkj5kp6md3k6a/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iur2000hkj5kp6md3k6a/</id>
     <published>2014-09-16T15:00:00.000Z</published>
-    <updated>2016-11-28T10:34:54.954Z</updated>
+    <updated>2017-07-24T13:15:57.767Z</updated>
     
     <content type="html"><![CDATA[<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
 <p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
 <a id="more"></a>
-<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="http://liu13-liu13.stor.sinaapp.com/3515319199.png" alt="gzip1.PNG"></p>
-<p>在弹出的窗口中点击下侧【确认】与【取消】中间的【高级语法】<br><img src="http://liu13-liu13.stor.sinaapp.com/867320208.png" alt="gzip2.PNG"><br>在AppConfig语法中直接复制以下代码，点击【确认】即可</p>
+<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="/post_image/gzip/gzip1.png" alt="image"></p>
+<p>在弹出的窗口中点击下侧【确认】与【取消】中间的【高级语法】<br><img src="/post_image/gzip/gzip2.png" alt="image"><br>在AppConfig语法中直接复制以下代码，点击【确认】即可</p>
 <pre><code>compress: if ( out_header[&quot;Content-Length&quot;]&gt;=50) compress
 compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/css&quot; ) compress
 compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/javascript&quot; ) compress
@@ -1077,10 +1079,10 @@ compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/png&quot; ) com
 compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/jpeg&quot; ) compress
 compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/plain&quot; ) compress
 compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
-</code></pre><p><img src="http://liu13-liu13.stor.sinaapp.com/3440231362.png" alt="gzip3.PNG"><br>至此，sae端设置完成</p>
+</code></pre><p><img src="/post_image/gzip/gzip3.png" alt="image"><br>至此，sae端设置完成</p>
 <hr>
 <pre><code>ob_start(&apos;ob_gzhandler&apos;);
-</code></pre><p>到网站根目录下找到index.php文件<br>Wordpress:找到define(‘WP_USE_THEMES’, true)这一行，在后面加上ob_start(‘ob_gzhandler’);就可以了<br><img src="http://liu13-liu13.stor.sinaapp.com/1052925608.png" alt="gzip4.PNG"><br>Typecho:在任意位置加入ob_start(‘ob_gzhandler’);即可<br><img src="http://liu13-liu13.stor.sinaapp.com/1855713709.png" alt="gzip5.PNG"><br>设置完成后可以上<a href="http://tool.chinaz.com/Gzips/" target="_blank" rel="external">http://tool.chinaz.com/Gzips/</a>查看开启效果，我的博客六石伞www.liu13.com的效果：<br><img src="http://liu13-liu13.stor.sinaapp.com/4116965859.png" alt="gzip6.PNG"></p>
+</code></pre><p>到网站根目录下找到index.php文件<br>Wordpress:找到define(‘WP_USE_THEMES’, true)这一行，在后面加上ob_start(‘ob_gzhandler’);就可以了<br><img src="/post_image/gzip/gzip4.png" alt="image"><br>Typecho:在任意位置加入ob_start(‘ob_gzhandler’);即可<br><img src="/post_image/gzip/gzip5.png" alt="image"><br>设置完成后可以上 <a href="http://tool.chinaz.com/Gzips/" target="_blank" rel="external">http://tool.chinaz.com/Gzips/</a> 查看开启效果，我的博客六石伞www.liu13.com的效果：<br><img src="/post_image/gzip/gzip6.png" alt="image"></p>
 ]]></content>
     
     <summary type="html">
@@ -1099,16 +1101,16 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho上的好用插件</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4z6000lqs5k6uyxn459/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4z6000lqs5k6uyxn459/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iur8000okj5k8orwrdlk/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iur8000okj5k8orwrdlk/</id>
     <published>2014-09-07T04:00:00.000Z</published>
-    <updated>2016-11-28T10:36:00.446Z</updated>
+    <updated>2017-07-24T13:18:22.191Z</updated>
     
     <content type="html"><![CDATA[<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
 <a id="more"></a>
-<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。<br><img src="http://liu13-liu13.stor.sinaapp.com/4114528848.png" alt="CommentFilter.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3814922710.rar" target="_blank" rel="external">CommentFilter v1.0.2.rar</a></em></p>
+<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。</p>
 <hr>
-<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。<br><img src="http://liu13-liu13.stor.sinaapp.com/2796197493.png" alt="saeupload.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/634045075.zip" target="_blank" rel="external">SaeUpload.zip</a></em></p>
+<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。</p>
 <hr>
 <p><strong>3.友情链接插件（links）</strong><br>建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。<br>在主页或需要插入友链的地方插入如下代码即可调用：</p>
 <pre><code>&lt;?php if (!empty($this-&gt;options-&gt;sidebarBlock) &amp;&amp; in_array(&apos;ShowFriend&apos;, $this-&gt;options-&gt;sidebarBlock)): ?&gt;
@@ -1119,21 +1121,20 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
 &lt;/div&gt;
 &lt;/section&gt;
 &lt;?php endif; ?&gt;
-</code></pre><p><img src="http://liu13-liu13.stor.sinaapp.com/2898975568.png" alt="links.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3857485027.zip" target="_blank" rel="external">Links-emao.zip</a></em></p>
+</code></pre><hr>
+<p><strong>4.回复评论邮件及时通知（TimelyNotice）</strong><br>该插件可实现回复评论后即时邮件通知评论者，一次设置，自动发送，方便博主与用户的互动，增强互动性。</p>
 <hr>
-<p><strong>4.回复评论邮件及时通知（TimelyNotice）</strong><br>该插件可实现回复评论后即时邮件通知评论者，一次设置，自动发送，方便博主与用户的互动，增强互动性。<br>以我的qq邮箱设置如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/4133697690.png" alt="timelynotice.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/327872410.zip" target="_blank" rel="external">TimelyNotice.zip</a></em></p>
+<p><strong>5.Gravatar 头像缓存插件SAE专版（GravatarCache）</strong><br>gravatar有时会不间断的被强大的中国被K掉，或者访问巨慢。该插件将gravatar头像图片直接缓存到sae的storage，加快头像访问速度，防止打开缓慢。</p>
 <hr>
-<p><strong>5.Gravatar 头像缓存插件SAE专版（GravatarCache）</strong><br>gravatar有时会不间断的被强大的中国被K掉，或者访问巨慢。该插件将gravatar头像图片直接缓存到sae的storage，加快头像访问速度，防止打开缓慢。<br><img src="http://liu13-liu13.stor.sinaapp.com/1663951968.png" alt="gravator.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3727237189.zip" target="_blank" rel="external">GravatarCache_SAE.zip</a></em></p>
+<p><strong>6.自动为文章中出现的关键词添加链接（Keywords）</strong><br>懂点seo的人都懂，锚文本的多少直接影响网站权重，站内锚文本更利于搜索引擎的收录。文中若出现与本站标签相同的关键词则自动添加标签页链接。同时还可设置出现频率，还可以自定义关键词。</p>
 <hr>
-<p><strong>6.自动为文章中出现的关键词添加链接（Keywords）</strong><br>懂点seo的人都懂，锚文本的多少直接影响网站权重，站内锚文本更利于搜索引擎的收录。文中若出现与本站标签相同的关键词则自动添加标签页链接。同时还可设置出现频率，还可以自定义关键词。<br><img src="http://liu13-liu13.stor.sinaapp.com/550582185.png" alt="keywords.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/4272815562.zip" target="_blank" rel="external">Keywords.zip</a></em></p>
+<p><strong>7.Google高亮代码（Google Code Prettify）</strong><br>typecho自带的代码显示是白底红字，没有关键字高亮的，该插件提供5中代码高亮风格，支持多种语言关键字。还可自定义css样式风格</p>
 <hr>
-<p><strong>7.Google高亮代码（Google Code Prettify）</strong><br>typecho自带的代码显示是白底红字，没有关键字高亮的，该插件提供5中代码高亮风格，支持多种语言关键字。还可自定义css样式风格<br>效果如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/1195674157.png" alt="Google Code Prettify.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/353911742.zip" target="_blank" rel="external">googlecodeprettify.zip</a></em></p>
+<p><strong>8.无缝集成HighSlide双核版实现自动化弹窗与页面相册功能（HighSlide）</strong><br>该插件有基础版和全功能版，功能强大，实现相册弹窗，支持插图幻灯/html弹窗/页面相册等。</p>
 <hr>
-<p><strong>8.无缝集成HighSlide双核版实现自动化弹窗与页面相册功能（HighSlide）</strong><br>该插件有基础版和全功能版，功能强大，实现相册弹窗，支持插图幻灯/html弹窗/页面相册等。<br>效果如下：<br><img src="http://liu13-liu13.stor.sinaapp.com/764205108.png" alt="highslidd.PNG"><br><img src="http://liu13-liu13.stor.sinaapp.com/2446581467.png" alt="highslide.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/645140820.zip" target="_blank" rel="external">HighSlide.zip</a></em></p>
+<p><strong>9.嵌入HTML5+Flash视频播放器JW Player6（JWPlayer）</strong><br>JWplayer是老牌开源页面播放器，与HighSlide一样有公司化的商业模式，功能也份大量足毫不含糊。该插件可指定播放器宽度，封面，风格，字幕，标题，多视频列表播放等功能。界面简洁小巧精致。</p>
 <hr>
-<p><strong>9.嵌入HTML5+Flash视频播放器JW Player6（JWPlayer）</strong><br>JWplayer是老牌开源页面播放器，与HighSlide一样有公司化的商业模式，功能也份大量足毫不含糊。该插件可指定播放器宽度，封面，风格，字幕，标题，多视频列表播放等功能。界面简洁小巧精致。<br><img src="http://liu13-liu13.stor.sinaapp.com/1595989252.png" alt="jwplayer.PNG"><br><img src="http://liu13-liu13.stor.sinaapp.com/195389554.png" alt="jwplay.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/1991512709.zip" target="_blank" rel="external">JWPlayer.zip</a></em></p>
-<hr>
-<p><strong>10.数据备份SAE版（DbManager）</strong><br>该插件可一键备份数据库，方便快捷，拥有备份，导入，优化等功能。可备份至本地或服务器。还可选择单独表，进行单独的备份。<br><img src="http://liu13-liu13.stor.sinaapp.com/51686841.png" alt="DB.PNG"><br><em>下载：<a href="http://liu13-liu13.stor.sinaapp.com/3435084616.zip" target="_blank" rel="external">DbManager_v2.0.0.zip</a></em></p>
+<p><strong>10.数据备份SAE版（DbManager）</strong><br>该插件可一键备份数据库，方便快捷，拥有备份，导入，优化等功能。可备份至本地或服务器。还可选择单独表，进行单独的备份。</p>
 ]]></content>
     
     <summary type="html">
@@ -1151,10 +1152,10 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4yq0006qs5ksygbzo48/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4yq0006qs5ksygbzo48/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuqn0006kj5k1is8dn6p/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuqn0006kj5k1is8dn6p/</id>
     <published>2014-08-24T12:00:00.000Z</published>
-    <updated>2016-11-28T10:36:41.008Z</updated>
+    <updated>2017-07-24T13:14:57.539Z</updated>
     
     <content type="html"><![CDATA[<p>JAVA语言初学者注意的一些细节:</p>
 <hr>
@@ -1162,8 +1163,8 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
 <pre><code>class derived extends base｛...}    //java
 class derived:public base｛...}    //c
 </code></pre><a id="more"></a>
-<p>◇类修饰符只有public与default（省略不写）.<br><img src="http://liu13-liu13.stor.sinaapp.com/3069698391.jpg" alt="public-default.jpg"></p>
-<p>◇子类构造函数调用父类构造方法必须写在第一行.<br>◇多态要有继承，有重写，父类引用指向子类对象.<br>◇含有抽象方法的类必须被声明为抽象类，必须被继承，方法必须被重写，抽象类不能被实例化.<br>◇final变量值不能被改变（成员变量，局部变量（形参）），final方法不能被重写，final类不能被继承.<br><img src="http://liu13-liu13.stor.sinaapp.com/655658456.jpg" alt="exception.jpg"></p>
+<p>◇类修饰符只有public与default（省略不写）.<br><img src="/post_image/java/java1.jpg" alt="image"></p>
+<p>◇子类构造函数调用父类构造方法必须写在第一行.<br>◇多态要有继承，有重写，父类引用指向子类对象.<br>◇含有抽象方法的类必须被声明为抽象类，必须被继承，方法必须被重写，抽象类不能被实例化.<br>◇final变量值不能被改变（成员变量，局部变量（形参）），final方法不能被重写，final类不能被继承.<br><img src="/post_image/java/java2.jpg" alt="image"></p>
 <p>◇接口是抽象方法和常量值的定义的集合，是特殊的抽象类（没有变量和方法的实现） 关键字：implements <interface><br>◇接口中声明的属性默认为public static final（也只能是），只能定义抽象方法默认方法为public（也只能是）.</interface></p>
 <pre><code>String s1 = “helllo”;
 String s2 = “helllo”;
@@ -1173,7 +1174,7 @@ s1 = new String(“Hello”);
 s2 = new String(“Hello”);
 s1 == s2    //false
 s1.equals(s2)    //true
-</code></pre><p>◇stringbuffer可以对字符串进行改变，序列可变关键字append,insert<br>◇C里可以 char[] a = “abc”，java里必须char[] a = {‘a’,’b’,’c’}<br>◇基础数据类型包装类，分配到堆空间.<br>◇set没有顺序不可重复，list有顺序可重复（equals）,map一对一对装.<br><img src="http://liu13-liu13.stor.sinaapp.com/41192440.jpg" alt="collection.jpg"></p>
+</code></pre><p>◇stringbuffer可以对字符串进行改变，序列可变关键字append,insert<br>◇C里可以 char[] a = “abc”，java里必须char[] a = {‘a’,’b’,’c’}<br>◇基础数据类型包装类，分配到堆空间.<br>◇set没有顺序不可重复，list有顺序可重复（equals）,map一对一对装.<br><img src="/post_image/java/java3.jpg" alt="image"></p>
 <p>◇两个对象equals,则hashCode相同。重写equals，则需要重写hashCode<br>◇遍历的简便写法:</p>
 <pre><code>for(int i: arr) {
     system.out.println(a[i]);
@@ -1187,7 +1188,7 @@ class runner1 implements runnable {}    //接口（尽量用接口，更灵活�
 runner1 r = new runner1
 r.start();
 class runner1 extends thread {}    //线程
-</code></pre><p>◇TCP可靠稳定，UDP不可靠，速度快.<br>◇能使用继承方法的，不直接继承Frame<br><img src="http://liu13-liu13.stor.sinaapp.com/1608593513.jpg" alt="awt.jpg"><br>◇Frame 默认布局管理器 boderlayout<br>◇Panel默认布局管理器 flowlayout<br><img src="http://liu13-liu13.stor.sinaapp.com/2125014363.jpg" alt="action.jpg"></p>
+</code></pre><p>◇TCP可靠稳定，UDP不可靠，速度快.<br>◇能使用继承方法的，不直接继承Frame<br><img src="/post_image/java/java4.jpg" alt="image"><br>◇Frame 默认布局管理器 boderlayout<br>◇Panel默认布局管理器 flowlayout<br><img src="/post_image/java/java5.jpg" alt="image"></p>
 ]]></content>
     
     <summary type="html">
@@ -1210,14 +1211,14 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zc000sqs5kym82w25g/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zc000sqs5kym82w25g/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurd000rkj5kuzfzxb7f/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurd000rkj5kuzfzxb7f/</id>
     <published>2014-08-10T12:46:00.000Z</published>
-    <updated>2016-11-28T10:37:09.527Z</updated>
+    <updated>2017-07-24T13:18:33.079Z</updated>
     
     <content type="html"><![CDATA[<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
 <a id="more"></a>
-<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：<a href="http://www.liu13.com/typecho-sae-rewrite.html" target="_blank" rel="external">www.liu13.com/typecho-sae-rewrite.html</a><br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
+<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：www.liu13.com/typecho-sae-rewrite.html<br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
 <p>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
 <pre><code>- rewrite: if(!is_dir() &amp;&amp; !is_file()) goto &quot;index.php?%{QUERY_STRING}&quot;
 </code></pre><p>也可直接在代码管理中打开config.yaml文件添加到最后一行（一定要添加到最后一行）<br>进入Typecho后台&gt;&gt;设置&gt;&gt;永久链接，先修改一下文章自定义路径地址，启用地址重写功能，点击保存，出现红字提示，忽略仍然启用即可。</p>
@@ -1241,16 +1242,16 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>SAE域名绑定问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4z0000cqs5kbbn1dxqp/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4z0000cqs5kbbn1dxqp/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iur0000dkj5k4hssc6by/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iur0000dkj5k4hssc6by/</id>
     <published>2014-08-08T16:28:00.000Z</published>
-    <updated>2016-11-25T14:02:23.763Z</updated>
+    <updated>2017-07-24T13:09:44.467Z</updated>
     
     <content type="html"><![CDATA[<p>今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。<br>新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。</p>
 <p>A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。<br>CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。</p>
 <p>可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。</p>
 <a id="more"></a>
-<p>SAE的域名绑定按照提示先进行一个A验证，在CNAME到所给地址即可。<br>需要说明的是要将带www的与不带www的分别绑定，即绑定<a href="http://www.liu13.com" target="_blank" rel="external">www.liu13.com</a>与<a href="http://www.liu13.com" target="_blank" rel="external">liu13.com</a>。<br>但万网等一些的域名注册商所带的DNS解析是不支持顶级域名（liu13.com无前缀）CNAME的，需要转到其他支持的DNS上，我选择的是DNSPod，推荐大家使用，比较稳定好用。</p>
+<p>SAE的域名绑定按照提示先进行一个A验证，在CNAME到所给地址即可。<br>需要说明的是要将带www的与不带www的分别绑定，即绑定 www.liu13.com 与 liu13.com<br>但万网等一些的域名注册商所带的DNS解析是不支持顶级域名（liu13.com无前缀）CNAME的，需要转到其他支持的DNS上，我选择的是DNSPod，推荐大家使用，比较稳定好用。</p>
 <p>SAE域名绑定完成以后，带www的与不带www的访问内容虽然一样，但网址是不同的，为了SEO更好，利于搜索引擎增加权重，最好301重定向其中一个，推荐将不带www的301到带的。SAE上不支持htaccess文件，换成的是SAE的APPConfig。方法如下：<br>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
 <pre><code>- rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
 - rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.sinaapp.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
@@ -1275,8 +1276,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>快速切换IP地址</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4zu001aqs5kcwnccy3j/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4zu001aqs5kcwnccy3j/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iurw001akj5kiv36sooa/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iurw001akj5kiv36sooa/</id>
     <published>2014-07-21T15:18:00.000Z</published>
     <updated>2016-11-25T14:02:03.566Z</updated>
     
@@ -1353,12 +1354,12 @@ Pause
   
   <entry>
     <title>Hello World!</title>
-    <link href="http://mjackie.github.io/Tech/cj5hys4yn0005qs5kzprd7k8i/"/>
-    <id>http://mjackie.github.io/Tech/cj5hys4yn0005qs5kzprd7k8i/</id>
+    <link href="http://mjackie.github.io/Tech/cj5i7iuqi0005kj5k7kjf8qx3/"/>
+    <id>http://mjackie.github.io/Tech/cj5i7iuqi0005kj5k7kjf8qx3/</id>
     <published>2014-07-21T07:30:00.000Z</published>
-    <updated>2016-11-25T13:57:29.614Z</updated>
+    <updated>2017-07-24T12:59:23.311Z</updated>
     
-    <content type="html"><![CDATA[<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名<a href="http://www.liu13.com" target="_blank" rel="external">liu13.sinaapp.com</a>。</p>
+    <content type="html"><![CDATA[<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。</p>
 <p>感谢开源代码及作者。</p>
 <p>做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，不求索取，过程便是最好的奖励。</p>
 <p>非同凡响，追求卓越。</p>
@@ -1367,7 +1368,9 @@ Pause
     
     <summary type="html">
     
-      &lt;p&gt;网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名&lt;a href=&quot;http://www.liu13.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;liu13.sinaap
+      &lt;p&gt;网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。&lt;/p&gt;
+&lt;p&gt;感谢开源代码及作者。&lt;/p&gt;
+&lt;p&gt;做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，
     
     </summary>
     
