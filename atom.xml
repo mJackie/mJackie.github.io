@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2016-12-06T12:19:33.721Z</updated>
+  <updated>2016-12-06T12:19:33.722Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Signal框架</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh4l5j00005cu0x3rqjn50/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh4l5j00005cu0x3rqjn50/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfm000czw5kibt75lw4/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfm000czw5kibt75lw4/</id>
     <published>2016-12-04T12:13:00.000Z</published>
-    <updated>2016-12-06T12:19:33.721Z</updated>
+    <updated>2016-12-06T12:19:33.722Z</updated>
     
     <content type="html"><![CDATA[<p>ASP .NET SignalR 是为 ASP .NET 开发人员提供的一个库，可以简化开发人员将实时 Web 功能添加到应用程序的过程。实时 Web 功能是指这样一种功能：当所连接的客户端变得可用时服务器代码可以立即向其推送内容，而不是让服务器等待客户端请求新的数据。</p>
 <p>前端 JS 需要引入，且 <code>/signalr/hubs</code> 必须在 <code>/Scripts/jquery.signalR-2.1.0.js</code> 之后引入</p>
@@ -110,8 +110,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh263h000xy4u0rr4nricv/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh263h000xy4u0rr4nricv/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfr000lzw5kgaacbw29/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfr000lzw5kgaacbw29/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2016-11-28T10:31:51.701Z</updated>
     
@@ -165,8 +165,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh261q000ly4u0fuq9qlnz/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh261q000ly4u0fuq9qlnz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixdj0001zw5k73etnxa2/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixdj0001zw5k73etnxa2/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2016-11-28T10:27:28.598Z</updated>
     
@@ -220,8 +220,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh264l001fy4u0e0mw66dn/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh264l001fy4u0e0mw66dn/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixh30022zw5k40o9usuz/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixh30022zw5k40o9usuz/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -505,8 +505,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh263y0016y4u0uveisn5y/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh263y0016y4u0uveisn5y/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixg6000zzw5kpbqwdtf5/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixg6000zzw5kpbqwdtf5/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2016-11-28T10:31:38.711Z</updated>
     
@@ -546,10 +546,10 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh261i000ey4u0fwb51vco/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh261i000ey4u0fwb51vco/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixf90006zw5kl1ri7p09/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixf90006zw5kl1ri7p09/</id>
     <published>2016-04-07T15:35:00.000Z</published>
-    <updated>2016-11-28T10:32:23.071Z</updated>
+    <updated>2016-11-28T10:32:23.072Z</updated>
     
     <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
 <a id="more"></a>
@@ -617,10 +617,10 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh263o0010y4u02uebrh36/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh263o0010y4u02uebrh36/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixg70012zw5kfhjfep6n/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixg70012zw5kfhjfep6n/</id>
     <published>2016-04-04T14:03:00.000Z</published>
-    <updated>2016-11-25T14:37:03.646Z</updated>
+    <updated>2016-11-25T14:37:03.647Z</updated>
     
     <content type="html"><![CDATA[<p>经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：<br>（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；<br>（2）利用加速度计产生的重力加速度信号和磁力计产生的地磁信号，可分别得到载体航向家、横滚角及航向角，从而得到物体姿态；可通过转换以四元数表示；<br>（3）多个系统捷联组合进行姿态测算，如通过卡尔曼融合算法，将陀螺仪、加速度计和磁力计产生的信号进行合理融合，角速度信号对动态情况下的物体姿态测算优势明显，而加速度与磁力计可对角速度信号的测算进行不定时修正，从而实现传感器之间的互补，使姿态测算更加精确、更适用于各种环境。<br>由于陀螺仪存在零偏及长时间使用后信号漂移等现象，如利用第一种方法进行姿态测算，姿态误差会随时间的推移而不断增大，从而导致无法长期稳定的精确信号输出；加速度计及磁力计皆利用地球本身存在的稳定的外部因素产生输出信号，更容易获得物体的绝对姿态，然而在运动过程中，物体同样会产生加速度，对姿态测算造成干扰，而磁力计也易受磁性物质干扰，因此第二种方法适合物体本身运动幅度较小的情况，不利于在物体快速运动时的姿态测算，即动态性能不好。第三种方法对前两种方法进行融合，能够分别发挥两种方法的优势，虽然采用卡尔曼滤波等信息融合技术，增加了运算量，但能在各种运动情况下获取物体精确姿态，是目前捷联导航系统中最常用的姿态测算方法。</p>
 ]]></content>
@@ -638,10 +638,10 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh26430019y4u0x0h0klyo/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh26430019y4u0x0h0klyo/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfv000ozw5ksxn1uxaz/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfv000ozw5ksxn1uxaz/</id>
     <published>2016-03-30T05:53:00.000Z</published>
-    <updated>2016-11-25T14:25:24.348Z</updated>
+    <updated>2016-11-25T14:25:24.349Z</updated>
     
     <content type="html"><![CDATA[<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
 <pre><code>//模拟按下&apos;ALT+F4&apos;键
@@ -666,8 +666,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh265m0029y4u0xaudyadn/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh265m0029y4u0xaudyadn/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixga0018zw5k4zyqryxa/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixga0018zw5k4zyqryxa/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2016-11-25T14:23:08.950Z</updated>
     
@@ -693,10 +693,10 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh26140007y4u01ethizz1/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh26140007y4u01ethizz1/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfo000gzw5kc7g1in6v/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfo000gzw5kc7g1in6v/</id>
     <published>2015-07-12T05:44:00.000Z</published>
-    <updated>2016-11-28T10:33:06.838Z</updated>
+    <updated>2016-11-28T10:33:06.839Z</updated>
     
     <content type="html"><![CDATA[<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
 <a id="more"></a>
@@ -721,10 +721,10 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh25wz0002y4u000w2qpy7/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh25wz0002y4u000w2qpy7/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixf70005zw5kv1ohdnhv/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixf70005zw5kv1ohdnhv/</id>
     <published>2015-04-06T10:24:00.000Z</published>
-    <updated>2016-11-28T10:31:56.501Z</updated>
+    <updated>2016-11-28T10:31:56.502Z</updated>
     
     <content type="html"><![CDATA[<p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。分布式的git相比于集中式的svn最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。<br>git构架上分为3个区，工作区，暂存区与版本库。用户在工作区的更改通过git add命令添加至暂存区，暂存区的数据通过git commit提交到版本库。用户通过git checkout从版本库中检出数据。<br>git的远程协作需要先fork开源项目，然后本地git clone该项目，通过git pull，git push编辑项目，通过git remote获取原作者的更新，pull request为该项目做贡献。</p>
 <p>git 双击table自动完成</p>
@@ -811,8 +811,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh261n000iy4u0yu3rd48q/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh261n000iy4u0yu3rd48q/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfy000szw5kornsjv9t/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfy000szw5kornsjv9t/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -873,8 +873,8 @@ END START
   
   <entry>
     <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh264h001cy4u02fz64fl4/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh264h001cy4u02fz64fl4/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixh30023zw5k9vjt203l/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixh30023zw5k9vjt203l/</id>
     <published>2014-10-13T10:50:00.000Z</published>
     <updated>2016-11-28T10:34:25.112Z</updated>
     
@@ -1059,10 +1059,10 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
   
   <entry>
     <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh2634000uy4u0p7g5h4z1/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh2634000uy4u0p7g5h4z1/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfh000azw5kqa0zxua0/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfh000azw5kqa0zxua0/</id>
     <published>2014-09-16T15:00:00.000Z</published>
-    <updated>2016-11-28T10:34:54.953Z</updated>
+    <updated>2016-11-28T10:34:54.954Z</updated>
     
     <content type="html"><![CDATA[<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
 <p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
@@ -1099,8 +1099,8 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho上的好用插件</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh262x000ry4u06gxktiwp/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh262x000ry4u06gxktiwp/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfz000vzw5k886pv2rv/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfz000vzw5k886pv2rv/</id>
     <published>2014-09-07T04:00:00.000Z</published>
     <updated>2016-11-28T10:36:00.446Z</updated>
     
@@ -1151,8 +1151,8 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh26170008y4u04nmvi09p/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh26170008y4u04nmvi09p/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfp000izw5kcbxh1vp1/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfp000izw5kcbxh1vp1/</id>
     <published>2014-08-24T12:00:00.000Z</published>
     <updated>2016-11-28T10:36:41.008Z</updated>
     
@@ -1210,10 +1210,10 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh261u000oy4u0x7n2zrjz/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh261u000oy4u0x7n2zrjz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixh40024zw5kk3rvio90/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixh40024zw5kk3rvio90/</id>
     <published>2014-08-10T12:46:00.000Z</published>
-    <updated>2016-11-28T10:37:09.526Z</updated>
+    <updated>2016-11-28T10:37:09.527Z</updated>
     
     <content type="html"><![CDATA[<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
 <a id="more"></a>
@@ -1241,8 +1241,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>SAE域名绑定问题</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh26090003y4u0jw66aeaf/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh26090003y4u0jw66aeaf/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixfb0007zw5k7i04jens/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixfb0007zw5k7i04jens/</id>
     <published>2014-08-08T16:28:00.000Z</published>
     <updated>2016-11-25T14:02:23.763Z</updated>
     
@@ -1275,8 +1275,8 @@ class derived:public base｛...}    //c
   
   <entry>
     <title>快速切换IP地址</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh263t0014y4u0ktd8wi6k/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh263t0014y4u0ktd8wi6k/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixg80014zw5k9rw2w2mh/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixg80014zw5k9rw2w2mh/</id>
     <published>2014-07-21T15:18:00.000Z</published>
     <updated>2016-11-25T14:02:03.566Z</updated>
     
@@ -1353,10 +1353,10 @@ Pause
   
   <entry>
     <title>Hello World!</title>
-    <link href="http://mjackie.github.io/Tech/ciwdh26110006y4u07fzf0q71/"/>
-    <id>http://mjackie.github.io/Tech/ciwdh26110006y4u07fzf0q71/</id>
+    <link href="http://mjackie.github.io/Tech/cj5hxixf20002zw5k6u6d2twz/"/>
+    <id>http://mjackie.github.io/Tech/cj5hxixf20002zw5k6u6d2twz/</id>
     <published>2014-07-21T07:30:00.000Z</published>
-    <updated>2016-11-25T13:57:29.613Z</updated>
+    <updated>2016-11-25T13:57:29.614Z</updated>
     
     <content type="html"><![CDATA[<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名<a href="http://www.liu13.com" target="_blank" rel="external">liu13.sinaapp.com</a>。</p>
 <p>感谢开源代码及作者。</p>
