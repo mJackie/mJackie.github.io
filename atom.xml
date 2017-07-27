@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-24T13:16:11.703Z</updated>
+  <updated>2017-07-27T14:12:08.776Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Blogecho</title>
+    <link href="http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/"/>
+    <id>http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/</id>
+    <published>2017-07-27T14:01:00.000Z</published>
+    <updated>2017-07-27T14:12:08.776Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
+<h2 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h2><ul>
+<li>作者：JackieLiu</li>
+<li>版本：v1.0</li>
+<li>更新日期：2016.11.28</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li>集成代码高亮</li>
+<li>完美兼容 MarkDown 语法</li>
+<li>响应式布局</li>
+<li>随机更换透明背景壁纸</li>
+</ol>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
+<li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
+<li>在主题外观设置页面，设置相应选项</li>
+<li>在博客后台点击启用</li>
+</ol>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>体验 Blogecho 主题: <a href="https://jackieliu.win" target="_blank" rel="external">Blogecho 演示</a></p>
+<blockquote>
+<p>注意：此演示基于 Hexo，与 Typechoe 有些许差异。</p>
+</blockquote>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho2.png" alt="image"></p>
+<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogechoForTypechoSetup.png" alt="image"></p>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><ul>
+<li>2016.11.28  发布 Blogecho for Typecho v1.0</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Open sourced under the MIT license.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Blogecho-for-Type
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
+    
+      <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
+    
+  </entry>
   
   <entry>
     <title>SignalR框架</title>
@@ -1349,35 +1402,6 @@ Pause
     
     
       <category term="cmd" scheme="http://mjackie.github.io/tags/cmd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World!</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltpf0005rv5k8y634z23/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltpf0005rv5k8y634z23/</id>
-    <published>2014-07-21T07:30:00.000Z</published>
-    <updated>2017-07-24T12:59:23.311Z</updated>
-    
-    <content type="html"><![CDATA[<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。</p>
-<p>感谢开源代码及作者。</p>
-<p>做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，不求索取，过程便是最好的奖励。</p>
-<p>非同凡响，追求卓越。</p>
-<p>博客于2014年7月21日正式建立，留此纪念。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。&lt;/p&gt;
-&lt;p&gt;感谢开源代码及作者。&lt;/p&gt;
-&lt;p&gt;做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
     
   </entry>
   
