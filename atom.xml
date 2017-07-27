@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-27T14:12:08.776Z</updated>
+  <updated>2017-07-27T14:14:06.136Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Blogecho</title>
+    <title>Blogecho for Typecho</title>
     <link href="http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/"/>
     <id>http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/</id>
     <published>2017-07-27T14:01:00.000Z</published>
-    <updated>2017-07-27T14:12:08.776Z</updated>
+    <updated>2017-07-27T14:14:06.136Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
 <h2 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h2><ul>
@@ -34,6 +34,7 @@
 <li>响应式布局</li>
 <li>随机更换透明背景壁纸</li>
 </ol>
+<a id="more"></a>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
 <li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
 <li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
@@ -55,7 +56,17 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Blogecho-for-Type
+&lt;h2 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;作者：JackieLiu&lt;/li&gt;
+&lt;li&gt;版本：v1.0&lt;/li&gt;
+&lt;li&gt;更新日期：2016.11.28&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;集成代码高亮&lt;/li&gt;
+&lt;li&gt;完美兼容 MarkDown 语法&lt;/li&gt;
+&lt;li&gt;响应式布局&lt;/li&gt;
+&lt;li&gt;随机更换透明背景壁纸&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
