@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Data Matrix 解析算法 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-datamatrix-detect" class="article post article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         5/27
+        </div>
+        <div class="post_t_u">
+         1:00
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cj5s2vau70012dr5kyxtu90tg/">
+    
+      Data Matrix 解析算法
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二维码/">二维码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
+<p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
+<p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
+<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br><a id="more"></a></p>
+<h3 id="Data-Matrix-检测算法"><a href="#Data-Matrix-检测算法" class="headerlink" title="Data Matrix 检测算法"></a>Data Matrix 检测算法</h3><p>之前文章我们已经介绍过二维码的解码流程，本篇文章主要介绍Data Matrix Detect 算法，也就是如何从一幅图片中找出符号码的部分。</p>
+<p>Data Matrix 不同于有显示定位符的二维码，例如 QR 码。所以定位符号图像的方式较为低效，即从图像中心向四周搜索，直到框住整个符号图像。这种检测方式也限定了图像中心区域必须为符号图像，否则则会检测失败。</p>
+<p>检测步骤分为如下几步：</p>
+<ol>
+<li><p><strong>大致划出符号图像的位置。</strong>从图像中间画一个小矩形框，然后依次向四边推行，检测四边上是否有黑色的点，直到每一边都没有黑色的点为止。</p>
+<p> 最终检测完四条边就会得到符号图像的大致位置。<br> <img src="/post_image/datamatrix/datamatrix2.jpg" alt="datamatrix2"></p>
+</li>
+<li><p><strong>找寻符号图像四个顶点。</strong>大致范围确定以后就需要确定符号图像四个角的顶点，有了四个角的顶点就可以进行透视变换，符号码图像也就能够取出。首先在大检测框的四个角用斜45度的直线去检测，如下图所示：</p>
+<p> <img src="/post_image/datamatrix/datamatrix3.jpg" alt="datamatrix3"></p>
+</li>
+<li><p><strong>确定顶点方位和纬度。</strong><br>DataMatrix符号图像边缘的一圈成两个L形，一个L是实线，一个L是虚线。搜索的方法就是沿4条边的直线进行黑白变换次数的检测。黑白变换次数少的就是实线的边，多的就是虚线的边，再去找两个L形的交点，就确定了左下角和右上角这两点，然后再经过两点间距离的比较确定出四个顶点。</p>
+<p> <img src="/post_image/datamatrix/datamatrix4.jpg" alt="datamatrix4"></p>
+<p> 纬度就是符号的一边上有多少个模块，计算方法就是去找虚线定位符那一边有多少次黑白变换（DataMatrix的纬度都是偶数，所以要进行误差修正）。纬度计算出来了就可以知道每个模块的宽度，再由此就可以计算出四条边分别有多少个模块。这样就可以计算出符号的长宽比，就能够确定是长方形还是正方形。</p>
+</li>
+</ol>
+
+    </p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cj5s2vau90016dr5kpkur3fbt/" >            
+            
+              Java值传递与引用传递
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cj5s2vau5000zdr5kk43my4t4/" >            
+            
+              ccnSim 模拟器
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

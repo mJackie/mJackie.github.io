@@ -17,8 +17,8 @@
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sogi0001a15kx0d7usk4/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sogi0001a15kx0d7usk4/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vasx0001dr5kyul1i7pw/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vasx0001dr5kyul1i7pw/</id>
     <published>2017-07-27T14:01:00.000Z</published>
     <updated>2017-07-31T11:04:37.463Z</updated>
     
@@ -74,8 +74,8 @@
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soie001ya15kaclxhzq0/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soie001ya15kaclxhzq0/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/</id>
     <published>2017-07-27T14:01:00.000Z</published>
     <updated>2017-07-31T11:26:45.895Z</updated>
     
@@ -127,8 +127,8 @@ Explanation:
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soic001ua15knawrcinq/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soic001ua15knawrcinq/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vaus001udr5k1jxd2o7t/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vaus001udr5k1jxd2o7t/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -183,8 +183,8 @@ nvm install stable
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohr0016a15keiii2zh0/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohr0016a15keiii2zh0/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vau90016dr5kpkur3fbt/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vau90016dr5kpkur3fbt/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -314,8 +314,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohq0012a15kst9uijns/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohq0012a15kst9uijns/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vau70012dr5kyxtu90tg/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vau70012dr5kyxtu90tg/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -360,10 +360,10 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohp000za15k7cmddfao/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohp000za15k7cmddfao/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vau5000zdr5kk43my4t4/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vau5000zdr5kk43my4t4/</id>
     <published>2017-04-08T13:22:00.000Z</published>
-    <updated>2017-07-31T11:31:37.391Z</updated>
+    <updated>2017-07-31T11:34:57.771Z</updated>
     
     <content type="html"><![CDATA[<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
 <h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
@@ -371,8 +371,11 @@ public class ParamTest {
 <li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
 <li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
 <li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
-<li>执行仿真<a id="more"></a>
-<h2 id="OMNeT-简介"><a href="#OMNeT-简介" class="headerlink" title="OMNeT ++ 简介"></a>OMNeT ++ 简介</h2>既然想要读懂 ccnSim 的代码，首先要对 Omnet++ 有所了解。OMNeT++是一个免费的、开源的多协议网络仿真软件，在网络仿真领域中占有十分重要的地位。</li>
+<li>执行仿真</li>
+</ul>
+<a id="more"></a>
+<h2 id="OMNeT-简介"><a href="#OMNeT-简介" class="headerlink" title="OMNeT ++ 简介"></a>OMNeT ++ 简介</h2><p>既然想要读懂 ccnSim 的代码，首先要对 Omnet++ 有所了解。OMNeT++是一个免费的、开源的多协议网络仿真软件，在网络仿真领域中占有十分重要的地位。</p>
+<ul>
 <li>OMNeT + + 是基于模块化的，最底层不可分割的模块是简单模块（ simple modules），简单模块可以组成复合模块（ compound modules）。</li>
 <li>在 OMNeT + + 平台上，用户使用 NED 语言来定义组件的结构，一般一个组件（.h 和其对应的 .cc 文件）同时对应一个.net文件</li>
 <li>组件之间通过 Message 进行交互，<code>handleMessage()</code> 方法用来处理消息</li>
@@ -443,7 +446,8 @@ lru_pos* mru; //most recently used item
 &lt;li&gt;编译 ccnSim 源文件， 链接 Omnet + + 框架&lt;/li&gt;
 &lt;li&gt;编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)&lt;/li&gt;
 &lt;li&gt;初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。&lt;/li&gt;
-&lt;li&gt;执行仿真
+&lt;li&gt;执行仿真&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -460,8 +464,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohf000oa15karcil8ti/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohf000oa15karcil8ti/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vatt000kdr5k3uig2z92/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vatt000kdr5k3uig2z92/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -553,8 +557,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohw0019a15k1ons6a03/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohw0019a15k1ons6a03/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vaub0019dr5k18t23fir/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vaub0019dr5k18t23fir/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -608,8 +612,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sogm0002a15kikz6p4ok/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sogm0002a15kikz6p4ok/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vat10002dr5kjvvsyhuy/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vat10002dr5kjvvsyhuy/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -663,8 +667,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soif0021a15kt5usxkdv/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soif0021a15kt5usxkdv/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauw0021dr5kohs4acuz/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauw0021dr5kohs4acuz/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -948,8 +952,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soi1001ga15kywjnr6ur/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soi1001ga15kywjnr6ur/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vaug001gdr5k3ijr1noa/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vaug001gdr5k3ijr1noa/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -989,8 +993,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soh9000da15k5ilxdamg/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soh9000da15k5ilxdamg/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vatp000ddr5k18w2k1z6/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vatp000ddr5k18w2k1z6/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-07-31T11:30:09.151Z</updated>
     
@@ -1060,8 +1064,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soi5001ia15knafhuxcx/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soi5001ia15knafhuxcx/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauj001idr5kr4tq09tq/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauj001idr5kr4tq09tq/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1081,8 +1085,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohy001ca15kd5x0db4l/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohy001ca15kd5x0db4l/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauc001cdr5k1oxs7tdn/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauc001cdr5k1oxs7tdn/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1111,8 +1115,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soi6001la15k6hjdlg4b/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soi6001la15k6hjdlg4b/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauk001ldr5k1x3zkqgt/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauk001ldr5k1x3zkqgt/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2017-07-24T13:25:44.891Z</updated>
     
@@ -1138,8 +1142,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soh5000ba15k2gtoaz8v/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soh5000ba15k2gtoaz8v/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vatk000bdr5k3tuoe9af/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vatk000bdr5k3tuoe9af/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2017-07-31T11:29:57.395Z</updated>
     
@@ -1167,8 +1171,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sogv0005a15kok6m53u3/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sogv0005a15kok6m53u3/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vata0005dr5kpq9g7808/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vata0005dr5kpq9g7808/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2017-07-31T11:32:16.823Z</updated>
     
@@ -1257,8 +1261,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohh000qa15k37quxv7u/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohh000qa15k37quxv7u/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vatw000qdr5kynv077gp/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vatw000qdr5kynv077gp/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -1319,8 +1323,8 @@ END START
   
   <entry>
     <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2soi9001ra15kw2j70g10/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2soi9001ra15kw2j70g10/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauq001rdr5kvg9jlid8/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauq001rdr5kvg9jlid8/</id>
     <published>2014-10-13T10:50:00.000Z</published>
     <updated>2017-07-31T11:29:29.655Z</updated>
     
@@ -1506,8 +1510,8 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
   
   <entry>
     <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2sohe000ka15kimcafyv7/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2sohe000ka15kimcafyv7/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s2vatv000odr5kabqxatdi/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vatv000odr5kabqxatdi/</id>
     <published>2014-09-16T15:00:00.000Z</published>
     <updated>2017-07-31T11:29:56.279Z</updated>
     
