@@ -80,7 +80,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s2ek7m0003nf5k4tvrtpfn/">Data Matrix 解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj5s2sohq0012a15kst9uijns/">Data Matrix 解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -93,24 +93,8 @@
 	        	<h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
 <p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
 <p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
-<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"></p>
-<h3 id="Data-Matrix-检测算法"><a href="#Data-Matrix-检测算法" class="headerlink" title="Data Matrix 检测算法"></a>Data Matrix 检测算法</h3><p>之前文章我们已经介绍过二维码的解码流程，本篇文章主要介绍Data Matrix Detect 算法，也就是如何从一幅图片中找出符号码的部分。</p>
-<p>Data Matrix 不同于有显示定位符的二维码，例如 QR 码。所以定位符号图像的方式较为低效，即从图像中心向四周搜索，直到框住整个符号图像。这种检测方式也限定了图像中心区域必须为符号图像，否则则会检测失败。</p>
-<p>检测步骤分为如下几步：</p>
-<ol>
-<li><p><strong>大致划出符号图像的位置。</strong>从图像中间画一个小矩形框，然后依次向四边推行，检测四边上是否有黑色的点，直到每一边都没有黑色的点为止。</p>
-<p> 最终检测完四条边就会得到符号图像的大致位置。<br> <img src="/post_image/datamatrix/datamatrix2.jpg" alt="datamatrix2"></p>
-</li>
-<li><p><strong>找寻符号图像四个顶点。</strong>大致范围确定以后就需要确定符号图像四个角的顶点，有了四个角的顶点就可以进行透视变换，符号码图像也就能够取出。首先在大检测框的四个角用斜45度的直线去检测，如下图所示：</p>
-<p> <img src="/post_image/datamatrix/datamatrix3.jpg" alt="datamatrix3"></p>
-</li>
-<li><p><strong>确定顶点方位和纬度。</strong><br>DataMatrix符号图像边缘的一圈成两个L形，一个L是实线，一个L是虚线。搜索的方法就是沿4条边的直线进行黑白变换次数的检测。黑白变换次数少的就是实线的边，多的就是虚线的边，再去找两个L形的交点，就确定了左下角和右上角这两点，然后再经过两点间距离的比较确定出四个顶点。</p>
-<p> <img src="/post_image/datamatrix/datamatrix4.jpg" alt="datamatrix4"></p>
-<p> 纬度就是符号的一边上有多少个模块，计算方法就是去找虚线定位符那一边有多少次黑白变换（DataMatrix的纬度都是偶数，所以要进行误差修正）。纬度计算出来了就可以知道每个模块的宽度，再由此就可以计算出四条边分别有多少个模块。这样就可以计算出符号的长宽比，就能够确定是长方形还是正方形。</p>
-</li>
-</ol>
-
-	        	<p class="read-more"><a> <br/></a></p>
+<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br>
+	          	<p class="read-more"><a href="/Tech/cj5s2sohq0012a15kst9uijns/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
