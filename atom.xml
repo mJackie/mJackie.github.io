@@ -73,59 +73,6 @@
   </entry>
   
   <entry>
-    <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/"/>
-    <id>http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/</id>
-    <published>2017-07-27T14:01:00.000Z</published>
-    <updated>2017-07-31T11:26:45.895Z</updated>
-    
-    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。</p>
-<h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
-<p><em>例子：</em></p>
-<pre><code>Input: [5, 4, 3, 2, 1]
-Output: [&quot;Gold Medal&quot;, &quot;Silver Medal&quot;, &quot;Bronze Medal&quot;, &quot;4&quot;, &quot;5&quot;]
-
-Explanation: 
-前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
-剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
-</code></pre><a id="more"></a>
-<p><em>注意：</em></p>
-<ol>
-<li>N 是不大于10000的正整数.</li>
-<li>所有运动员的分数不会重复.</li>
-</ol>
-<h3 id="比特翻转"><a href="#比特翻转" class="headerlink" title="比特翻转"></a>比特翻转</h3><p>翻转给定的32位无符号整数。<br>例如，给定输入43261596（二进制为： <strong>00000010100101000001111010011100</strong>）,返回964176192（二进制为： <strong>00111001011110000010100101000000</strong>）</p>
-<p><em>思考：</em>如果这个函数被多次调用，你会怎样最优化它?</p>
-<h3 id="轮转有序数组中的最小值"><a href="#轮转有序数组中的最小值" class="headerlink" title="轮转有序数组中的最小值"></a>轮转有序数组中的最小值</h3><p>假设一个按升序排序的数组在预先未知的某个旋转轴上旋转,</p>
-<p>(i.e., <code>0 1 2 4 5 6 7</code> 可能变为 <code>4 5 6 7 0 1 2</code>)</p>
-<p>找出其中最小的元素.</p>
-<p>你可以假设数组中没有重复值.</p>
-<p><em>思考：</em>你写的算法时间，空间复杂度为多少？</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。&lt;/p&gt;
-&lt;h3 id=&quot;相对排名&quot;&gt;&lt;a href=&quot;#相对排名&quot; class=&quot;headerlink&quot; title=&quot;相对排名&quot;&gt;&lt;/a&gt;相对排名&lt;/h3&gt;&lt;p&gt;给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;例子：&lt;/em&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Input: [5, 4, 3, 2, 1]
-Output: [&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot;, &amp;quot;Bronze Medal&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;]
-
-Explanation: 
-前三个是得分最高的三个人，他们分别获得&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot; 和 &amp;quot;Bronze Medal&amp;quot;.
-剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>换电脑后如何恢复Hexo环境</title>
     <link href="http://mjackie.github.io/Tech/cj5s2vaus001udr5k1jxd2o7t/"/>
     <id>http://mjackie.github.io/Tech/cj5s2vaus001udr5k1jxd2o7t/</id>
@@ -178,6 +125,59 @@ nvm install stable
       <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
     
       <category term="hexo" scheme="http://mjackie.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机试题</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2vauv001ydr5kmppeekcc/</id>
+    <published>2017-07-19T15:30:00.000Z</published>
+    <updated>2017-07-31T11:37:04.843Z</updated>
+    
+    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。</p>
+<h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
+<p><em>例子：</em></p>
+<pre><code>Input: [5, 4, 3, 2, 1]
+Output: [&quot;Gold Medal&quot;, &quot;Silver Medal&quot;, &quot;Bronze Medal&quot;, &quot;4&quot;, &quot;5&quot;]
+
+Explanation: 
+前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
+剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
+</code></pre><a id="more"></a>
+<p><em>注意：</em></p>
+<ol>
+<li>N 是不大于10000的正整数.</li>
+<li>所有运动员的分数不会重复.</li>
+</ol>
+<h3 id="比特翻转"><a href="#比特翻转" class="headerlink" title="比特翻转"></a>比特翻转</h3><p>翻转给定的32位无符号整数。<br>例如，给定输入43261596（二进制为： <strong>00000010100101000001111010011100</strong>）,返回964176192（二进制为： <strong>00111001011110000010100101000000</strong>）</p>
+<p><em>思考：</em>如果这个函数被多次调用，你会怎样最优化它?</p>
+<h3 id="轮转有序数组中的最小值"><a href="#轮转有序数组中的最小值" class="headerlink" title="轮转有序数组中的最小值"></a>轮转有序数组中的最小值</h3><p>假设一个按升序排序的数组在预先未知的某个旋转轴上旋转,</p>
+<p>(i.e., <code>0 1 2 4 5 6 7</code> 可能变为 <code>4 5 6 7 0 1 2</code>)</p>
+<p>找出其中最小的元素.</p>
+<p>你可以假设数组中没有重复值.</p>
+<p><em>思考：</em>你写的算法时间，空间复杂度为多少？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。&lt;/p&gt;
+&lt;h3 id=&quot;相对排名&quot;&gt;&lt;a href=&quot;#相对排名&quot; class=&quot;headerlink&quot; title=&quot;相对排名&quot;&gt;&lt;/a&gt;相对排名&lt;/h3&gt;&lt;p&gt;给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;例子：&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Input: [5, 4, 3, 2, 1]
+Output: [&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot;, &amp;quot;Bronze Medal&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;]
+
+Explanation: 
+前三个是得分最高的三个人，他们分别获得&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot; 和 &amp;quot;Bronze Medal&amp;quot;.
+剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
