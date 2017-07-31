@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-31T11:04:37.463Z</updated>
+  <updated>2017-07-31T12:57:47.523Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,66 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av2a0001oz5kq6k1sg0w/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av2a0001oz5kq6k1sg0w/</id>
-    <published>2017-07-27T14:01:00.000Z</published>
-    <updated>2017-07-31T11:04:37.463Z</updated>
+    <title>QR 码解析算法</title>
+    <link href="http://mjackie.github.io/Tech/cj5s5tk2q0000835kyuwd8atg/"/>
+    <id>http://mjackie.github.io/Tech/cj5s5tk2q0000835kyuwd8atg/</id>
+    <published>2017-07-26T16:00:00.000Z</published>
+    <updated>2017-07-31T12:57:47.523Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
-<h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
-<li>作者：JackieLiu</li>
-<li>版本：v1.0</li>
-<li>更新日期：2016.11.28<a id="more"></a>
-<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
-<li>集成代码高亮</li>
-<li>完美兼容 MarkDown 语法</li>
-<li>响应式布局</li>
-<li>随机更换透明背景壁纸</li>
-</ol>
-</li>
+    <content type="html"><![CDATA[<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
+<li>横向扫描，检测 黑白黑白黑 的组合</li>
+<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
+<li>验证是否满足1:1:3:1:1的比例</li>
+<li>检测纵向是否满足定位符特征</li>
+<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
+<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
+<li>否则继续扫描图片</li>
+<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
+<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
+<li>返回检测到的三个定位符的结果</li>
 </ul>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ol>
-<li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
-<li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
-<li>在主题外观设置页面，设置相应选项</li>
-<li>在博客后台点击启用</li>
-</ol>
-<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><p>体验 Blogecho 主题: <a href="https://jackieliu.win" target="_blank" rel="external">Blogecho 演示</a></p>
-<blockquote>
-<p>注意：此演示基于 Hexo，与 Typechoe 有些许差异。</p>
-</blockquote>
-<h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho2.png" alt="image"></p>
-<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogechoForTypechoSetup.png" alt="image"></p>
-<h4 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h4><ul>
-<li>2016.11.28  发布 Blogecho for Typecho v1.0</li>
+<h4 id="计算一个模块的大小"><a href="#计算一个模块的大小" class="headerlink" title="计算一个模块的大小"></a>计算一个模块的大小</h4><ul>
+<li><code>calculateModuleSize()</code>按照x轴y轴分别计算，取平均值。</li>
+<li>同时每次计算又分别调换参数计算两次，取平均值<code>calculateModuleSizeOneWay()</code></li>
+<li>定位符的宽度/7，得到一个模块的像素数</li>
 </ul>
-<h4 id="License"><a href="#License" class="headerlink" title="License"></a>License</h4><p>Open sourced under the MIT license.</p>
-]]></content>
+<h4 id="计算维度，即一行有多少块"><a href="#计算维度，即一行有多少块" class="headerlink" title="计算维度，即一行有多少块"></a>计算维度，即一行有多少块</h4><pre><code>int tltrCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, topRight) / moduleSize);
+int tlblCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, bottomLeft) / moduleSize);
+int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为坐标点是定位符中心点，所以要+7
+</code></pre><h4 id="根据维度得到版本号"><a href="#根据维度得到版本号" class="headerlink" title="根据维度得到版本号"></a>根据维度得到版本号</h4><h4 id="计算alignment，预估右下角坐标"><a href="#计算alignment，预估右下角坐标" class="headerlink" title="计算alignment，预估右下角坐标"></a>计算alignment，预估右下角坐标</h4><h4 id="透视变换得到比特数组"><a href="#透视变换得到比特数组" class="headerlink" title="透视变换得到比特数组"></a>透视变换得到比特数组</h4>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;作者：JackieLiu&lt;/li&gt;
-&lt;li&gt;版本：v1.0&lt;/li&gt;
-&lt;li&gt;更新日期：2016.11.28
+      &lt;h3 id=&quot;检测定位符流程&quot;&gt;&lt;a href=&quot;#检测定位符流程&quot; class=&quot;headerlink&quot; title=&quot;检测定位符流程&quot;&gt;&lt;/a&gt;检测定位符流程&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;横向扫描，检测 黑白黑白黑 的组合&lt;/li&gt;
+&lt;li&gt;默认隔&lt;code&gt;(3 * max
     
     </summary>
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
+      <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
     
-      <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av42001uoz5ks4qxof1u/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av42001uoz5ks4qxof1u/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416x2001u4j5kqddtcioz/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416x2001u4j5kqddtcioz/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -130,8 +119,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av45001yoz5kv87oocm7/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av45001yoz5kv87oocm7/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416x5001y4j5kj28ntpg7/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416x5001y4j5kj28ntpg7/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -183,8 +172,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3o0016oz5k1pkcpdjw/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3o0016oz5k1pkcpdjw/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wj00164j5kqamxtb69/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wj00164j5kqamxtb69/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -314,8 +303,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3n0012oz5kk6r6p1rc/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3n0012oz5kk6r6p1rc/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wi00124j5kooz1qog2/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wi00124j5kooz1qog2/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -360,8 +349,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3j000zoz5kmd878tu1/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3j000zoz5kmd878tu1/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wh000z4j5k153g50re/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wh000z4j5k153g50re/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-07-31T11:34:57.771Z</updated>
     
@@ -463,9 +452,95 @@ lru_pos* mru; //most recently used item
   </entry>
   
   <entry>
+    <title>Blogecho, My Theme for Typecho</title>
+    <link href="http://mjackie.github.io/Tech/cj5s416v900014j5ktzoejzxa/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416v900014j5ktzoejzxa/</id>
+    <published>2016-12-05T01:21:00.000Z</published>
+    <updated>2017-07-31T12:17:06.019Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
+<h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
+<li>作者：JackieLiu</li>
+<li>版本：v1.0</li>
+<li>更新日期：2016.11.28<a id="more"></a>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
+<li>集成代码高亮</li>
+<li>完美兼容 MarkDown 语法</li>
+<li>响应式布局</li>
+<li>随机更换透明背景壁纸</li>
+</ol>
+</li>
+</ul>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ol>
+<li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
+<li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
+<li>在主题外观设置页面，设置相应选项</li>
+<li>在博客后台点击启用</li>
+</ol>
+<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><p>体验 Blogecho 主题: <a href="https://jackieliu.win" target="_blank" rel="external">Blogecho 演示</a></p>
+<blockquote>
+<p>注意：此演示基于 Hexo，与 Typechoe 有些许差异。</p>
+</blockquote>
+<h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho2.png" alt="image"></p>
+<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogechoForTypechoSetup.png" alt="image"></p>
+<h4 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h4><ul>
+<li>2016.11.28  发布 Blogecho for Typecho v1.0</li>
+</ul>
+<h4 id="License"><a href="#License" class="headerlink" title="License"></a>License</h4><p>Open sourced under the MIT license.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;作者：JackieLiu&lt;/li&gt;
+&lt;li&gt;版本：v1.0&lt;/li&gt;
+&lt;li&gt;更新日期：2016.11.28
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
+    
+      <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站作品展示</title>
+    <link href="http://mjackie.github.io/Tech/cj5s5ucm40004835kxxpdrrw5/"/>
+    <id>http://mjackie.github.io/Tech/cj5s5ucm40004835kxxpdrrw5/</id>
+    <published>2016-12-05T01:21:00.000Z</published>
+    <updated>2017-07-31T13:11:36.999Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
+<h5 id="支教邦"><a href="#支教邦" class="headerlink" title="支教邦"></a>支教邦</h5><p><img src="/post_image/web-zuopin/zhijiaobang.png" alt="image"></p>
+<h5 id="特种功能材料重点实验室"><a href="#特种功能材料重点实验室" class="headerlink" title="特种功能材料重点实验室"></a>特种功能材料重点实验室</h5><p><img src="/post_image/web-zuopin/cailiaolab.png" alt="image"></p>
+<h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"></p>
+<h5 id="民生学院人力资源部"><a href="#民生学院人力资源部" class="headerlink" title="民生学院人力资源部"></a>民生学院人力资源部</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
+<h5 id="民生学院纪检监察网"><a href="#民生学院纪检监察网" class="headerlink" title="民生学院纪检监察网"></a>民生学院纪检监察网</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
+<h5 id="艺术传媒学院"><a href="#艺术传媒学院" class="headerlink" title="艺术传媒学院"></a>艺术传媒学院</h5><p><img src="/post_image/web-zuopin/yishuchuanmei.png" alt="image"></p>
+<h5 id="医学院"><a href="#医学院" class="headerlink" title="医学院"></a>医学院</h5><p><img src="/post_image/web-zuopin/yixueyuan.png" alt="image"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。&lt;/p&gt;
+&lt;h5 i
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av39000ooz5k4uimbcs9/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av39000ooz5k4uimbcs9/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416w7000o4j5kbeei9a9o/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416w7000o4j5kbeei9a9o/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -557,8 +632,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3q0019oz5kkbeyg4ki/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3q0019oz5kkbeyg4ki/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wm00194j5kl67mmvyj/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wm00194j5kl67mmvyj/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -612,8 +687,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av2f0002oz5k29h6qk59/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av2f0002oz5k29h6qk59/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416vd00024j5kbkwgc15o/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416vd00024j5kbkwgc15o/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -667,8 +742,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av470021oz5kb0ls6mas/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av470021oz5kb0ls6mas/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416x600214j5k82n40rg5/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416x600214j5k82n40rg5/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -952,8 +1027,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3t001goz5kpiwppchr/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3t001goz5kpiwppchr/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wq001g4j5k1vtisxb3/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wq001g4j5k1vtisxb3/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -993,8 +1068,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av33000doz5kjq20v7et/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av33000doz5kjq20v7et/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416w1000d4j5k2pv3wba8/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416w1000d4j5k2pv3wba8/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-07-31T11:30:09.151Z</updated>
     
@@ -1064,8 +1139,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3w001ioz5ke7cqww9k/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3w001ioz5ke7cqww9k/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wt001i4j5kly4zszpo/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wt001i4j5kly4zszpo/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1085,8 +1160,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3r001coz5k9rv5athn/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3r001coz5k9rv5athn/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wn001c4j5kg8iievk0/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wn001c4j5kg8iievk0/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1115,8 +1190,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3y001loz5k1c60vz05/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3y001loz5k1c60vz05/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416wv001l4j5k476klfzz/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416wv001l4j5k476klfzz/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2017-07-24T13:25:44.891Z</updated>
     
@@ -1142,8 +1217,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av2y000boz5kb6h82rv0/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av2y000boz5kb6h82rv0/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416vx000b4j5kpszzgd84/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416vx000b4j5kpszzgd84/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2017-07-31T11:29:57.395Z</updated>
     
@@ -1171,8 +1246,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av2q0005oz5kv83xrxcl/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av2q0005oz5kv83xrxcl/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416vn00054j5kpnxhexox/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416vn00054j5kpnxhexox/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2017-07-31T11:32:16.823Z</updated>
     
@@ -1261,8 +1336,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av3a000qoz5k8tlayiqa/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av3a000qoz5k8tlayiqa/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s416w8000q4j5kw492c0mx/"/>
+    <id>http://mjackie.github.io/Tech/cj5s416w8000q4j5kw492c0mx/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -1318,233 +1393,6 @@ END START
     
     
       <category term="汇编" scheme="http://mjackie.github.io/tags/%E6%B1%87%E7%BC%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av40001roz5kdx2zl8fx/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av40001roz5kdx2zl8fx/</id>
-    <published>2014-10-13T10:50:00.000Z</published>
-    <updated>2017-07-31T11:29:29.655Z</updated>
-    
-    <content type="html"><![CDATA[<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com" target="_blank" rel="external">http://cj.liu13.com</a></p>
-<p><img src="/post_image/chengjichaxun.jpg" alt="image"></p>
-<a id="more"></a>
-<hr>
-<p>下面是源代码，一共两个文件：<br>index.php</p>
-<pre><code>&lt;html&gt;
-&lt;?
-#########################程序简介##########################
-#程序名称：成绩查询系统
-#版本：       v1.0
-#作者：    刘十三
-#邮箱：    liu13@liu13.com   
-#主页：    http://www.liu13.com
-?&gt;
-&lt;head&gt;
-    &lt;title&gt;成绩查询&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        body {background:#eee;}
-        ul {padding:0; margin:0;}
-        li {list-style:none;}
-        #container {margin: 0 auto; width: 80%;}
-        #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;}
-        a {color:#146fdf; text-decoration: none}
-        a:hover {color: black; text-decoration: underline}
-        #g_list {margin-top:60px; background:#fff;height:89px;border-radius:4px}
-        #g_u,#g_p {position:relative}
-        #g_u {border-bottom:1px solid #eaeaea}
-        .inputstyle {text-align:center;-webkit-tap-highlight-color:rgba(255,255,255,0); width:100%; height:44px;color:#000;border:0; background:0; font-size:16px;-webkit-appearance:none}
-        #cjsubmit {margin-top:40px; width:100%; height:44px; color:#146fdf}
-        .button {border:0px; width:100%; height:100%;color:white; background:#146fdf; border-radius:4px; font-size:16px;}
-        #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;
-        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;  
-            &lt;form method=post name=&quot;cf&quot; target=&quot;_blank&quot; onSubmit=javascript:chkfs()&gt;
-                &lt;ul  id=&quot;g_list&quot;&gt;
-                    &lt;li  id=&quot;g_u&quot;&gt;
-                        &lt;div  id=&quot;del_touch&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_u&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;u&quot;  class=&quot;inputstyle&quot;  name=&quot;pname&quot;  autocomplete=&quot;off&quot;  placeholder=&quot;请输入姓名&quot;&gt;
-
-                    &lt;/li&gt;
-                    &lt;li  id=&quot;g_p&quot;&gt;
-                        &lt;div  id=&quot;del_touch_p&quot;  class=&quot;del_touch&quot;&gt;
-                            &lt;span  id=&quot;del_p&quot;  class=&quot;del_u&quot;  style=&quot;display: none;&quot;&gt;&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;input  id=&quot;p&quot;  class=&quot;inputstyle&quot;  maxlength=&quot;10&quot;  name=&quot;pnum&quot;  autocorrect=&quot;off&quot;  placeholder=&quot;请输入学号&quot;&gt;
-
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;div id=&quot;cjsubmit&quot;&gt;&lt;input type=submit value=查分 class=&quot;button&quot;&gt;&lt;/div&gt;
-            &lt;script language=javascript&gt;  
-                function chkfs(){ 
-                var frm = document.forms[&apos;cf&apos;];  
-                frm.action=&quot;search.php&quot;;
-                return true;  
-                }
-            &lt;/script&gt;
-        &lt;/form&gt;
-
-        &lt;div id=&quot;notice&quot;&gt;
-            仅支持计算机与信息工程学院2013级计科专业学生查询&lt;BR&gt;
-            如果出现结果有误，请先仔细检查您输入的考号或姓名是否正确!&lt;BR&gt;
-        &lt;p align=center&gt;
-            Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>search.php</p>
-<pre><code>&lt;html&gt;
-&lt;?
-#########################程序简介##########################
-#程序名称：成绩查询系统
-#版本：       v1.0
-#作者：    刘十三
-#邮箱：    liu13@liu13.com   
-#主页：    http://www.liu13.com
-#运行环境：任何支持PHP的空间，PHP的版本不小于4.0.0
-$numerror=&quot;&lt;font size=4 color=red&gt;请您正确输入学号!&lt;/font&gt;&quot;;            //考号格式输入错误时的信息
-$nonumkey=&quot;&lt;font size=4 color=red&gt;请输入您的学号!&lt;/font&gt;&quot;;              //无输入学号时提示
-$nameerror=&quot;&lt;font size=4 color=red&gt;请您输入正确的姓名!&lt;/font&gt;&quot;;            //姓名格式输入错误时的信息
-$nonamekey=&quot;&lt;font size=4 color=red&gt;请输入您的姓名!&lt;/font&gt;&quot;;                 //无输入时提示
-$notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/font&gt;&quot;                //学号姓名不匹配
-?&gt;
-&lt;head&gt;
-    &lt;title&gt;成绩查询&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-    #title {color:#146fdf;font-size:25px; text-align:center; font-family:&quot;YouYuan&quot;; font-weight:bold;margin-top:40px;margin-bottom:30px;}
-    body {background:#eee;}
-    #container {margin:0 auto; width: 80%;}
-    a {color:#146fdf; text-decoration: none}
-    a:hover {color: black; text-decoration: underline}
-    .button {border:0px;width:100%; height:100%; color:white; background:#146fdf; border-radius:4px; font-size:16px;}
-    #closewindos {margin-top:60px; width:30%; height:30px; color:#146fdf}
-    #notice {text-align:center; margin-top:60px; color:#246183; line-height:14px; font-size:14px; padding:15px 10px}
-    table {border:1px solid #eaeaed;}
-    td {font-size:20px;border-bottom:1px solid #eaeaed; color:#246183}
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;
-        &lt;center&gt;
-        &lt;div id=&quot;title&quot;&gt;成绩查询&lt;/div&gt;
-        &lt;?
-        error_reporting(0);  //禁用错误报告
-
-        $nl=&quot;4&quot;;
-        $nameerr=&quot;&lt;font size=4 color=red&gt;$nameerror&lt;/font&gt;&quot;;
-        if($_POST[pname]==&quot;&quot;) echo $nonamekey;     
-        elseif (eregi(&quot;[&lt;&gt;() ,#|;%/$1234567890\abcdefghijklmnopqrstuvwxyz]&quot;,$_POST[pname])) echo $nameerr;
-        elseif (strlen($_POST[pname])&lt;$nl) echo $nameerr;    //检查输入姓名是否合法
-
-        $numerr=&quot;&lt;font size=4 color=red&gt;$numerror &lt;/font&gt;&quot;;
-        if($_POST[pnum]==&quot;&quot;) echo $nonumkey;     
-        elseif (strlen($_POST[pnum])!=10) echo $numerr;
-        elseif (eregi(&quot;[0123456789]&quot;,$_POST[pnum]))    //检查输入学号是否合法
-        {
-        $db = &quot;data.csv&quot;;   //csv数据文件           
-        $querydb = file($db);
-        $count = count($querydb);
-        for($i=0; $i&lt;$count; $i++) {
-        $detail = explode(&quot;,&quot;,$querydb[$i]);
-        $keyword = explode(&quot; &quot;,$_POST[pnum]);
-        $querycount = count($keyword);
-        $tds = explode(&quot;,&quot;,$querydb[1]);
-        for ($ai=0; $ai&lt;$querycount; $ai++) 
-        {eval(&quot;\$foundnum = eregi(\&quot;$keyword[$ai]\&quot;,\&quot;$detail[0]\&quot;);&quot;);}  
-        if($_POST[pname] == $detail[1]) $match = 1;  //索引学号
-        else $match = 0;
-
-        if($foundnum &amp;&amp; $match == 0) echo $notmatch;   //匹配姓名学号
-        if($foundnum &amp;&amp; $match)
-        {
-        $arrlength=count($tds);
-        echo&quot;&lt;font color=red size=4&gt;$detail[1]童鞋&lt;br&gt;您在计科专业的排名为&lt;br&gt;
-            &lt;font color=#146fdf size=40&gt;$detail[3]&lt;/font&gt;
-            &lt;br&gt;您的加权平均分为$detail[2]
-            &lt;br&gt;击败了$detail[4]的童鞋&lt;/font&gt;
-            &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;font color=#246183&gt;您的各科成绩如下&lt;/font&gt;&quot;;
-        echo&quot;&lt;table&gt;&quot;;
-        for($i=5;$i&lt;$arrlength;$i++)
-        {
-        if($detail[$i]!=&quot;&quot;){
-        echo&quot;&lt;tr&gt;&lt;td&gt;$tds[$i]&lt;/td&gt;
-                  &lt;td&gt;$detail[$i]&lt;/td&gt;&lt;/tr&gt;&quot;;}}
-        echo&quot;&lt;/table&gt;&quot;;break;
-        }}}
-        ?&gt;
-        &lt;div id=&quot;closewindos&quot;&gt;&lt;input type=&quot;button&quot; value=&quot;关闭此页&quot; class=&quot;button&quot; onClick=&quot;javascript:window.close()&quot;&gt;&lt;/div&gt;
-        &lt;/center&gt;
-        &lt;div id=&quot;notice&quot;&gt;
-        &lt;p align=center&gt;Powered by &lt;a href=http://weibo.com/liu133&gt;刘十三&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。&lt;br&gt;演示地址：&lt;a href=&quot;http://cj.liu13.com&quot;&gt;http://cj.liu13.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/post_image/chengjichaxun.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/cj5s3av38000koz5klfehj4wr/"/>
-    <id>http://mjackie.github.io/Tech/cj5s3av38000koz5klfehj4wr/</id>
-    <published>2014-09-16T15:00:00.000Z</published>
-    <updated>2017-07-31T11:29:56.279Z</updated>
-    
-    <content type="html"><![CDATA[<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
-<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
-<a id="more"></a>
-<p>那么sae上如何开启gzip压缩呢？<br>首先进入sae应用管理界面，在左侧面板中点击【AppConfig】页面<br>然后点击【页面压缩】功能中的【设置该项】<br><img src="/post_image/gzip/gzip1.png" alt="image"></p>
-<p>在弹出的窗口中点击下侧【确认】与【取消】中间的【高级语法】<br><img src="/post_image/gzip/gzip2.png" alt="image"><br>在AppConfig语法中直接复制以下代码，点击【确认】即可</p>
-<pre><code>compress: if ( out_header[&quot;Content-Length&quot;]&gt;=50) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/css&quot; ) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/javascript&quot; ) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/html&quot; ) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/png&quot; ) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;image/jpeg&quot; ) compress
-compress: if ( out_header[&quot;Content-type&quot;]==&quot;text/plain&quot; ) compress
-compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
-</code></pre><p><img src="/post_image/gzip/gzip3.png" alt="image"><br>至此，sae端设置完成</p>
-<hr>
-<pre><code>ob_start(&apos;ob_gzhandler&apos;);
-</code></pre><p>到网站根目录下找到index.php文件<br>Wordpress:找到define(‘WP_USE_THEMES’, true)这一行，在后面加上ob_start(‘ob_gzhandler’);就可以了<br><img src="/post_image/gzip/gzip4.png" alt="image"><br>Typecho:在任意位置加入ob_start(‘ob_gzhandler’);即可<br><img src="/post_image/gzip/gzip5.png" alt="image"><br>设置完成后可以上 <a href="http://tool.chinaz.com/Gzips/" target="_blank" rel="external">http://tool.chinaz.com/Gzips/</a> 查看开启效果，我的博客六石伞www.liu13.com的效果：<br><img src="/post_image/gzip/gzip6.png" alt="image"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。&lt;/p&gt;
-&lt;p&gt;先来简单的介绍一下gzip压缩：&lt;br&gt;HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="sae" scheme="http://mjackie.github.io/tags/sae/"/>
     
   </entry>
   
