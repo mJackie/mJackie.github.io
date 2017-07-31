@@ -17,8 +17,8 @@
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u4m0001im5kdjehhtdu/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u4m0001im5kdjehhtdu/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av2a0001oz5kq6k1sg0w/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av2a0001oz5kq6k1sg0w/</id>
     <published>2017-07-27T14:01:00.000Z</published>
     <updated>2017-07-31T11:04:37.463Z</updated>
     
@@ -74,8 +74,8 @@
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6l001uim5ks4py38y2/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6l001uim5ks4py38y2/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av42001uoz5ks4qxof1u/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av42001uoz5ks4qxof1u/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -130,12 +130,12 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6o001yim5kahf3b3oz/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6o001yim5kahf3b3oz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av45001yoz5kv87oocm7/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av45001yoz5kv87oocm7/</id>
     <published>2017-07-19T15:30:00.000Z</published>
-    <updated>2017-07-31T11:37:04.843Z</updated>
+    <updated>2017-07-31T11:49:05.687Z</updated>
     
-    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。</p>
+    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，虽然很简单，但要写出复杂度较低的方法并不容易。</p>
 <h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
 <p><em>例子：</em></p>
 <pre><code>Input: [5, 4, 3, 2, 1]
@@ -161,7 +161,7 @@ Explanation:
     
     <summary type="html">
     
-      &lt;p&gt;给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。&lt;/p&gt;
+      &lt;p&gt;给夏令营学生出的机试题，虽然很简单，但要写出复杂度较低的方法并不容易。&lt;/p&gt;
 &lt;h3 id=&quot;相对排名&quot;&gt;&lt;a href=&quot;#相对排名&quot; class=&quot;headerlink&quot; title=&quot;相对排名&quot;&gt;&lt;/a&gt;相对排名&lt;/h3&gt;&lt;p&gt;给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;例子：&lt;/em&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Input: [5, 4, 3, 2, 1]
@@ -183,8 +183,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5y0015im5kd7avafsh/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5y0015im5kd7avafsh/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3o0016oz5k1pkcpdjw/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3o0016oz5k1pkcpdjw/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -314,8 +314,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5w0012im5kd4revnuu/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5w0012im5kd4revnuu/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3n0012oz5kk6r6p1rc/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3n0012oz5kk6r6p1rc/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -360,8 +360,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5u0010im5kt9lq3vkf/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5u0010im5kt9lq3vkf/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3j000zoz5kmd878tu1/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3j000zoz5kmd878tu1/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-07-31T11:34:57.771Z</updated>
     
@@ -464,8 +464,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5k000oim5kcpfmlq2w/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5k000oim5kcpfmlq2w/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av39000ooz5k4uimbcs9/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av39000ooz5k4uimbcs9/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -557,8 +557,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u610018im5kzi9j38wz/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u610018im5kzi9j38wz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3q0019oz5kkbeyg4ki/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3q0019oz5kkbeyg4ki/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -612,8 +612,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u500005im5klwq1zm27/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u500005im5klwq1zm27/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av2f0002oz5k29h6qk59/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av2f0002oz5k29h6qk59/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -667,8 +667,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6r0021im5k57qkolhv/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6r0021im5k57qkolhv/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av470021oz5kb0ls6mas/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av470021oz5kb0ls6mas/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -952,8 +952,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u66001fim5kax5nvs7d/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u66001fim5kax5nvs7d/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3t001goz5kpiwppchr/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3t001goz5kpiwppchr/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -993,8 +993,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5e000dim5k95d2ouy5/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5e000dim5k95d2ouy5/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av33000doz5kjq20v7et/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av33000doz5kjq20v7et/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-07-31T11:30:09.151Z</updated>
     
@@ -1064,8 +1064,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6a001iim5kwuyepi51/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6a001iim5kwuyepi51/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3w001ioz5ke7cqww9k/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3w001ioz5ke7cqww9k/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1085,8 +1085,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u62001bim5kzo7acfoa/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u62001bim5kzo7acfoa/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3r001coz5k9rv5athn/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3r001coz5k9rv5athn/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1115,8 +1115,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6c001lim5kcm5p73ky/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6c001lim5kcm5p73ky/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3y001loz5k1c60vz05/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3y001loz5k1c60vz05/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2017-07-24T13:25:44.891Z</updated>
     
@@ -1142,8 +1142,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5a000bim5kb92wcyyp/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5a000bim5kb92wcyyp/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av2y000boz5kb6h82rv0/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av2y000boz5kb6h82rv0/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2017-07-31T11:29:57.395Z</updated>
     
@@ -1171,8 +1171,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u4q0002im5k62c4nfw6/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u4q0002im5k62c4nfw6/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av2q0005oz5kv83xrxcl/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av2q0005oz5kv83xrxcl/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2017-07-31T11:32:16.823Z</updated>
     
@@ -1261,8 +1261,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5m000rim5kpamy3dhk/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5m000rim5kpamy3dhk/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av3a000qoz5k8tlayiqa/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av3a000qoz5k8tlayiqa/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
@@ -1323,8 +1323,8 @@ END START
   
   <entry>
     <title>成绩查询系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u6e001oim5ktp1cbi07/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u6e001oim5ktp1cbi07/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av40001roz5kdx2zl8fx/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av40001roz5kdx2zl8fx/</id>
     <published>2014-10-13T10:50:00.000Z</published>
     <updated>2017-07-31T11:29:29.655Z</updated>
     
@@ -1510,8 +1510,8 @@ $notmatch=&quot;&lt;font size=4 color=red&gt;学号与姓名不匹配！&lt;/fon
   
   <entry>
     <title>SAE上博客开启gzip加速</title>
-    <link href="http://mjackie.github.io/Tech/cj5s30u5i000kim5kbdm469tm/"/>
-    <id>http://mjackie.github.io/Tech/cj5s30u5i000kim5kbdm469tm/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s3av38000koz5klfehj4wr/"/>
+    <id>http://mjackie.github.io/Tech/cj5s3av38000koz5klfehj4wr/</id>
     <published>2014-09-16T15:00:00.000Z</published>
     <updated>2017-07-31T11:29:56.279Z</updated>
     
