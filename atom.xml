@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-27T14:19:12.684Z</updated>
+  <updated>2017-07-31T11:09:56.747Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,25 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机试题</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2ek870007nf5kivz39vq5/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2ek870007nf5kivz39vq5/</id>
+    <published>2017-07-27T14:01:00.000Z</published>
+    <updated>2017-07-31T11:09:56.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。</p>
+<h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
+<p><em>例子：</em></p>
+<pre><code>Input: [5, 4, 3, 2, 1]
+Output: [&quot;Gold Medal&quot;, &quot;Silver Medal&quot;, &quot;Bronze Medal&quot;, &quot;4&quot;, &quot;5&quot;]
+
+Explanation: 
+前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
+剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
+</code></pre><p><em>注意：</em></p>
+<ol>
+<li>N 是不大于10000的正整数.</li>
+<li>所有运动员的分数不会重复.</li>
+</ol>
+<h3 id="比特翻转"><a href="#比特翻转" class="headerlink" title="比特翻转"></a>比特翻转</h3><p>翻转给定的32位无符号整数。<br>例如，给定输入43261596（二进制为： <strong>00000010100101000001111010011100</strong>）,返回964176192（二进制为： <strong>00111001011110000010100101000000</strong>）</p>
+<p><em>思考：</em>如果这个函数被多次调用，你会怎样最优化它?</p>
+<h3 id="轮转有序数组中的最小值"><a href="#轮转有序数组中的最小值" class="headerlink" title="轮转有序数组中的最小值"></a>轮转有序数组中的最小值</h3><p>假设一个按升序排序的数组在预先未知的某个旋转轴上旋转,</p>
+<p>(i.e., <code>0 1 2 4 5 6 7</code> 可能变为 <code>4 5 6 7 0 1 2</code>)</p>
+<p>找出其中最小的元素.</p>
+<p>你可以假设数组中没有重复值.</p>
+<p><em>思考：</em>你写的算法时间，空间复杂度为多少？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给夏令营学生出的机试题，很简单，却很容易从复杂度能筛选出水平高低。&lt;/p&gt;
+&lt;h3 id=&quot;相对排名&quot;&gt;&lt;a href=&quot;#相对排名&quot; class=&quot;headerlink&quot; title=&quot;相对排名&quot;&gt;&lt;/a&gt;相对排名&lt;/h3&gt;&lt;p&gt;给定 N 个运动员的分数，计算他们的相对排
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Blogecho, My Theme for Typecho</title>
     <link href="http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/"/>
     <id>http://mjackie.github.io/Tech/cj5miq0e40000tz5kpzqxpq3t/</id>
     <published>2017-07-27T14:01:00.000Z</published>
-    <updated>2017-07-27T14:19:12.684Z</updated>
+    <updated>2017-07-31T11:04:37.463Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
 <h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
 <li>作者：JackieLiu</li>
 <li>版本：v1.0</li>
-<li>更新日期：2016.11.28</li>
-</ul>
+<li>更新日期：2016.11.28<a id="more"></a>
 <h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
 <li>集成代码高亮</li>
 <li>完美兼容 MarkDown 语法</li>
 <li>响应式布局</li>
 <li>随机更换透明背景壁纸</li>
 </ol>
-<a id="more"></a>
+</li>
+</ul>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ol>
 <li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
 <li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
@@ -59,14 +103,7 @@
 &lt;h4 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;作者：JackieLiu&lt;/li&gt;
 &lt;li&gt;版本：v1.0&lt;/li&gt;
-&lt;li&gt;更新日期：2016.11.28&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;集成代码高亮&lt;/li&gt;
-&lt;li&gt;完美兼容 MarkDown 语法&lt;/li&gt;
-&lt;li&gt;响应式布局&lt;/li&gt;
-&lt;li&gt;随机更换透明背景壁纸&lt;/li&gt;
-&lt;/ol&gt;
+&lt;li&gt;更新日期：2016.11.28
     
     </summary>
     
@@ -76,6 +113,311 @@
       <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
     
       <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>换电脑后如何恢复Hexo环境</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2ek7q0005nf5k6p8n94r7/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2ek7q0005nf5k6p8n94r7/</id>
+    <published>2017-07-24T11:43:00.000Z</published>
+    <updated>2017-07-31T11:12:45.587Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
+nvm install stable
+</code></pre><h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
+</code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
+<p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
+<h3 id="拷贝原文件"><a href="#拷贝原文件" class="headerlink" title="拷贝原文件"></a>拷贝原文件</h3><p>必须拷贝的文件：</p>
+<ul>
+<li><code>_config.yml</code> 站点配置文件</li>
+<li><code>theme</code> 主题文件夹</li>
+<li><code>source</code> 博文内容文件夹</li>
+</ul>
+<p>按需拷贝的文件：</p>
+<ul>
+<li><code>scaffolds</code> 文章模板文件夹</li>
+<li><code>package.json</code> 使用哪些包</li>
+<li><code>.gitignore</code> 指明部署时忽略的文件</li>
+</ul>
+<p>不必拷贝的文件：</p>
+<ul>
+<li><code>node_modules</code> npm install 会重新生成</li>
+<li><code>public</code> hexo g 会重新生成</li>
+<li><code>.deploy_git</code> hexo d 会重新生成</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;首先本地安装-Git-和-Node-js&quot;&gt;&lt;a href=&quot;#首先本地安装-Git-和-Node-js&quot; class=&quot;headerlink&quot; title=&quot;首先本地安装 Git 和 Node.js&quot;&gt;&lt;/a&gt;首先本地安装 Git 和 Node.js&lt;/h3&gt;&lt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
+    
+      <category term="hexo" scheme="http://mjackie.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java值传递与引用传递</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2ek770001nf5kkzyu7z6i/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2ek770001nf5kkzyu7z6i/</id>
+    <published>2017-07-06T00:00:00.000Z</published>
+    <updated>2017-07-31T11:20:15.431Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Java值传递"><a href="#Java值传递" class="headerlink" title="Java值传递"></a>Java值传递</h3><p>指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在<strong>两个</strong>相等的基本类型，即实际参数和形式参数，后面方法中的操作都是对形参这个值的修改，不影响实际参数的值.</p>
+<pre><code>public class ParamTest {
+    public static void main(String[] args) {
+        int price = 5;
+        doubleValue(price);
+        System.out.print(price);    //【输出结果】: 5
+    }
+
+    public static void doubleValue(int x) {
+        x = 2 * x;
+    }
+}
+</code></pre><h4 id="过程解析"><a href="#过程解析" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
+<li>x被初始化为price值的一个拷贝，即5</li>
+<li>x乘以2后等于10。但是price没有变化，依然是5</li>
+<li>doubleValue执行完后，参数变量不再使用</li>
+</ul>
+<p><img src="/post_image/java-chuandi/zhichuandi.jpg" alt="zhichuandi"></p>
+<h3 id="Java引用传递"><a href="#Java引用传递" class="headerlink" title="Java引用传递"></a>Java引用传递</h3><p>指的是在方法调用时，传递的参数是按引用进行传递，也就是变量所对应的内存空间的地址。在方法执行中，形参和实参内容相同，指向同一块内存地址，方法执行中对引用的操作将会影响到实际对象.</p>
+<pre><code>class Student {
+    private float score;
+    public Student(float score) {
+        this.score = score;
+    }
+    public void setScore(float score) {
+        this.score = score;
+    }
+    public float getScore() {
+        return score;
+    }
+}
+
+public class ParamTest {
+    public static void main(String[] args) {
+        Student stu = new Student(80);
+        raiseScore(stu);
+        System.out.print(stu.getScore());    //【运行结果】：90
+    }
+
+    public static void raiseScore(Student s) {
+        s.setScore(s.getScore() + 10);
+    }
+}
+</code></pre><h4 id="过程解析-1"><a href="#过程解析-1" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
+<li>s被赋予stu值的拷贝，这里是一个对象的引用</li>
+<li>raiseScore方法应用于这个应用。s和stu指向同一对象，该对象的分数增加了10</li>
+<li>raiseScore方法结束后，s不再使用，stu指向的那个对象分数增加了10</li>
+</ul>
+<p><img src="/post_image/java-chuandi/yinyongchuandi.jpg" alt="yinyongchuandi"></p>
+<h3 id="为什么说Java没有引用传递"><a href="#为什么说Java没有引用传递" class="headerlink" title="为什么说Java没有引用传递"></a>为什么说Java没有引用传递</h3><pre><code>class Student {
+
+    private float score;
+
+    public Student(float score) {
+        this.score = score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public float getScore() {
+        return score;
+    }
+}
+
+public class ParamTest {
+    public static void main(String[] args) {
+        Student a = new Student(0);
+        Student b = new Student(100);
+
+        System.out.println(&quot;交换前：&quot;);        
+        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
+
+        swap(a, b);
+
+        System.out.println(&quot;交换后：&quot;);
+        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
+    }
+
+    public static void swap(Student x, Student y) {
+        Student temp = x;
+        x = y;
+        y = temp;
+    }
+}
+</code></pre><p>可以看出，上述代码运行后，a，b并没有实现交换。</p>
+<h4 id="过程解析-2"><a href="#过程解析-2" class="headerlink" title="过程解析"></a>过程解析</h4><p><img src="/post_image/java-chuandi/swap1.jpg" alt="swap1"><br><img src="/post_image/java-chuandi/swap2.jpg" alt="swap2"><br><img src="/post_image/java-chuandi/swap3.jpg" alt="swap3"></p>
+<p>从这个过程中可以看出，<strong>严格来讲，Java采用的不是引用调用</strong>。实际上，对象引用进行的是值传递，只不过是传递的对象的地址。</p>
+<p><strong>Java中引用传递更类似 C++ 中指针作为参数</strong>. C++ 中指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元；而引用跟原来的变量实质上是同一个东西，只不过是原变量的一个别名而已.</p>
+<p>总结一下java中方法参数的使用情况：</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数(即数值型和布尔型)</li>
+<li>一个方法可以改变一个对象中变量的值</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java值传递&quot;&gt;&lt;a href=&quot;#Java值传递&quot; class=&quot;headerlink&quot; title=&quot;Java值传递&quot;&gt;&lt;/a&gt;Java值传递&lt;/h3&gt;&lt;p&gt;指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在&lt;strong&gt;两个&lt;/strong&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Data Matrix 解析算法</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2ek7m0003nf5k4tvrtpfn/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2ek7m0003nf5k4tvrtpfn/</id>
+    <published>2017-05-27T05:00:00.000Z</published>
+    <updated>2017-07-31T11:21:25.807Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
+<p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
+<p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
+<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"></p>
+<h3 id="Data-Matrix-检测算法"><a href="#Data-Matrix-检测算法" class="headerlink" title="Data Matrix 检测算法"></a>Data Matrix 检测算法</h3><p>之前文章我们已经介绍过二维码的解码流程，本篇文章主要介绍Data Matrix Detect 算法，也就是如何从一幅图片中找出符号码的部分。</p>
+<p>Data Matrix 不同于有显示定位符的二维码，例如 QR 码。所以定位符号图像的方式较为低效，即从图像中心向四周搜索，直到框住整个符号图像。这种检测方式也限定了图像中心区域必须为符号图像，否则则会检测失败。</p>
+<p>检测步骤分为如下几步：</p>
+<ol>
+<li><p><strong>大致划出符号图像的位置。</strong>从图像中间画一个小矩形框，然后依次向四边推行，检测四边上是否有黑色的点，直到每一边都没有黑色的点为止。</p>
+<p> 最终检测完四条边就会得到符号图像的大致位置。<br> <img src="/post_image/datamatrix/datamatrix2.jpg" alt="datamatrix2"></p>
+</li>
+<li><p><strong>找寻符号图像四个顶点。</strong>大致范围确定以后就需要确定符号图像四个角的顶点，有了四个角的顶点就可以进行透视变换，符号码图像也就能够取出。首先在大检测框的四个角用斜45度的直线去检测，如下图所示：</p>
+<p> <img src="/post_image/datamatrix/datamatrix3.jpg" alt="datamatrix3"></p>
+</li>
+<li><p><strong>确定顶点方位和纬度。</strong><br>DataMatrix符号图像边缘的一圈成两个L形，一个L是实线，一个L是虚线。搜索的方法就是沿4条边的直线进行黑白变换次数的检测。黑白变换次数少的就是实线的边，多的就是虚线的边，再去找两个L形的交点，就确定了左下角和右上角这两点，然后再经过两点间距离的比较确定出四个顶点。</p>
+<p> <img src="/post_image/datamatrix/datamatrix4.jpg" alt="datamatrix4"></p>
+<p> 纬度就是符号的一边上有多少个模块，计算方法就是去找虚线定位符那一边有多少次黑白变换（DataMatrix的纬度都是偶数，所以要进行误差修正）。纬度计算出来了就可以知道每个模块的宽度，再由此就可以计算出四条边分别有多少个模块。这样就可以计算出符号的长宽比，就能够确定是长方形还是正方形。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Data-Matrix&quot;&gt;&lt;a href=&quot;#Data-Matrix&quot; class=&quot;headerlink&quot; title=&quot;Data Matrix&quot;&gt;&lt;/a&gt;Data Matrix&lt;/h3&gt;&lt;p&gt;Data Matrix 是二维码的一种编码格式，原名Data cod
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ccnSim 模拟器</title>
+    <link href="http://mjackie.github.io/Tech/cj5s2ek5m0000nf5knmgbrwe7/"/>
+    <id>http://mjackie.github.io/Tech/cj5s2ek5m0000nf5knmgbrwe7/</id>
+    <published>2017-04-08T13:22:00.000Z</published>
+    <updated>2017-07-31T11:20:48.227Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
+<h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
+<ul>
+<li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
+<li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
+<li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
+<li>执行仿真</li>
+</ul>
+<h2 id="OMNeT-简介"><a href="#OMNeT-简介" class="headerlink" title="OMNeT ++ 简介"></a>OMNeT ++ 简介</h2><p>既然想要读懂 ccnSim 的代码，首先要对 Omnet++ 有所了解。OMNeT++是一个免费的、开源的多协议网络仿真软件，在网络仿真领域中占有十分重要的地位。</p>
+<ul>
+<li>OMNeT + + 是基于模块化的，最底层不可分割的模块是简单模块（ simple modules），简单模块可以组成复合模块（ compound modules）。</li>
+<li>在 OMNeT + + 平台上，用户使用 NED 语言来定义组件的结构，一般一个组件（.h 和其对应的 .cc 文件）同时对应一个.net文件</li>
+<li>组件之间通过 Message 进行交互，<code>handleMessage()</code> 方法用来处理消息</li>
+</ul>
+<p>不了解 Omnet++ 的可以先读一下软件的 Manual 文档和软件包中附带的 tictoc 示例代码</p>
+<h2 id="ccnSim-架构"><a href="#ccnSim-架构" class="headerlink" title="ccnSim 架构"></a>ccnSim 架构</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>在了解相应代码之前，我们首先需要了解一下 ccnSim 作者在面向对象编程时的思路。</p>
+<ul>
+<li>网络由各个节点组成，每个节点都是一个 <code>core_layer</code> 对象，<code>core_layer</code> 又包含了 <code>base_cache</code> 和 <code>strategy_layer</code> 两个对象。</li>
+<li>每个节点可以连接0个或1个 client ,client 代表一组用户，可以向网络发起内容请求。</li>
+<li>用户可以在配置文件中设置相关的仿真参数，决定相应的缓存策略，路由策略<br><img src="/post_image/ccnSim.png" alt="ccnSim"></li>
+</ul>
+<h3 id="目录，核心文件介绍"><a href="#目录，核心文件介绍" class="headerlink" title="目录，核心文件介绍"></a>目录，核心文件介绍</h3><ul>
+<li>include: 包含程序的头文件，多数.h文件对应 src 文件夹下的 .cc 文件<ul>
+<li>ccnsim.h 是程序的入口文件，定义了一些全部变量，数据结构及相应的处理方法</li>
+<li>需要注意的是<strong>缓存决策</strong>方法的源代码文件都在此目录下，直接在.h文件中定义了方法，没有与之对应的 src 文件。例如 ProbCache 算法对应 <code>prob_cache.h</code> 文件，LCD 算法对应 <code>lcd_policy.h</code> 文件</li>
+</ul>
+</li>
+<li>modules： 模型文件（.ned）目录，所有的模型都由三个文件组成（<code>.ned</code>模型文件，<code>.h</code>声明文件，<code>.cc</code>源代码文件），目录结构与 src 一样，在 src 目录下统一介绍</li>
+<li>networks：测试用的网络拓扑结构文件（<code>.ned</code>）目录</li>
+<li>packets： 定义的交换信息格式文件存放的目录。定义时仅需定义 <code>.msg</code> 文件，对应的 <code>.cc</code> 和 <code>.h</code> 文件会在编译时自动产生</li>
+<li>results 仿真实验结果数据存放目录</li>
+<li>src 源代码目录<ul>
+<li>clients <ul>
+<li><code>client.cc</code> 定义 client 对象，client 会发起请求，处理返回的 data 数据，以及相应的数据统计</li>
+</ul>
+</li>
+<li>content<ul>
+<li><code>content_distribution.cc</code>  实现了内容初始化。初始化内容源仓库，内容分配等</li>
+<li><code>zipf.cc</code> 实现内容 zipf 分布</li>
+</ul>
+</li>
+<li>node<ul>
+<li>cache ： 替换算法目录<ul>
+<li><code>base_cache.cc</code>: base_cache 对象作为节点缓存空间的承载体，是<strong>其他缓存替换算法的父类</strong>。实现了缓存存取，查找的功能。</li>
+<li><code>fifo_cache.cc</code>： 先进先出替换算法</li>
+<li><code>lru_cache.cc</code>: 近期最少使用替换算法</li>
+<li><code>random_cache.cc</code>: 随机替换算法</li>
+</ul>
+</li>
+<li>strategy： 路由策略代码目录<ul>
+<li><code>strategy_layer.cc</code>： 路由算法的父类，初始化FIB</li>
+<li><code>MonopathStrategyLayer.cc</code>： 继承自<code>strategy_layer.cc</code> <strong>多数路由算法继承此类</strong>定义了路径选择方法等</li>
+<li><code>spr.cc</code> ： 最近路由策略算法，将请求路由至最近的内容源仓库</li>
+</ul>
+</li>
+<li><code>core_layer.cc</code>: <strong>节点的承载对象</strong>，处理请求（interest）与数据（data）</li>
+</ul>
+</li>
+<li>statistics<ul>
+<li><code>statistics.cc</code>: 统计代码，定义了统计规则，对仿真进行数据统计</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>omnetpp.ini</code>： 仿真配置文件，omnetpp 的配置文件语法规则</li>
+</ul>
+<h3 id="请求内容"><a href="#请求内容" class="headerlink" title="请求内容"></a>请求内容</h3><p>client 通过生成一个0到1的随机数，通过zipf函数，得到该分布概率下的最有一个内容。如果把内容按热度排序，那么从1到n的热度内容概率分布是这个随机数，n就是要发起请求的内容。<br>INTEREST 中的 chunk 由 id + number 组成，第一个 number 为0</p>
+<h3 id="LRU-替换算法"><a href="#LRU-替换算法" class="headerlink" title="LRU 替换算法"></a>LRU 替换算法</h3><p>LRU 替换算法通过一个哈希表和一个双向链表实现。哈希表记录内容号，用于快速查找。双向链表通过两个指针分别记录刚被使用的和最久未被使用的。</p>
+<pre><code>lru_pos* lru; //least recently used item
+lru_pos* mru; //most recently used item
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。&lt;/p&gt;
+&lt;h2 id=&quot;什么是-ccnSim&quot;&gt;&lt;a href=&quot;#什么是-ccnSim&quot; class=&quot;headerlin
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
+    
+      <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
     
   </entry>
   
@@ -1160,259 +1502,6 @@ compress: if ( out_header[&quot;Use-Compress&quot;] == &quot;1&quot;) compress
     
     
       <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typecho上的好用插件</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltq9000orv5kwcblf07d/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltq9000orv5kwcblf07d/</id>
-    <published>2014-09-07T04:00:00.000Z</published>
-    <updated>2017-07-24T13:18:22.191Z</updated>
-    
-    <content type="html"><![CDATA[<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
-<a id="more"></a>
-<p><strong>1.评论过滤器（CommentFilter v1.0.2）</strong><br>该插件功能齐全，小巧强大，拥有过滤敏感词汇，禁止IP评论等功能，装上该插件，再也不用为垃圾评论，推广链接等发愁了，同事防止恶意留言软件刷留言，占用服务器资源，减少云豆消耗。有了它，连评论验证码都可以直接省掉，方便高效。设置简单，我在这里就不多说了。</p>
-<hr>
-<p><strong>2.SAEupload</strong><br>该插件是针对搭建在sae的typecho上传附件所需插件，启用插件后，只需在设置中输入storage名即可。必备插件。<br>设置完成后即可在文章编辑页面右侧的附件上传区直接上传附件。</p>
-<hr>
-<p><strong>3.友情链接插件（links）</strong><br>建博客难免需要上几个友链，该插件免去了手写友链的麻烦，可在后台直接添加，管理，删除友链，还可以设置分类，描述，图片。<br>在主页或需要插入友链的地方插入如下代码即可调用：</p>
-<pre><code>&lt;?php if (!empty($this-&gt;options-&gt;sidebarBlock) &amp;&amp; in_array(&apos;ShowFriend&apos;, $this-&gt;options-&gt;sidebarBlock)): ?&gt;
-&lt;section class=&quot;block friend-list&quot;&gt;
-&lt;p class=&quot;ui &lt;?php $this-&gt;options-&gt;labelColor() ?&gt; ribbon label&quot;&gt;友情链接&lt;/p&gt;
-&lt;div class=&quot;animated list friend&quot;&gt;
-&lt;?php Links_Plugin::output(&quot;&lt;a class=\&quot;item\&quot; href=\&quot;{url}\&quot; title=\&quot;{title}\&quot; target=\&quot;_blank\&quot;&gt;&lt;div class=\&quot;content\&quot;&gt;&lt;p class=\&quot;header\&quot;&gt;{name}&lt;/p&gt;&lt;p&gt;{description}&lt;/p&gt;&lt;/div&gt;&lt;/a&gt;\n&quot;, 10); ?&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;?php endif; ?&gt;
-</code></pre><hr>
-<p><strong>4.回复评论邮件及时通知（TimelyNotice）</strong><br>该插件可实现回复评论后即时邮件通知评论者，一次设置，自动发送，方便博主与用户的互动，增强互动性。</p>
-<hr>
-<p><strong>5.Gravatar 头像缓存插件SAE专版（GravatarCache）</strong><br>gravatar有时会不间断的被强大的中国被K掉，或者访问巨慢。该插件将gravatar头像图片直接缓存到sae的storage，加快头像访问速度，防止打开缓慢。</p>
-<hr>
-<p><strong>6.自动为文章中出现的关键词添加链接（Keywords）</strong><br>懂点seo的人都懂，锚文本的多少直接影响网站权重，站内锚文本更利于搜索引擎的收录。文中若出现与本站标签相同的关键词则自动添加标签页链接。同时还可设置出现频率，还可以自定义关键词。</p>
-<hr>
-<p><strong>7.Google高亮代码（Google Code Prettify）</strong><br>typecho自带的代码显示是白底红字，没有关键字高亮的，该插件提供5中代码高亮风格，支持多种语言关键字。还可自定义css样式风格</p>
-<hr>
-<p><strong>8.无缝集成HighSlide双核版实现自动化弹窗与页面相册功能（HighSlide）</strong><br>该插件有基础版和全功能版，功能强大，实现相册弹窗，支持插图幻灯/html弹窗/页面相册等。</p>
-<hr>
-<p><strong>9.嵌入HTML5+Flash视频播放器JW Player6（JWPlayer）</strong><br>JWplayer是老牌开源页面播放器，与HighSlide一样有公司化的商业模式，功能也份大量足毫不含糊。该插件可指定播放器宽度，封面，风格，字幕，标题，多视频列表播放等功能。界面简洁小巧精致。</p>
-<hr>
-<p><strong>10.数据备份SAE版（DbManager）</strong><br>该插件可一键备份数据库，方便快捷，拥有备份，导入，优化等功能。可备份至本地或服务器。还可选择单独表，进行单独的备份。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。&lt;br&gt;简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="Typecho" scheme="http://mjackie.github.io/tags/Typecho/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltpi0006rv5k7bs2x0yp/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltpi0006rv5k7bs2x0yp/</id>
-    <published>2014-08-24T12:00:00.000Z</published>
-    <updated>2017-07-24T13:14:57.539Z</updated>
-    
-    <content type="html"><![CDATA[<p>JAVA语言初学者注意的一些细节:</p>
-<hr>
-<p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
-<pre><code>class derived extends base｛...}    //java
-class derived:public base｛...}    //c
-</code></pre><a id="more"></a>
-<p>◇类修饰符只有public与default（省略不写）.<br><img src="/post_image/java/java1.jpg" alt="image"></p>
-<p>◇子类构造函数调用父类构造方法必须写在第一行.<br>◇多态要有继承，有重写，父类引用指向子类对象.<br>◇含有抽象方法的类必须被声明为抽象类，必须被继承，方法必须被重写，抽象类不能被实例化.<br>◇final变量值不能被改变（成员变量，局部变量（形参）），final方法不能被重写，final类不能被继承.<br><img src="/post_image/java/java2.jpg" alt="image"></p>
-<p>◇接口是抽象方法和常量值的定义的集合，是特殊的抽象类（没有变量和方法的实现） 关键字：implements <interface><br>◇接口中声明的属性默认为public static final（也只能是），只能定义抽象方法默认方法为public（也只能是）.</interface></p>
-<pre><code>String s1 = “helllo”;
-String s2 = “helllo”;
-s1 == s2    //true
-
-s1 = new String(“Hello”);
-s2 = new String(“Hello”);
-s1 == s2    //false
-s1.equals(s2)    //true
-</code></pre><p>◇stringbuffer可以对字符串进行改变，序列可变关键字append,insert<br>◇C里可以 char[] a = “abc”，java里必须char[] a = {‘a’,’b’,’c’}<br>◇基础数据类型包装类，分配到堆空间.<br>◇set没有顺序不可重复，list有顺序可重复（equals）,map一对一对装.<br><img src="/post_image/java/java3.jpg" alt="image"></p>
-<p>◇两个对象equals,则hashCode相同。重写equals，则需要重写hashCode<br>◇遍历的简便写法:</p>
-<pre><code>for(int i: arr) {
-    system.out.println(a[i]);
-}
-</code></pre><p>◇能使用泛型尽量使用泛型.<br>◇线程的2种启用方法:</p>
-<pre><code>runner1 r = new runner1();
-thread t = new thread(r)
-t.start();
-class runner1 implements runnable {}    //接口（尽量用接口，更灵活）
-
-runner1 r = new runner1
-r.start();
-class runner1 extends thread {}    //线程
-</code></pre><p>◇TCP可靠稳定，UDP不可靠，速度快.<br>◇能使用继承方法的，不直接继承Frame<br><img src="/post_image/java/java4.jpg" alt="image"><br>◇Frame 默认布局管理器 boderlayout<br>◇Panel默认布局管理器 flowlayout<br><img src="/post_image/java/java5.jpg" alt="image"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JAVA语言初学者注意的一些细节:&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;◇wait醒了以后重新找锁，sleep锁还在.&lt;br&gt;◇static在codesegment中, 可用 类名.&lt;em&gt;*&lt;/em&gt; 访问，可计数用.&lt;br&gt;◇static方法不能访问非静态的成员与函数.&lt;br&gt;◇Java使用extends关键字继承，不允许多继承.C中为:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;class derived extends base｛...}    //java
-class derived:public base｛...}    //c
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="Java" scheme="http://mjackie.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typecho在SAE上的伪静态化</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltqf000srv5kb9un6bau/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltqf000srv5kb9un6bau/</id>
-    <published>2014-08-10T12:46:00.000Z</published>
-    <updated>2017-07-24T13:18:33.079Z</updated>
-    
-    <content type="html"><![CDATA[<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
-<a id="more"></a>
-<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：www.liu13.com/typecho-sae-rewrite.html<br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
-<p>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
-<pre><code>- rewrite: if(!is_dir() &amp;&amp; !is_file()) goto &quot;index.php?%{QUERY_STRING}&quot;
-</code></pre><p>也可直接在代码管理中打开config.yaml文件添加到最后一行（一定要添加到最后一行）<br>进入Typecho后台&gt;&gt;设置&gt;&gt;永久链接，先修改一下文章自定义路径地址，启用地址重写功能，点击保存，出现红字提示，忽略仍然启用即可。</p>
-<p>出现红字的原因是typecho默认的方法是修改htaccess文件，而sae上用config.yaml代替了。<br>另外修改完成以后想要更换文章自定义路径地址是存在Bug的，需要先关闭地址重写功能，再更换文章自定义路径地址，再启用地址重写功能。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
-    
-      <category term="Typecho" scheme="http://mjackie.github.io/tags/Typecho/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SAE域名绑定问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltpv000crv5k0c77dlil/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltpv000crv5k0c77dlil/</id>
-    <published>2014-08-08T16:28:00.000Z</published>
-    <updated>2017-07-24T13:09:44.467Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。<br>新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。</p>
-<p>A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。<br>CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。</p>
-<p>可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。</p>
-<a id="more"></a>
-<p>SAE的域名绑定按照提示先进行一个A验证，在CNAME到所给地址即可。<br>需要说明的是要将带www的与不带www的分别绑定，即绑定 www.liu13.com 与 liu13.com<br>但万网等一些的域名注册商所带的DNS解析是不支持顶级域名（liu13.com无前缀）CNAME的，需要转到其他支持的DNS上，我选择的是DNSPod，推荐大家使用，比较稳定好用。</p>
-<p>SAE域名绑定完成以后，带www的与不带www的访问内容虽然一样，但网址是不同的，为了SEO更好，利于搜索引擎增加权重，最好301重定向其中一个，推荐将不带www的301到带的。SAE上不支持htaccess文件，换成的是SAE的APPConfig。方法如下：<br>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
-<pre><code>- rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
-- rewrite: if(in_header[&quot;host&quot;] ~ &quot;^liu13.sinaapp.com&quot; &amp;&amp; path ~ &quot;^(.*)$&quot;) goto &quot;http://www.liu13.com$1 [L,QSA,R=301]&quot;
-</code></pre><p>第一条将 liu13.com 的全部定向到带 www.liu13.com<br>第二条将SAE自带二级域名全部定向到 www.liu13.com</p>
-<p>以上内容将其中的网址根据需要换成您的网址即可。另外未备案绑定域名以后，通过独立域名请求将访问海外数据中心，产生的流量将是原二级域名(liu13.sinaapp.com) 流量的二倍，通过 liu13.sinaapp.com 访问的流量不变。建议您绑定独立域名后，静态资源仍通过liu13.sinaapp.com访问。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。&lt;br&gt;新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。&lt;/p&gt;
-&lt;p&gt;A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。&lt;br&gt;CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。&lt;/p&gt;
-&lt;p&gt;可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="SAE" scheme="http://mjackie.github.io/tags/SAE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>快速切换IP地址</title>
-    <link href="http://mjackie.github.io/Tech/cj5miltqy001arv5kw014dpac/"/>
-    <id>http://mjackie.github.io/Tech/cj5miltqy001arv5kw014dpac/</id>
-    <published>2014-07-21T15:18:00.000Z</published>
-    <updated>2016-11-25T14:02:03.566Z</updated>
-    
-    <content type="html"><![CDATA[<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
-<hr>
-<p>自动获取IP：</p>
-<pre><code>@echo off
-cls
-Echo **********************************************************
-Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
-Echo **********************************************************
-netsh interface ip set address name=&quot;以太网&quot; source=dhcp
-netsh interface ip delete dns &quot;以太网&quot; all
-::将“以太网”换为网络连接名称
-ipconfig /flushdns
-ipconfig /all
-Echo **********************************************************
-Echo          OK！！已修改成功！请按任意键退出…………
-Echo          谢谢您的使用!Design By Liu
-Echo **********************************************************
-Pause
-</code></pre><a id="more"></a>
-<hr>
-<p>设置固定IP：</p>
-<pre><code>@echo off
-cls
-Echo **********************************************************
-Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
-Echo **********************************************************
-cmd /c netsh interface ip set address name=&quot;以太网&quot; source=static addr=125.219.42.14 mask=255.0.0.0 gateway=125.219.42.1 gwmetric=1
-::设置你的IP地址，子网掩码，默认网关
-cmd /c netsh interface ip set dns name=&quot;以太网&quot; source=static addr=202.196.96.131
-::设置dns
-cmd /c netsh interface ip add dns name=&quot;以太网&quot; addr=8.8.8.8 index=2
-::设置备用dns
-ipconfig /all
-Echo **********************************************************
-Echo          OK！！已修改成功！请按任意键退出…………
-Echo          谢谢您的使用！Design By Liu
-Echo **********************************************************
-Pause
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。&lt;br&gt;注意：以管理员身份运行，否则会报错。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;自动获取IP：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@echo off
-cls
-Echo **********************************************************
-Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
-Echo **********************************************************
-netsh interface ip set address name=&amp;quot;以太网&amp;quot; source=dhcp
-netsh interface ip delete dns &amp;quot;以太网&amp;quot; all
-::将“以太网”换为网络连接名称
-ipconfig /flushdns
-ipconfig /all
-Echo **********************************************************
-Echo          OK！！已修改成功！请按任意键退出…………
-Echo          谢谢您的使用!Design By Liu
-Echo **********************************************************
-Pause
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="cmd" scheme="http://mjackie.github.io/tags/cmd/"/>
     
   </entry>
   

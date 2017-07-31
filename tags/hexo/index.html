@@ -77,6 +77,70 @@
       
       <section class="archives-wrap">
         <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    	<article id="post-换电脑后如何恢复Hexo环境" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/24
+	        </div>
+	        <div class="post_t_u">
+	         7:43
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cj5s2ek7q0005nf5k6p8n94r7/">换电脑后如何恢复Hexo环境</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
+nvm install stable
+</code></pre><h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
+</code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
+<p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
+<h3 id="拷贝原文件"><a href="#拷贝原文件" class="headerlink" title="拷贝原文件"></a>拷贝原文件</h3><p>必须拷贝的文件：</p>
+<ul>
+<li><code>_config.yml</code> 站点配置文件</li>
+<li><code>theme</code> 主题文件夹</li>
+<li><code>source</code> 博文内容文件夹</li>
+</ul>
+<p>按需拷贝的文件：</p>
+<ul>
+<li><code>scaffolds</code> 文章模板文件夹</li>
+<li><code>package.json</code> 使用哪些包</li>
+<li><code>.gitignore</code> 指明部署时忽略的文件</li>
+</ul>
+<p>不必拷贝的文件：</p>
+<ul>
+<li><code>node_modules</code> npm install 会重新生成</li>
+<li><code>public</code> hexo g 会重新生成</li>
+<li><code>.deploy_git</code> hexo d 会重新生成</li>
+</ul>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
           <a href="/archives/2016" class="archive-year">2016</a>
         </div>
         <div class="archives">
