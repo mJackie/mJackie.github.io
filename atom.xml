@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-31T12:57:47.523Z</updated>
+  <updated>2017-07-31T13:23:50.099Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s5tk2q0000835kyuwd8atg/"/>
-    <id>http://mjackie.github.io/Tech/cj5s5tk2q0000835kyuwd8atg/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rssx001gzr5kyu0osu2m/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rssx001gzr5kyu0osu2m/</id>
     <published>2017-07-26T16:00:00.000Z</published>
-    <updated>2017-07-31T12:57:47.523Z</updated>
+    <updated>2017-07-31T13:23:50.099Z</updated>
     
     <content type="html"><![CDATA[<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
 <li>横向扫描，检测 黑白黑白黑 的组合</li>
@@ -34,6 +34,7 @@
 <li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
 <li>返回检测到的三个定位符的结果</li>
 </ul>
+<a id="more"></a>
 <h4 id="计算一个模块的大小"><a href="#计算一个模块的大小" class="headerlink" title="计算一个模块的大小"></a>计算一个模块的大小</h4><ul>
 <li><code>calculateModuleSize()</code>按照x轴y轴分别计算，取平均值。</li>
 <li>同时每次计算又分别调换参数计算两次，取平均值<code>calculateModuleSizeOneWay()</code></li>
@@ -48,7 +49,16 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
     
       &lt;h3 id=&quot;检测定位符流程&quot;&gt;&lt;a href=&quot;#检测定位符流程&quot; class=&quot;headerlink&quot; title=&quot;检测定位符流程&quot;&gt;&lt;/a&gt;检测定位符流程&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;横向扫描，检测 黑白黑白黑 的组合&lt;/li&gt;
-&lt;li&gt;默认隔&lt;code&gt;(3 * max
+&lt;li&gt;默认隔&lt;code&gt;(3 * maxI) / (4 * MAX_MODULES)&lt;/code&gt;行扫描一次，TRY_HARDER开启后逐行扫描&lt;/li&gt;
+&lt;li&gt;验证是否满足1:1:3:1:1的比例&lt;/li&gt;
+&lt;li&gt;检测纵向是否满足定位符特征&lt;/li&gt;
+&lt;li&gt;如果已经确定了两个定位符，则可跳过 &lt;code&gt;(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;&lt;/code&gt; 行，继续扫描&lt;/li&gt;
+&lt;li&gt;如果提前确定3个定位符，且模块大小相近，则停止扫描 &lt;code&gt;haveMultiplyConfirmedCenters()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;否则继续扫描图片&lt;/li&gt;
+&lt;li&gt;筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符&lt;/li&gt;
+&lt;li&gt;确定三个定位符的中心坐标和各自位置 &lt;code&gt;orderBestPatterns()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;返回检测到的三个定位符的结果&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -63,8 +73,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416x2001u4j5kqddtcioz/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416x2001u4j5kqddtcioz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rst9001xzr5kj8ocjgrn/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rst9001xzr5kj8ocjgrn/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -119,8 +129,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416x5001y4j5kj28ntpg7/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416x5001y4j5kj28ntpg7/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsta0020zr5kdgx5nymx/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsta0020zr5kdgx5nymx/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -172,8 +182,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wj00164j5kqamxtb69/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wj00164j5kqamxtb69/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rssq0016zr5kfbv5yleg/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rssq0016zr5kfbv5yleg/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -303,8 +313,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wi00124j5kooz1qog2/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wi00124j5kooz1qog2/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rssm0012zr5kgbkykiyc/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rssm0012zr5kgbkykiyc/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -349,8 +359,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wh000z4j5k153g50re/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wh000z4j5k153g50re/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rssi000zzr5kbfxojwqu/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rssi000zzr5kbfxojwqu/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-07-31T11:34:57.771Z</updated>
     
@@ -452,9 +462,38 @@ lru_pos* mru; //most recently used item
   </entry>
   
   <entry>
+    <title>网站作品展示</title>
+    <link href="http://mjackie.github.io/Tech/cj5s6rst0001izr5k7dnw9l52/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rst0001izr5k7dnw9l52/</id>
+    <published>2017-01-02T16:00:00.000Z</published>
+    <updated>2017-07-31T13:21:59.379Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
+<h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"><br><a id="more"></a></p>
+<h5 id="支教邦"><a href="#支教邦" class="headerlink" title="支教邦"></a>支教邦</h5><p><img src="/post_image/web-zuopin/zhijiaobang.png" alt="image"><br><!--more--></p>
+<h5 id="特种功能材料重点实验室"><a href="#特种功能材料重点实验室" class="headerlink" title="特种功能材料重点实验室"></a>特种功能材料重点实验室</h5><p><img src="/post_image/web-zuopin/cailiaolab.png" alt="image"></p>
+<h5 id="民生学院人力资源部"><a href="#民生学院人力资源部" class="headerlink" title="民生学院人力资源部"></a>民生学院人力资源部</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
+<h5 id="民生学院纪检监察网"><a href="#民生学院纪检监察网" class="headerlink" title="民生学院纪检监察网"></a>民生学院纪检监察网</h5><p><img src="/post_image/web-zuopin/jijianjiancha.png" alt="image"></p>
+<h5 id="艺术传媒学院"><a href="#艺术传媒学院" class="headerlink" title="艺术传媒学院"></a>艺术传媒学院</h5><p><img src="/post_image/web-zuopin/yishuchuanmei.png" alt="image"></p>
+<h5 id="医学院"><a href="#医学院" class="headerlink" title="医学院"></a>医学院</h5><p><img src="/post_image/web-zuopin/yixueyuan.png" alt="image"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。&lt;/p&gt;
+&lt;h5 id=&quot;民生学院财务部&quot;&gt;&lt;a href=&quot;#民生学院财务部&quot; class=&quot;headerlink&quot; title=&quot;民生学院财务部&quot;&gt;&lt;/a&gt;民生学院财务部&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/post_image/web-zuopin/caiwubu.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416v900014j5ktzoejzxa/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416v900014j5ktzoejzxa/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsqv0001zr5k3bb5wfnw/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsqv0001zr5k3bb5wfnw/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-07-31T12:17:06.019Z</updated>
     
@@ -509,38 +548,9 @@ lru_pos* mru; //most recently used item
   </entry>
   
   <entry>
-    <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj5s5ucm40004835kxxpdrrw5/"/>
-    <id>http://mjackie.github.io/Tech/cj5s5ucm40004835kxxpdrrw5/</id>
-    <published>2016-12-05T01:21:00.000Z</published>
-    <updated>2017-07-31T13:11:36.999Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
-<h5 id="支教邦"><a href="#支教邦" class="headerlink" title="支教邦"></a>支教邦</h5><p><img src="/post_image/web-zuopin/zhijiaobang.png" alt="image"></p>
-<h5 id="特种功能材料重点实验室"><a href="#特种功能材料重点实验室" class="headerlink" title="特种功能材料重点实验室"></a>特种功能材料重点实验室</h5><p><img src="/post_image/web-zuopin/cailiaolab.png" alt="image"></p>
-<h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"></p>
-<h5 id="民生学院人力资源部"><a href="#民生学院人力资源部" class="headerlink" title="民生学院人力资源部"></a>民生学院人力资源部</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
-<h5 id="民生学院纪检监察网"><a href="#民生学院纪检监察网" class="headerlink" title="民生学院纪检监察网"></a>民生学院纪检监察网</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
-<h5 id="艺术传媒学院"><a href="#艺术传媒学院" class="headerlink" title="艺术传媒学院"></a>艺术传媒学院</h5><p><img src="/post_image/web-zuopin/yishuchuanmei.png" alt="image"></p>
-<h5 id="医学院"><a href="#医学院" class="headerlink" title="医学院"></a>医学院</h5><p><img src="/post_image/web-zuopin/yixueyuan.png" alt="image"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。&lt;/p&gt;
-&lt;h5 i
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416w7000o4j5kbeei9a9o/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416w7000o4j5kbeei9a9o/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsro000ozr5kd35trfwc/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsro000ozr5kd35trfwc/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -632,8 +642,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wm00194j5kl67mmvyj/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wm00194j5kl67mmvyj/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsss0019zr5k14s5obpm/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsss0019zr5k14s5obpm/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -687,8 +697,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416vd00024j5kbkwgc15o/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416vd00024j5kbkwgc15o/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsqz0002zr5krq17mi1q/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsqz0002zr5krq17mi1q/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -742,8 +752,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416x600214j5k82n40rg5/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416x600214j5k82n40rg5/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rstc0024zr5ksdc6zdwj/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rstc0024zr5ksdc6zdwj/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1027,8 +1037,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wq001g4j5k1vtisxb3/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wq001g4j5k1vtisxb3/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rst4001lzr5k99wgxn0w/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rst4001lzr5k99wgxn0w/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1068,8 +1078,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416w1000d4j5k2pv3wba8/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416w1000d4j5k2pv3wba8/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsrj000dzr5k0gy77rlk/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsrj000dzr5k0gy77rlk/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-07-31T11:30:09.151Z</updated>
     
@@ -1139,8 +1149,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wt001i4j5kly4zszpo/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wt001i4j5kly4zszpo/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rst5001ozr5k1ei3k0jr/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rst5001ozr5k1ei3k0jr/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1160,8 +1170,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wn001c4j5kg8iievk0/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wn001c4j5kg8iievk0/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rssu001czr5kupiluv08/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rssu001czr5kupiluv08/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1190,8 +1200,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416wv001l4j5k476klfzz/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416wv001l4j5k476klfzz/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rst5001rzr5kjvxqhzpi/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rst5001rzr5kjvxqhzpi/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2017-07-24T13:25:44.891Z</updated>
     
@@ -1217,8 +1227,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416vx000b4j5kpszzgd84/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416vx000b4j5kpszzgd84/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsre000bzr5kf9q702c6/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsre000bzr5kf9q702c6/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2017-07-31T11:29:57.395Z</updated>
     
@@ -1246,8 +1256,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416vn00054j5kpnxhexox/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416vn00054j5kpnxhexox/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsr40005zr5kwc2c2adn/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsr40005zr5kwc2c2adn/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2017-07-31T11:32:16.823Z</updated>
     
@@ -1336,8 +1346,8 @@ git remote rename
   
   <entry>
     <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5s416w8000q4j5kw492c0mx/"/>
-    <id>http://mjackie.github.io/Tech/cj5s416w8000q4j5kw492c0mx/</id>
+    <link href="http://mjackie.github.io/Tech/cj5s6rsrp000qzr5k6z2n3ik3/"/>
+    <id>http://mjackie.github.io/Tech/cj5s6rsrp000qzr5k6z2n3ik3/</id>
     <published>2014-10-29T10:37:00.000Z</published>
     <updated>2016-11-25T14:15:01.146Z</updated>
     
