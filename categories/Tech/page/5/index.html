@@ -81,6 +81,71 @@
         </div>
         <div class="archives">
     
+    	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/29
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cj630iokw001yhi5kmmqryw1c/">The First ASM</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
+<hr>
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +157,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rst7001uzr5kt1vpoygy/">成绩查询系统</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630iokp001lhi5k1aebimlx/">成绩查询系统</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/php/">php</a></li></ul>
@@ -123,7 +188,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rsrm000hzr5kmw3sj40r/">SAE上博客开启gzip加速</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630ioj70007hi5k6lbs0ulj/">SAE上博客开启gzip加速</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
@@ -154,7 +219,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rsrr000tzr5kjzpao4qw/">Typecho上的好用插件</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630iojt000jhi5kpvlmbr4q/">Typecho上的好用插件</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
@@ -184,7 +249,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rsra0007zr5km0y80nbc/">Typecho在SAE上的伪静态化</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630ioj00005hi5kzvcpeto1/">Typecho在SAE上的伪静态化</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -200,36 +265,6 @@
 <pre><code>class derived extends base｛...}    //java
 class derived:public base｛...}    //c
 </code></pre>
-	        
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-Typecho在SAE上的伪静态化" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         8/10
-	        </div>
-	        <div class="post_t_u">
-	         2014
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rsrr000vzr5k1ys3x9yn/">Typecho在SAE上的伪静态化</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
 	        
 	      	
 	    </p>

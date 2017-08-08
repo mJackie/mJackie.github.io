@@ -81,6 +81,42 @@
         </div>
         <div class="archives">
     
+    	<article id="post-lru&amp;lfu" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/6
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cj630iokc0013hi5ksjdgx7w2/">Blogecho, My Theme for Typecho</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。</p>
+<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>LRU 即 Least Recently Used,最近最少使用算法。当有新内容需要缓存时,LRU 算法使用新内容替换掉最久没有使用的内容。</p>
+<p><img src="/post_image/lru&amp;lfu/lru.png" alt="image"></p>
+<p>LRU 的数据结构包含两个部分,哈希表和双向循环链表。其中,哈希表用于实现缓存内容的快速查找;双向循环链表将缓存中的内容按照最后访问时间按顺时针方向由远至近组织在一起,头指针指向最后访问时间最久远的内容。当一个内容请求达到路由器缓存时,如果路由器缓存空间中已经缓存了该内容,则除直接向请求者返回内容外,还需要将该内容移动到双向循环链表头节点的左边;当一个新内容需要被缓存时,如果缓存空间满,则从双向链表头节点向右开始删除内容直到有足够空间存储新内容,然后将新内容附加到双向链表头节点左侧。LRU 数据结构的查找和更新时间复杂度为 O(1),空间复杂度为 O(N)。</p>
+<h4 id="LFU"><a href="#LFU" class="headerlink" title="LFU"></a>LFU</h4><p>LFU 即 Least Frequently Used,最近最不频繁使用算法。由于 LFU 需要为每个内容维护一个状态,其实现相对于 LRU 来说要复杂的多。常见的 LFU 实现的查找和更新的复杂度都是 O(N),这对于大规模仿真实验来说是极其低效的。</p>
+<p><img src="/post_image/lru&amp;lfu/lfu.png" alt="image"></p>
+<p>LFU 的数据结构包含三个部分:一个双向链表、若干双向循环链表、一个哈希表。其中,哈希表的作用与 LRU 相同,用于内容的快速查找。双向链表是频数链表,即链表的每个节点是访问计数,每个频数节点包含一个指针指向一个双向循环链表,双向循环链表中存储着内容信息,即所有具有相同访问计数的内容都存储在一个对应的双向循环链表中。哈希表存储的即是内容名称到双向循环链表节点指针的映射关系。频数链表按照访问计数从小到大排列,当路由器因为存储新内容需要替换旧内容时,如果缓存空间不够,就从头节点 head 指向的频数节点指向的双向循环链表中删除内容节点以释放空间。如果第一个双向链表变为空,就将与之关联的频数节点从频数链表中删除。这样通过频数链表,所有内容就按照自己的访问计数有序的组织在一起。特别地,这里要求频数链表中每个节点指向的双向循环链表都不为空,如果为空就删除该频数节点,从而限制了频数链表的长度,保证时间复杂度和空间复杂度不会无限制增长。当缓存中的某个内容被访问时,需要对其访问计数加 1。此时,将其从原双向循环列表中删除,移动到对应访问计数的双向循环链表中,如果该频数节点不存在则创建一个新的频数节点和一个新的双向循环链表来存储该内容。经过这样复杂的维护,LFU 的查找和更新时间复杂度均为 O(1),空间复杂度为 O(N),为大规模实现仿真提供了良好的基础。</p>
+
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-qrcode" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +128,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rssx001gzr5kyu0osu2m/">QR 码解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630iokm001ghi5kleo434dg/">QR 码解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -133,7 +169,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rsta0020zr5kdgx5nymx/">机试题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630iokt001vhi5k1yzeujbm/">机试题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -172,7 +208,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj5s6rssm0012zr5kgbkykiyc/">Data Matrix 解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj630iojy000thi5kqn00m8tc/">Data Matrix 解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>

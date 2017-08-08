@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-07-31T13:23:50.099Z</updated>
+  <updated>2017-08-08T03:14:23.805Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Blogecho, My Theme for Typecho</title>
+    <link href="http://mjackie.github.io/Tech/cj630iokc0013hi5ksjdgx7w2/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokc0013hi5ksjdgx7w2/</id>
+    <published>2017-08-06T01:21:00.000Z</published>
+    <updated>2017-08-08T03:14:23.805Z</updated>
+    
+    <content type="html"><![CDATA[<p>在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。</p>
+<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>LRU 即 Least Recently Used,最近最少使用算法。当有新内容需要缓存时,LRU 算法使用新内容替换掉最久没有使用的内容。</p>
+<p><img src="/post_image/lru&amp;lfu/lru.png" alt="image"></p>
+<p>LRU 的数据结构包含两个部分,哈希表和双向循环链表。其中,哈希表用于实现缓存内容的快速查找;双向循环链表将缓存中的内容按照最后访问时间按顺时针方向由远至近组织在一起,头指针指向最后访问时间最久远的内容。当一个内容请求达到路由器缓存时,如果路由器缓存空间中已经缓存了该内容,则除直接向请求者返回内容外,还需要将该内容移动到双向循环链表头节点的左边;当一个新内容需要被缓存时,如果缓存空间满,则从双向链表头节点向右开始删除内容直到有足够空间存储新内容,然后将新内容附加到双向链表头节点左侧。LRU 数据结构的查找和更新时间复杂度为 O(1),空间复杂度为 O(N)。</p>
+<h4 id="LFU"><a href="#LFU" class="headerlink" title="LFU"></a>LFU</h4><p>LFU 即 Least Frequently Used,最近最不频繁使用算法。由于 LFU 需要为每个内容维护一个状态,其实现相对于 LRU 来说要复杂的多。常见的 LFU 实现的查找和更新的复杂度都是 O(N),这对于大规模仿真实验来说是极其低效的。</p>
+<p><img src="/post_image/lru&amp;lfu/lfu.png" alt="image"></p>
+<p>LFU 的数据结构包含三个部分:一个双向链表、若干双向循环链表、一个哈希表。其中,哈希表的作用与 LRU 相同,用于内容的快速查找。双向链表是频数链表,即链表的每个节点是访问计数,每个频数节点包含一个指针指向一个双向循环链表,双向循环链表中存储着内容信息,即所有具有相同访问计数的内容都存储在一个对应的双向循环链表中。哈希表存储的即是内容名称到双向循环链表节点指针的映射关系。频数链表按照访问计数从小到大排列,当路由器因为存储新内容需要替换旧内容时,如果缓存空间不够,就从头节点 head 指向的频数节点指向的双向循环链表中删除内容节点以释放空间。如果第一个双向链表变为空,就将与之关联的频数节点从频数链表中删除。这样通过频数链表,所有内容就按照自己的访问计数有序的组织在一起。特别地,这里要求频数链表中每个节点指向的双向循环链表都不为空,如果为空就删除该频数节点,从而限制了频数链表的长度,保证时间复杂度和空间复杂度不会无限制增长。当缓存中的某个内容被访问时,需要对其访问计数加 1。此时,将其从原双向循环列表中删除,移动到对应访问计数的双向循环链表中,如果该频数节点不存在则创建一个新的频数节点和一个新的双向循环链表来存储该内容。经过这样复杂的维护,LFU 的查找和更新时间复杂度均为 O(1),空间复杂度为 O(N),为大规模实现仿真提供了良好的基础。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。&lt;/p&gt;
+&lt;h4 id=&quot;LRU&quot;&gt;&lt;a href=&quot;#LRU&quot; class=&quot;headerlink&quot; t
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://mjackie.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rssx001gzr5kyu0osu2m/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rssx001gzr5kyu0osu2m/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokm001ghi5kleo434dg/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokm001ghi5kleo434dg/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -73,8 +105,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rst9001xzr5kj8ocjgrn/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rst9001xzr5kj8ocjgrn/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokr001shi5kcm7xez5o/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokr001shi5kcm7xez5o/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -129,8 +161,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsta0020zr5kdgx5nymx/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsta0020zr5kdgx5nymx/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokt001vhi5k1yzeujbm/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokt001vhi5k1yzeujbm/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -182,8 +214,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rssq0016zr5kfbv5yleg/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rssq0016zr5kfbv5yleg/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokg0015hi5kwn1r9eat/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokg0015hi5kwn1r9eat/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -313,8 +345,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rssm0012zr5kgbkykiyc/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rssm0012zr5kgbkykiyc/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iojy000thi5kqn00m8tc/"/>
+    <id>http://mjackie.github.io/Tech/cj630iojy000thi5kqn00m8tc/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -359,8 +391,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rssi000zzr5kbfxojwqu/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rssi000zzr5kbfxojwqu/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iojw000phi5kb2q7okiq/"/>
+    <id>http://mjackie.github.io/Tech/cj630iojw000phi5kb2q7okiq/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-07-31T11:34:57.771Z</updated>
     
@@ -463,8 +495,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rst0001izr5k7dnw9l52/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rst0001izr5k7dnw9l52/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iolp003ehi5kpoythsj3/"/>
+    <id>http://mjackie.github.io/Tech/cj630iolp003ehi5kpoythsj3/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -492,8 +524,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsqv0001zr5k3bb5wfnw/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsqv0001zr5k3bb5wfnw/</id>
+    <link href="http://mjackie.github.io/Tech/cj630ioit0002hi5kl1bhylte/"/>
+    <id>http://mjackie.github.io/Tech/cj630ioit0002hi5kl1bhylte/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-07-31T12:17:06.019Z</updated>
     
@@ -549,8 +581,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsro000ozr5kd35trfwc/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsro000ozr5kd35trfwc/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iok50010hi5ka0qlcfdk/"/>
+    <id>http://mjackie.github.io/Tech/cj630iok50010hi5ka0qlcfdk/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -642,8 +674,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsss0019zr5k14s5obpm/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsss0019zr5k14s5obpm/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iojz000whi5k44gjls7x/"/>
+    <id>http://mjackie.github.io/Tech/cj630iojz000whi5k44gjls7x/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -689,16 +721,16 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
-    
       <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
+    
+      <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
     
   </entry>
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsqz0002zr5krq17mi1q/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsqz0002zr5krq17mi1q/</id>
+    <link href="http://mjackie.github.io/Tech/cj630ioln003dhi5k6ye4ezes/"/>
+    <id>http://mjackie.github.io/Tech/cj630ioln003dhi5k6ye4ezes/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -752,8 +784,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rstc0024zr5ksdc6zdwj/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rstc0024zr5ksdc6zdwj/</id>
+    <link href="http://mjackie.github.io/Tech/cj630ioky0025hi5kkdim9csu/"/>
+    <id>http://mjackie.github.io/Tech/cj630ioky0025hi5kkdim9csu/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1037,8 +1069,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rst4001lzr5k99wgxn0w/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rst4001lzr5k99wgxn0w/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokk001chi5klyo9dpps/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokk001chi5klyo9dpps/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1078,8 +1110,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsrj000dzr5k0gy77rlk/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsrj000dzr5k0gy77rlk/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iojr000hhi5kz11yzzbr/"/>
+    <id>http://mjackie.github.io/Tech/cj630iojr000hhi5kz11yzzbr/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-07-31T11:30:09.151Z</updated>
     
@@ -1149,8 +1181,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rst5001ozr5k1ei3k0jr/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rst5001ozr5k1ei3k0jr/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iokx0021hi5kdeh19fr1/"/>
+    <id>http://mjackie.github.io/Tech/cj630iokx0021hi5kdeh19fr1/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1170,8 +1202,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rssu001czr5kupiluv08/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rssu001czr5kupiluv08/</id>
+    <link href="http://mjackie.github.io/Tech/cj630ioki0019hi5kxfjj736v/"/>
+    <id>http://mjackie.github.io/Tech/cj630ioki0019hi5kxfjj736v/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1200,14 +1232,15 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rst5001rzr5kjvxqhzpi/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rst5001rzr5kjvxqhzpi/</id>
+    <link href="http://mjackie.github.io/Tech/cj630ioko001ihi5kn3rqa7f5/"/>
+    <id>http://mjackie.github.io/Tech/cj630ioko001ihi5kn3rqa7f5/</id>
     <published>2016-03-28T15:17:00.000Z</published>
-    <updated>2017-07-24T13:25:44.891Z</updated>
+    <updated>2017-08-01T07:17:33.725Z</updated>
     
     <content type="html"><![CDATA[<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
-<p><img src="/post_image/zitaijiao/zitaijiao1.gif" alt="image"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><img src="/post_image/zitaijiao/zitaijiao2.gif" alt="image"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
+<p><img src="/post_image/zitaijiao/zitaijiao1.gif" alt="image"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；<br><a id="more"></a></p>
+<hr>
+<p><img src="/post_image/zitaijiao/zitaijiao2.gif" alt="image"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
 <hr>
 <p><img src="/post_image/zitaijiao/zitaijiao3.gif" alt="image"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
 ]]></content>
@@ -1215,8 +1248,7 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
     <summary type="html">
     
       &lt;p&gt;载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/post_image/zitaijiao/zitaijiao1.gif&quot; alt=&quot;image&quot;&gt;&lt;br&gt;航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；&lt;/p&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;/post_image/zitaijiao/zitaijiao1.gif&quot; alt=&quot;image&quot;&gt;&lt;br&gt;航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；&lt;br&gt;
     
     </summary>
     
@@ -1227,8 +1259,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsre000bzr5kf9q702c6/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsre000bzr5kf9q702c6/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iojk000dhi5khxufkikj/"/>
+    <id>http://mjackie.github.io/Tech/cj630iojk000dhi5khxufkikj/</id>
     <published>2015-07-12T05:44:00.000Z</published>
     <updated>2017-07-31T11:29:57.395Z</updated>
     
@@ -1256,8 +1288,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsr40005zr5kwc2c2adn/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsr40005zr5kwc2c2adn/</id>
+    <link href="http://mjackie.github.io/Tech/cj630iogy0000hi5knpkktven/"/>
+    <id>http://mjackie.github.io/Tech/cj630iogy0000hi5knpkktven/</id>
     <published>2015-04-06T10:24:00.000Z</published>
     <updated>2017-07-31T11:32:16.823Z</updated>
     
@@ -1341,68 +1373,6 @@ git remote rename
     
     
       <category term="git" scheme="http://mjackie.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>The First ASM</title>
-    <link href="http://mjackie.github.io/Tech/cj5s6rsrp000qzr5k6z2n3ik3/"/>
-    <id>http://mjackie.github.io/Tech/cj5s6rsrp000qzr5k6z2n3ik3/</id>
-    <published>2014-10-29T10:37:00.000Z</published>
-    <updated>2016-11-25T14:15:01.146Z</updated>
-    
-    <content type="html"><![CDATA[<p>写的第一个汇编程序，发出来纪念一下。</p>
-<hr>
-<pre><code>;试编写程序，完成下面公式的计算。
-;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
-;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
-
-DATA SEGMENT
-X DD 481
-Y DD 240
-A DW ?
-B DW ?
-Z DW 24
-DATA ENDS
-
-CODE SEGMENT
-    ASSUME DS: DATA, CS: CODE
-START:
-    MOV AX, DATA
-    MOV DS, AX
-    MOV AX, word ptr ds:[0]
-    MOV DX, word ptr ds:[2]
-    MOV BX, word ptr ds:[4]
-    MOV CX, word ptr ds:[6]
-    SUB AX, BX
-    SBB DX, CX
-    ADD AX, 24
-    ADC DX, 0
-    MOV BX, Z
-    IDIV BX
-    MOV A,AX
-    MOV B,DX
-
-    MOV AX, 4C00H
-    INT 21H
-CODE ENDS
-END START
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;写的第一个汇编程序，发出来纪念一下。&lt;/p&gt;
-&lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;;试编写程序，完成下面公式的计算。
-;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
-;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="汇编" scheme="http://mjackie.github.io/tags/%E6%B1%87%E7%BC%96/"/>
     
   </entry>
   
