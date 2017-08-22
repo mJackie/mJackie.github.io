@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-08-15T13:19:40.080Z</updated>
+  <updated>2017-08-22T09:12:24.623Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,94 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>利用 VBA 处理 Excel 数据</title>
+    <link href="http://mjackie.github.io/Tech/cj6nko88n000w6l5k0zhmr9tg/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko88n000w6l5k0zhmr9tg/</id>
+    <published>2017-08-19T07:32:00.000Z</published>
+    <updated>2017-08-22T09:12:24.623Z</updated>
+    
+    <content type="html"><![CDATA[<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。</p>
+<p>VBA 编写的宏命令可以取代手动对 Excel 的大量操作，也可以实现 Excel 未提供的函数。相比其他语言， VBA 天然的支持 Excel 大规模数据处理，对 Excel 格式数据处理更快，省去了格式字符匹配等问题。同时 VBA 可与 Excel 中自带的函数混合使用，提高了易用性。</p>
+<a id="more"></a>
+<h3 id="示例一：不同文件间拷贝数据"><a href="#示例一：不同文件间拷贝数据" class="headerlink" title="示例一：不同文件间拷贝数据"></a>示例一：不同文件间拷贝数据</h3><pre><code>Sub Electric()
+    Dim target As Workbook
+    Set target = Workbooks(&quot;a.xlsm&quot;)
+
+    Dim source As Workbook
+    Set source = Workbooks(&quot;b.xlsx&quot;)
+
+    For i = 6 To target.Sheets(&quot;2014&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+        For j = 3 To target.Sheets(&quot;2014&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+            If target.Sheets(&quot;2014&quot;).Cells(i, 3) = source.Sheets(&quot;2014&quot;).Cells(j, 1) Then   &apos;如果单元格内容相同
+                target.Sheets(&quot;2014&quot;).Cells(i, 24) = source.Sheets(&quot;2014&quot;).Cells(j, 2)
+                Exit For
+            End If
+        Next
+    Next
+End Sub
+</code></pre><h3 id="示例二：筛选出连续-5-行数据的项"><a href="#示例二：筛选出连续-5-行数据的项" class="headerlink" title="示例二：筛选出连续 5 行数据的项"></a>示例二：筛选出连续 5 行数据的项</h3><pre><code>Sub Statistic()
+
+    Dim target As Workbook
+    Set target = Workbooks(&quot;data.xlsm&quot;)
+
+    &apos;使用“高级筛选”功能将不重复公司Id数据显示在sheet4中
+    target.Sheets(&quot;sheet3&quot;).Columns(2).AdvancedFilter 2, , target.Sheets(&quot;sheet8&quot;).Cells(1, 1), 1
+    s1 = target.Sheets(&quot;sheet8&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+    &apos;下面代码用COUNTIF函数统计重复次数
+    For i = 1 To s1
+        target.Sheets(&quot;sheet8&quot;).Cells(i, 2) = WorksheetFunction.CountIf(target.Sheets(&quot;sheet3&quot;).Columns(2), target.Sheets(&quot;sheet8&quot;).Cells(i, 1))
+    Next
+
+
+End Sub
+Sub SelectByYear()
+
+    Dim target As Workbook
+    Set target = Workbooks(&quot;data.xlsm&quot;)
+    m = 1
+
+    For i = 2 To target.Sheets(&quot;sheet8&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+        If target.Sheets(&quot;sheet8&quot;).Cells(i, 2) &gt; 5 Then &apos;筛选5年以上的数据
+            sstr = target.Sheets(&quot;sheet8&quot;).Cells(i, 1)
+
+                With Worksheets(3).Range(&quot;b:b&quot;)
+                    Set c = .Find(what:=sstr)
+                    If Not c Is Nothing Then
+                        firstAddress = c.Address
+                        Do
+                            r = c.Row
+                            target.Sheets(&quot;sheet3&quot;).Rows(r).copy target.Sheets(&quot;sheet9&quot;).Cells(m, 1)
+                            m = m + 1
+                            Set c = .FindNext(c)
+                        Loop While Not c Is Nothing And c.Address &lt;&gt; firstAddress
+                    End If
+                End With
+        End If
+    Next
+
+End Sub
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。&lt;/p&gt;
+&lt;p&gt;VBA 编写的宏命令可以取代手动对 Excel 的大量操作，也可以实现 Excel 未提供的函数。相比其他语言， VBA 天然的支持 Excel 大规模数据处理，对 Excel 格式数据处理更快，省去了格式字符匹配等问题。同时 VBA 可与 Excel 中自带的函数混合使用，提高了易用性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="vba" scheme="http://mjackie.github.io/tags/vba/"/>
+    
+      <category term="数据处理" scheme="http://mjackie.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm4huc0000xn5kpeg7dwtn/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm4huc0000xn5kpeg7dwtn/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko88r000z6l5k49uvyrah/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko88r000z6l5k49uvyrah/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -126,8 +211,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvs002auq5kwzgwopvn/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvs002auq5kwzgwopvn/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko8a6002c6l5k0wyqi5bz/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko8a6002c6l5k0wyqi5bz/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -159,8 +244,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvd001luq5k555j8e4c/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvd001luq5k555j8e4c/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89h001p6l5kzxfvi3xl/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89h001p6l5kzxfvi3xl/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -215,8 +300,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvu002duq5k6g68kt87/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvu002duq5k6g68kt87/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko8a1002a6l5k1unhbp0e/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko8a1002a6l5k1unhbp0e/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -271,8 +356,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvv002huq5k11mdxf35/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvv002huq5k11mdxf35/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko8ab002j6l5krl1r4441/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko8ab002j6l5krl1r4441/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -324,8 +409,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nv8001euq5kpy93acyv/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nv8001euq5kpy93acyv/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89e001j6l5k6qqvvurs/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89e001j6l5k6qqvvurs/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -455,8 +540,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nuz0014uq5kbdzk3ke0/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nuz0014uq5kbdzk3ke0/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko88w00166l5k9dtcr55o/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko88w00166l5k9dtcr55o/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -501,8 +586,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nux0010uq5kkitb5v74/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nux0010uq5kkitb5v74/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko88y00196l5kdfzaypku/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko88y00196l5kdfzaypku/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -605,8 +690,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvm001zuq5kwsyb0r70/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvm001zuq5kwsyb0r70/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89o001v6l5kk227zi1n/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89o001v6l5kk227zi1n/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -634,8 +719,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nrd0001uq5kbwamb1is/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nrd0001uq5kbwamb1is/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko82a00006l5kfu3lzlpn/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko82a00006l5kfu3lzlpn/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-07-31T12:17:06.019Z</updated>
     
@@ -691,8 +776,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nv20017uq5kv4thwtlh/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nv20017uq5kv4thwtlh/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89f001l6l5kjwn12jeb/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89f001l6l5kjwn12jeb/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -784,8 +869,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nv5001buq5k9bx044on/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nv5001buq5k9bx044on/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko895001d6l5k1zmp5wku/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko895001d6l5k1zmp5wku/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -831,16 +916,16 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
-    
       <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
+    
+      <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
     
   </entry>
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nu00008uq5k7unhgs49/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nu00008uq5k7unhgs49/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko87o00096l5kpbt0w06u/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko87o00096l5kpbt0w06u/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -894,8 +979,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvw002kuq5khgciq3vv/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvw002kuq5khgciq3vv/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko8a9002g6l5kbhn60vnv/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko8a9002g6l5kbhn60vnv/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1179,8 +1264,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvh001uuq5kbiy3c29q/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvh001uuq5kbiy3c29q/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89i001s6l5k8jvojb3z/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89i001s6l5k8jvojb3z/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1220,8 +1305,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nut000ruq5kaaydy1tu/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nut000ruq5kaaydy1tu/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko880000g6l5kry8su3b8/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko880000g6l5kry8su3b8/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
@@ -1291,8 +1376,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nvl001xuq5kd5tububr/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nvl001xuq5kd5tububr/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89w00206l5kaib4afi4/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89w00206l5kaib4afi4/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1312,8 +1397,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nva001huq5k8m2athjp/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nva001huq5k8m2athjp/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko89b001f6l5kds1kd3x9/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko89b001f6l5kds1kd3x9/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1342,8 +1427,8 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
   
   <entry>
     <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nwe003puq5k2zg472jw/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nwe003puq5k2zg472jw/</id>
+    <link href="http://mjackie.github.io/Tech/cj6nko8a000266l5kxsggabw9/"/>
+    <id>http://mjackie.github.io/Tech/cj6nko8a000266l5kxsggabw9/</id>
     <published>2016-03-28T15:17:00.000Z</published>
     <updated>2017-08-01T07:17:33.725Z</updated>
     
@@ -1364,35 +1449,6 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>JavaWeb微博</title>
-    <link href="http://mjackie.github.io/Tech/cj6dm2nup000nuq5km5z6vduz/"/>
-    <id>http://mjackie.github.io/Tech/cj6dm2nup000nuq5km5z6vduz/</id>
-    <published>2015-07-12T05:44:00.000Z</published>
-    <updated>2017-07-31T11:29:57.395Z</updated>
-    
-    <content type="html"><![CDATA[<p>这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。<br>本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。</p>
-<p>下面是应用截图：<br><img src="/post_image/weibo/weibo1.png" alt="image"></p>
-<a id="more"></a>
-<p><img src="/post_image/weibo/weibo2.png" alt="image"></p>
-<p><img src="/post_image/weibo/weibo3.png" alt="image"></p>
-<p><img src="/post_image/weibo/weibo4.png" alt="image"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这学期的JavaWeb课的成果，做的是一个微博小应用，实现了关注，发微博，查看关注人微博的几个功能，也算对Javaweb有了初步的了解。该应用用到了struts2，hibernate，spring，bootstrap几个框架，hibernate与spring都是在先前完成的情况下后续添加的，只是做了一点示范，没有贯穿整个项目。&lt;br&gt;本来想把项目挂到sae的，整了半天连上了数据库，又报struts2的错误，sae的环境很奇葩，java又是sae中奇葩的，还是算了。&lt;/p&gt;
-&lt;p&gt;下面是应用截图：&lt;br&gt;&lt;img src=&quot;/post_image/weibo/weibo1.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="javaweb" scheme="http://mjackie.github.io/tags/javaweb/"/>
     
   </entry>
   
