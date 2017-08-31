@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-08-22T09:12:24.623Z</updated>
+  <updated>2017-08-31T08:59:45.823Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,114 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>利用Selenium爬取网络数据</title>
+    <link href="http://mjackie.github.io/Tech/cj707w6gj001rf95kqmba8eav/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gj001rf95kqmba8eav/</id>
+    <published>2017-08-27T07:07:00.000Z</published>
+    <updated>2017-08-31T08:59:45.823Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
+<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
+sudo apt-get update        #更新下apt-get库否则下载pip会出错
+sudo apt-get install python-pip        #默认是8.1.1
+sudo pip install selenium    #安装selenium
+sudo apt-get install firefox
+sudo apt-get install xvfb
+sudo pip install pyvirtualdisplay
+下载 geckodriver        https://github.com/mozilla/geckodriver/releases
+sudo chmod a+w geckodriver
+</code></pre><a id="more"></a>
+<h4 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h4><ul>
+<li><p>定位页面中的元素</p>
+<pre><code>find_element_by_id
+find_element_by_name
+find_element_by_xpath
+find_element_by_link_text
+find_element_by_partial_link_text
+find_element_by_tag_name
+find_element_by_class_name
+find_element_by_css_selector
+</code></pre></li>
+<li><p>定位多个元素</p>
+<pre><code>find_elements_by_name
+find_elements_by_xpath
+find_elements_by_link_text
+find_elements_by_partial_link_text
+find_elements_by_tag_name
+find_elements_by_class_name
+find_elements_by_css_selector
+</code></pre></li>
+<li><p>操作元素方法</p>
+<pre><code>clear 清除元素的内容
+send_keys 模拟按键输入
+click 点击元素
+submit 提交表单
+</code></pre></li>
+</ul>
+<h4 id="延时等到"><a href="#延时等到" class="headerlink" title="延时等到"></a>延时等到</h4><p>利用Selenium爬取网络数据时，遇到的最多的问题就是页面或浏览器选项卡未加载出来时，对页面进行操作的问题。常见得报错包括IndexError: list index out of range等。</p>
+<p>一种解决办法是，在一些操作后加 <code>time.sleep(3)</code> 来使进程等待一段固定时长，再进行后续操作。更好的办法应该是等到页面加载完成后，自动进行后续操作。</p>
+<ul>
+<li><p>等待元素出现后再执行后续操作</p>
+<p>  wait模块的WebDriverWait类是显性等待类，先看下它有哪些参数与方法：</p>
+<pre><code>def __init__(self, driver, timeout, poll_frequency=POLL_FREQUENCY, ignored_exceptions=None):
+      &quot;&quot;&quot;Constructor, takes a WebDriver instance and timeout in seconds.
+
+         :Args:
+          - driver - Instance of WebDriver (Ie, Firefox, Chrome or Remote)
+          - timeout - Number of seconds before timing out
+          - poll_frequency - sleep interval between calls
+            By default, it is 0.5 second.
+          - ignored_exceptions - iterable structure of exception classes ignored during calls.
+            By default, it contains NoSuchElementException only.
+
+         Example:
+          from selenium.webdriver.support.ui import WebDriverWait \n
+          element = WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id(&quot;someId&quot;)) \n
+          is_disappeared = WebDriverWait(driver, 30, 1, (ElementNotVisibleException)).\ \n
+                      until_not(lambda x: x.find_element_by_id(&quot;someId&quot;).is_displayed())
+      &quot;&quot;&quot;
+</code></pre><p>  调用方法如下：</p>
+<pre><code>WebDriverWait(driver, 超时时长, 调用频率, 忽略异常).until(可执行方法, 超时时返回的信息)
+</code></pre><p>  示例代码：</p>
+<pre><code>WebDriverWait(driver, 600).until(lambda x: x.find_elements_by_xpath(&quot;//div[@class=\&quot;col-9 search-2017-2 pr10 pl0\&quot;]/div&quot;))
+</code></pre></li>
+<li><p>等待新的页面（选项卡）打开后执行后续操作</p>
+<pre><code>while len(driver.window_handles)&lt;2:        #如果选项卡数量小于2
+    first.click()
+    time.sleep(1)
+</code></pre></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Selenium-简介&quot;&gt;&lt;a href=&quot;#Selenium-简介&quot; class=&quot;headerlink&quot; title=&quot;Selenium 简介&quot;&gt;&lt;/a&gt;Selenium 简介&lt;/h4&gt;&lt;p&gt;Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。&lt;/p&gt;
+&lt;h4 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;sudo apt-get install python默认2.7.12
+sudo apt-get update        #更新下apt-get库否则下载pip会出错
+sudo apt-get install python-pip        #默认是8.1.1
+sudo pip install selenium    #安装selenium
+sudo apt-get install firefox
+sudo apt-get install xvfb
+sudo pip install pyvirtualdisplay
+下载 geckodriver        https://github.com/mozilla/geckodriver/releases
+sudo chmod a+w geckodriver
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Selenium" scheme="http://mjackie.github.io/tags/Selenium/"/>
+    
+      <category term="爬虫" scheme="http://mjackie.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko88n000w6l5k0zhmr9tg/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko88n000w6l5k0zhmr9tg/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6g1000tf95k6d575uxt/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6g1000tf95k6d575uxt/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.623Z</updated>
     
@@ -102,8 +207,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko88r000z6l5k49uvyrah/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko88r000z6l5k49uvyrah/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6ge001gf95kvhygcnp9/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6ge001gf95kvhygcnp9/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -211,8 +316,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko8a6002c6l5k0wyqi5bz/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko8a6002c6l5k0wyqi5bz/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6h1002rf95kvt7i7160/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6h1002rf95kvt7i7160/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -244,8 +349,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89h001p6l5kzxfvi3xl/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89h001p6l5kzxfvi3xl/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gf001if95kheiyefpe/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gf001if95kheiyefpe/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -300,8 +405,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko8a1002a6l5k1unhbp0e/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko8a1002a6l5k1unhbp0e/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gq0026f95kqgsa9qww/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gq0026f95kqgsa9qww/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -356,8 +461,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko8ab002j6l5krl1r4441/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko8ab002j6l5krl1r4441/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gr002af95kzvr1afnh/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gr002af95kzvr1afnh/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -409,8 +514,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89e001j6l5k6qqvvurs/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89e001j6l5k6qqvvurs/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6g80016f95kd0dwnwb5/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6g80016f95kd0dwnwb5/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -540,8 +645,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko88w00166l5k9dtcr55o/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko88w00166l5k9dtcr55o/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6g60013f95kv8kxguv3/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6g60013f95kv8kxguv3/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -586,8 +691,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko88y00196l5kdfzaypku/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko88y00196l5kdfzaypku/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6g50010f95ku4nkrrj9/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6g50010f95ku4nkrrj9/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -690,8 +795,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89o001v6l5kk227zi1n/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89o001v6l5kk227zi1n/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gk001tf95k2aoh10l8/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gk001tf95k2aoh10l8/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -719,8 +824,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko82a00006l5kfu3lzlpn/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko82a00006l5kfu3lzlpn/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gt002df95k0vicyvmh/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gt002df95k0vicyvmh/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-07-31T12:17:06.019Z</updated>
     
@@ -776,8 +881,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89f001l6l5kjwn12jeb/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89f001l6l5kjwn12jeb/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gh001mf95kiq4y5fnq/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gh001mf95kiq4y5fnq/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -869,8 +974,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko895001d6l5k1zmp5wku/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko895001d6l5k1zmp5wku/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6g90019f95kc7j8uziz/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6g90019f95kc7j8uziz/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -924,8 +1029,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko87o00096l5kpbt0w06u/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko87o00096l5kpbt0w06u/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6cx0000f95kafxi8p5r/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6cx0000f95kafxi8p5r/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -979,8 +1084,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko8a9002g6l5kbhn60vnv/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko8a9002g6l5kbhn60vnv/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gw002nf95kzhk9btrx/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gw002nf95kzhk9btrx/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1264,8 +1369,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89i001s6l5k8jvojb3z/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89i001s6l5k8jvojb3z/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gi001of95k2oe4v9kb/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gi001of95k2oe4v9kb/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1305,8 +1410,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko880000g6l5kry8su3b8/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko880000g6l5kry8su3b8/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6fr000if95kvuzojpy2/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6fr000if95kvuzojpy2/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
@@ -1376,8 +1481,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89w00206l5kaib4afi4/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89w00206l5kaib4afi4/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gv002kf95kuuxt0jem/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gv002kf95kuuxt0jem/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1397,8 +1502,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko89b001f6l5kds1kd3x9/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko89b001f6l5kds1kd3x9/</id>
+    <link href="http://mjackie.github.io/Tech/cj707w6gb001cf95k5rxwksxl/"/>
+    <id>http://mjackie.github.io/Tech/cj707w6gb001cf95k5rxwksxl/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
@@ -1422,33 +1527,6 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
       <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
     
       <category term="c" scheme="http://mjackie.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>姿态角</title>
-    <link href="http://mjackie.github.io/Tech/cj6nko8a000266l5kxsggabw9/"/>
-    <id>http://mjackie.github.io/Tech/cj6nko8a000266l5kxsggabw9/</id>
-    <published>2016-03-28T15:17:00.000Z</published>
-    <updated>2017-08-01T07:17:33.725Z</updated>
-    
-    <content type="html"><![CDATA[<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
-<p><img src="/post_image/zitaijiao/zitaijiao1.gif" alt="image"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；<br><a id="more"></a></p>
-<hr>
-<p><img src="/post_image/zitaijiao/zitaijiao2.gif" alt="image"><br>俯仰角：载体的x b 轴在当地水平面的投影与x b 间的夹角，叫做俯仰角，范围为-90～90°；</p>
-<hr>
-<p><img src="/post_image/zitaijiao/zitaijiao3.gif" alt="image"><br>横滚角：载体的y b 轴与其在当地水平面的投影间的夹角，叫做横滚角，范围为-180～180°。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/post_image/zitaijiao/zitaijiao1.gif&quot; alt=&quot;image&quot;&gt;&lt;br&gt;航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
     
   </entry>
   
