@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-08-31T08:59:45.823Z</updated>
+  <updated>2017-08-31T09:02:18.739Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gj001rf95kqmba8eav/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gj001rf95kqmba8eav/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgf001ynm5kj4490dzl/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgf001ynm5kj4490dzl/</id>
     <published>2017-08-27T07:07:00.000Z</published>
-    <updated>2017-08-31T08:59:45.823Z</updated>
+    <updated>2017-08-31T09:02:18.739Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
@@ -93,6 +93,11 @@ submit 提交表单
     time.sleep(1)
 </code></pre></li>
 </ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ul>
+<li><a href="http://www.jb51.net/article/92672.htm" target="_blank" rel="external">http://www.jb51.net/article/92672.htm</a></li>
+<li><a href="http://www.cnblogs.com/yoyoketang/p/6517477.html" target="_blank" rel="external">http://www.cnblogs.com/yoyoketang/p/6517477.html</a></li>
+<li><a href="http://yueyue-test.iteye.com/blog/1864887" target="_blank" rel="external">http://yueyue-test.iteye.com/blog/1864887</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -122,8 +127,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6g1000tf95k6d575uxt/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6g1000tf95k6d575uxt/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ffm000znm5klct8wpcy/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ffm000znm5klct8wpcy/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.623Z</updated>
     
@@ -207,8 +212,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6ge001gf95kvhygcnp9/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6ge001gf95kvhygcnp9/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ffo0012nm5k06vrxkpe/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ffo0012nm5k06vrxkpe/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -316,8 +321,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6h1002rf95kvt7i7160/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6h1002rf95kvt7i7160/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fg4001mnm5kmvjsijyz/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fg4001mnm5kmvjsijyz/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -349,8 +354,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gf001if95kheiyefpe/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gf001if95kheiyefpe/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fg6001pnm5kav8lg6rf/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fg6001pnm5kav8lg6rf/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -405,8 +410,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gq0026f95kqgsa9qww/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gq0026f95kqgsa9qww/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgp002dnm5k1qexg7lc/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgp002dnm5k1qexg7lc/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -461,8 +466,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gr002af95kzvr1afnh/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gr002af95kzvr1afnh/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgs002gnm5kg2cn6vxk/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgs002gnm5kg2cn6vxk/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -514,8 +519,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6g80016f95kd0dwnwb5/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6g80016f95kd0dwnwb5/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ffv001cnm5khzo3a385/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ffv001cnm5khzo3a385/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -645,8 +650,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6g60013f95kv8kxguv3/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6g60013f95kv8kxguv3/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fft0019nm5km4x8ffjj/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fft0019nm5km4x8ffjj/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -691,8 +696,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6g50010f95ku4nkrrj9/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6g50010f95ku4nkrrj9/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ffq0016nm5kvquxq372/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ffq0016nm5kvquxq372/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -795,8 +800,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gk001tf95k2aoh10l8/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gk001tf95k2aoh10l8/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgc001snm5k8l2oyv6q/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgc001snm5k8l2oyv6q/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -824,8 +829,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gt002df95k0vicyvmh/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gt002df95k0vicyvmh/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fe70001nm5k5mxvq7za/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fe70001nm5k5mxvq7za/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-07-31T12:17:06.019Z</updated>
     
@@ -881,8 +886,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gh001mf95kiq4y5fnq/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gh001mf95kiq4y5fnq/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ff9000onm5kkzfvsrak/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ff9000onm5kkzfvsrak/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -974,8 +979,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6g90019f95kc7j8uziz/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6g90019f95kc7j8uziz/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ffx001gnm5kbrkd9g8q/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ffx001gnm5kbrkd9g8q/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -1021,16 +1026,16 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
-    
       <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
+    
+      <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6cx0000f95kafxi8p5r/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6cx0000f95kafxi8p5r/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082feb0002nm5kaxj2imiy/"/>
+    <id>http://mjackie.github.io/Tech/cj7082feb0002nm5kaxj2imiy/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -1084,8 +1089,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gw002nf95kzhk9btrx/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gw002nf95kzhk9btrx/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgw002knm5khv979tb8/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgw002knm5khv979tb8/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1369,8 +1374,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gi001of95k2oe4v9kb/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gi001of95k2oe4v9kb/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fge001vnm5k2ky3oj77/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fge001vnm5k2ky3oj77/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1410,8 +1415,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6fr000if95kvuzojpy2/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6fr000if95kvuzojpy2/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082ff3000dnm5k0g06v85l/"/>
+    <id>http://mjackie.github.io/Tech/cj7082ff3000dnm5k0g06v85l/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
@@ -1481,8 +1486,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gv002kf95kuuxt0jem/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gv002kf95kuuxt0jem/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fgh0021nm5kwdg2qih7/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fgh0021nm5kwdg2qih7/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1502,8 +1507,8 @@ session_destroy();
   
   <entry>
     <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj707w6gb001cf95k5rxwksxl/"/>
-    <id>http://mjackie.github.io/Tech/cj707w6gb001cf95k5rxwksxl/</id>
+    <link href="http://mjackie.github.io/Tech/cj7082fg0001jnm5k5xdbv5v5/"/>
+    <id>http://mjackie.github.io/Tech/cj7082fg0001jnm5k5xdbv5v5/</id>
     <published>2016-03-30T05:53:00.000Z</published>
     <updated>2017-07-31T11:30:44.343Z</updated>
     
