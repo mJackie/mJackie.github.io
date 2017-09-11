@@ -69,6 +69,45 @@
 	
 
 		
+	<article id="post-qrcode" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/27
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cj7g7ytil001vy75k58m4vatq/">QR 码解析算法</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
+<li>横向扫描，检测 黑白黑白黑 的组合</li>
+<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
+<li>验证是否满足1:1:3:1:1的比例</li>
+<li>检测纵向是否满足定位符特征</li>
+<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
+<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
+<li>否则继续扫描图片</li>
+<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
+<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
+<li>返回检测到的三个定位符的结果</li>
+</ul>
+	          	<p class="read-more"><a href="/Tech/cj7g7ytil001vy75k58m4vatq/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
 	<article id="post-换电脑后如何恢复Hexo环境" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +119,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj7082fgp002dnm5k1qexg7lc/">换电脑后如何恢复Hexo环境</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj7g7ytj3002my75kwa91awin/">换电脑后如何恢复Hexo环境</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -97,7 +136,7 @@ nvm install stable
 </code></pre><h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
 </code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
 <p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
-	          	<p class="read-more"><a href="/Tech/cj7082fgp002dnm5k1qexg7lc/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cj7g7ytj3002my75kwa91awin/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -114,7 +153,7 @@ nvm install stable
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj7082fgs002gnm5kg2cn6vxk/">机试题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj7g7ytj6002ty75k1gnhbubi/">机试题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -134,7 +173,7 @@ Explanation:
 前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
 剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cj7082fgs002gnm5kg2cn6vxk/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cj7g7ytj6002ty75k1gnhbubi/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -151,7 +190,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj7082ffv001cnm5khzo3a385/">Java值传递与引用传递</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj7g7yti9001ky75kzsvv2sm5/">Java值传递与引用传递</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -174,7 +213,7 @@ Explanation:
     }
 }
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cj7082ffv001cnm5khzo3a385/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cj7g7yti9001ky75kzsvv2sm5/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -191,7 +230,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj7082fft0019nm5km4x8ffjj/">Data Matrix 解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cj7g7yti8001iy75kwq30j3b5/">Data Matrix 解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -205,42 +244,7 @@ Explanation:
 <p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
 <p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
 <p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br>
-	          	<p class="read-more"><a href="/Tech/cj7082fft0019nm5km4x8ffjj/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-ccnSim" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         4/8
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cj7082ffq0016nm5kvquxq372/">ccnSim 模拟器</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c++</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/icn/">icn</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
-<h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
-<ul>
-<li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
-<li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
-<li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
-<li>执行仿真</li>
-</ul>
-	          	<p class="read-more"><a href="/Tech/cj7082ffq0016nm5kvquxq372/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cj7g7yti8001iy75kwq30j3b5/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 

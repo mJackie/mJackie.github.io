@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-08-31T09:02:18.739Z</updated>
+  <updated>2017-09-11T04:32:12.380Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>好好学习，天天向上！</title>
+    <link href="http://mjackie.github.io/Life/cj7g7ytix002dy75ktxkgys1z/"/>
+    <id>http://mjackie.github.io/Life/cj7g7ytix002dy75ktxkgys1z/</id>
+    <published>2017-09-11T03:21:00.000Z</published>
+    <updated>2017-09-11T04:32:12.380Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。</p>
+<p>半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：</p>
+<ul>
+<li>科研工作的尝试</li>
+</ul>
+<p>从对科研工作的陌生与懵懂到了解与尝试，并试图提出自己的想法。在这个过程中，阅读文献的能力提高了，了解了期刊会议文章的组织结构。如何快速了解一篇文章的核心思想，找到自己的关注点。如何检索，下载自己所关注领域的文章。同时，自己的逻辑思维能力得到了锻炼，分析总结别人方法的优缺点，找到问题所在，并尝试提出自己的看法。这是一个不断尝试与修改的过程。每一个灵感的迸发与产生都是一次思维的升级。对科研工作也有了进一步的认识，科研所需的不仅仅是代码能力，学习能力的体现，而是一种综合能力的体现。写作能力，英语素质以及发现问题总结问题的能力都是科研中很重要的一部分。没有人会打开你的脑子看到你的想法，你要表达出来，写出来！</p>
+<ul>
+<li>工程项目的体会</li>
+</ul>
+<p>体会了一个实际项目从可行性分析到项目开发，性能优化，直到最后交付的过程。核心功能的开发时间反而比性能，可用性优化的时间要短。一个项目的完成，不仅仅是功能的实现，还要保证兼容性，性能，文档等多个方面的完成。在项目开发的过程中，自己读代码的能力也得到了明显的提升。阅读优秀的开源代码可以体会到别人的编程思想。读懂了别人的代码，才能在此基础上实现自己的需求。最后一点体会就是不要害怕困难，简单的问题，做着很开心，但收货往往很少。越是困难的问题，硬着头皮做下去，收获往往很大。</p>
+<ul>
+<li>小伙伴</li>
+</ul>
+<p>最大的收货莫过于朋友与友谊。还记得刚到所里的那几天，陌生的环境让我很不适应，大家仿佛都各行其是，似乎一下从学生阶段到了工作阶段，孤独感油然而生。渐渐的认识了许多同为大四提前入所的学生，和他们一起聚餐，一起出游，一起打游戏，让我渐渐找到了归属感。遇到他们，我真幸运！<br>特别要感谢我的导师张瀚文老师的关怀与指导，感谢课题组的每一位老师。</p>
+<p>新学期，新气象。上周一连开了三个开学典礼，院里的，所里的和学校的，认识了许多新同学，熟悉了校园新环境。安逸的环境似乎让自己放松了警惕，也变得些许懒散。</p>
+<p>时光易逝，要时刻督促自己不要浪费时光。希望在接下来的一年时间里能够</p>
+<p>好好学习！</p>
+<p>天天向上！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。&lt;/p&gt;
+&lt;p&gt;半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;科研工作的尝试&lt;/l
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgf001ynm5kj4490dzl/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgf001ynm5kj4490dzl/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytip0025y75k59co54bl/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytip0025y75k59co54bl/</id>
     <published>2017-08-27T07:07:00.000Z</published>
-    <updated>2017-08-31T09:02:18.739Z</updated>
+    <updated>2017-08-31T09:03:31.215Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
@@ -97,6 +138,7 @@ submit 提交表单
 <li><a href="http://www.jb51.net/article/92672.htm" target="_blank" rel="external">http://www.jb51.net/article/92672.htm</a></li>
 <li><a href="http://www.cnblogs.com/yoyoketang/p/6517477.html" target="_blank" rel="external">http://www.cnblogs.com/yoyoketang/p/6517477.html</a></li>
 <li><a href="http://yueyue-test.iteye.com/blog/1864887" target="_blank" rel="external">http://yueyue-test.iteye.com/blog/1864887</a></li>
+<li><a href="http://blog.csdn.net/eastmount/article/details/48108259" target="_blank" rel="external">http://blog.csdn.net/eastmount/article/details/48108259</a></li>
 </ul>
 ]]></content>
     
@@ -127,8 +169,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ffm000znm5klct8wpcy/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ffm000znm5klct8wpcy/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytia001my75kixtx1bv4/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytia001my75kixtx1bv4/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.623Z</updated>
     
@@ -212,8 +254,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ffo0012nm5k06vrxkpe/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ffo0012nm5k06vrxkpe/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ythx001by75k23yugo4v/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ythx001by75k23yugo4v/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -321,8 +363,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fg4001mnm5kmvjsijyz/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fg4001mnm5kmvjsijyz/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytj7002wy75k5g22w8y6/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytj7002wy75k5g22w8y6/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -354,8 +396,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fg6001pnm5kav8lg6rf/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fg6001pnm5kav8lg6rf/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytil001vy75k58m4vatq/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytil001vy75k58m4vatq/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -410,8 +452,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgp002dnm5k1qexg7lc/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgp002dnm5k1qexg7lc/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytj3002my75kwa91awin/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytj3002my75kwa91awin/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -466,8 +508,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgs002gnm5kg2cn6vxk/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgs002gnm5kg2cn6vxk/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytj6002ty75k1gnhbubi/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytj6002ty75k1gnhbubi/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -519,8 +561,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ffv001cnm5khzo3a385/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ffv001cnm5khzo3a385/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7yti9001ky75kzsvv2sm5/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7yti9001ky75kzsvv2sm5/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -650,8 +692,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fft0019nm5km4x8ffjj/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fft0019nm5km4x8ffjj/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7yti8001iy75kwq30j3b5/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7yti8001iy75kwq30j3b5/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -696,8 +738,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ffq0016nm5kvquxq372/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ffq0016nm5kvquxq372/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytim001yy75kbqpl1slt/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytim001yy75kbqpl1slt/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -790,18 +832,18 @@ lru_pos* mru; //most recently used item
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
-    
       <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
     
       <category term="c" scheme="http://mjackie.github.io/tags/c/"/>
+    
+      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
     
   </entry>
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgc001snm5k8l2oyv6q/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgc001snm5k8l2oyv6q/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytj4002py75knfry0buy/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytj4002py75knfry0buy/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -829,10 +871,10 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fe70001nm5k5mxvq7za/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fe70001nm5k5mxvq7za/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytej0001y75knskmixrk/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytej0001y75knskmixrk/</id>
     <published>2016-12-05T01:21:00.000Z</published>
-    <updated>2017-07-31T12:17:06.019Z</updated>
+    <updated>2017-09-11T03:45:15.282Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
 <h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
@@ -886,8 +928,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ff9000onm5kkzfvsrak/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ff9000onm5kkzfvsrak/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7yti1001ey75kosm7z3cc/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7yti1001ey75kosm7z3cc/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -979,8 +1021,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ffx001gnm5kbrkd9g8q/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ffx001gnm5kbrkd9g8q/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytig001sy75kz3z9fmye/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytig001sy75kz3z9fmye/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -1034,8 +1076,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj7082feb0002nm5kaxj2imiy/"/>
-    <id>http://mjackie.github.io/Tech/cj7082feb0002nm5kaxj2imiy/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytfv0002y75k42gqbui0/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytfv0002y75k42gqbui0/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -1089,8 +1131,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgw002knm5khv979tb8/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgw002knm5khv979tb8/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytjb0030y75kuq0bmwql/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytjb0030y75kuq0bmwql/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1374,8 +1416,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fge001vnm5k2ky3oj77/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fge001vnm5k2ky3oj77/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytio0022y75kjg9ygci4/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytio0022y75kjg9ygci4/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1415,8 +1457,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj7082ff3000dnm5k0g06v85l/"/>
-    <id>http://mjackie.github.io/Tech/cj7082ff3000dnm5k0g06v85l/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytgm000dy75k6qtqy3m6/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytgm000dy75k6qtqy3m6/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
@@ -1486,8 +1528,8 @@ session_destroy();
   
   <entry>
     <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fgh0021nm5kwdg2qih7/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fgh0021nm5kwdg2qih7/</id>
+    <link href="http://mjackie.github.io/Tech/cj7g7ytit002ay75k1b6w73t8/"/>
+    <id>http://mjackie.github.io/Tech/cj7g7ytit002ay75k1b6w73t8/</id>
     <published>2016-04-04T14:03:00.000Z</published>
     <updated>2016-11-25T14:37:03.647Z</updated>
     
@@ -1502,36 +1544,6 @@ session_destroy();
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>keybd_event函数</title>
-    <link href="http://mjackie.github.io/Tech/cj7082fg0001jnm5k5xdbv5v5/"/>
-    <id>http://mjackie.github.io/Tech/cj7082fg0001jnm5k5xdbv5v5/</id>
-    <published>2016-03-30T05:53:00.000Z</published>
-    <updated>2017-07-31T11:30:44.343Z</updated>
-    
-    <content type="html"><![CDATA[<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
-<pre><code>//模拟按下&apos;ALT+F4&apos;键
-keybd_event(18,0,0,0);
-keybd_event(115,0,0,0);
-keybd_event(115,0,KEYEVENTF_KEYUP,0);
-keybd_event(18,0,KEYEVENTF_KEYUP,0);
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。&lt;br&gt;函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);&lt;br&gt;包
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
-    
-      <category term="c" scheme="http://mjackie.github.io/tags/c/"/>
     
   </entry>
   
