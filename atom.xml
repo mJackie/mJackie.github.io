@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-09-11T04:32:12.380Z</updated>
+  <updated>2017-10-16T05:10:49.241Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,11 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>透视变换</title>
+    <link href="http://mjackie.github.io/Tech/cj8tq181d002e4f5kjezsswvy/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq181d002e4f5kjezsswvy/</id>
+    <published>2017-10-07T04:46:00.000Z</published>
+    <updated>2017-10-16T05:10:49.241Z</updated>
+    
+    <content type="html"><![CDATA[<p>透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。</p>
+<p>记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。</p>
+<p>透视变换的通用公式是：</p>
+<p><img src="/post_image/toushibianhuan/1.png" alt="image"><br>其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为<img src="/post_image/toushibianhuan/2.png" alt="image">。变换矩阵中，(/post_image/toushibianhuan/3.png)表示线性变换，(/post_image/toushibianhuan/4.png)表示平移，(/post_image/toushibianhuan/5.png)表示透视变换。</p>
+<p>重写变换公式可得：</p>
+<p>(/post_image/toushibianhuan/6.png)</p>
+<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。&lt;/p&gt;
+&lt;p&gt;记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。&lt;/p&gt;
+&lt;p&gt;透视变换的通用公式是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/post_image/toushibianhuan/1.png&quot; alt=&quot;image&quot;&gt;&lt;br&gt;其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为&lt;img src=&quot;/post_image/toushibianhuan/2.png&quot; alt=&quot;image&quot;&gt;。变换矩阵中，(/post_image/toushibianhuan/3.png)表示线性变换，(/post_image/toushibianhuan/4.png)表示平移，(/post_image/toushibianhuan/5.png)表示透视变换。&lt;/p&gt;
+&lt;p&gt;重写变换公式可得：&lt;/p&gt;
+&lt;p&gt;(/post_image/toushibianhuan/6.png)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="图像处理" scheme="http://mjackie.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cj7g7ytix002dy75ktxkgys1z/"/>
-    <id>http://mjackie.github.io/Life/cj7g7ytix002dy75ktxkgys1z/</id>
+    <link href="http://mjackie.github.io/Life/cj8tq181h002i4f5kzf4fsln4/"/>
+    <id>http://mjackie.github.io/Life/cj8tq181h002i4f5kzf4fsln4/</id>
     <published>2017-09-11T03:21:00.000Z</published>
-    <updated>2017-09-11T04:32:12.380Z</updated>
+    <updated>2017-09-11T13:45:47.962Z</updated>
     
     <content type="html"><![CDATA[<p>今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。</p>
 <p>半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：</p>
@@ -58,8 +91,8 @@
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytip0025y75k59co54bl/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytip0025y75k59co54bl/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180x001n4f5k8ahe3c61/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180x001n4f5k8ahe3c61/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.215Z</updated>
     
@@ -169,8 +202,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytia001my75kixtx1bv4/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytia001my75kixtx1bv4/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq1808000t4f5k536e75s6/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq1808000t4f5k536e75s6/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.623Z</updated>
     
@@ -254,8 +287,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ythx001by75k23yugo4v/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ythx001by75k23yugo4v/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180r001c4f5kc2b5o7zz/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180r001c4f5kc2b5o7zz/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -363,8 +396,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytj7002wy75k5g22w8y6/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytj7002wy75k5g22w8y6/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq181a00254f5kwsmumnir/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq181a00254f5kwsmumnir/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -396,8 +429,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytil001vy75k58m4vatq/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytil001vy75k58m4vatq/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180t001f4f5kksh441yr/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180t001f4f5kksh441yr/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -452,8 +485,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytj3002my75kwa91awin/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytj3002my75kwa91awin/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq181c002c4f5kzkd8trc3/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq181c002c4f5kzkd8trc3/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -508,8 +541,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytj6002ty75k1gnhbubi/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytj6002ty75k1gnhbubi/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq181c00294f5kh69cii1e/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq181c00294f5kh69cii1e/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -561,8 +594,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7yti9001ky75kzsvv2sm5/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7yti9001ky75kzsvv2sm5/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180i00114f5kqwqmut17/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180i00114f5kqwqmut17/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -692,8 +725,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7yti8001iy75kwq30j3b5/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7yti8001iy75kwq30j3b5/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180v001h4f5knt0e1t3q/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180v001h4f5knt0e1t3q/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -738,8 +771,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytim001yy75kbqpl1slt/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytim001yy75kbqpl1slt/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180b000v4f5k3opdkewu/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180b000v4f5k3opdkewu/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -832,18 +865,18 @@ lru_pos* mru; //most recently used item
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
+      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
+    
       <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
     
       <category term="c" scheme="http://mjackie.github.io/tags/c/"/>
-    
-      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
     
   </entry>
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytj4002py75knfry0buy/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytj4002py75knfry0buy/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq1813001w4f5k1wqj5xga/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq1813001w4f5k1wqj5xga/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -871,8 +904,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytej0001y75knskmixrk/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytej0001y75knskmixrk/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq17z200004f5katrejnks/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq17z200004f5katrejnks/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-09-11T03:45:15.282Z</updated>
     
@@ -928,8 +961,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7yti1001ey75kosm7z3cc/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7yti1001ey75kosm7z3cc/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq1807000p4f5kdqjkk3z8/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq1807000p4f5kdqjkk3z8/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -1021,8 +1054,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytig001sy75kz3z9fmye/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytig001sy75kz3z9fmye/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180l00154f5komv1yfo8/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180l00154f5komv1yfo8/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -1076,8 +1109,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytfv0002y75k42gqbui0/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytfv0002y75k42gqbui0/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq17z800024f5ksm7cyi4r/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq17z800024f5ksm7cyi4r/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -1131,8 +1164,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytjb0030y75kuq0bmwql/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytjb0030y75kuq0bmwql/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq181h002l4f5kqy8kvn8a/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq181h002l4f5kqy8kvn8a/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1416,8 +1449,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytio0022y75kjg9ygci4/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytio0022y75kjg9ygci4/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq180x001l4f5kppghh7v8/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq180x001l4f5kppghh7v8/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1457,8 +1490,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytgm000dy75k6qtqy3m6/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytgm000dy75k6qtqy3m6/</id>
+    <link href="http://mjackie.github.io/Tech/cj8tq17zt000c4f5kcs292cpz/"/>
+    <id>http://mjackie.github.io/Tech/cj8tq17zt000c4f5kcs292cpz/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
@@ -1523,27 +1556,6 @@ session_destroy();
     
     
       <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>姿态测算原理</title>
-    <link href="http://mjackie.github.io/Tech/cj7g7ytit002ay75k1b6w73t8/"/>
-    <id>http://mjackie.github.io/Tech/cj7g7ytit002ay75k1b6w73t8/</id>
-    <published>2016-04-04T14:03:00.000Z</published>
-    <updated>2016-11-25T14:37:03.647Z</updated>
-    
-    <content type="html"><![CDATA[<p>经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：<br>（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；<br>（2）利用加速度计产生的重力加速度信号和磁力计产生的地磁信号，可分别得到载体航向家、横滚角及航向角，从而得到物体姿态；可通过转换以四元数表示；<br>（3）多个系统捷联组合进行姿态测算，如通过卡尔曼融合算法，将陀螺仪、加速度计和磁力计产生的信号进行合理融合，角速度信号对动态情况下的物体姿态测算优势明显，而加速度与磁力计可对角速度信号的测算进行不定时修正，从而实现传感器之间的互补，使姿态测算更加精确、更适用于各种环境。<br>由于陀螺仪存在零偏及长时间使用后信号漂移等现象，如利用第一种方法进行姿态测算，姿态误差会随时间的推移而不断增大，从而导致无法长期稳定的精确信号输出；加速度计及磁力计皆利用地球本身存在的稳定的外部因素产生输出信号，更容易获得物体的绝对姿态，然而在运动过程中，物体同样会产生加速度，对姿态测算造成干扰，而磁力计也易受磁性物质干扰，因此第二种方法适合物体本身运动幅度较小的情况，不利于在物体快速运动时的姿态测算，即动态性能不好。第三种方法对前两种方法进行融合，能够分别发挥两种方法的优势，虽然采用卡尔曼滤波等信息融合技术，增加了运算量，但能在各种运动情况下获取物体精确姿态，是目前捷联导航系统中最常用的姿态测算方法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;经过信号预处理（滤波、校准等），可得到精准传感器输出信号，进而为精确进行姿态测算提供保障。常用的载体姿态获取方法有：&lt;br&gt;（1）利用陀螺仪产生的角速度信号，积分求取三轴旋转角度，从而获得物体姿态变化，可用四元数表示；&lt;br&gt;（2）利用加速度计产生的重力加速度信号和磁力计产
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
     
   </entry>
   
