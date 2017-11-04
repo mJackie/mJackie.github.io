@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-10-16T05:10:49.241Z</updated>
+  <updated>2017-10-16T15:58:17.785Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,28 +16,130 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq181d002e4f5kjezsswvy/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq181d002e4f5kjezsswvy/</id>
+    <title>图像透视变换</title>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf55002rh35kx1gcqn8f/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf55002rh35kx1gcqn8f/</id>
     <published>2017-10-07T04:46:00.000Z</published>
-    <updated>2017-10-16T05:10:49.241Z</updated>
+    <updated>2017-10-16T15:58:17.785Z</updated>
     
     <content type="html"><![CDATA[<p>透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。</p>
 <p>记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。</p>
 <p>透视变换的通用公式是：</p>
-<p><img src="/post_image/toushibianhuan/1.png" alt="image"><br>其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为<img src="/post_image/toushibianhuan/2.png" alt="image">。变换矩阵中，(/post_image/toushibianhuan/3.png)表示线性变换，(/post_image/toushibianhuan/4.png)表示平移，(/post_image/toushibianhuan/5.png)表示透视变换。</p>
-<p>重写变换公式可得：</p>
-<p>(/post_image/toushibianhuan/6.png)</p>
-<a id="more"></a>]]></content>
+<p><img src="/post_image/toushibianhuan/1.png" alt="image"><br>其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为  <code>x=x&#39;/w&#39;,y=y&#39;/w&#39;</code> 。变换矩阵中， <code>a11,a12,a21,a22</code> 表示线性变换， <code>a31,a32</code> 表示平移， <code>a13,a23</code> 表示透视变换。<br><a id="more"></a><br>重写变换公式可得：<br><img src="/post_image/toushibianhuan/6.png" alt="image"></p>
+<p>图像原始坐标点已知，如果我们能够指定原始图像中几个点对应变换后的坐标。则可通过上述公式计算得到变换矩阵中各分量的值。从而通过变换矩阵得到变换后的图像。</p>
+<p>由于正方形的特殊性，选择正方形作为中间过度。通过将任意四边形先变换到正方形，再由正方形变换到四边形。通过这种方式便可将一个任意四边形变换到另一个任意四边形。<br><img src="/post_image/toushibianhuan/2.png" alt="image"></p>
+<p>具体实现代码如下：</p>
+<pre><code>private PerspectiveTransform(float a11, float a21, float a31, float a12, float a22, float a32,float a13, float a23, float a33) {
+   this.a11 = a11;
+   this.a12 = a12;
+   this.a13 = a13;
+   this.a21 = a21;
+   this.a22 = a22;
+   this.a23 = a23;
+   this.a31 = a31;
+   this.a32 = a32;
+   this.a33 = a33;
+ }
+
+ public static PerspectiveTransform quadrilateralToQuadrilateral(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3, float x0p, float y0p, float x1p, float y1p, float x2p, float y2p, float x3p, float y3p) {
+
+   PerspectiveTransform qToS = quadrilateralToSquare(x0, y0, x1, y1, x2, y2, x3, y3);
+   PerspectiveTransform sToQ = squareToQuadrilateral(x0p, y0p, x1p, y1p, x2p, y2p, x3p, y3p);
+   return sToQ.times(qToS);
+ }
+
+ public void transformPoints(float[] points) {
+   int max = points.length;
+   float a11 = this.a11;
+   float a12 = this.a12;
+   float a13 = this.a13;
+   float a21 = this.a21;
+   float a22 = this.a22;
+   float a23 = this.a23;
+   float a31 = this.a31;
+   float a32 = this.a32;
+   float a33 = this.a33;
+   for (int i = 0; i &lt; max; i += 2) {
+     float x = points[i];
+     float y = points[i + 1];
+     float denominator = a13 * x + a23 * y + a33;
+     points[i] = (a11 * x + a21 * y + a31) / denominator;
+     points[i + 1] = (a12 * x + a22 * y + a32) / denominator;
+   }
+ }
+
+ public void transformPoints(float[] xValues, float[] yValues) {
+   int n = xValues.length;
+   for (int i = 0; i &lt; n; i ++) {
+     float x = xValues[i];
+     float y = yValues[i];
+     float denominator = a13 * x + a23 * y + a33;
+     xValues[i] = (a11 * x + a21 * y + a31) / denominator;
+     yValues[i] = (a12 * x + a22 * y + a32) / denominator;
+   }
+ }
+
+ public static PerspectiveTransform squareToQuadrilateral(float x0, float y0,
+                                                          float x1, float y1,
+                                                          float x2, float y2,
+                                                          float x3, float y3) {
+   float dx3 = x0 - x1 + x2 - x3;
+   float dy3 = y0 - y1 + y2 - y3;
+   if (dx3 == 0.0f &amp;&amp; dy3 == 0.0f) {
+     // Affine
+     return new PerspectiveTransform(x1 - x0, x2 - x1, x0,
+                                     y1 - y0, y2 - y1, y0,
+                                     0.0f,    0.0f,    1.0f);
+   } else {
+     float dx1 = x1 - x2;
+     float dx2 = x3 - x2;
+     float dy1 = y1 - y2;
+     float dy2 = y3 - y2;
+     float denominator = dx1 * dy2 - dx2 * dy1;
+     float a13 = (dx3 * dy2 - dx2 * dy3) / denominator;
+     float a23 = (dx1 * dy3 - dx3 * dy1) / denominator;
+     return new PerspectiveTransform(x1 - x0 + a13 * x1, x3 - x0 + a23 * x3, x0, y1 - y0 + a13 * y1, y3 - y0 + a23 * y3, y0, a13, a23, 1.0f);
+   }
+ }
+
+ public static PerspectiveTransform quadrilateralToSquare(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3) {
+   // Here, the adjoint serves as the inverse:
+   return squareToQuadrilateral(x0, y0, x1, y1, x2, y2, x3, y3).buildAdjoint();
+ }
+
+ PerspectiveTransform buildAdjoint() {
+   // Adjoint is the transpose of the cofactor matrix:
+   return new PerspectiveTransform(a22 * a33 - a23 * a32,
+       a23 * a31 - a21 * a33,
+       a21 * a32 - a22 * a31,
+       a13 * a32 - a12 * a33,
+       a11 * a33 - a13 * a31,
+       a12 * a31 - a11 * a32,
+       a12 * a23 - a13 * a22,
+       a13 * a21 - a11 * a23,
+       a11 * a22 - a12 * a21);
+ }
+
+ PerspectiveTransform times(PerspectiveTransform other) {
+   return new PerspectiveTransform(a11 * other.a11 + a21 * other.a12 + a31 * other.a13,
+       a11 * other.a21 + a21 * other.a22 + a31 * other.a23,
+       a11 * other.a31 + a21 * other.a32 + a31 * other.a33,
+       a12 * other.a11 + a22 * other.a12 + a32 * other.a13,
+       a12 * other.a21 + a22 * other.a22 + a32 * other.a23,
+       a12 * other.a31 + a22 * other.a32 + a32 * other.a33,
+       a13 * other.a11 + a23 * other.a12 + a33 * other.a13,
+       a13 * other.a21 + a23 * other.a22 + a33 * other.a23,
+       a13 * other.a31 + a23 * other.a32 + a33 * other.a33);
+
+ }
+</code></pre>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。&lt;/p&gt;
 &lt;p&gt;记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。&lt;/p&gt;
 &lt;p&gt;透视变换的通用公式是：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/post_image/toushibianhuan/1.png&quot; alt=&quot;image&quot;&gt;&lt;br&gt;其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为&lt;img src=&quot;/post_image/toushibianhuan/2.png&quot; alt=&quot;image&quot;&gt;。变换矩阵中，(/post_image/toushibianhuan/3.png)表示线性变换，(/post_image/toushibianhuan/4.png)表示平移，(/post_image/toushibianhuan/5.png)表示透视变换。&lt;/p&gt;
-&lt;p&gt;重写变换公式可得：&lt;/p&gt;
-&lt;p&gt;(/post_image/toushibianhuan/6.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/post_image/toushibianhuan/1.png&quot; alt=&quot;image&quot;&gt;&lt;br&gt;其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为  &lt;code&gt;x=x&amp;#39;/w&amp;#39;,y=y&amp;#39;/w&amp;#39;&lt;/code&gt; 。变换矩阵中， &lt;code&gt;a11,a12,a21,a22&lt;/code&gt; 表示线性变换， &lt;code&gt;a31,a32&lt;/code&gt; 表示平移， &lt;code&gt;a13,a23&lt;/code&gt; 表示透视变换。&lt;br&gt;
     
     </summary>
     
@@ -50,8 +152,8 @@
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cj8tq181h002i4f5kzf4fsln4/"/>
-    <id>http://mjackie.github.io/Life/cj8tq181h002i4f5kzf4fsln4/</id>
+    <link href="http://mjackie.github.io/Life/cj9l4qf4o0027h35kiqayj0ej/"/>
+    <id>http://mjackie.github.io/Life/cj9l4qf4o0027h35kiqayj0ej/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.962Z</updated>
     
@@ -91,8 +193,8 @@
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180x001n4f5k8ahe3c61/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180x001n4f5k8ahe3c61/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf4f001yh35kngn076be/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf4f001yh35kngn076be/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.215Z</updated>
     
@@ -202,8 +304,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq1808000t4f5k536e75s6/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq1808000t4f5k536e75s6/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf3j000zh35kulo8j8zb/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf3j000zh35kulo8j8zb/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.623Z</updated>
     
@@ -287,8 +389,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180r001c4f5kc2b5o7zz/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180r001c4f5kc2b5o7zz/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf3n0012h35kpq0mpmw9/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf3n0012h35kpq0mpmw9/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.080Z</updated>
     
@@ -396,8 +498,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq181a00254f5kwsmumnir/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq181a00254f5kwsmumnir/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf49001mh35kkdq3g1sf/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf49001mh35kkdq3g1sf/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.890Z</updated>
     
@@ -429,8 +531,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180t001f4f5kksh441yr/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180t001f4f5kksh441yr/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf4a001ph35kw0mbeuu2/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf4a001ph35kw0mbeuu2/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.099Z</updated>
     
@@ -485,8 +587,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq181c002c4f5kzkd8trc3/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq181c002c4f5kzkd8trc3/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf4x002gh35krpwupspv/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf4x002gh35krpwupspv/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2017-07-31T11:27:27.823Z</updated>
     
@@ -541,8 +643,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq181c00294f5kh69cii1e/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq181c00294f5kh69cii1e/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf51002kh35kd15h9089/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf51002kh35kd15h9089/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.687Z</updated>
     
@@ -594,8 +696,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180i00114f5kqwqmut17/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180i00114f5kqwqmut17/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf3y001ch35kw1a53ecq/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf3y001ch35kw1a53ecq/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.015Z</updated>
     
@@ -725,8 +827,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180v001h4f5knt0e1t3q/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180v001h4f5knt0e1t3q/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf3u0019h35kel05rql3/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf3u0019h35kel05rql3/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.095Z</updated>
     
@@ -771,8 +873,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180b000v4f5k3opdkewu/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180b000v4f5k3opdkewu/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf3q0016h35kcfxrcpck/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf3q0016h35kcfxrcpck/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.512Z</updated>
     
@@ -875,8 +977,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq1813001w4f5k1wqj5xga/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq1813001w4f5k1wqj5xga/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf4c001sh35kx0ueggz8/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf4c001sh35kx0ueggz8/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.379Z</updated>
     
@@ -904,8 +1006,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq17z200004f5katrejnks/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq17z200004f5katrejnks/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf1x0001h35kk7574ijz/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf1x0001h35kk7574ijz/</id>
     <published>2016-12-05T01:21:00.000Z</published>
     <updated>2017-09-11T03:45:15.282Z</updated>
     
@@ -961,8 +1063,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq1807000p4f5kdqjkk3z8/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq1807000p4f5kdqjkk3z8/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf35000oh35knz20cuk3/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf35000oh35knz20cuk3/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.703Z</updated>
     
@@ -1054,8 +1156,8 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180l00154f5komv1yfo8/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180l00154f5komv1yfo8/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf42001gh35khu1iyifj/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf42001gh35khu1iyifj/</id>
     <published>2016-11-28T10:03:00.000Z</published>
     <updated>2017-07-31T11:30:17.123Z</updated>
     
@@ -1109,8 +1211,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq17z800024f5ksm7cyi4r/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq17z800024f5ksm7cyi4r/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf220002h35kmie6ft01/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf220002h35kmie6ft01/</id>
     <published>2016-11-26T14:03:00.000Z</published>
     <updated>2017-07-24T09:42:19.612Z</updated>
     
@@ -1164,8 +1266,8 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq181h002l4f5kqy8kvn8a/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq181h002l4f5kqy8kvn8a/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf53002nh35ko9qan4uk/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf53002nh35ko9qan4uk/</id>
     <published>2016-04-27T16:46:00.000Z</published>
     <updated>2016-11-25T14:29:40.189Z</updated>
     
@@ -1449,8 +1551,8 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq180x001l4f5kppghh7v8/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq180x001l4f5kppghh7v8/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf4d001vh35kaem8vsso/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf4d001vh35kaem8vsso/</id>
     <published>2016-04-15T14:19:00.000Z</published>
     <updated>2017-07-31T11:30:21.187Z</updated>
     
@@ -1490,8 +1592,8 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj8tq17zt000c4f5kcs292cpz/"/>
-    <id>http://mjackie.github.io/Tech/cj8tq17zt000c4f5kcs292cpz/</id>
+    <link href="http://mjackie.github.io/Tech/cj9l4qf2v000dh35kqfmeiieb/"/>
+    <id>http://mjackie.github.io/Tech/cj9l4qf2v000dh35kqfmeiieb/</id>
     <published>2016-04-07T15:35:00.000Z</published>
     <updated>2017-08-15T13:19:57.928Z</updated>
     
