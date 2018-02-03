@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Java值传递与引用传递 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-java值传递与引用传递" class="article post article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         7/6
+        </div>
+        <div class="post_t_u">
+         2017
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cj7082ffv001cnm5khzo3a385/">
+    
+      Java值传递与引用传递
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <h3 id="Java值传递"><a href="#Java值传递" class="headerlink" title="Java值传递"></a>Java值传递</h3><p>指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在<strong>两个</strong>相等的基本类型，即实际参数和形式参数，后面方法中的操作都是对形参这个值的修改，不影响实际参数的值.</p>
+<pre><code>public class ParamTest {
+    public static void main(String[] args) {
+        int price = 5;
+        doubleValue(price);
+        System.out.print(price);    //【输出结果】: 5
+    }
+
+    public static void doubleValue(int x) {
+        x = 2 * x;
+    }
+}
+</code></pre><a id="more"></a>
+<h4 id="过程解析"><a href="#过程解析" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
+<li>x被初始化为price值的一个拷贝，即5</li>
+<li>x乘以2后等于10。但是price没有变化，依然是5</li>
+<li>doubleValue执行完后，参数变量不再使用</li>
+</ul>
+<p><img src="/post_image/java-chuandi/zhichuandi.jpg" alt="zhichuandi"></p>
+<h3 id="Java引用传递"><a href="#Java引用传递" class="headerlink" title="Java引用传递"></a>Java引用传递</h3><p>指的是在方法调用时，传递的参数是按引用进行传递，也就是变量所对应的内存空间的地址。在方法执行中，形参和实参内容相同，指向同一块内存地址，方法执行中对引用的操作将会影响到实际对象.</p>
+<pre><code>class Student {
+    private float score;
+    public Student(float score) {
+        this.score = score;
+    }
+    public void setScore(float score) {
+        this.score = score;
+    }
+    public float getScore() {
+        return score;
+    }
+}
+
+public class ParamTest {
+    public static void main(String[] args) {
+        Student stu = new Student(80);
+        raiseScore(stu);
+        System.out.print(stu.getScore());    //【运行结果】：90
+    }
+
+    public static void raiseScore(Student s) {
+        s.setScore(s.getScore() + 10);
+    }
+}
+</code></pre><h4 id="过程解析-1"><a href="#过程解析-1" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
+<li>s被赋予stu值的拷贝，这里是一个对象的引用</li>
+<li>raiseScore方法应用于这个应用。s和stu指向同一对象，该对象的分数增加了10</li>
+<li>raiseScore方法结束后，s不再使用，stu指向的那个对象分数增加了10</li>
+</ul>
+<p><img src="/post_image/java-chuandi/yinyongchuandi.jpg" alt="yinyongchuandi"></p>
+<h3 id="为什么说Java没有引用传递"><a href="#为什么说Java没有引用传递" class="headerlink" title="为什么说Java没有引用传递"></a>为什么说Java没有引用传递</h3><pre><code>class Student {
+
+    private float score;
+
+    public Student(float score) {
+        this.score = score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public float getScore() {
+        return score;
+    }
+}
+
+public class ParamTest {
+    public static void main(String[] args) {
+        Student a = new Student(0);
+        Student b = new Student(100);
+
+        System.out.println(&quot;交换前：&quot;);        
+        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
+
+        swap(a, b);
+
+        System.out.println(&quot;交换后：&quot;);
+        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
+    }
+
+    public static void swap(Student x, Student y) {
+        Student temp = x;
+        x = y;
+        y = temp;
+    }
+}
+</code></pre><p>可以看出，上述代码运行后，a，b并没有实现交换。</p>
+<h4 id="过程解析-2"><a href="#过程解析-2" class="headerlink" title="过程解析"></a>过程解析</h4><p><img src="/post_image/java-chuandi/swap1.jpg" alt="swap1"><br><img src="/post_image/java-chuandi/swap2.jpg" alt="swap2"><br><img src="/post_image/java-chuandi/swap3.jpg" alt="swap3"></p>
+<p>从这个过程中可以看出，<strong>严格来讲，Java采用的不是引用调用</strong>。实际上，对象引用进行的是值传递，只不过是传递的对象的地址。</p>
+<p><strong>Java中引用传递更类似 C++ 中指针作为参数</strong>. C++ 中指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元；而引用跟原来的变量实质上是同一个东西，只不过是原变量的一个别名而已.</p>
+<p>总结一下java中方法参数的使用情况：</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数(即数值型和布尔型)</li>
+<li>一个方法可以改变一个对象中变量的值</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
+</ul>
+
+    </p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cj7082fgs002gnm5kg2cn6vxk/" >            
+            
+              机试题
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cj7082fft0019nm5km4x8ffjj/" >            
+            
+              Data Matrix 解析算法
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

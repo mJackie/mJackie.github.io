@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>利用 VBA 处理 Excel 数据 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-VBA" class="article post article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         8/19
+        </div>
+        <div class="post_t_u">
+         2017
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cjd7968zh000zelm6z0yhe2wa/">
+    
+      利用 VBA 处理 Excel 数据
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vba/">vba</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据处理/">数据处理</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。</p>
+<p>VBA 编写的宏命令可以取代手动对 Excel 的大量操作，也可以实现 Excel 未提供的函数。相比其他语言， VBA 天然的支持 Excel 大规模数据处理，对 Excel 格式数据处理更快，省去了格式字符匹配等问题。同时 VBA 可与 Excel 中自带的函数混合使用，提高了易用性。</p>
+<a id="more"></a>
+<h3 id="示例一：不同文件间拷贝数据"><a href="#示例一：不同文件间拷贝数据" class="headerlink" title="示例一：不同文件间拷贝数据"></a>示例一：不同文件间拷贝数据</h3><pre><code>Sub Electric()
+    Dim target As Workbook
+    Set target = Workbooks(&quot;a.xlsm&quot;)
+
+    Dim source As Workbook
+    Set source = Workbooks(&quot;b.xlsx&quot;)
+
+    For i = 6 To target.Sheets(&quot;2014&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+        For j = 3 To target.Sheets(&quot;2014&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+            If target.Sheets(&quot;2014&quot;).Cells(i, 3) = source.Sheets(&quot;2014&quot;).Cells(j, 1) Then   &apos;如果单元格内容相同
+                target.Sheets(&quot;2014&quot;).Cells(i, 24) = source.Sheets(&quot;2014&quot;).Cells(j, 2)
+                Exit For
+            End If
+        Next
+    Next
+End Sub
+</code></pre><h3 id="示例二：筛选出连续-5-行数据的项"><a href="#示例二：筛选出连续-5-行数据的项" class="headerlink" title="示例二：筛选出连续 5 行数据的项"></a>示例二：筛选出连续 5 行数据的项</h3><pre><code>Sub Statistic()
+
+    Dim target As Workbook
+    Set target = Workbooks(&quot;data.xlsm&quot;)
+
+    &apos;使用“高级筛选”功能将不重复公司Id数据显示在sheet4中
+    target.Sheets(&quot;sheet3&quot;).Columns(2).AdvancedFilter 2, , target.Sheets(&quot;sheet8&quot;).Cells(1, 1), 1
+    s1 = target.Sheets(&quot;sheet8&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+    &apos;下面代码用COUNTIF函数统计重复次数
+    For i = 1 To s1
+        target.Sheets(&quot;sheet8&quot;).Cells(i, 2) = WorksheetFunction.CountIf(target.Sheets(&quot;sheet3&quot;).Columns(2), target.Sheets(&quot;sheet8&quot;).Cells(i, 1))
+    Next
+
+
+End Sub
+Sub SelectByYear()
+
+    Dim target As Workbook
+    Set target = Workbooks(&quot;data.xlsm&quot;)
+    m = 1
+
+    For i = 2 To target.Sheets(&quot;sheet8&quot;).Cells(Rows.Count, 1).End(xlUp).Row
+        If target.Sheets(&quot;sheet8&quot;).Cells(i, 2) &gt; 5 Then &apos;筛选5年以上的数据
+            sstr = target.Sheets(&quot;sheet8&quot;).Cells(i, 1)
+
+                With Worksheets(3).Range(&quot;b:b&quot;)
+                    Set c = .Find(what:=sstr)
+                    If Not c Is Nothing Then
+                        firstAddress = c.Address
+                        Do
+                            r = c.Row
+                            target.Sheets(&quot;sheet3&quot;).Rows(r).copy target.Sheets(&quot;sheet9&quot;).Cells(m, 1)
+                            m = m + 1
+                            Set c = .FindNext(c)
+                        Loop While Not c Is Nothing And c.Address &lt;&gt; firstAddress
+                    End If
+                End With
+        End If
+    Next
+
+End Sub
+</code></pre>
+    </p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cjd7968zs001xelm6ovhtcyzt/" >            
+            
+              利用Selenium爬取网络数据
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cjd7968zm001gelm6jzxit3dx/" >            
+            
+              Zxing Camera 调用代码解析
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-10-16T15:58:17.785Z</updated>
+  <updated>2017-10-16T15:58:17.000Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0uh002rl35kn5jv6g5y/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0uh002rl35kn5jv6g5y/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sq002rexm6d0f16p57/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sq002rexm6d0f16p57/</id>
     <published>2017-10-07T04:46:00.000Z</published>
-    <updated>2017-10-16T15:58:17.785Z</updated>
+    <updated>2017-10-16T15:58:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。</p>
 <p>记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。</p>
@@ -152,10 +152,10 @@
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cj9l4t0u70027l35k00qq2jon/"/>
-    <id>http://mjackie.github.io/Life/cj9l4t0u70027l35k00qq2jon/</id>
+    <link href="http://mjackie.github.io/Life/cjd79b0sj0027exm671yipe1q/"/>
+    <id>http://mjackie.github.io/Life/cjd79b0sj0027exm671yipe1q/</id>
     <published>2017-09-11T03:21:00.000Z</published>
-    <updated>2017-09-11T13:45:47.962Z</updated>
+    <updated>2017-09-11T13:45:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。</p>
 <p>半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：</p>
@@ -193,10 +193,10 @@
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tt001yl35kxigspikt/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tt001yl35kxigspikt/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0se001yexm6efwde32u/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0se001yexm6efwde32u/</id>
     <published>2017-08-27T07:07:00.000Z</published>
-    <updated>2017-08-31T09:03:31.215Z</updated>
+    <updated>2017-08-31T09:03:31.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
@@ -304,10 +304,10 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0t10010l35ki76hn452/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0t10010l35ki76hn452/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s1000wexm62phgdfzu/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s1000wexm62phgdfzu/</id>
     <published>2017-08-19T07:32:00.000Z</published>
-    <updated>2017-08-22T09:12:24.623Z</updated>
+    <updated>2017-08-22T09:12:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。</p>
 <p>VBA 编写的宏命令可以取代手动对 Excel 的大量操作，也可以实现 Excel 未提供的函数。相比其他语言， VBA 天然的支持 Excel 大规模数据处理，对 Excel 格式数据处理更快，省去了格式字符匹配等问题。同时 VBA 可与 Excel 中自带的函数混合使用，提高了易用性。</p>
@@ -389,10 +389,10 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0t40012l35kicrxar6a/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0t40012l35kicrxar6a/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s5001aexm6lxejx71a/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s5001aexm6lxejx71a/</id>
     <published>2017-08-13T12:21:00.000Z</published>
-    <updated>2017-08-15T13:19:40.080Z</updated>
+    <updated>2017-08-15T13:19:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>Zxing 是一个开源的，支持多种一维二维条码格式的图像处理类库，用 JAVA 实现，支持多种语言接口。同时提供了 android 摄像头调用相关类库，用于手持设备的扫码解码。</p>
 <p>本文主要介绍了 Android 系统调用 Camera 实现扫码的过程解析。</p>
@@ -498,10 +498,10 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tm001ml35kthka9goy/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tm001ml35kthka9goy/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s9001mexm6g4jvd12s/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s9001mexm6g4jvd12s/</id>
     <published>2017-08-05T03:21:00.000Z</published>
-    <updated>2017-08-11T09:22:13.890Z</updated>
+    <updated>2017-08-11T09:22:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。</p>
 <h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>LRU 即 <code>Least Recently Used</code>,最近最少使用算法。当有新内容需要缓存时,LRU 算法使用新内容替换掉最久没有使用的内容。</p>
@@ -531,10 +531,10 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tn001pl35k59h8sviu/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tn001pl35k59h8sviu/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sd001vexm6xxtonlp2/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sd001vexm6xxtonlp2/</id>
     <published>2017-07-26T16:00:00.000Z</published>
-    <updated>2017-07-31T13:23:50.099Z</updated>
+    <updated>2017-07-31T13:23:50.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
 <li>横向扫描，检测 黑白黑白黑 的组合</li>
@@ -587,16 +587,17 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0ub002gl35kuhpismlo/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0ub002gl35kuhpismlo/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sk0029exm6fffghzt6/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sk0029exm6fffghzt6/</id>
     <published>2017-07-24T11:43:00.000Z</published>
-    <updated>2017-07-31T11:27:27.823Z</updated>
+    <updated>2018-02-03T11:08:24.029Z</updated>
     
     <content type="html"><![CDATA[<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
 nvm install stable
-</code></pre><h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
+</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
 </code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
 <p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
 <a id="more"></a>
@@ -626,7 +627,8 @@ nvm install stable
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
 nvm install stable
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;设置-Github-秘钥&quot;&gt;&lt;a href=&quot;#设置-Github-秘钥&quot; class=&quot;headerlink&quot; title=&quot;设置 Github 秘钥&quot;&gt;&lt;/a&gt;设置 Github 秘钥&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;安装Hexo&quot;&gt;&lt;a href=&quot;#安装Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装Hexo&quot;&gt;&lt;/a&gt;安装Hexo&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g hexo-cli&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;设置-Github-秘钥&quot;&gt;&lt;a href=&quot;#设置-Github-秘钥&quot; class=&quot;headerlink&quot; title=&quot;设置 Github 秘钥&quot;&gt;&lt;/a&gt;设置 Github 秘钥&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。&lt;/p&gt;
 &lt;p&gt;登陆GitHub，打开「Settings」-&amp;gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。&lt;/p&gt;
     
@@ -643,10 +645,10 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0uf002kl35kagf47ft0/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0uf002kl35kagf47ft0/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sp002nexm6qyp3tyom/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sp002nexm6qyp3tyom/</id>
     <published>2017-07-19T15:30:00.000Z</published>
-    <updated>2017-07-31T11:49:05.687Z</updated>
+    <updated>2017-07-31T11:49:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>给夏令营学生出的机试题，虽然很简单，但要写出复杂度较低的方法并不容易。</p>
 <h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
@@ -696,10 +698,10 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0td001bl35ktm62xj3h/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0td001bl35ktm62xj3h/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s7001gexm618qngdj0/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s7001gexm618qngdj0/</id>
     <published>2017-07-06T00:00:00.000Z</published>
-    <updated>2017-07-31T11:28:51.015Z</updated>
+    <updated>2017-07-31T11:28:51.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Java值传递"><a href="#Java值传递" class="headerlink" title="Java值传递"></a>Java值传递</h3><p>指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在<strong>两个</strong>相等的基本类型，即实际参数和形式参数，后面方法中的操作都是对形参这个值的修改，不影响实际参数的值.</p>
 <pre><code>public class ParamTest {
@@ -827,10 +829,10 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tb0018l35k7u3ulm7a/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tb0018l35k7u3ulm7a/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s40017exm6bp2b1ixt/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s40017exm6bp2b1ixt/</id>
     <published>2017-05-27T05:00:00.000Z</published>
-    <updated>2017-07-31T11:28:12.095Z</updated>
+    <updated>2017-07-31T11:28:12.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
 <p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
@@ -873,10 +875,10 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0t80015l35kkzwujg26/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0t80015l35kkzwujg26/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s30013exm67mgvainc/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s30013exm67mgvainc/</id>
     <published>2017-04-08T13:22:00.000Z</published>
-    <updated>2017-08-15T13:16:05.512Z</updated>
+    <updated>2017-08-15T13:16:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
 <h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
@@ -977,10 +979,10 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tr001vl35kuo2tzbej/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tr001vl35kuo2tzbej/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sa001pexm6cwkf1lm2/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sa001pexm6cwkf1lm2/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-31T13:21:59.379Z</updated>
+    <updated>2017-07-31T13:21:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
 <h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"><br><a id="more"></a></p>
@@ -1006,10 +1008,10 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0rr0001l35kwg0u5pb8/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0rr0001l35kwg0u5pb8/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0rh0002exm6myy430c8/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0rh0002exm6myy430c8/</id>
     <published>2016-12-05T01:21:00.000Z</published>
-    <updated>2017-09-11T03:45:15.282Z</updated>
+    <updated>2017-09-11T03:45:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
 <h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
@@ -1063,10 +1065,10 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0ss000ol35kxmowz9sr/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0ss000ol35kxmowz9sr/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0rx000mexm67gktuo9k/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0rx000mexm67gktuo9k/</id>
     <published>2016-12-04T12:13:00.000Z</published>
-    <updated>2017-07-24T13:16:11.703Z</updated>
+    <updated>2017-07-24T13:16:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>ASP .NET SignalR 是为 ASP .NET 开发人员提供的一个库，可以简化开发人员将实时 Web 功能添加到应用程序的过程。实时 Web 功能是指这样一种功能：当所连接的客户端变得可用时服务器代码可以立即向其推送内容，而不是让服务器等待客户端请求新的数据。</p>
 <p>前端 JS 需要引入，且 <code>/signalr/hubs</code> 必须在 <code>/Scripts/jquery.signalR-2.1.0.js</code> 之后引入</p>
@@ -1156,10 +1158,10 @@ private void BroadcastDatas(DataOfSingleRadar datas)
   
   <entry>
     <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tf001fl35k9ore6ogd/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tf001fl35k9ore6ogd/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0s8001iexm6iiq7bicu/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0s8001iexm6iiq7bicu/</id>
     <published>2016-11-28T10:03:00.000Z</published>
-    <updated>2017-07-31T11:30:17.123Z</updated>
+    <updated>2017-07-31T11:30:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>做项目用到折线图，简单看了下 Chart.js 的文档，Chart.js 采用 js 对图表进行赋值。后台 .net Controller 返回带有 model 参数的视图页面，网上查了下js获取 .net 视图页 model<br>的方法如下：</p>
 <pre><code>alert(&apos;@Model&apos;);    #输出对象类型
@@ -1211,10 +1213,10 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0s30005l35kjso3hpya/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0s30005l35kjso3hpya/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0rd0001exm67cpl4muy/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0rd0001exm67cpl4muy/</id>
     <published>2016-11-26T14:03:00.000Z</published>
-    <updated>2017-07-24T09:42:19.612Z</updated>
+    <updated>2017-07-24T09:42:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>也记不清SAE从何时开始不送云豆，自己所剩的1万云豆就逐渐的消耗，中间还有一次被莫名攻击，一天掉了几千豆。加上自己也不知道该写点什么来发布，博客一直处于停摆状态。<br>9月底保研结束，时间也较为充裕，又萌生了持续更新博文的想法。在博客重新搭建的过程中也思考了如下问题：</p>
 <h4 id="CMS的选择"><a href="#CMS的选择" class="headerlink" title="CMS的选择"></a>CMS的选择</h4><ul>
@@ -1266,10 +1268,10 @@ alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
   
   <entry>
     <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0ug002nl35kaqbqpmkg/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0ug002nl35kaqbqpmkg/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0so002kexm6myh39td8/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0so002kexm6myh39td8/</id>
     <published>2016-04-27T16:46:00.000Z</published>
-    <updated>2016-11-25T14:29:40.189Z</updated>
+    <updated>2016-11-25T14:29:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
 <pre><code>/* 编译原理实验-词法分析器
@@ -1551,10 +1553,10 @@ public class cffxq {
   
   <entry>
     <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0tp001sl35kr6igtc49/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0tp001sl35kr6igtc49/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0sc001sexm61zurfksq/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0sc001sexm61zurfksq/</id>
     <published>2016-04-15T14:19:00.000Z</published>
-    <updated>2017-07-31T11:30:21.187Z</updated>
+    <updated>2017-07-31T11:30:21.000Z</updated>
     
     <content type="html"><![CDATA[<p>学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统<br>学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时<br>将网页保存到本地后，发现了名为LearnControl.js的javascrip文件，找到了如下的一段代码</p>
 <a id="more"></a>
@@ -1592,10 +1594,10 @@ public class cffxq {
   
   <entry>
     <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cj9l4t0sm000dl35klto2mn11/"/>
-    <id>http://mjackie.github.io/Tech/cj9l4t0sm000dl35klto2mn11/</id>
+    <link href="http://mjackie.github.io/Tech/cjd79b0rs000dexm62kromv49/"/>
+    <id>http://mjackie.github.io/Tech/cjd79b0rs000dexm62kromv49/</id>
     <published>2016-04-07T15:35:00.000Z</published>
-    <updated>2017-08-15T13:19:57.928Z</updated>
+    <updated>2017-08-15T13:19:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
 <a id="more"></a>
