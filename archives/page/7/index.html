@@ -69,6 +69,160 @@
 	
 
 		
+	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/29
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjdxygpt8000k8log7gpsqfg9/">The First ASM</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
+<hr>
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
+</code></pre>
+	        	<p class="read-more"><a> <br/></a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-SAE开启gzip加速" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/16
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjdxygpt4000d8log2241s3og/">SAE上博客开启gzip加速</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
+<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
+	          	<p class="read-more"><a href="/Tech/cjdxygpt4000d8log2241s3og/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-Typecho上的好用插件" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/7
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjdxygpt9000n8logbxzpctnd/">Typecho上的好用插件</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
+	          	<p class="read-more"><a href="/Tech/cjdxygpt9000n8logbxzpctnd/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-JAVA知识点及细节注意" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/24
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjdxygpt000078log47ycm9bw/">Typecho在SAE上的伪静态化</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>JAVA语言初学者注意的一些细节:</p>
+<hr>
+<p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
+<pre><code>class derived extends base｛...}    //java
+class derived:public base｛...}    //c
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/cjdxygpt000078log47ycm9bw/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
 	<article id="post-Typecho在SAE上的伪静态化" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +234,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjd79b0s20010exm6h22qdn97/">Typecho在SAE上的伪静态化</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjdxygptf00118logyohicws0/">Typecho在SAE上的伪静态化</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
@@ -91,116 +245,7 @@
 	    <p>      
             
 	        	<p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
-	          	<p class="read-more"><a href="/Tech/cjd79b0s20010exm6h22qdn97/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-SAE域名绑定问题" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         8/9
-	        </div>
-	        <div class="post_t_u">
-	         2014
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjd79b0ry000pexm6vf81dye7/">SAE域名绑定问题</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。<br>新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。</p>
-<p>A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。<br>CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。</p>
-<p>可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。</p>
-	          	<p class="read-more"><a href="/Tech/cjd79b0ry000pexm6vf81dye7/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-快速切换IP地址" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         7/21
-	        </div>
-	        <div class="post_t_u">
-	         2014
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjd79b0sm002dexm6utz573xv/">快速切换IP地址</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
-<hr>
-<p>自动获取IP：</p>
-<pre><code>@echo off
-cls
-Echo **********************************************************
-Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
-Echo **********************************************************
-netsh interface ip set address name=&quot;以太网&quot; source=dhcp
-netsh interface ip delete dns &quot;以太网&quot; all
-::将“以太网”换为网络连接名称
-ipconfig /flushdns
-ipconfig /all
-Echo **********************************************************
-Echo          OK！！已修改成功！请按任意键退出…………
-Echo          谢谢您的使用!Design By Liu
-Echo **********************************************************
-Pause
-</code></pre>
-	          	<p class="read-more"><a href="/Tech/cjd79b0sm002dexm6utz573xv/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-HelloWorld" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         7/21
-	        </div>
-	        <div class="post_t_u">
-	         2014
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjd79b0rm0006exm6kbfbdgkv/">Hello World!</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。</p>
-<p>感谢开源代码及作者。</p>
-<p>做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，不求索取，过程便是最好的奖励。</p>
-<p>非同凡响，追求卓越。</p>
-<p>博客于2014年7月21日正式建立，留此纪念。</p>
-
-	        	<p class="read-more"><a> <br/></a></p>
+	          	<p class="read-more"><a href="/Tech/cjdxygptf00118logyohicws0/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -208,7 +253,7 @@ Pause
 
 
   <nav id="page_nav">
-    <a class="extend prev" rel="prev" href="/archives/page/6/">上一页</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/archives/page/6/">上一页</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/8/">下一页</a>
   </nav>
 
 

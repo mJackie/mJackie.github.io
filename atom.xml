@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2017-10-16T15:58:17.000Z</updated>
+  <updated>2018-02-22T14:22:59.931Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,463 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>卜东波算法课程作业</title>
+    <link href="http://mjackie.github.io/Tech/cjdyl8ex900008sfyu288dply/"/>
+    <id>http://mjackie.github.io/Tech/cjdyl8ex900008sfyu288dply/</id>
+    <published>2018-01-24T02:50:00.000Z</published>
+    <updated>2018-02-22T14:22:59.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>本学期的算法课程作业，一共6次，用LaTex完成。卜老师的算法课深入浅出，本学期的所有课程都由卜老师亲自授课，课程内容不仅包含面试中常见的分治、动规、贪心等方法，还详细介绍了线性规划、网络流、NP问题等内容。非常高质量密度的一门课，感谢卜东波老师。</p>
+<p><img src="/post_image/bdb-assign-answer/a_1.jpeg" alt="image"></p>
+<a id="more"></a>
+<p><img src="/post_image/bdb-assign-answer/a_2.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_3.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_4.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_5.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_6.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_7.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_8.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_9.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_10.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_11.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_12.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_13.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_14.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_15.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_16.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_17.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_18.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_19.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_20.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_21.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_22.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_23.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_24.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_25.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_26.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_27.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_28.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_29.jpeg" alt="image"></p>
+<p><img src="/post_image/bdb-assign-answer/a_30.jpeg" alt="image"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本学期的算法课程作业，一共6次，用LaTex完成。卜老师的算法课深入浅出，本学期的所有课程都由卜老师亲自授课，课程内容不仅包含面试中常见的分治、动规、贪心等方法，还详细介绍了线性规划、网络流、NP问题等内容。非常高质量密度的一门课，感谢卜东波老师。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/post_image/bdb-assign-answer/a_1.jpeg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="latex" scheme="http://mjackie.github.io/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Lucene、Servlet新闻搜索引擎</title>
+    <link href="http://mjackie.github.io/Tech/cje0a6hv800007cog3hmc59lg/"/>
+    <id>http://mjackie.github.io/Tech/cje0a6hv800007cog3hmc59lg/</id>
+    <published>2018-01-06T12:50:00.000Z</published>
+    <updated>2018-02-23T18:37:30.955Z</updated>
+    
+    <content type="html"><![CDATA[<p>详细文档参见 <a href="https://github.com/mJackie/LTY-Search/blob/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.pdf" target="_blank" rel="external">设计文档</a><br><img src="/post_image/LTY-Search/index.png" alt="image"><br><img src="/post_image/LTY-Search/result.png" alt="image"></p>
+<h4 id="作业要求"><a href="#作业要求" class="headerlink" title="作业要求"></a>作业要求</h4><p>(1-7个选课学生组成1队)，完成以下任务(12月份末考查)：</p>
+<p>新闻及评论搜索：定向采集不少于4个中文社会新闻网站或频道，实现这些网站新闻信息及评论信息的自动爬取、抽取、索引和检索。</p>
+<ol>
+<li>新闻网页数目不少于10万页。每个新闻网页及其评论能在1天内更新。</li>
+<li>支持关键词检索及通配符检索。检索时间平均不超过2秒。</li>
+<li>能按相关度、时间、热度(需要自己定义)等属性对检索结果进行排序。能对评论的贬褒进行分析。</li>
+<li>具备查询自动补齐、相关搜索推荐、snippet生成、结果预览(鼠标移到相关结果，能预览)等功能。</li>
+<li>每条检索结果下面可以对相似新闻进行查找。</li>
+<li>首页中列举当前最热的社会新闻。</li>
+</ol>
+<h4 id="演示地址"><a href="#演示地址" class="headerlink" title="演示地址"></a>演示地址</h4><p><a href="http://47.95.248.80:8089/Search/index" target="_blank" rel="external">http://47.95.248.80:8089/Search/index</a></p>
+<h4 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h4><ul>
+<li>爬虫:<code>Python</code> , <code>Scrapy</code> </li>
+<li>后端:  <code>Lucene</code>,<code>JAVA Servlet</code> </li>
+<li>前端: <code>Bootstrap</code> <code>,JQuery</code></li>
+<li>服务器: <code>Tomact</code></li>
+</ul>
+<h4 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h4><ul>
+<li>新闻网页数目不少于10万页</li>
+<li>支持关键词检索及通配符检索。检索时间平均不超过2秒</li>
+<li>能按相关度、时间、热度(需要自己定义)等属性对检索结果进行排序</li>
+<li>具备snippet生成、结果预览(鼠标点击新闻标题，能预览)等功能</li>
+<li>每条检索结果下面可以对相似新闻进行查找</li>
+<li>首页中列举当前最热的社会新闻</li>
+</ul>
+<h4 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h4><ul>
+<li>垂直检索（分类检索，可以只检索对应网站、栏目的新闻内容）</li>
+<li>三种检索方式（全文检索、按标题检索、按内容检索）</li>
+<li>响应式布局</li>
+<li>检索结果首图展示（检索结果页显示该新闻中的首张图片）</li>
+<li>关键词高亮（关键字标红显示）</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;详细文档参见 &lt;a href=&quot;https://github.com/mJackie/LTY-Search/blob/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.pdf&quot; target=&quot;_blank&quot; rel=&quot;external
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="lucene" scheme="http://mjackie.github.io/tags/lucene/"/>
+    
+      <category term="servlet" scheme="http://mjackie.github.io/tags/servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>垃圾短信识别系统</title>
+    <link href="http://mjackie.github.io/Tech/cje0a6hvk00027cog4r0yssc7/"/>
+    <id>http://mjackie.github.io/Tech/cje0a6hvk00027cog4r0yssc7/</id>
+    <published>2017-12-31T02:50:00.000Z</published>
+    <updated>2018-02-23T18:38:46.216Z</updated>
+    
+    <content type="html"><![CDATA[<p>实现一个垃圾短信识别系统，在给定的数据集上验证效果.<br><img src="/post_image/SpamMessage/index.jpeg" alt="image"><br><img src="/post_image/SpamMessage/result.jpeg" alt="image"></p>
+<h4 id="短信数据"><a href="#短信数据" class="headerlink" title="短信数据"></a>短信数据</h4><ul>
+<li>标签域: 1表示垃圾短信/0表示正常短信</li>
+<li>文本域: 短信源文本(进行了一些处理)</li>
+</ul>
+<h4 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h4><ul>
+<li>KNN: K最近邻</li>
+<li>LR: 逻辑回归</li>
+<li>RF: 随机森林</li>
+<li>DT: 决策树</li>
+<li>GBDT: 梯度提升决策树</li>
+<li>SVM: 支持向量机</li>
+<li>MultinomialNB: 多项式分布朴素贝叶斯</li>
+<li>BernoulliNB:  伯努利分布朴素贝叶斯</li>
+</ul>
+<h4 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h4><ul>
+<li>Classfier（模型训练）<ul>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="external">Python 2.7.x</a></li>
+<li><a href="http://scikit-learn.org/stable/documentation.html#" target="_blank" rel="external">Scikit-learn</a></li>
+<li><a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a> （已集成至项目内，无需安装）</li>
+</ul>
+</li>
+<li>Sites (演示Demo)<ul>
+<li><a href="http://php.net/" target="_blank" rel="external">Apache + PHP</a></li>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="external">Python 2.7.x</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h4><pre><code>.
+├──Classfier（模型训练）
+│  ├── DataProcess(数据预处理)
+│  │   ├── jieba(结巴分词库)
+│  │   ├── DataPreprocess.py(数据预处理)
+│  │   └── message.txt(训练数据)
+│  │
+│  └── Classifiers.py(分类器)
+│ 
+├── Sites (演示Demo)
+│   ├── Model
+│   │   ├── jieba(结巴分词库)
+│   │   ├── all_raw(结巴分词库)
+│   │   │   ├── model(训练出的模型)
+│   │   │   └── vec_tfidf(训练阶段生成的词向量)  
+│   │   │
+│   │   └── demoAPI.py(demo调用Python接口)
+│   │
+│   ├── index.php(主页)
+│   └── result.php(结果显示页面)
+│
+└── README.md
+</code></pre><h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><h5 id="首先对数据进行预处理，命令如下："><a href="#首先对数据进行预处理，命令如下：" class="headerlink" title="首先对数据进行预处理，命令如下："></a>首先对数据进行预处理，命令如下：</h5><pre><code>$ cd Classfier/DataProcess
+$ python DataPreprocess.py
+</code></pre><blockquote>
+<p>DataPreprocess.py 中主要参数变量含义如下：</p>
+<ul>
+<li>n_components: 降维到n_components维</li>
+<li>data_lines: 预处理的短信条数</li>
+<li>data_type: 预处理类型 <code>{raw, pca, nmf, pca&amp;nmf}</code></li>
+</ul>
+</blockquote>
+<h5 id="训练分类器，命令如下："><a href="#训练分类器，命令如下：" class="headerlink" title="训练分类器，命令如下："></a>训练分类器，命令如下：</h5><pre><code>$ cd ..
+$ python Classifiers.py
+</code></pre><blockquote>
+<p>注意修改代码中相关路径，Classifiers.py 中主要参数变量含义如下：</p>
+<ul>
+<li>takeup: 测试数据占总数据的比例</li>
+</ul>
+</blockquote>
+<h5 id="配置演示Demo"><a href="#配置演示Demo" class="headerlink" title="配置演示Demo"></a>配置演示Demo</h5><ol>
+<li>将数据预处理阶段生成的词向量 <code>vec_tfidf</code> 文件 放置 <code>Sites/Model/all_raw</code> 目录下</li>
+<li>将训练阶段生成的模型文件放置<code>Sites/Model/all_raw/model</code> 目录下</li>
+<li>将 <code>Sites</code> 目录下文件放置 apache 相应网站目录下</li>
+<li>访问 index.php</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实现一个垃圾短信识别系统，在给定的数据集上验证效果.&lt;br&gt;&lt;img src=&quot;/post_image/SpamMessage/index.jpeg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;img src=&quot;/post_image/SpamMessage/result.jpeg
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>perl解析pcap文件</title>
+    <link href="http://mjackie.github.io/Tech/cjdxygptl001m8logj0y301nt/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptl001m8logj0y301nt/</id>
+    <published>2017-11-25T10:24:00.000Z</published>
+    <updated>2018-02-22T03:41:26.819Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于<code>Pcap</code>文件解析的方法网上有很多相关文章，<code>Pcap</code>文件的格式以及使用<code>Wireshark</code>查看Pcap文件的方法也都有详细教程。然而利用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析的相关代码和文章并没有。本文介绍了如何使用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析。</p>
+<h4 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h4><p> <code>Net::Pcap</code> 模块封装了用于解析Pcap文件的一些方法，首先介绍如何使用CPAN安装 <code>Net::Pcap</code>模块。</p>
+<pre><code>//CPAN相关命令
+//获得帮助　 
+cpan&gt;h　 
+
+//列出CPAN上所有模块的列表　 
+cpan&gt;m　 
+
+//安装模块　 
+cpan&gt;install　Net::Pcap 
+
+//退出　 
+cpan&gt;q　 
+</code></pre><p>　<br><a id="more"></a></p>
+<h4 id="读取Pcap文件"><a href="#读取Pcap文件" class="headerlink" title="读取Pcap文件"></a>读取Pcap文件</h4><p><code>pcap_loop($pcap, $count, \&amp;callback, $user_data)</code><br>从pcap读取count个包,并且调用使用参数user_data调取callback函数。如果count为负，则循环读取直到错误发生。</p>
+<pre><code>my $pcap = pcap_open_offline($fileDir, \$err) || die &quot;failed to open pcap file $pcap!&quot;;
+while(1)
+{
+    $ret = pcap_loop($pcap, -1, \&amp;load_pcap, $this);
+    if($ret == -1)
+    {
+        print &quot;error on processing packets in pcap file: $@!\n&quot;;
+        die &quot;error on processing packets in pcap file: $@!\n&quot;;
+        last;
+    }
+    elsif($ret == 0 || $ret == -2)
+    {
+        print &quot;end of pcap processing: $@!\n&quot;;
+        last;
+    }
+}
+</code></pre><h4 id="解析数据包"><a href="#解析数据包" class="headerlink" title="解析数据包"></a>解析数据包</h4><p>网络数据包格式如下图所示：<br><img src="/post_image/pcap.png" alt="image"></p>
+<p><code>unpack (packformat, formatstr)</code> 函数将以机器格式存贮的值转化成Perl中值。packformat代表解析格式，formatstr为要解析的对象。</p>
+<p>通过判断各个位置上的值从而确定包的类型。通过记录连接的状态，确定TCP三次握手的建立与解除。具体代码如下：</p>
+<pre><code>foreach my $event (sort(keys(%{$packets})))
+    {
+        print &quot;testlog: a new packet begin----------------------- \n&quot;;
+
+        my $packet = $packets-&gt;{$event}-&gt;{pkt};
+        my $proto = unpack(&quot;H*&quot;, substr($packet, 12, 2));
+        if($proto eq &quot;0800&quot;) #ipv4
+        {
+            $count ++;
+            my $off = 14;
+            my $iphl = (unpack(&quot;C&quot;, substr($packet, $off, 1)) &amp; 0x0f); # header length  , &lt;&lt;2 is the actual length
+            my $ip_payload_len = unpack(&quot;n&quot;, substr($packet, $off + 2, 2)); #total length
+            #print &quot;testlog: packet total length: &quot;. $ip_payload_len .&quot;\n&quot;;
+            $proto = unpack(&quot;C&quot;, substr($packet, $off + 9, 1)); #net proto
+
+            my $sip = inet_ntoa(substr($packet, $off + 12, 4)); #source ip addr
+            my $dip = inet_ntoa(substr($packet, $off + 16, 4)); #dest ip addr
+
+            # chop the padding bytes off
+            $packet = substr($packet, 0, $off + $ip_payload_len); #a full packet
+
+            if($iphl &gt; 5)
+            {print &quot;Warning: ip packet with ip option\n&quot;;}
+
+            my $ipPayloadLen = unpack(&quot;n&quot;, substr($packet, $off + 2, 2)) - ($iphl &lt;&lt; 2); #total length - header length 
+
+            # skip ipv4 header
+            $off += ($iphl &lt;&lt; 2);
+            if($proto == 6)        # tcp session
+            {
+                my $tcp_hdrl = unpack(&quot;C&quot;, substr($packet, $off + 12, 1)) &gt;&gt; 2; # tcp header length , &lt;&lt;2 is the actual length
+                my $tcp_flag = unpack(&quot;C&quot;, substr($packet, $off + 13, 1)); #tcp flag
+                #print $tcp_flag . &quot;\n&quot;;
+                my $sport = unpack(&quot;n&quot;, substr($packet, $off, 2));    #source port
+                my $dport = unpack(&quot;n&quot;, substr($packet, $off + 2, 2));    #dest port
+
+                if($ipPayloadLen - $tcp_hdrl &lt; 0) # eq 0
+                {
+                    print &quot;invalid tcp packet: $proto packet not supported!\n&quot;;    
+                    last;
+                }
+
+                my $c = &quot;$sip:$sport&lt;-&gt;$dip:$dport&quot;;
+                my $s = &quot;$dip:$dport&lt;-&gt;$sip:$sport&quot;;
+
+                # recode session state
+                if(!defined($session))
+                {
+                    print &quot;testlog: session will be defined! \n&quot;;
+                    $session = {
+                        id =&gt; $c,
+                        cstate =&gt; &quot;closed&quot;,
+                        sip =&gt; $sip,
+                        dip =&gt; $dip,
+                        sport =&gt; $sport,
+                        dport =&gt; $dport
+                    };
+                }
+
+                if($tcp_flag &amp; 0x04)
+                {
+                    print &quot;Warning: tcp session with RST, need mannual checking!Stop session analyzing: $frameID!\n&quot;;
+                    $session-&gt;{cstate} = &quot;closed&quot;;
+                }
+                print &quot;testlog: session state: &quot;. $session-&gt;{cstate} .&quot;\n&quot;;
+                if($session-&gt;{cstate} eq &quot;closed&quot;)    # open session
+                {
+                    if(($tcp_flag &amp; 0x02))        # syn open sesstion
+                    {
+                        $session-&gt;{cstate} = &quot;syn_sent&quot;;
+                    }
+                    else
+                    {
+                        if(length(substr($packet, $off + $tcp_hdrl)) &gt; 0)
+                        {print &quot;Warning: tcp session disordered on closed, need mannual checking!Stop session analyzing: $sip : $sport &lt;-&gt; $dip : $dport \n&quot;;}
+                    }
+
+                }
+                elsif($session-&gt;{cstate} eq &quot;syn_sent&quot;)
+                {
+                    #print ($tcp_flag);
+                    #print &quot;\n&quot;;
+                    if(($tcp_flag &amp; 0x12)==0x12){
+                        print &quot;ok&quot;;
+                    };
+                    print &quot;\n&quot;;
+                    if(($tcp_flag &amp; 0x02) &amp;&amp; ($sip eq $session-&gt;{sip}) &amp;&amp; ($sport eq $session-&gt;{sport})) # syn from client retransmission
+                    {print &quot;tcp retransmission detected!\n&quot;;}
+                    elsif(($tcp_flag &amp; 0x12) &amp;&amp; ($sip eq $session-&gt;{dip}) &amp;&amp; ($sport eq $session-&gt;{dport}))    # syn_ack from server
+                    {$session-&gt;{cstate} = &quot;syn_rcvd&quot;;}
+                    else
+                    {
+                        print &quot;Warning: tcp session disordered on syn_sent, need mannual checking!Stop session analyzing!\n&quot;;
+                    }
+
+                }
+                elsif($session-&gt;{cstate} eq &quot;syn_rcvd&quot;)
+                {
+                    if(($tcp_flag &amp; 0x10) &amp;&amp; ($sip eq $session-&gt;{sip}) &amp;&amp; ($sport eq $session-&gt;{sport}))  # ack from client
+                    {
+                        $session-&gt;{cstate} = &quot;connected&quot;;         # won&apos;t check ack
+                        print(FD &quot;CONNECT twoarm 1 0 tcp $dip $dport $sip $sport\n\n&quot;);
+                    }
+                    else
+                    {print &quot;Warning: none ack packet on syn_rcvd!\n&quot;;}
+                }
+                elsif($session-&gt;{cstate} eq &quot;connected&quot;)
+                {
+                    #print &quot;testlog: $sip ---- $session-&gt;{sip} ----- $session-&gt;{dip}&quot;;
+                    if($sip eq $session-&gt;{sip} &amp;&amp; ($sport eq $session-&gt;{sport}))        # from client
+                    {
+                        if($tcp_flag &amp; 0x01)
+                        {
+                            $session-&gt;{FIN} += 1;
+                            $session-&gt;{FINFrom} = 1; # this is the second FIN, disconnect begin from server
+                        }
+                        else
+                        {
+                            if(length(substr($packet, $off + $tcp_hdrl)) &gt; 0) #TCP payload is not empty
+                            {
+                                $str_temp = unpack(&apos;H*&apos;,substr($packet, $off + $tcp_hdrl));
+                                my @str_temp2 = split(//, $str_temp);
+                                my $str_temp3;
+                                for($i=0; $i&lt;@str_temp2; $i=$i+2){
+                                    $str_temp3 = $str_temp3 . &quot;\\x&quot; . $str_temp2[$i] . $str_temp2[$i+1];
+                                }
+                                print &quot;$str_temp3 \n&quot;;
+                                print(FD &quot;SEND 0 #\&quot;$str_temp3\&quot; NOW\n\n&quot;);
+                            }
+                        }
+                    }
+                    elsif($sip eq $session-&gt;{dip} &amp;&amp; ($sport eq $session-&gt;{dport}))
+                    {
+                        if($tcp_flag &amp; 0x01)
+                        {
+                            $session-&gt;{FIN} += 1;
+                            $session-&gt;{FINFrom} = 0; # this is the second FIN, disconnect begin from client
+                        }
+                        else
+                        {
+                            if(length(substr($packet, $off + $tcp_hdrl)) &gt; 0)
+                            {
+                                $str_temp = unpack(&apos;H*&apos;,substr($packet, $off + $tcp_hdrl));
+                                my @str_temp2 = split(//, $str_temp);
+                                my $str_temp3;
+                                for($i=0; $i&lt;@str_temp2; $i=$i+2){
+                                    $str_temp3 = $str_temp3 . &quot;\\x&quot; . $str_temp2[$i] . $str_temp2[$i+1];
+                                }
+                                print &quot;$str_temp3 \n&quot;;
+                                print(FD &quot;SEND 1 #\&quot;$str_temp3\&quot; NOW\n\n&quot;);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        print &quot;invalid packet on connected tcp session\n&quot;;
+                    }
+                }
+                if($session-&gt;{cstate} eq &quot;connected&quot; &amp;&amp; $session-&gt;{FIN} == 2)
+                {
+                    $FINFrom = $session-&gt;{FINFrom};
+                    print(FD &quot;DISCONNECT $FINFrom\n&quot;);
+                    $session-&gt;{cstate} = &quot;closed&quot;;
+                    delete($session-&gt;{FIN});
+                }
+            }
+        }
+    }
+</code></pre><h4 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h4><p><a href="https://metacpan.org/pod/Net::Pcap" target="_blank" rel="external">https://metacpan.org/pod/Net::Pcap</a><br><a href="http://blog.csdn.net/eroswang/arti" target="_blank" rel="external">http://blog.csdn.net/eroswang/arti</a><br><a href="http://blog.sina.com.cn/s/blog_4936c31d010115hj.htmlcle/details/2032564" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4936c31d010115hj.htmlcle/details/2032564</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于&lt;code&gt;Pcap&lt;/code&gt;文件解析的方法网上有很多相关文章，&lt;code&gt;Pcap&lt;/code&gt;文件的格式以及使用&lt;code&gt;Wireshark&lt;/code&gt;查看Pcap文件的方法也都有详细教程。然而利用&lt;code&gt;Perl&lt;/code&gt;脚本语言对&lt;code&gt;Pcap&lt;/code&gt;文件进行解析的相关代码和文章并没有。本文介绍了如何使用&lt;code&gt;Perl&lt;/code&gt;脚本语言对&lt;code&gt;Pcap&lt;/code&gt;文件进行解析。&lt;/p&gt;
+&lt;h4 id=&quot;模块安装&quot;&gt;&lt;a href=&quot;#模块安装&quot; class=&quot;headerlink&quot; title=&quot;模块安装&quot;&gt;&lt;/a&gt;模块安装&lt;/h4&gt;&lt;p&gt; &lt;code&gt;Net::Pcap&lt;/code&gt; 模块封装了用于解析Pcap文件的一些方法，首先介绍如何使用CPAN安装 &lt;code&gt;Net::Pcap&lt;/code&gt;模块。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//CPAN相关命令
+//获得帮助　 
+cpan&amp;gt;h　 
+
+//列出CPAN上所有模块的列表　 
+cpan&amp;gt;m　 
+
+//安装模块　 
+cpan&amp;gt;install　Net::Pcap 
+
+//退出　 
+cpan&amp;gt;q　 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="perl" scheme="http://mjackie.github.io/tags/perl/"/>
+    
+      <category term="pcap" scheme="http://mjackie.github.io/tags/pcap/"/>
+    
+  </entry>
+  
+  <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sq002rexm6d0f16p57/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sq002rexm6d0f16p57/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpu2002q8logff51z38w/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpu2002q8logff51z38w/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -152,8 +606,8 @@
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjd79b0sj0027exm671yipe1q/"/>
-    <id>http://mjackie.github.io/Life/cjd79b0sj0027exm671yipe1q/</id>
+    <link href="http://mjackie.github.io/Life/cjdxygptx002d8log08mlfnee/"/>
+    <id>http://mjackie.github.io/Life/cjdxygptx002d8log08mlfnee/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -193,8 +647,8 @@
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0se001yexm6efwde32u/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0se001yexm6efwde32u/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptq001y8logy6tsacqp/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptq001y8logy6tsacqp/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -304,8 +758,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s1000wexm62phgdfzu/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s1000wexm62phgdfzu/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpte000y8logw5k9vk3k/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpte000y8logw5k9vk3k/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -389,8 +843,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s5001aexm6lxejx71a/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s5001aexm6lxejx71a/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptd000v8logqzma81yp/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptd000v8logqzma81yp/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.000Z</updated>
     
@@ -498,8 +952,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s9001mexm6g4jvd12s/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s9001mexm6g4jvd12s/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpti001b8logtw5pb055/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpti001b8logtw5pb055/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.000Z</updated>
     
@@ -530,9 +984,30 @@ message.sendToTarget();
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://mjackie.github.io/Tech/cjdxygptv00278loggn3uraru/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptv00278loggn3uraru/</id>
+    <published>2017-07-31T11:29:29.000Z</published>
+    <updated>2018-02-22T16:52:48.448Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="开启-关闭apache"><a href="#开启-关闭apache" class="headerlink" title="开启/关闭apache"></a>开启/关闭apache</h4><pre><code>sudo apachectl start
+sudo apachectl stop
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;开启-关闭apache&quot;&gt;&lt;a href=&quot;#开启-关闭apache&quot; class=&quot;headerlink&quot; title=&quot;开启/关闭apache&quot;&gt;&lt;/a&gt;开启/关闭apache&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;sudo apachectl start
+sudo 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sd001vexm6xxtonlp2/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sd001vexm6xxtonlp2/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptn001s8logkzdagv8g/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptn001s8logkzdagv8g/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.000Z</updated>
     
@@ -587,10 +1062,10 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sk0029exm6fffghzt6/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sk0029exm6fffghzt6/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpu3002s8logbjly4834/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpu3002s8logbjly4834/</id>
     <published>2017-07-24T11:43:00.000Z</published>
-    <updated>2018-02-03T11:08:24.029Z</updated>
+    <updated>2018-02-03T11:14:44.410Z</updated>
     
     <content type="html"><![CDATA[<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
 
@@ -645,8 +1120,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sp002nexm6qyp3tyom/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sp002nexm6qyp3tyom/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptz002k8logleuswbjo/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptz002k8logleuswbjo/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.000Z</updated>
     
@@ -698,8 +1173,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s7001gexm618qngdj0/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s7001gexm618qngdj0/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptj001f8logyirqv3eb/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptj001f8logyirqv3eb/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.000Z</updated>
     
@@ -829,8 +1304,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s40017exm6bp2b1ixt/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s40017exm6bp2b1ixt/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpth00188logn24ccwe4/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpth00188logn24ccwe4/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.000Z</updated>
     
@@ -875,8 +1350,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s30013exm67mgvainc/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s30013exm67mgvainc/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptg00158log5msh2px7/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptg00158log5msh2px7/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.000Z</updated>
     
@@ -979,8 +1454,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sa001pexm6cwkf1lm2/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sa001pexm6cwkf1lm2/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygptr00218logvj1k4x65/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygptr00218logvj1k4x65/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.000Z</updated>
     
@@ -1008,12 +1483,13 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0rh0002exm6myy430c8/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0rh0002exm6myy430c8/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpsz00068logyn8eaz3y/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpsz00068logyn8eaz3y/</id>
     <published>2016-12-05T01:21:00.000Z</published>
-    <updated>2017-09-11T03:45:15.000Z</updated>
+    <updated>2018-02-23T18:22:14.322Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
+    <content type="html"><![CDATA[<p>GitHub地址：<a href="https://github.com/mJackie/Typecho-Theme-Blogecho" target="_blank" rel="external">https://github.com/mJackie/Typecho-Theme-Blogecho</a></p>
+<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
 <h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
 <li>作者：JackieLiu</li>
 <li>版本：v1.0</li>
@@ -1046,7 +1522,8 @@ lru_pos* mru; //most recently used item
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;GitHub地址：&lt;a href=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho&quot;&gt;https://github.com/mJackie/Typecho-Theme-Blogecho&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;作者：JackieLiu&lt;/li&gt;
 &lt;li&gt;版本：v1.0&lt;/li&gt;
@@ -1065,8 +1542,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>SignalR框架</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0rx000mexm67gktuo9k/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0rx000mexm67gktuo9k/</id>
+    <link href="http://mjackie.github.io/Tech/cjdxygpta000p8logh3hnp4sd/"/>
+    <id>http://mjackie.github.io/Tech/cjdxygpta000p8logh3hnp4sd/</id>
     <published>2016-12-04T12:13:00.000Z</published>
     <updated>2017-07-24T13:16:11.000Z</updated>
     
@@ -1153,513 +1630,6 @@ private void BroadcastDatas(DataOfSingleRadar datas)
     
     
       <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js调用.net视图页model的问题</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0s8001iexm6iiq7bicu/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0s8001iexm6iiq7bicu/</id>
-    <published>2016-11-28T10:03:00.000Z</published>
-    <updated>2017-07-31T11:30:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>做项目用到折线图，简单看了下 Chart.js 的文档，Chart.js 采用 js 对图表进行赋值。后台 .net Controller 返回带有 model 参数的视图页面，网上查了下js获取 .net 视图页 model<br>的方法如下：</p>
-<pre><code>alert(&apos;@Model&apos;);    #输出对象类型
-alert(&apos;@Model.strarr&apos;);    #输出字符串 System.String[]
-alert(&apos;@Model.strarr[0]&apos;);    #输出strarr[0]的值
-</code></pre><p>无法遍历Model中数组的值，无法采用变量 i 来拼接 ‘@Model.strarr[i]’ </p>
-<a id="more"></a>
-<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>先将Model的值输出到页面的表格上，再用js取出表格的数据，赋值给折线图</p>
-<h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><pre><code>&lt;tr&gt;
-    &lt;td&gt;&lt;button class=&quot;btn&quot; style=&quot;background:black&quot;&gt;&lt;/button&gt; 20分钟 &lt;/td&gt;
-    @foreach (var s20 in Model.s20minAssessmentData)
-    {
-        &lt;th name=&quot;s20&quot;&gt;@s20&lt;/th&gt;
-    }
-&lt;/tr&gt;
-&lt;tr&gt;
-
-&lt;script&gt;
-var ctx = document.getElementById(&quot;myChart&quot;).getContext(&quot;2d&quot;);
-var pretime = document.getElementsByName(&quot;pre-time&quot;);
-for (var i=0 ; i &lt; pretime.length; i++) {
-     data.labels.push(pretime[i].innerText);
-}
-chartLine = new Chart(ctx).Line(data);
-&lt;/script&gt;
-</code></pre><h4 id="附：js判断对象是否为空的三种方式"><a href="#附：js判断对象是否为空的三种方式" class="headerlink" title="附：js判断对象是否为空的三种方式"></a>附：js判断对象是否为空的三种方式</h4><pre><code>if   (typeOf(x)   ==   &quot;undefined&quot;)
-if   (typeOf(x)   !=   &quot;object&quot;)
-if(!x)
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;做项目用到折线图，简单看了下 Chart.js 的文档，Chart.js 采用 js 对图表进行赋值。后台 .net Controller 返回带有 model 参数的视图页面，网上查了下js获取 .net 视图页 model&lt;br&gt;的方法如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;alert(&amp;apos;@Model&amp;apos;);    #输出对象类型
-alert(&amp;apos;@Model.strarr&amp;apos;);    #输出字符串 System.String[]
-alert(&amp;apos;@Model.strarr[0]&amp;apos;);    #输出strarr[0]的值
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;无法遍历Model中数组的值，无法采用变量 i 来拼接 ‘@Model.strarr[i]’ &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term=".net" scheme="http://mjackie.github.io/tags/net/"/>
-    
-      <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blog重建手记</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0rd0001exm67cpl4muy/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0rd0001exm67cpl4muy/</id>
-    <published>2016-11-26T14:03:00.000Z</published>
-    <updated>2017-07-24T09:42:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>也记不清SAE从何时开始不送云豆，自己所剩的1万云豆就逐渐的消耗，中间还有一次被莫名攻击，一天掉了几千豆。加上自己也不知道该写点什么来发布，博客一直处于停摆状态。<br>9月底保研结束，时间也较为充裕，又萌生了持续更新博文的想法。在博客重新搭建的过程中也思考了如下问题：</p>
-<h4 id="CMS的选择"><a href="#CMS的选择" class="headerlink" title="CMS的选择"></a>CMS的选择</h4><ul>
-<li>Wordpress 是目前最为流行的 PHP 开发的博客平台，优点是配套的资源（主题、插件等）众多、功能丰富、安装方式简单易用。但对于仅仅发些文章的人来说，Wordpress 显得有些臃肿。<a id="more"></a></li>
-<li><p>Typecho 也是基于 PHP 的开源博客平台，轻量高效，简洁友好。正如 Typecho 的初衷和正在做的一样，做得不多，但足够好。Typecho 默认编辑器采用 MarkDown 排版语法。对比 Wordpress 来说，在主题以及插件数量上有着明显的不足。</p>
-</li>
-<li><p>Jekyll 是一个基于 Ruby 简单的免费的Blog生成工具，但是和前两种有很大的不同，原因是 Jekyll 只是一个生成静态网页的工具，不需要数据库支持，Jekyll 可以免费部署在 Github 上。用户将写好的 Markdown 文件直接 Push 到自己的 repository, GitHub Pages 便会自动将 Markdown 文件解析为对应的 静态 Html 文件，供访问浏览。Jekyll 部署调试相当复杂，官方文档不推荐本地 Windows 环境，对于分类、tag 等的操作也很复杂。</p>
-</li>
-<li><p>Hexo 是基于 Node.js 的静态博客框架，出自台湾大学生 SkyArrow 之手。Hexo 简化了操作流程，有四大特点：极速生成静态页面、支持Markdown、一键部署博客、丰富的主题插件支持。Hexo 与 Jekyll 最大的不同之处在于 <code>hexo deploy</code> 命令是将本地的public文件夹（生成的静态html）Push 到了repository，而 Jekyll 是将整个项目都托管到了 GitHub 上。</p>
-<blockquote>
-<p>在对比了多种 CMS 的优缺点后，根据自身需求选择了Hexo。首先是因为平时有用Markdown记录笔记的习惯<br>；再者采用 Hexo + GitHub 的组合实现了一劳永逸的解决办法，不用再为主机空间发愁；这样平时在有道云笔记中的笔记需要发布时加上头信息直接导出来就行了。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="主题风格的设计"><a href="#主题风格的设计" class="headerlink" title="主题风格的设计"></a>主题风格的设计</h4><p>主题在设计前先明确了下自己的需求：</p>
-<ul>
-<li>设计风格简洁、干净、清晰化一</li>
-<li>响应式布局</li>
-<li>代码高亮</li>
-<li>支持Markdown<blockquote>
-<p>在主题的制作过程中发现制作 Hexo 主题，除了需要了解 HTML / CSS / JavaScript 之外，还需要了解两个主要的技术，首先一个是模板引擎，Hexo支持主流的模板引擎，像 EJS / Jade / Swig 等，另外一个是 CSS 预处理，如 SASS / LESS / Stylus 。当然，对于我这种菜鸟来说，这两个我都不会，也懒得学，就直接采用了 HTML / CSS 在默认主题 landscape 上做修改 ，效率低了一点，不过最终还是完成了制作。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="图片保存路径"><a href="#图片保存路径" class="headerlink" title="图片保存路径"></a>图片保存路径</h4><p>对于 Markdown 来说，添加图片一直存在一些弊端，一种方法是建立图片文件夹保存在文档目录，采用相对路径进行引用，但这样无法满足发布博文的需求。另一种方法是将图片上传到网上，用url进行引用。在图床的选择上可以用微博相册/GitHub仓库等等，最终我选择了七牛云存储。七牛云为普通用户提供了免费的10GB空间，对于仅仅作为笔记插图的我来收也足够使用，七牛云也较为稳定。</p>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>GitHub Pages 不支持多域名绑定，且不支持泛解析。仅支持以下4种绑定方式：<br><img src="/post_image/GithubPagesDomain.JPG" alt="image"><br>若将域名泛解析到 GitHub Pages 上，可能导致其他人使用你的某个子域名作为其绑定域名。<br>repository 中的 CNAME 文件内容指定了绑定的域名。<br>尝试在 repository 中的 CNAME 文件中加入两个不同域名，结果只有第一行起作用，因此不支持多域名绑定。</p>
-<p>域名 <code>JackieLiu.win</code> 是在万网买的，29块买了10年，真的好便宜。在万网解析不了，DS转到了DNSPod，做了两条 CNAME 分别将 <code>@</code> 和 <code>www</code> 指向了 <code>mjackie.github.io</code></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一个博客的好坏不是页面做的多好看，也不是用的技术多么的先进。博客的价值在于博客的<strong>内容</strong>。希望今后自己可以提高更博频率，一方面督促自己不断学习，另一方面可以提升自己的写作、总结能力。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;也记不清SAE从何时开始不送云豆，自己所剩的1万云豆就逐渐的消耗，中间还有一次被莫名攻击，一天掉了几千豆。加上自己也不知道该写点什么来发布，博客一直处于停摆状态。&lt;br&gt;9月底保研结束，时间也较为充裕，又萌生了持续更新博文的想法。在博客重新搭建的过程中也思考了如下问题：&lt;/p&gt;
-&lt;h4 id=&quot;CMS的选择&quot;&gt;&lt;a href=&quot;#CMS的选择&quot; class=&quot;headerlink&quot; title=&quot;CMS的选择&quot;&gt;&lt;/a&gt;CMS的选择&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Wordpress 是目前最为流行的 PHP 开发的博客平台，优点是配套的资源（主题、插件等）众多、功能丰富、安装方式简单易用。但对于仅仅发些文章的人来说，Wordpress 显得有些臃肿。
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
-    
-      <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
-    
-      <category term="hexo" scheme="http://mjackie.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>词法分析器</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0so002kexm6myh39td8/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0so002kexm6myh39td8/</id>
-    <published>2016-04-27T16:46:00.000Z</published>
-    <updated>2016-11-25T14:29:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。</p>
-<pre><code>/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&lt;&gt;，&lt;，&gt;，&lt;=，&gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&lt;=，&gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-</code></pre><a id="more"></a>
-<pre><code>package foc;
-
-import java.util.Scanner;
-
-public class cffxq {
-    char ch;
-    StringBuffer strToken;
-    static int flag_getchar = 0; //搜索指示器
-    String str;   //字符串
-    String[] gjz = {&quot;odd&quot;,&quot;begin&quot;, &quot;end&quot; ,&quot;if&quot; ,&quot;then&quot;, &quot;while&quot;, &quot;do&quot;, &quot;const&quot;, &quot;var&quot;,&quot;call&quot;,&quot;procedure&quot;};
-    String[][] chart_id = new String[100][2];
-    int flag_id = 0; //标识符指针
-    String[] chart_const = new String[100];
-    int flag_const = 0; //常数指针
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        StringBuffer stb = new StringBuffer(sc.nextLine());
-        stb.append(&quot; &quot;);
-        String str = stb.toString();
-        cffxq c = new cffxq();
-        while(flag_getchar&lt;str.length()-1){
-            c.begin(str);
-        }
-
-    }
-
-    private void GetChar(){
-        ch = str.charAt(flag_getchar);
-        flag_getchar++;
-    } 
-
-    public void begin(String str) {
-        this.str = str;
-
-        int code,value;
-        strToken = new StringBuffer(&quot;&quot;);
-        GetChar();
-        GetBC();
-        if(IsLetter()){
-            while(IsLetter()||IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            code = Reserve();
-            if(code &lt; 0){
-                value = InsertId(strToken.toString());
-                System.out.println(&quot;($ID,&quot; + value +&quot;)&quot;);
-                return;
-            }
-            else if(code == 0){
-                System.out.println(&quot;(算符或界符,&quot; + &quot;odd&quot;+&quot;)&quot;); 
-                return;
-            }
-            else{
-                System.out.println(&quot;($&quot;+gjz[code]+&quot;,-)&quot; ); 
-                return;
-            }
-        }
-
-        else if(IsDigit()){
-            while(IsDigit()){
-                Concat();
-                GetChar();
-            }
-            Retract();
-            value = InsertConst(strToken.toString());
-            System.out.println(&quot;($INT,&quot; + value +&quot;)&quot;);
-            return;
-        }
-
-        else if(ch == &apos;+&apos;){
-            System.out.println(&quot;($+,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;-&apos;){
-            System.out.println(&quot;($-,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;*&apos;){
-            System.out.println(&quot;($*,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;/&apos;){
-            System.out.println(&quot;($/,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;=&apos;){
-            System.out.println(&quot;($=,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;,&apos;){
-            System.out.println(&quot;($,,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;.&apos;){
-            System.out.println(&quot;($.,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;(&apos;){
-            System.out.println(&quot;($(,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;)&apos;){
-            System.out.println(&quot;($),&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;;&apos;){
-            System.out.println(&quot;($;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;:&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($:=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($:,&quot; + &quot;-)&quot;);
-        }
-        else if(ch == &apos;&gt;&apos;){
-            GetChar();
-            if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&gt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&gt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-        else if(ch == &apos;&lt;&apos;){
-            GetChar();
-            if(ch == &apos;&gt;&apos;){
-                System.out.println(&quot;($&lt;&gt;,&quot; + &quot;-)&quot;);
-                return;
-            }
-            else if(ch == &apos;=&apos;){
-                System.out.println(&quot;($&lt;=,&quot; + &quot;-)&quot;);
-                return;
-            }
-            Retract();
-            System.out.println(&quot;($&lt;,&quot; + &quot;-)&quot;);
-            return;
-        }
-
-    }
-
-    private void GetBC(){
-        if(ch==&apos; &apos;){
-            GetChar();
-            GetBC();
-        }
-    }
-
-    private void Concat(){
-        strToken.append(ch);
-    }
-
-    private boolean IsLetter(){
-        if(Character.isLetter(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private boolean IsDigit(){
-        if(Character.isDigit(ch))
-            return true;
-        else
-            return false;
-    } 
-
-    private int Reserve(){
-        for(int i=0;i&lt;gjz.length; i++){
-            if(gjz[i].equals(strToken.toString()))
-                return i;
-        }
-        return -1;   //返回数组索引，否则返回-1
-    }
-
-    private void Retract(){
-        flag_getchar--;
-        ch = &apos; &apos;;
-    }
-
-    private int InsertId(String strToken){
-        for(int i=0;i&lt;flag_id;i++){
-            if(chart_id[i][0].equals(strToken))
-                return i;
-        }
-        chart_id[flag_id][0] = strToken;
-        flag_id++;
-        return flag_id-1;
-    }
-
-    private int InsertConst(String strToken){
-        for(int i=0;i&lt;flag_const;i++){
-            if(chart_const[i].equals(strToken))
-                return i;
-        }
-        chart_const[flag_const] = strToken;
-        flag_const++;
-        return flag_const-1;
-    }
-    private void ProcError(){
-        System.out.println(&quot;词法错误！&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译原理实验课写的词法分析器，加深了对编程语言的理解，将课本上的伪代码实现完善了一遍，纯手打。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/* 编译原理实验-词法分析器
- * 刘嘉琦-20160325
- * 1、PL/0语言的单词结构
-//关键字(10个)：begin, end ,if ,then, while, do, const, var,call,procedure
-//标识符：字母序列，最大长度10
-//常数：整型常数
-//算符和界符（17个）：+， -， *，/，odd，=，&amp;lt;&amp;gt;，&amp;lt;，&amp;gt;，&amp;lt;=，&amp;gt;=，:=，(，) ，, ，.，;
-//2、单词的种别划分
-//    标识符 作为一种
-//    常数 作为一种
-//    算符和界符每个单词作为一个单独种别
-//3、PL/0的语言的词法分析器将要完成以下工作：
-//（1）    跳过分隔符（如空格，回车，制表符）；
-//（2）    识别诸如begin，end，if，while等保留字；
-//（3）    识别非保留字的一般标识符。
-//（4）    识别数字序列。
-//（5）    识别:=，&amp;lt;=，&amp;gt;=之类的特殊符号。
-//4、词法分析器的实现方式：
-//    把词法分析器设计成一个独立子程序，以便于语法分析器调用。词法分析器运行一次产生一个单词符号。
-//5、词法分析器的输出形式
-//   （种别，属性值）
-//其中：种别在“2、单词的种别”中进行了定义；
-//      属性值：若单词种别只代表唯一单词，属性值为空；
-//              若单词种别是SYM_IDENTIFIER，属性值为该单词在标识符表中的位置；
-//              若单词种别是SYM_ NUMBER，属性值为该单词在常数表中的位置。
-**/
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于党课学习系统</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0sc001sexm61zurfksq/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0sc001sexm61zurfksq/</id>
-    <published>2016-04-15T14:19:00.000Z</published>
-    <updated>2017-07-31T11:30:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统<br>学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时<br>将网页保存到本地后，发现了名为LearnControl.js的javascrip文件，找到了如下的一段代码</p>
-<a id="more"></a>
-<pre><code>$scope.saveLearnTime = function (learnTime, auto) {
-    if ($scope.studentId != &quot;&quot;) {
-        $http.get(servicePath + &apos;/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=&apos; + learnTime).success(function (data) {
-            console.log(&quot;保存时间：&quot; + data);
-            if (!auto) {
-                $scope.tishiMessage = &apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;;
-                //$(&apos;#tishi&apos;).modal(&apos;toggle&apos;)
-                alert($scope.tishiMessage);
-                //alert(&apos;保存学习时间成功!下次进入学习按&apos; + $scope.convertTime(data) + &apos;计时.&apos;);
-            }
-        });
-    }
-};
-</code></pre><p>看到了get请求！<br>尝试着拼凑链接，试了几次，成功了！</p>
-<pre><code>http://202.196.96.221/partyStudy/Main/Services/ConditionService.ashx?method=SaveLearnTime&amp;&amp;learnTime=8000
-</code></pre><p>8000为秒数，直接提交请求即可，即为学习了8000秒，然后不要点击保存学习时间，直接返回首页，再进去时学习时间已经够了<br>之后是章节测试<br>用同样的方法，查看了下页面的js，发现测试分数是在服务器计算的，这就没有办法了</p>
-<p>虽然学习系统是有漏洞的，但还是要认真学习下内容，不能偷懒啊</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学校让在线学习党课内容，想到之前学校的四六级报名系统就存在太多安全问题，可以下载全校的免冠照片，尝试着破解了一下党课学习系统&lt;br&gt;学习系统是要在网页中浏览指定的时间后才可以进行测试，一个章节有两个小时，有几十分钟的，并且每隔五分钟不移动鼠标就停止计时&lt;br&gt;将网页保存到本地后，发现了名为LearnControl.js的javascrip文件，找到了如下的一段代码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="javascript" scheme="http://mjackie.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP Session实现用户登陆功能</title>
-    <link href="http://mjackie.github.io/Tech/cjd79b0rs000dexm62kromv49/"/>
-    <id>http://mjackie.github.io/Tech/cjd79b0rs000dexm62kromv49/</id>
-    <published>2016-04-07T15:35:00.000Z</published>
-    <updated>2017-08-15T13:19:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。</p>
-<a id="more"></a>
-<p>login.php</p>
-<pre><code>&lt;?php
-//  表单提交后...
-$posts = $_POST;
-//  清除一些空白符号
-foreach ($posts as $key =&gt; $value) {
-    $posts[$key] = trim($value);
-}
-$password = md5($posts[&quot;password&quot;]);
-$username = $posts[&quot;username&quot;]; 
-
-$query = &quot;SELECT `username` FROM `user` WHERE `password` = &apos;$password&apos; AND `username` = &apos;$username&apos;&quot;;
-//  取得查询结果
-$userInfo = $DB-&gt;getRow($query); 
-
-if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION[&quot;admin&quot;] = true;
-} else {
-    die(&quot;用户名密码错误&quot;);
-}
-?&gt;
-</code></pre><p>check.php</p>
-<pre><code>&lt;?php
-//  防止全局变量造成安全隐患
-$admin = false;
-//  启动会话，这步必不可少
-session_start();
-//  判断是否登陆
-if (isset($_SESSION[&quot;admin&quot;]) &amp;&amp; $_SESSION[&quot;admin&quot;] === true) {
-    echo &quot;您已经成功登陆&quot;;
-} else {
-    //  验证失败，将 $_SESSION[&quot;admin&quot;] 置为 false
-    $_SESSION[&quot;admin&quot;] = false;
-    die(&quot;您无权访问&quot;);
-}
-?&gt;
-</code></pre><p>exit.php</p>
-<pre><code>&lt;?php
-session_start();
-//  这种方法是将原来注册的某个变量销毁
-unset($_SESSION[&apos;admin&apos;]);
-//  这种方法是销毁整个 Session 文件
-session_destroy();
-?&gt;
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制.由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="php" scheme="http://mjackie.github.io/tags/php/"/>
     
   </entry>
   
