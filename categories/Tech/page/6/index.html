@@ -81,6 +81,41 @@
         </div>
         <div class="archives">
     
+    	<article id="post-keybd_event函数" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         3/30
+	        </div>
+	        <div class="post_t_u">
+	         2016
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cje0aoxyg001n8jogt1xo1ow3/">keybd_event函数</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c++</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
+<pre><code>//模拟按下&apos;ALT+F4&apos;键
+keybd_event(18,0,0,0);
+keybd_event(115,0,0,0);
+keybd_event(115,0,KEYEVENTF_KEYUP,0);
+keybd_event(18,0,KEYEVENTF_KEYUP,0);
+</code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-姿态角" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +127,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygptw00298log352bwcki/">姿态角</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cje0aoxyt002c8jogh62mfxih/">姿态角</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      
@@ -133,7 +168,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygpt2000b8log8m5j972v/">JavaWeb微博</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cje0aoxy6000u8jogqlxqmca4/">JavaWeb微博</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/javaweb/">javaweb</a></li></ul>
@@ -164,7 +199,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygpsv00028logdgsghwww/">Git学习笔记</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cje0aoxxo00058jog1m2j2htv/">Git学习笔记</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -205,7 +240,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygpt8000k8log7gpsqfg9/">The First ASM</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cje0aoxy6000w8joge5sjo6ry/">The First ASM</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
@@ -252,37 +287,6 @@ START:
 CODE ENDS
 END START
 </code></pre>
-	      	
-	    </p>
-	  </div> 
-	</article>
-  
-    
-    
-    	<article id="post-SAE开启gzip加速" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         9/16
-	        </div>
-	        <div class="post_t_u">
-	         2014
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygpt4000d8log2241s3og/">SAE上博客开启gzip加速</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
-<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
-	        
 	      	
 	    </p>
 	  </div> 

@@ -81,6 +81,54 @@
         </div>
         <div class="archives">
     
+    	<article id="post-快速切换IP地址" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/21
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cje0aoxyx002l8jog7htok5im/">快速切换IP地址</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
+<hr>
+<p>自动获取IP：</p>
+<pre><code>@echo off
+cls
+Echo **********************************************************
+Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
+Echo **********************************************************
+netsh interface ip set address name=&quot;以太网&quot; source=dhcp
+netsh interface ip delete dns &quot;以太网&quot; all
+::将“以太网”换为网络连接名称
+ipconfig /flushdns
+ipconfig /all
+Echo **********************************************************
+Echo          OK！！已修改成功！请按任意键退出…………
+Echo          谢谢您的使用!Design By Liu
+Echo **********************************************************
+Pause
+</code></pre>
+	        
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
     	<article id="post-HelloWorld" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -92,7 +140,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjdxygpss00018log485qq71w/">Hello World!</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cje0aoxxq00068jogi9py25xc/">Hello World!</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li></ul>
