@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2018-02-23T18:49:33.239Z</updated>
+  <updated>2018-03-14T16:10:47.316Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>实习面试</title>
+    <link href="http://mjackie.github.io/Life/cjera9vgi002behs6s3zlmaku/"/>
+    <id>http://mjackie.github.io/Life/cjera9vgi002behs6s3zlmaku/</id>
+    <published>2018-03-14T16:09:00.000Z</published>
+    <updated>2018-03-14T16:10:47.316Z</updated>
+    
+    <content type="html"><![CDATA[<p>过完年回来开始准备找实习，才发现自己把寒假的时间都浪费了，什么事情都没有干。本来打算寒假准备一下，到北京直接开始面试的，没想到计划赶不上变化。分析原因可能来自两方面，一是作为研一新生，在家和校园里还没有感受到现实与工作的压力；二是自己本身自控能力就差吧，这也是老毛病了。</p>
+<p>终于还是到了北京，在双坤租的房子里待了将近一个星期。忽然到一个陌生的环境，让自己很不自在，也感受到了强烈的现实压迫感，好像忽然就要毕业了一样，每过一天，都像是自己失去了许多原本拥有的东西。不过这样也好，人无远虑，必有近忧，提早感受一下毕业找工作的压力，总比天天颓废堕落好了许多。</p>
+<p>急急忙忙写完了选修课的作业，花了一天时间做了份简历，开始在实习僧和拉勾网上投简历，也逐渐收到了各个公司HR打来的电话。主要投的就是机器学习算法岗，但其实自己是没有什么机器学习相关实际项目经验的，这也是我一直心虚的地方。</p>
+<a id="more"></a>
+<h4 id="美团点评"><a href="#美团点评" class="headerlink" title="美团点评"></a>美团点评</h4><p>第一家面试的公司是美团点评，这也是自己第一次参与企业面试，难免有些紧张。</p>
+<h5 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h5><ul>
+<li>简单自我介绍</li>
+<li>tf-idf是什么？（自己简历项目里有写到用tf-idf生成向量空间模型）</li>
+<li>SVM与LR区别与联系，什么时候用SVM，什么时候LR</li>
+<li>precesion,recall,accuracy各个指标含义</li>
+<li>介绍一个你熟悉的机器学习模型</li>
+<li>手写代码，两个有序数组，找第k大的数</li>
+</ul>
+<h5 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h5><ul>
+<li>tf-idf是什么？（又问了我一遍，又说错了。。。）</li>
+<li>pca和svd区别</li>
+<li>怎么特征提取，特征选择？</li>
+<li>python numpy包熟吗？</li>
+<li>手写代码，计算idf值</li>
+</ul>
+<pre><code>Input: List&lt;Doc&gt; list
+Output: Map&lt;String, Int&gt; idf
+</code></pre><h5 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h5><p>二面没过，面试官说要在几个候选人中筛选一下。总结起来，主要是自己没有准备，机器学习相关知识太薄弱，第一次手写代码也太乱了，没有将简历上的项目捋一遍。</p>
+<h4 id="网易传媒"><a href="#网易传媒" class="headerlink" title="网易传媒"></a>网易传媒</h4><h5 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h5><ul>
+<li>precesion,recall,accuracy各个指标含义</li>
+<li>是什时候用到F-score,为什么要用F-score</li>
+<li>逻辑回归推导</li>
+<li>手写代码，找中位数</li>
+</ul>
+<h4 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h4><ul>
+<li>Hadoop,Spark熟吗？介绍下Map-Reduce</li>
+<li>逻辑回归，为什么是ln，而不是log2或log3</li>
+<li>手写代码，二分查找，递归与非递归形式</li>
+</ul>
+<h4 id="经验-1"><a href="#经验-1" class="headerlink" title="经验"></a>经验</h4><p>吸取了美团面试的经验，开学在图书馆猛看了两天书，把逻辑回归，SVM相关内容过了一遍。面试状态很好，二面完后leader带我体验了下网易的食堂，开始和我聊学校的事情，leader人很好，让我等候hr后续的通知。</p>
+<h4 id="搜狐大数据中心"><a href="#搜狐大数据中心" class="headerlink" title="搜狐大数据中心"></a>搜狐大数据中心</h4><h5 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h5><ul>
+<li>介绍下pca</li>
+<li>介绍下java中hashmap底层实现</li>
+<li>介绍下svm</li>
+<li>svm核函数需要满足的条件</li>
+<li>画了个表，让写条sql语句</li>
+<li>Hadoop,Spark了解吗？</li>
+<li>手写代码，两个有序数组，找中位数</li>
+</ul>
+<h4 id="经验-2"><a href="#经验-2" class="headerlink" title="经验"></a>经验</h4><p>搜狐连二面的机会都没有给，主要是手写代码时自己把问题看错了，以为是无序数组，和面试官完全不在一个频道上交流。另外一个原因可能是感觉网易基本可以了，自己就松懈了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>机器学习算法岗面试主要考察的内容可以分为三部分吧：</p>
+<ul>
+<li>项目（会问的很细，最好面试前把项目过一遍，并且准备好一套应对提问的说辞）</li>
+<li>机器学习相关知识（LR，SVM，过拟合，pca，正则项，评价指标，特征选择等）</li>
+<li>编程题（很简单，基本都是数组，字符串之类的，DP,网络流这类的根本就不会考）</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;过完年回来开始准备找实习，才发现自己把寒假的时间都浪费了，什么事情都没有干。本来打算寒假准备一下，到北京直接开始面试的，没想到计划赶不上变化。分析原因可能来自两方面，一是作为研一新生，在家和校园里还没有感受到现实与工作的压力；二是自己本身自控能力就差吧，这也是老毛病了。&lt;/p&gt;
+&lt;p&gt;终于还是到了北京，在双坤租的房子里待了将近一个星期。忽然到一个陌生的环境，让自己很不自在，也感受到了强烈的现实压迫感，好像忽然就要毕业了一样，每过一天，都像是自己失去了许多原本拥有的东西。不过这样也好，人无远虑，必有近忧，提早感受一下毕业找工作的压力，总比天天颓废堕落好了许多。&lt;/p&gt;
+&lt;p&gt;急急忙忙写完了选修课的作业，花了一天时间做了份简历，开始在实习僧和拉勾网上投简历，也逐渐收到了各个公司HR打来的电话。主要投的就是机器学习算法岗，但其实自己是没有什么机器学习相关实际项目经验的，这也是我一直心虚的地方。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="http://mjackie.github.io/categories/Life/"/>
+    
+    
+      <category term="算法, 机器学习" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyy002o8jog18jowf9f/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyy002o8jog18jowf9f/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgr0035ehs6fsfq80b9/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgr0035ehs6fsfq80b9/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -112,8 +187,8 @@
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyw002h8jogd6l5ehzq/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyw002h8jogd6l5ehzq/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgl002lehs6bqkyhz73/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgl002lehs6bqkyhz73/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -169,8 +244,8 @@
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxxr00078jogbz71mphr/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxxr00078jogbz71mphr/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vfk0007ehs6yxuscp9u/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vfk0007ehs6yxuscp9u/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -228,8 +303,8 @@
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxy7000z8jognxyiq84n/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxy7000z8jognxyiq84n/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vfv000tehs6sykg34v5/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vfv000tehs6sykg34v5/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -328,8 +403,8 @@ $ python Classifiers.py
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyk00208jogmq1463ci/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyk00208jogmq1463ci/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgf0026ehs6s042fj2a/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgf0026ehs6s042fj2a/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -570,8 +645,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxz300348jog9bojlhu2/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxz300348jog9bojlhu2/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgp002yehs6jarwtj13/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgp002yehs6jarwtj13/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -705,8 +780,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cje0aoxyu002e8joguy656cvz/"/>
-    <id>http://mjackie.github.io/Life/cje0aoxyu002e8joguy656cvz/</id>
+    <link href="http://mjackie.github.io/Life/cjera9vgm002oehs6xlmn4t29/"/>
+    <id>http://mjackie.github.io/Life/cjera9vgm002oehs6xlmn4t29/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -746,8 +821,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyo00268jog4k8hi8uk/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyo00268jog4k8hi8uk/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgg0028ehs6vjr3mj7d/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgg0028ehs6vjr3mj7d/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -857,8 +932,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyb00198jog12awc6y6/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyb00198jog12awc6y6/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vfz0016ehs6sndmpcs2/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vfz0016ehs6sndmpcs2/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -942,8 +1017,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxy900128jog0dz71xuv/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxy900128jog0dz71xuv/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg4001hehs6q53efr73/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg4001hehs6q53efr73/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.000Z</updated>
     
@@ -1051,8 +1126,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyh001r8jogs0zoqadz/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyh001r8jogs0zoqadz/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg7001rehs6u0vy2fs0/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg7001rehs6u0vy2fs0/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.000Z</updated>
     
@@ -1084,8 +1159,8 @@ message.sendToTarget();
   
   <entry>
     <title></title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxz0002u8jogm73yhdsl/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxz0002u8jogm73yhdsl/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgk002iehs6lwkwdfmn/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgk002iehs6lwkwdfmn/</id>
     <published>2017-07-31T11:29:29.000Z</published>
     <updated>2018-02-22T16:52:48.448Z</updated>
     
@@ -1105,8 +1180,8 @@ sudo
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyi001u8jogm0waf9us/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyi001u8jogm0waf9us/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg9001uehs65ngphvci/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg9001uehs65ngphvci/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.000Z</updated>
     
@@ -1161,8 +1236,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyz002r8jogr85znq74/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyz002r8jogr85znq74/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgq0032ehs6770hp8wg/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgq0032ehs6770hp8wg/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2018-02-03T11:14:44.410Z</updated>
     
@@ -1219,8 +1294,8 @@ nvm install stable
   
   <entry>
     <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxz1002x8jogbrdclnw9/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxz1002x8jogbrdclnw9/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgo002wehs6d0g6zmo8/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgo002wehs6d0g6zmo8/</id>
     <published>2017-07-19T15:30:00.000Z</published>
     <updated>2017-07-31T11:49:05.000Z</updated>
     
@@ -1272,8 +1347,8 @@ Explanation:
   
   <entry>
     <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyd001f8jogblgafcox/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyd001f8jogblgafcox/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg3001fehs6vbeaokzz/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg3001fehs6vbeaokzz/</id>
     <published>2017-07-06T00:00:00.000Z</published>
     <updated>2017-07-31T11:28:51.000Z</updated>
     
@@ -1403,8 +1478,8 @@ public class ParamTest {
   
   <entry>
     <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxye001h8jog5mi0fj2x/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxye001h8jog5mi0fj2x/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg00019ehs6347ghh08/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg00019ehs6347ghh08/</id>
     <published>2017-05-27T05:00:00.000Z</published>
     <updated>2017-07-31T11:28:12.000Z</updated>
     
@@ -1449,8 +1524,8 @@ public class ParamTest {
   
   <entry>
     <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyc001c8jogo9gltak2/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyc001c8jogo9gltak2/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vg2001cehs6ib8amhgq/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vg2001cehs6ib8amhgq/</id>
     <published>2017-04-08T13:22:00.000Z</published>
     <updated>2017-08-15T13:16:05.000Z</updated>
     
@@ -1553,8 +1628,8 @@ lru_pos* mru; //most recently used item
   
   <entry>
     <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxyj001x8jogiq2o54bm/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxyj001x8jogiq2o54bm/</id>
+    <link href="http://mjackie.github.io/Tech/cjera9vgc0020ehs6655syl4o/"/>
+    <id>http://mjackie.github.io/Tech/cjera9vgc0020ehs6655syl4o/</id>
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-07-31T13:21:59.000Z</updated>
     
@@ -1577,65 +1652,6 @@ lru_pos* mru; //most recently used item
     
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Blogecho, My Theme for Typecho</title>
-    <link href="http://mjackie.github.io/Tech/cje0aoxxi00018jogwcl5y1p7/"/>
-    <id>http://mjackie.github.io/Tech/cje0aoxxi00018jogwcl5y1p7/</id>
-    <published>2016-12-05T01:21:00.000Z</published>
-    <updated>2018-02-23T18:22:14.322Z</updated>
-    
-    <content type="html"><![CDATA[<p>GitHub地址：<a href="https://github.com/mJackie/Typecho-Theme-Blogecho" target="_blank" rel="external">https://github.com/mJackie/Typecho-Theme-Blogecho</a></p>
-<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg" alt="image"></p>
-<h4 id="Blogecho-for-Typecho-概述"><a href="#Blogecho-for-Typecho-概述" class="headerlink" title="Blogecho for Typecho 概述"></a>Blogecho for Typecho 概述</h4><ul>
-<li>作者：JackieLiu</li>
-<li>版本：v1.0</li>
-<li>更新日期：2016.11.28<a id="more"></a>
-<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
-<li>集成代码高亮</li>
-<li>完美兼容 MarkDown 语法</li>
-<li>响应式布局</li>
-<li>随机更换透明背景壁纸</li>
-</ol>
-</li>
-</ul>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ol>
-<li>点击 download zip 下载最新源码，解压，将其中文件夹重命名为 Blogecho 并上传至博客的 /usr/themes 目录下</li>
-<li>可将img文件夹下 background 背景图片替换为自习喜欢的，logo.jpg 替换为自己的 logo 头像</li>
-<li>在主题外观设置页面，设置相应选项</li>
-<li>在博客后台点击启用</li>
-</ol>
-<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><p>体验 Blogecho 主题: <a href="https://jackieliu.win" target="_blank" rel="external">Blogecho 演示</a></p>
-<blockquote>
-<p>注意：此演示基于 Hexo，与 Typechoe 有些许差异。</p>
-</blockquote>
-<h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho2.png" alt="image"></p>
-<p><img src="https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogechoForTypechoSetup.png" alt="image"></p>
-<h4 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h4><ul>
-<li>2016.11.28  发布 Blogecho for Typecho v1.0</li>
-</ul>
-<h4 id="License"><a href="#License" class="headerlink" title="License"></a>License</h4><p>Open sourced under the MIT license.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;GitHub地址：&lt;a href=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho&quot;&gt;https://github.com/mJackie/Typecho-Theme-Blogecho&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://github.com/mJackie/Typecho-Theme-Blogecho/raw/master/githubimg/blogecho.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Blogecho-for-Typecho-概述&quot;&gt;&lt;a href=&quot;#Blogecho-for-Typecho-概述&quot; class=&quot;headerlink&quot; title=&quot;Blogecho for Typecho 概述&quot;&gt;&lt;/a&gt;Blogecho for Typecho 概述&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;作者：JackieLiu&lt;/li&gt;
-&lt;li&gt;版本：v1.0&lt;/li&gt;
-&lt;li&gt;更新日期：2016.11.28
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
-    
-      <category term="typecho" scheme="http://mjackie.github.io/tags/typecho/"/>
     
   </entry>
   
