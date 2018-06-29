@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2018-03-14T16:10:47.316Z</updated>
+  <updated>2018-06-29T06:56:15.705Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,11 +16,666 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>逻辑回归&amp;特征框架分享</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkil2003dktogkhm8gjb3/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkil2003dktogkhm8gjb3/</id>
+    <published>2018-06-29T06:50:00.000Z</published>
+    <updated>2018-06-29T06:56:15.705Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/post_image/LRppt/幻灯片01.jpeg" alt="image"></p>
+<a id="more"></a>
+<p><img src="/post_image/LRppt/幻灯片02.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片03.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片04.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片05.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片06.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片07.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片08.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片09.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片10.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片11.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片12.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片13.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片14.jpeg" alt="image"></p>
+<p><img src="/post_image/LRppt/幻灯片15.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片1.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片1.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片2.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片3.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片4.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片5.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片6.jpeg" alt="image"></p>
+<p><img src="/post_image/FeaPPT/幻灯片7.jpeg" alt="image"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/post_image/LRppt/幻灯片01.jpeg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="特征" scheme="http://mjackie.github.io/tags/%E7%89%B9%E5%BE%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐系统笔记</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkikw002tktogb88xp7ff/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikw002tktogb88xp7ff/</id>
+    <published>2018-05-27T02:50:00.000Z</published>
+    <updated>2018-06-29T06:41:13.071Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基于物品的协同过滤推荐算法"><a href="#基于物品的协同过滤推荐算法" class="headerlink" title="基于物品的协同过滤推荐算法"></a>基于物品的协同过滤推荐算法</h3><ol>
+<li>根据行为列表，计算用户、物品评分矩阵</li>
+<li>根据用户物品评分矩阵，计算物品物品相似度矩阵</li>
+<li>物品物品相似度矩阵 * 用户物品评分矩阵 = 推荐列表</li>
+<li>推荐列表中，用户之前有过的行为置0</li>
+</ol>
+<h3 id="基于用户的协同过滤推荐算法"><a href="#基于用户的协同过滤推荐算法" class="headerlink" title="基于用户的协同过滤推荐算法"></a>基于用户的协同过滤推荐算法</h3><ol>
+<li>根据行为列表，计算物品、用户评分矩阵</li>
+<li>根据用户物品评分矩阵，计算用户用户相似度矩阵</li>
+<li>用户用户相似度矩阵 * 物品用户评分矩阵 = 推荐列表</li>
+<li>推荐列表中，用户之前有过的行为置0</li>
+</ol>
+<a id="more"></a>
+<h3 id="基于内容的推荐算法"><a href="#基于内容的推荐算法" class="headerlink" title="基于内容的推荐算法"></a>基于内容的推荐算法</h3><p>用1表示物品具有某个特征，0表示不具有某个特征</p>
+<ol>
+<li>构建 <code>Item-Profile</code> 矩阵</li>
+<li>构建 <code>Item-User</code> 评分矩阵</li>
+<li><code>Item-User</code> * <code>Item-Profile</code> = <code>User Profile</code> （用户对不同标签感兴趣的程度）</li>
+<li>对 <code>Item-Profile</code> 与 <code>User Profile</code> 求余弦相似度</li>
+<li>推荐列表中，用户之前有过的行为置0</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基于物品的协同过滤推荐算法&quot;&gt;&lt;a href=&quot;#基于物品的协同过滤推荐算法&quot; class=&quot;headerlink&quot; title=&quot;基于物品的协同过滤推荐算法&quot;&gt;&lt;/a&gt;基于物品的协同过滤推荐算法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;根据行为列表，计算用户、物品评分矩阵&lt;/li&gt;
+&lt;li&gt;根据用户物品评分矩阵，计算物品物品相似度矩阵&lt;/li&gt;
+&lt;li&gt;物品物品相似度矩阵 * 用户物品评分矩阵 = 推荐列表&lt;/li&gt;
+&lt;li&gt;推荐列表中，用户之前有过的行为置0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;基于用户的协同过滤推荐算法&quot;&gt;&lt;a href=&quot;#基于用户的协同过滤推荐算法&quot; class=&quot;headerlink&quot; title=&quot;基于用户的协同过滤推荐算法&quot;&gt;&lt;/a&gt;基于用户的协同过滤推荐算法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;根据行为列表，计算物品、用户评分矩阵&lt;/li&gt;
+&lt;li&gt;根据用户物品评分矩阵，计算用户用户相似度矩阵&lt;/li&gt;
+&lt;li&gt;用户用户相似度矩阵 * 物品用户评分矩阵 = 推荐列表&lt;/li&gt;
+&lt;li&gt;推荐列表中，用户之前有过的行为置0&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>特征工程</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkiky002yktogxuthqhuk/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkiky002yktogxuthqhuk/</id>
+    <published>2018-05-10T02:50:00.000Z</published>
+    <updated>2018-06-29T06:41:23.142Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="根据特征来源分类"><a href="#根据特征来源分类" class="headerlink" title="根据特征来源分类"></a>根据特征来源分类</h3><ul>
+<li>场景: 当时场景，如何时何地，使用何种设备，使用什么浏览器等</li>
+<li>广告: 包括广告主特征，广告自身的特征如campaign、创意、类型，是否重定向等</li>
+<li>媒体: 包括媒体(网页、app等)的特征、广告位的特征等</li>
+<li>用户: 包括用户画像，用户浏览历史等</li>
+</ul>
+<h3 id="根据特征取值分类"><a href="#根据特征取值分类" class="headerlink" title="根据特征取值分类"></a>根据特征取值分类</h3><h4 id="连续（continuous）特征"><a href="#连续（continuous）特征" class="headerlink" title="连续（continuous）特征"></a>连续（continuous）特征</h4><p>连续特征 除了归一化（去中心，方差归一），不用做太多特殊处理，可以直接把连续特征扔到模型里使用。</p>
+<a id="more"></a>
+<h4 id="无序类别（categorical）特征"><a href="#无序类别（categorical）特征" class="headerlink" title="无序类别（categorical）特征"></a>无序类别（categorical）特征</h4><p>无序特征 可以使用One-hot（也叫One-of-k）的方法把每个无序特征转化为一个数值向量。比如一个无序特征color有三种取值：<code>red</code>，<code>green</code>，<code>blue</code>。那么可以用一个长度为3的向量来表示它，向量中的各个值分别对应于<code>red</code>，<code>green</code>，<code>blue</code>。如：</p>
+<pre><code>color取值        向量表示
+red            (1, 0, 0)
+green        (0, 1, 0)
+blue        (0, 0, 1)
+</code></pre><h4 id="有序类别（ordinal）特征"><a href="#有序类别（ordinal）特征" class="headerlink" title="有序类别（ordinal）特征"></a>有序类别（ordinal）特征</h4><p>有序特征 有些特征虽然也像无序特征那样只取限定的几个值，但是这些值之间有顺序的含义。例如一个人的状态status有三种取值：<code>bad</code>, <code>normal</code>, <code>good</code>，显然<code>bad</code> &lt; <code>normal</code> &lt; <code>good</code></p>
+<pre><code>status取值    向量表示
+bad            (1, 0, 0)
+normal        (1, 1, 0)
+good        (1, 1, 1)
+</code></pre><h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>以线性分类器Linear Regression (LinearReg)为例，它是通过特征的线性加权来预测因变量。但大部分实际情况下，实际环境下都不会是这么简单的线性关系，甚至连单调关系都不会有。那么直接把特征扔进LinearReg模型是怎么也得不到好结果的。很多人会想着既然线性分类器搞不定，那就直接找个非线性的好了，比如高斯核的SVM。我们确实可以通过这种简单换算法的方式解决这个简单的问题。但非线性模型的时间复杂度较高，对于大规模实时应用，预测时间是不可忍受的。</p>
+<h4 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h4><ul>
+<li>等距离</li>
+<li>等样本</li>
+<li>画图观察</li>
+<li>树模型离散</li>
+</ul>
+<h4 id="交叉（笛卡尔积）"><a href="#交叉（笛卡尔积）" class="headerlink" title="交叉（笛卡尔积）"></a>交叉（笛卡尔积）</h4><h4 id="后验特征"><a href="#后验特征" class="headerlink" title="后验特征"></a>后验特征</h4><h3 id="单特征选择方法"><a href="#单特征选择方法" class="headerlink" title="单特征选择方法"></a>单特征选择方法</h3><ul>
+<li>简单统计方法，统计特征取值的覆盖面和平衡度,对dominant取值现象很显著的特征，要选择性地舍弃该特征或者是归并某些取值集到一个新的值，从而达到平衡的目的。</li>
+<li>特征选择指标，特征选择主要有两个目的，一是去除冗余的特征，也就是特征之间可能是互相冗余的；二是去无用，有些特征对CTR预估这个任务贡献度很小或没有，对于这类特征选择，要小小地做，宁不足而不过分，因为单特征对任务贡献度小，很有可能后面再组合特征生成时与其他特征组合生成很有效的组合特征，所以做得不能太过。<ul>
+<li>去冗余。主要是特征间的相关性，如Pearson相关性，或者指数回归(从泰勒定理的角度它可以模拟高阶的多项式特征)。</li>
+<li>去无用。主要是信息增益比。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://breezedeus.github.io/2014/11/15/breezedeus-feature-processing.html" target="_blank" rel="external">http://breezedeus.github.io/2014/11/15/breezedeus-feature-processing.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;根据特征来源分类&quot;&gt;&lt;a href=&quot;#根据特征来源分类&quot; class=&quot;headerlink&quot; title=&quot;根据特征来源分类&quot;&gt;&lt;/a&gt;根据特征来源分类&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;场景: 当时场景，如何时何地，使用何种设备，使用什么浏览器等&lt;/li&gt;
+&lt;li&gt;广告: 包括广告主特征，广告自身的特征如campaign、创意、类型，是否重定向等&lt;/li&gt;
+&lt;li&gt;媒体: 包括媒体(网页、app等)的特征、广告位的特征等&lt;/li&gt;
+&lt;li&gt;用户: 包括用户画像，用户浏览历史等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;根据特征取值分类&quot;&gt;&lt;a href=&quot;#根据特征取值分类&quot; class=&quot;headerlink&quot; title=&quot;根据特征取值分类&quot;&gt;&lt;/a&gt;根据特征取值分类&lt;/h3&gt;&lt;h4 id=&quot;连续（continuous）特征&quot;&gt;&lt;a href=&quot;#连续（continuous）特征&quot; class=&quot;headerlink&quot; title=&quot;连续（continuous）特征&quot;&gt;&lt;/a&gt;连续（continuous）特征&lt;/h4&gt;&lt;p&gt;连续特征 除了归一化（去中心，方差归一），不用做太多特殊处理，可以直接把连续特征扔到模型里使用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算广告</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkikz0032ktog1j1g1pgt/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikz0032ktog1j1g1pgt/</id>
+    <published>2018-04-14T02:50:00.000Z</published>
+    <updated>2018-06-29T06:41:38.051Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="学术与工程的区别"><a href="#学术与工程的区别" class="headerlink" title="学术与工程的区别"></a>学术与工程的区别</h3><p><img src="/post_image/Theory&amp;Practice.jpg" alt="img"></p>
+<h3 id="LR"><a href="#LR" class="headerlink" title="LR"></a>LR</h3><ol>
+<li>变量范围是[-∞ ,+∞]；同时和其他“广义线性回归”相比，值域是[0,1]，因此形式上类似一个概率函数，适合分类问题；</li>
+<li>可扩展性好，适合海量的特征；训练工具多样、可选</li>
+<li>online learning，能够进行增量学习；</li>
+<li>线性模型，解释性强。当出现很大的波动（如发现某一天的预测结果非常差）时，这样的模型方便查找原因，越简单，解释性越好，就越方便debug</li>
+</ol>
+<p>这些优点都让logisticregression在做ctr预估的时候特别有优势，尤其是可扩展性，可以简单地增加特征，不需要太多的工作。</p>
+<a id="more"></a>
+<h3 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h3><h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><h3 id="MLR"><a href="#MLR" class="headerlink" title="MLR"></a>MLR</h3><h3 id="DNN"><a href="#DNN" class="headerlink" title="DNN"></a>DNN</h3><h3 id="商业模式"><a href="#商业模式" class="headerlink" title="商业模式"></a>商业模式</h3><p>1.CPM，按展现付费，品牌广告<br>2.CPC，按点击付费，效果广告<br>3.CPA，按转化付费，效果广告<br>4.CPS，按销售分成，效果广告</p>
+<h3 id="算分排序"><a href="#算分排序" class="headerlink" title="算分排序"></a>算分排序</h3><p>算分排序这个东西能综合考虑老板和用户的需求，具体操作方式是，一个用户来了，对于想向这个用户投的广告，都打一个分，根据这个分进行倒排序，排在最前面的广告就是对这两方最合适的广告。</p>
+<pre><code>Score=bid*ctr
+- bid表示广告的出价
+- ctr的含义比较丰富
+  既表示了用户对广告的喜欢程度
+  也表示了广告的质量
+  还表示了这个广告的期望的点击率
+  还希望这个ctr跟广告真实的点击率也是一致的
+</code></pre><p>算分排序<strong>平衡了老板与用户</strong>的需求，也就平衡了收益和用户体验。</p>
+<h3 id="扣费方法"><a href="#扣费方法" class="headerlink" title="扣费方法"></a>扣费方法</h3><ul>
+<li>广义一阶价格（GFP）: 广告主开多少价，在广告投放后就收多少钱。</li>
+<li>广义二阶价格（GSP）: 一个广告支付的钱是排在下一个位置的广告的出价</li>
+</ul>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li>广告组</li>
+<li>广告计划：管理关键词/创意的单位。</li>
+<li>广告创意：广告展现的最终形式，包括创意素材、创意标题、附加创意、应用来源等。</li>
+</ul>
+<h3 id="FTRL-算法"><a href="#FTRL-算法" class="headerlink" title="FTRL 算法"></a>FTRL 算法</h3><p>FTRL 是综合了OGD的精度和RDA的稀疏性，适合在线增量学习，在处理诸如逻辑回归之类的带非光滑正则化项（例如1范数，做模型复杂度控制和稀疏化）的凸优化问题上性能非常出色。<br><img src="/post_image/ftrl.png" alt="img"></p>
+<h3 id="AUC"><a href="#AUC" class="headerlink" title="AUC"></a>AUC</h3><ul>
+<li>横轴：False Positive Rate（假阳率）FPR=FP/(TN+FP)</li>
+<li><p>纵轴：True Positive Rate（真阳率）TPR=TP/(TP+FN)</p>
+</li>
+<li><p>为什么用AUC</p>
+<blockquote>
+<p>因为ROC曲线有个很好的特性：当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变。在实际的数据集中经常会出现类不平衡（class imbalance）现象，即负样本比正样本多很多（或者相反），而且测试数据中的正负样本的分布也可能随着时间变化。AUC对样本的比例变化有一定的容忍性。AUC的值通常在0.6-0.85之间。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;学术与工程的区别&quot;&gt;&lt;a href=&quot;#学术与工程的区别&quot; class=&quot;headerlink&quot; title=&quot;学术与工程的区别&quot;&gt;&lt;/a&gt;学术与工程的区别&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/post_image/Theory&amp;amp;Practice.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;LR&quot;&gt;&lt;a href=&quot;#LR&quot; class=&quot;headerlink&quot; title=&quot;LR&quot;&gt;&lt;/a&gt;LR&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;变量范围是[-∞ ,+∞]；同时和其他“广义线性回归”相比，值域是[0,1]，因此形式上类似一个概率函数，适合分类问题；&lt;/li&gt;
+&lt;li&gt;可扩展性好，适合海量的特征；训练工具多样、可选&lt;/li&gt;
+&lt;li&gt;online learning，能够进行增量学习；&lt;/li&gt;
+&lt;li&gt;线性模型，解释性强。当出现很大的波动（如发现某一天的预测结果非常差）时，这样的模型方便查找原因，越简单，解释性越好，就越方便debug&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这些优点都让logisticregression在做ctr预估的时候特别有优势，尤其是可扩展性，可以简单地增加特征，不需要太多的工作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark 笔记</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkik6000pktogqi3f047p/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkik6000pktogqi3f047p/</id>
+    <published>2018-03-29T02:50:00.000Z</published>
+    <updated>2018-06-29T06:39:01.847Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Spark-特点"><a href="#Spark-特点" class="headerlink" title="Spark 特点"></a>Spark 特点</h3><ul>
+<li>Spark是快速的. Spark是基于内存的计算，扩充了MapReduce.</li>
+<li>Spark是通用的.容纳了其他分布式系统的功能.批处理，迭代计算，交互查询和流处理.降低了维护成本.</li>
+<li>Spark是高度开放的.提供了JAVA,Python,Scala,SQL的API和丰富的内置库.和其他大数据工具整合很好,hadoop,kafca.</li>
+</ul>
+<h3 id="Spark-组件"><a href="#Spark-组件" class="headerlink" title="Spark 组件"></a>Spark 组件</h3><ul>
+<li>Spark Core</li>
+<li>Spark SQL</li>
+<li>Spark Streaming</li>
+<li>Spark Mlib</li>
+<li>Spark Graphx</li>
+<li>Cluster Manager</li>
+</ul>
+<blockquote>
+<p>Spark 组件紧密集成的优点</p>
+<ul>
+<li>Spark底层优化了，基于Spark底层的组件，也得到相应的优化</li>
+<li>节省了各组件部署，测试时间</li>
+<li>向Spark增加新组件时，其他组件可立即共享新组件功能</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="Spark-与-Hadoop-比较"><a href="#Spark-与-Hadoop-比较" class="headerlink" title="Spark 与 Hadoop 比较"></a>Spark 与 Hadoop 比较</h3><ul>
+<li>Hadoop主要应用于离线处理，对实时性要求不高的场景</li>
+<li>Spark主要应用于对实时性要求较高的场景，机器学习等领域</li>
+</ul>
+<h3 id="Spark-Shell"><a href="#Spark-Shell" class="headerlink" title="Spark Shell"></a>Spark Shell</h3><ul>
+<li>处理分布在集群上的数据</li>
+<li>加载到节点内存中，运行速度是秒级的</li>
+<li>快速迭代计算，实时查询，分析一般可以在Shell中完成</li>
+<li>提供了 Python Shell(bin/pyspark) 和 Scala Shell(bin/spark-shell)</li>
+<li>Scala Shell 修改日志级别 <code>log4j.rootCategory = WARN, console</code></li>
+</ul>
+<h3 id="Spark-开发环境搭建"><a href="#Spark-开发环境搭建" class="headerlink" title="Spark 开发环境搭建"></a>Spark 开发环境搭建</h3><ul>
+<li>下载 Spark</li>
+<li>下载 Intellj IDEA(注册码地址: <code>http://idea.lanyus.com</code>)</li>
+<li><p>插件安装：Plugins,搜索Scala直接安装，插件中有scala和sbt</p>
+<p>  //配置免密登录<br>  touch authorized_keys<br>  cat id_rsa.pub &gt; authorized_keys<br>  chmod 600 authorized_keys</p>
+</li>
+</ul>
+<blockquote>
+<p>Spark与Scala版本匹配</p>
+<ul>
+<li>Spark1.6.2 - Scala2.10</li>
+<li>Spark2.0.0 - Scala2.11</li>
+</ul>
+</blockquote>
+<h3 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h3><pre><code>//java home 目录, jdk与scala版本
+ /Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/bin
+
+//配置sbt
+libraryDependencies += &quot;org.apache.spark&quot; % &quot;spark-core_2.11&quot; % &quot;2.0.2&quot;
+
+//写代码
+
+//配置jar包
+进入 File &gt; Project Structure &gt; Artifacts &gt; + &gt; JARs &gt; From Module... &gt; 第二个选项
+
+//build
+</code></pre><h3 id="Spark-相关命令"><a href="#Spark-相关命令" class="headerlink" title="Spark 相关命令"></a>Spark 相关命令</h3><pre><code>启动 master
+./sbin/start_master.sh
+:quit
+
+启动 worker
+./bin/spark-class
+
+hdfs dfs -rm -R /user/algo/liujiaqi/wordcount-output-spark/
+
+提交作业
+//单机
+spark-submit --master yarn-client --class WordCount myspark.jar
+
+//集群
+spark-submit --master yarn-cluster --conf spark.storage.memoryFraction=0.7 --conf spark.shuffle.memoryFraction=0.3 --conf spark.broadcast.blockSize=4096 --conf spark.broadcast.factory=org.apache.spark.broadcast.TorrentBroadcastFactory --conf spark.broadcast.compress=true --conf spark.serializer=org.apache.spark.serializer.JavaSerializer --conf spark.akka.threads=8 --conf spark.default.parallelism=63 --conf spark.port.maxRetries=100 --class WordCount  myspark.jar
+
+//查看结果
+hdfs dfs -cat /user/algo/liujiaqi/wordcount-output-spark/part-00000
+
+//查看日志
+yarn logs -applicationId xxxx
+</code></pre><h3 id="RDDs-弹性分布式数据集"><a href="#RDDs-弹性分布式数据集" class="headerlink" title="RDDs 弹性分布式数据集"></a>RDDs 弹性分布式数据集</h3><ul>
+<li><p>Driver programs: 包含程序main方法，RDDs的定义和操作。管理很多节点，称为executors。<br>image</p>
+</li>
+<li><p>SparkContex: Driver programs通过SparkContex对象访问Spark，SparkContex代表和一个集群的连接,在Shell中SparkContex自动创建好了，就是sc</p>
+</li>
+</ul>
+<h4 id="RDDs"><a href="#RDDs" class="headerlink" title="RDDs"></a>RDDs</h4><p><img src="/post_image/Rdds.jpg" alt="image"></p>
+<ul>
+<li>并行的分布在整个集群中，是Spark分发数据和计算的基础数据类</li>
+<li>一个RDD是一个不可改变的分布式集合对象</li>
+<li>Spark 中所有的计算都是通过RDDs的创建，转换，操作完成的</li>
+<li>一个RDD内部由许多Partitions组成</li>
+</ul>
+<h4 id="RDDs-创建方法"><a href="#RDDs-创建方法" class="headerlink" title="RDDs 创建方法"></a>RDDs 创建方法</h4><ol>
+<li><p>把一个存在的集合传给SparkContex的parallelize()方法</p>
+<pre><code>val rdd = sc.parallelize(Array(1,2,3,4),4)
+//第一个参数待处理的集合，第二个参数为分区个数
+</code></pre></li>
+<li><p>加载外部数据集</p>
+<pre><code>val addText = sc.textFile(&quot;helloSpark.txt&quot;);
+</code></pre></li>
+</ol>
+<h4 id="Scala-基础知识"><a href="#Scala-基础知识" class="headerlink" title="Scala 基础知识"></a>Scala 基础知识</h4><ul>
+<li>变量声明: 必须用 val(不可修改) 或 var（可改）</li>
+<li><p>匿名函数与类型推断</p>
+<pre><code>lines.filter(line.contains(&quot;world&quot;));
+//定义一个匿名函数，接受一个参数line
+</code></pre></li>
+</ul>
+<h4 id="基本操作Transformation"><a href="#基本操作Transformation" class="headerlink" title="基本操作Transformation"></a>基本操作Transformation</h4><ul>
+<li><code>map()</code>: 把函数应用到RDD的每一个元素，返回新RDD</li>
+<li><code>filter()</code>: 返回只包含满足filter()函数的元素的新RDD</li>
+<li><code>flatMap()</code>: 对每个输入元素，输出多个输出元素，flat是压扁的意思，将RDD元素压扁后返回新RDD</li>
+<li>支持数据集合运算，例如并集交集计算</li>
+</ul>
+<h4 id="基本操作Action"><a href="#基本操作Action" class="headerlink" title="基本操作Action"></a>基本操作Action</h4><ul>
+<li><code>reduce()</code>: 接收一个函数，作用在RDD两个类型相同的元素上，返回新元素，实现累加计数等</li>
+<li><code>collect()</code>: 遍历整个RDD，向Driver programs返回RDD内容，需要单机内存能够容纳下，大数据时用<code>saveAsTextFile</code></li>
+<li><code>take(n)</code>: 返回RDD的n个元素（同时尝试访问最少partition），返回结果无需，测试使用</li>
+<li><code>top(n)</code>: 排序（根据RDD中数据比较器），前n个</li>
+<li><code>foreach()</code>: 遍历每个元素，但不返回本地，可以配合println(),友好的打印出数据</li>
+<li><code>reduceByKey</code></li>
+<li><code>groupByKey</code></li>
+<li><code>combineByKey()</code>: 最常用的key的聚合函数，返回类型可以与输入类型不一样</li>
+</ul>
+<h4 id="RDDs特性"><a href="#RDDs特性" class="headerlink" title="RDDs特性"></a>RDDs特性</h4><ul>
+<li>血统关系图: Spark维护着RDDs间的依赖关系和创建关系，叫做血统关系图，使用血统关系图计算RDD需求，恢复丢失的数据</li>
+<li>延迟计算: Spark对RDDs的计算是在第一次使用action操作的时候，可以减少数据的传输</li>
+<li>持久化: 默认每次在RDDs上进行action操作时，Spark都重新计算RDDs.若想重复利用一个RDD,可以使用<code>RDD.persist()</code>, <code>unpersist()</code>从缓存中移除</li>
+</ul>
+<h3 id="DataFrame-amp-DataSet"><a href="#DataFrame-amp-DataSet" class="headerlink" title="DataFrame &amp; DataSet"></a>DataFrame &amp; DataSet</h3><blockquote>
+<p>RDD</p>
+<ol>
+<li>RDD一般和spark mlib同时使用</li>
+<li>RDD不支持sparksql操作</li>
+</ol>
+<p>DataFrame</p>
+<ol>
+<li>与RDD和Dataset不同，DataFrame每一行的类型固定为Row，只有通过解析才能获取各个字段的值<pre><code>testDF.foreach{
+  line =&gt;
+    val col1=line.getAs[String](&quot;col1&quot;)
+    val col2=line.getAs[String](&quot;col2&quot;)
+}
+</code></pre></li>
+<li>DataFrame与Dataset一般与spark ml同时使用</li>
+<li>DataFrame与Dataset均支持sparksql的操作，比如select，groupby之类，还能注册临时表/视窗，进行sql语句操作，如<pre><code>dataDF.createOrReplaceTempView(&quot;tmp&quot;)
+spark.sql(&quot;select  ROW,DATE from tmp where DATE is not null order by DATE&quot;).show(100,false)
+</code></pre></li>
+<li>DataFrame与Dataset支持一些特别方便的保存方式，比如保存成csv，可以带上表头，这样每一列的字段名一目了然</li>
+</ol>
+<p>DataSet</p>
+</blockquote>
+<ul>
+<li>这里主要对比Dataset和DataFrame，因为Dataset和DataFrame拥有完全相同的成员函数，区别只是每一行的数据类型不同.</li>
+<li>DataFrame也可以叫Dataset[Row],每一行的类型是Row，不解析，每一行究竟有哪些字段，各个字段又是什么类型都无从得知</li>
+<li>而Dataset中，每一行是什么类型是不一定的，在自定义了case class之后可以很自由的获得每一行的信息</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>var lines = sc.textFile(&quot;liu&quot;)
+lines.foreach(println)
+lines.count()
+var lines2 = lines.foreach(println)
+var lines3 = lines.map(word=&gt;(word,1))
+var lines4 = lines.fileter(word=&gt;word.contains(&quot;hello&quot;))
+print(lines.first())
+var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
+</code></pre><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>newAPIHadoopRDD(path,format,key,value)
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Spark-特点&quot;&gt;&lt;a href=&quot;#Spark-特点&quot; class=&quot;headerlink&quot; title=&quot;Spark 特点&quot;&gt;&lt;/a&gt;Spark 特点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Spark是快速的. Spark是基于内存的计算，扩充了MapReduce.&lt;/li&gt;
+&lt;li&gt;Spark是通用的.容纳了其他分布式系统的功能.批处理，迭代计算，交互查询和流处理.降低了维护成本.&lt;/li&gt;
+&lt;li&gt;Spark是高度开放的.提供了JAVA,Python,Scala,SQL的API和丰富的内置库.和其他大数据工具整合很好,hadoop,kafca.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Spark-组件&quot;&gt;&lt;a href=&quot;#Spark-组件&quot; class=&quot;headerlink&quot; title=&quot;Spark 组件&quot;&gt;&lt;/a&gt;Spark 组件&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Spark Core&lt;/li&gt;
+&lt;li&gt;Spark SQL&lt;/li&gt;
+&lt;li&gt;Spark Streaming&lt;/li&gt;
+&lt;li&gt;Spark Mlib&lt;/li&gt;
+&lt;li&gt;Spark Graphx&lt;/li&gt;
+&lt;li&gt;Cluster Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Spark 组件紧密集成的优点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spark底层优化了，基于Spark底层的组件，也得到相应的优化&lt;/li&gt;
+&lt;li&gt;节省了各组件部署，测试时间&lt;/li&gt;
+&lt;li&gt;向Spark增加新组件时，其他组件可立即共享新组件功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop 笔记</title>
+    <link href="http://mjackie.github.io/Tech/cjizmkikc001bktogltm0pxyi/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikc001bktogltm0pxyi/</id>
+    <published>2018-03-24T02:50:00.000Z</published>
+    <updated>2018-06-29T06:40:55.513Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Hadoop基础及演练"><a href="#Hadoop基础及演练" class="headerlink" title="Hadoop基础及演练"></a>Hadoop基础及演练</h2><h3 id="Hadoop-优点"><a href="#Hadoop-优点" class="headerlink" title="Hadoop 优点"></a>Hadoop 优点</h3><ul>
+<li>高扩展</li>
+<li>低成本</li>
+<li>成熟的生态圈<blockquote>
+<ul>
+<li>HIVE 降低了Hadoop使用门槛，可以将SQL语句转化为Hadoop任务</li>
+<li>HBase 是一个存储结构化数据的分布式数据库，放弃了事务特性，追求更高的特战，HBase提供数据的随机读写和实时访问，实现了对表数据的读写功能</li>
+<li>Zookeeper 监控Hadoop集群的一个状态，管理集群配置，维护节点间数据的一致性</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><ol>
+<li>安装JDK</li>
+<li>安装Hadoop</li>
+<li><p>配置Hadoop</p>
+<p>conf/start-all.sh</p>
+<pre><code>jps 查看本地启动进程
+</code></pre></li>
+</ol>
+<h3 id="HDFS-优点"><a href="#HDFS-优点" class="headerlink" title="HDFS 优点"></a>HDFS 优点</h3><ul>
+<li>适合大文件存储，支持TB、PB级的数据存储，并有副本策略</li>
+<li>可以构建在廉价的机器上，并有一定的容错和恢复机制</li>
+<li>支持流式数据访问，一次写入，多次读取最高效</li>
+</ul>
+<h3 id="HDFS-缺点"><a href="#HDFS-缺点" class="headerlink" title="HDFS 缺点"></a>HDFS 缺点</h3><ul>
+<li>不适合大量小文件存储</li>
+<li>不适合并发写入，不支持文件随机修改</li>
+<li>不支持随机读低延时的访问方式</li>
+</ul>
+<a id="more"></a>
+<h3 id="HDFS-写流程"><a href="#HDFS-写流程" class="headerlink" title="HDFS 写流程"></a>HDFS 写流程</h3><ol>
+<li>客户端向NameNode发起写数据请求</li>
+<li>分块写入DataNode节点，DataNode自动完成副本备份</li>
+<li>DataNode向NameNode汇报存储完成，NameNode通知客户端</li>
+</ol>
+<h3 id="HDFS-读流程"><a href="#HDFS-读流程" class="headerlink" title="HDFS 读流程"></a>HDFS 读流程</h3><ol>
+<li>客户端向NameNode发起读数据请求</li>
+<li>NameNode找出距离最近的DataNode节点信息</li>
+<li>客户端从DataNode分块下载文件</li>
+</ol>
+<h3 id="HDFS-Shell命令"><a href="#HDFS-Shell命令" class="headerlink" title="HDFS Shell命令"></a>HDFS Shell命令</h3><p>很多命令和Linux是一致的<br>​<br>    ./hdfs dfs -help    #查看帮助文档<br>    hdfs dfs -ls /    #查看根目录<br>    hdfs dfs -du -h    #查看文件大小<br>    hdfs dfs -text #查看文件<br>    hdfs dfs -mkdir /test    #创建test目录<br>    hdfs dfs -copyFromLocal /home/hadoop/mk.txt /test/<br>    hdfs dfs -cat /test/mk.txt<br>    hdfs dfs -copyToLocal /test/mk.txt /home/hadoop/mk2.txt<br>    hdfs dfs -chmod 777 /test/mk.txt</p>
+<h3 id="lzop"><a href="#lzop" class="headerlink" title="lzop"></a>lzop</h3><pre><code>//使用lzop命令解压并查看
+lzop -cd xxx.lzo |more
+
+//压缩命令：
+lzop xxx.log （生成xxx.log.lzo）
+
+//列出test.lzo中各个文件的压缩信息
+lzop -l test.lzo 
+</code></pre><h3 id="程序操作HDFS"><a href="#程序操作HDFS" class="headerlink" title="程序操作HDFS"></a>程序操作HDFS</h3><p>通过相应的API，调用相应的方法即可</p>
+<h3 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h3><p>Hadoop 2.0 之后的资源管理器，移除了原有的JobTracker和TaskTracker,所有的MapReduce需要通过YARN进行调度。</p>
+<ul>
+<li>ResourceManager: 分配调度资源，启动监控ApplicationManager，监控NodeManager</li>
+<li>ApplicationManager: 为MR程序申请资源，分配任务，负责数据切片，监控任务执行，容错</li>
+<li>NodeManager: 管理单个节点的资源，处理ResourceManager，ApplicationManager的命令</li>
+</ul>
+<h3 id="MapReduce-编程模型"><a href="#MapReduce-编程模型" class="headerlink" title="MapReduce 编程模型"></a>MapReduce 编程模型</h3><ol>
+<li>输入一个大的模型，通过Split之后，将其切分为多个分片。</li>
+<li>Map阶段每个文件分片由单独的机器处理（需要编码）</li>
+<li>Shuffle阶段.Map输入到Reduce输出的过程，涉及到网络传输</li>
+<li>Reduce阶段将各个机器的结果汇总，并得到最终的结果（需要编码）</li>
+</ol>
+<p>Hadoop 1.x 默认block大小64M<br>Hadoop 2.x 默认block大小128M<br>可以在hdfs-site.xml中设置参数：dfs.block.size</p>
+<h4 id="map任务个数"><a href="#map任务个数" class="headerlink" title="map任务个数"></a>map任务个数</h4><p>map任务个数是受多条件制约的，一般一个DataNode的map任务数量控制在10到100比较合适</p>
+<ul>
+<li>可增大mapred.map.tasks；减少map个数</li>
+<li>可增大mapred.min.split.size</li>
+<li>如果要减少map个数，但有很多小文件，可将小文件合并为大文件，再使用上条准则</li>
+</ul>
+<p>数据经过Map端输出后会进行网络混洗，经Shuffle后进入Reduce，在大数据量的情况下可能会造成巨大的网络开销。故可以在本地先按照key进行一轮排序与合并，在进行网络混洗，这个过程就是Combine.</p>
+<p>图<br>partition任务,reduce任务,输出文件三者的数量总是相等的。所有数据默认会按照key值升序排序。</p>
+<h4 id="reduce任务个数"><a href="#reduce任务个数" class="headerlink" title="reduce任务个数"></a>reduce任务个数</h4><p>reduce任务不像Map任务那样受多个因素制约,大数据情况下，reduce数量不宜过少</p>
+<ul>
+<li>可通过调节参数 mapred.reduce.tasks</li>
+<li>可在代码中调用 job.setNumReduceTasks(int n)</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>如何通过Hadoop存储小文件？<blockquote>
+<p>Hadoop Archives 出现就是为了缓解大量小文件消耗NameNode内存的问题，HAR文件是通过在HDFS上构建一个分层文件系统来工作；使用SequenceFile，用文件名（filename）作为key，并且文件内容（file contents）作为value；可以通过Hbase开发一个对象存储服务;可以采用压缩、合并小文件的策略，例如设置文件输入类型为CombineFileInputFormat格式</p>
+</blockquote>
+</li>
+<li>当有节点故障的时候，集群是如何继续提供服务的，如何读？如何写？</li>
+<li>哪些是影响MapReduce性能的因素？</li>
+</ol>
+<h3 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h3><ul>
+<li>高可靠，高性能，面向列，可伸缩，实时读写的<strong>分布式数据库</strong></li>
+<li>利用HDFS作为其文件存储系统，支持MR程序读取数据</li>
+<li>存储非结构化和半结构化数据</li>
+<li>RowKey: 数据唯一标识，按字典排序</li>
+<li>ColumnFamily: 列族，多个列的集合，最多不超过三个</li>
+<li>TimeStamp: 支持多版本数据同时存在</li>
+</ul>
+<h3 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h3><p>show databases;<br>use database;<br>show tables;<br>desc table;<br>dfs -ls 目录；<br>! 操作系统命令<br>select * from gen_yp_show_log_det_hour limit 5;<br>source mysql.sql;<br>hive -S #进入静默模式</p>
+<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><ul>
+<li><strong>基于内存计算</strong>的大数据并行计算框架</li>
+<li>Spark是MapReduce的替代方案，兼容HDFS，Hive等数据源</li>
+<li>抽象出分布式内存存储数据结构，弹性分布式数据集RDD</li>
+<li>基于事件驱动，通过线程池复用线程提高性能</li>
+</ul>
+<h3 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h3><p><img src="/post_image/map-reduce.jpg" alt="image"><br>既可以直接编写相应JAVA处理程序，也可用Python等其他语言编写Map,Reduce处理过程，利用Hadoop进行执行</p>
+<ol>
+<li>编写 WordCount.java 程序</li>
+<li><p>编译 WordCount.java</p>
+<pre><code>javac -classpath -d
+</code></pre></li>
+<li><p>打包<br>jar -cvf wordcount.jar *.class</p>
+</li>
+<li>提交作业<br>hdfs dfs -copyFromLocal<pre><code>hadoop jar
+yarn logs -applicationId xxxx    //查看日志
+</code></pre><h3 id="Hadoop分布式缓存"><a href="#Hadoop分布式缓存" class="headerlink" title="Hadoop分布式缓存"></a>Hadoop分布式缓存</h3>在执行MapReduce时，可能Mapper之间需要共享一些信息，如果信息量不大，可以将其从HDFS加载到内存中，这就是Hadoop分布式缓存机制</li>
+</ol>
+<p>加载到内存发生在Job执行之前，每个从节点各自都缓存一份相同的共享数据。如果数据量过大，可以将其分批缓存，重复执行作业。</p>
+<ol>
+<li><p>在main方法中加载共享文件的HDFS路径，路径可以是目录也可以是文件。可以在路径末尾追加“#”+别名，在map阶段可以使用该别名</p>
+<pre><code>String cache = &quot;hdfs://10.105.***.***:8020/cache/file&quot;;    //目录或文件
+cache = cache + &quot;#myfile&quot;;     //myfile是文件别名
+job.addCacheFile(new Path(cache).toUri(),conf)    //添加到job设置
+</code></pre></li>
+<li><p>在Mapper类或Reducer的setup方法中，用输入流获取分布式缓存中的文件</p>
+<p>//该方法只执行一次，在map方法循环之前</p>
+<pre><code>protected void setup（Context context） throws IOException,InterruptedException{
+    FileReader reader = new FileReader(&quot;myfile&quot;);
+    BufferedReader br = new BufferedReader(reader);
+     <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">        &#125;</div><div class="line"></div><div class="line">### Mac Eclipse Hadoop-plus配置</div><div class="line">将插件jar包放在Eclipse的 **dropins** 文件夹下</div><div class="line">- 查看端口</div><div class="line">&gt; hdfs端口号在：```$HADOOP_HOME/conf/core-site.xml中</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<blockquote>
+<p>mr端口号在：<code>$HADOOP_HOME/conf/mapred-site.xml中</code></p>
+</blockquote>
+<pre><code>dfs.datanode.ipc.address  JobTracker端口，默认50020
+fs.defaultFS    HDFS端口，默认8020
+</code></pre><h3 id="Python-MapReduce"><a href="#Python-MapReduce" class="headerlink" title="Python MapReduce"></a>Python MapReduce</h3><pre><code> cat 0318part-00001|python mapper.py 
+cat 0318part-00001|python mapper.py |sort -k1,1|python reducer.py 
+</code></pre><h3 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h3><pre><code>//查看日志
+yarn logs -applicationId appid
+//查看状态
+yarn application -status
+//杀掉任务
+yarn application -kill appid
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hadoop基础及演练&quot;&gt;&lt;a href=&quot;#Hadoop基础及演练&quot; class=&quot;headerlink&quot; title=&quot;Hadoop基础及演练&quot;&gt;&lt;/a&gt;Hadoop基础及演练&lt;/h2&gt;&lt;h3 id=&quot;Hadoop-优点&quot;&gt;&lt;a href=&quot;#Hadoop-优点&quot; class=&quot;headerlink&quot; title=&quot;Hadoop 优点&quot;&gt;&lt;/a&gt;Hadoop 优点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;高扩展&lt;/li&gt;
+&lt;li&gt;低成本&lt;/li&gt;
+&lt;li&gt;成熟的生态圈&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;HIVE 降低了Hadoop使用门槛，可以将SQL语句转化为Hadoop任务&lt;/li&gt;
+&lt;li&gt;HBase 是一个存储结构化数据的分布式数据库，放弃了事务特性，追求更高的特战，HBase提供数据的随机读写和实时访问，实现了对表数据的读写功能&lt;/li&gt;
+&lt;li&gt;Zookeeper 监控Hadoop集群的一个状态，管理集群配置，维护节点间数据的一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Hadoop安装&quot;&gt;&lt;a href=&quot;#Hadoop安装&quot; class=&quot;headerlink&quot; title=&quot;Hadoop安装&quot;&gt;&lt;/a&gt;Hadoop安装&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;安装JDK&lt;/li&gt;
+&lt;li&gt;安装Hadoop&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置Hadoop&lt;/p&gt;
+&lt;p&gt;conf/start-all.sh&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;jps 查看本地启动进程
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;HDFS-优点&quot;&gt;&lt;a href=&quot;#HDFS-优点&quot; class=&quot;headerlink&quot; title=&quot;HDFS 优点&quot;&gt;&lt;/a&gt;HDFS 优点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;适合大文件存储，支持TB、PB级的数据存储，并有副本策略&lt;/li&gt;
+&lt;li&gt;可以构建在廉价的机器上，并有一定的容错和恢复机制&lt;/li&gt;
+&lt;li&gt;支持流式数据访问，一次写入，多次读取最高效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;HDFS-缺点&quot;&gt;&lt;a href=&quot;#HDFS-缺点&quot; class=&quot;headerlink&quot; title=&quot;HDFS 缺点&quot;&gt;&lt;/a&gt;HDFS 缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;不适合大量小文件存储&lt;/li&gt;
+&lt;li&gt;不适合并发写入，不支持文件随机修改&lt;/li&gt;
+&lt;li&gt;不支持随机读低延时的访问方式&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>实习面试</title>
-    <link href="http://mjackie.github.io/Life/cjera9vgi002behs6s3zlmaku/"/>
-    <id>http://mjackie.github.io/Life/cjera9vgi002behs6s3zlmaku/</id>
+    <link href="http://mjackie.github.io/Life/cjizmkikr002dktogj1fqkdv8/"/>
+    <id>http://mjackie.github.io/Life/cjizmkikr002dktogj1fqkdv8/</id>
     <published>2018-03-14T16:09:00.000Z</published>
-    <updated>2018-03-14T16:10:47.316Z</updated>
+    <updated>2018-06-29T06:45:26.071Z</updated>
     
     <content type="html"><![CDATA[<p>过完年回来开始准备找实习，才发现自己把寒假的时间都浪费了，什么事情都没有干。本来打算寒假准备一下，到北京直接开始面试的，没想到计划赶不上变化。分析原因可能来自两方面，一是作为研一新生，在家和校园里还没有感受到现实与工作的压力；二是自己本身自控能力就差吧，这也是老毛病了。</p>
 <p>终于还是到了北京，在双坤租的房子里待了将近一个星期。忽然到一个陌生的环境，让自己很不自在，也感受到了强烈的现实压迫感，好像忽然就要毕业了一样，每过一天，都像是自己失去了许多原本拥有的东西。不过这样也好，人无远虑，必有近忧，提早感受一下毕业找工作的压力，总比天天颓废堕落好了许多。</p>
@@ -92,8 +747,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgr0035ehs6fsfq80b9/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgr0035ehs6fsfq80b9/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkil5003kktog1lvxgub2/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkil5003kktog1lvxgub2/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -187,8 +842,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgl002lehs6bqkyhz73/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgl002lehs6bqkyhz73/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikm0022ktogjsqkygt8/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikm0022ktogjsqkygt8/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -244,8 +899,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vfk0007ehs6yxuscp9u/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vfk0007ehs6yxuscp9u/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkijx0007ktogpsf6a8yu/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkijx0007ktogpsf6a8yu/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -303,8 +958,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vfv000tehs6sykg34v5/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vfv000tehs6sykg34v5/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkik8000vktog90dv3jwb/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkik8000vktog90dv3jwb/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -395,16 +1050,16 @@ $ python Classifiers.py
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgf0026ehs6s042fj2a/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgf0026ehs6s042fj2a/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikp0027ktogqgoayyp4/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikp0027ktogqgoayyp4/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -645,8 +1300,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgp002yehs6jarwtj13/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgp002yehs6jarwtj13/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkil6003nktog88a1djxu/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkil6003nktog88a1djxu/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -780,8 +1435,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjera9vgm002oehs6xlmn4t29/"/>
-    <id>http://mjackie.github.io/Life/cjera9vgm002oehs6xlmn4t29/</id>
+    <link href="http://mjackie.github.io/Life/cjizmkikv002qktogopt76z70/"/>
+    <id>http://mjackie.github.io/Life/cjizmkikv002qktogopt76z70/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -821,8 +1476,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgg0028ehs6vjr3mj7d/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgg0028ehs6vjr3mj7d/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikn0025ktog9bngk041/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikn0025ktog9bngk041/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -932,8 +1587,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vfz0016ehs6sndmpcs2/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vfz0016ehs6sndmpcs2/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikb0017ktogdcrk2hjj/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikb0017ktogdcrk2hjj/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -1017,8 +1672,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg4001hehs6q53efr73/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg4001hehs6q53efr73/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikr002bktogmpjom13i/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikr002bktogmpjom13i/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.000Z</updated>
     
@@ -1126,8 +1781,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg7001rehs6u0vy2fs0/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg7001rehs6u0vy2fs0/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkiki001sktog598fd5ut/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkiki001sktog598fd5ut/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.000Z</updated>
     
@@ -1158,30 +1813,9 @@ message.sendToTarget();
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgk002iehs6lwkwdfmn/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgk002iehs6lwkwdfmn/</id>
-    <published>2017-07-31T11:29:29.000Z</published>
-    <updated>2018-02-22T16:52:48.448Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="开启-关闭apache"><a href="#开启-关闭apache" class="headerlink" title="开启/关闭apache"></a>开启/关闭apache</h4><pre><code>sudo apachectl start
-sudo apachectl stop
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;开启-关闭apache&quot;&gt;&lt;a href=&quot;#开启-关闭apache&quot; class=&quot;headerlink&quot; title=&quot;开启/关闭apache&quot;&gt;&lt;/a&gt;开启/关闭apache&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;sudo apachectl start
-sudo 
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg9001uehs65ngphvci/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg9001uehs65ngphvci/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkikm001zktoglm0affhf/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkikm001zktoglm0affhf/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.000Z</updated>
     
@@ -1236,8 +1870,8 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgq0032ehs6770hp8wg/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgq0032ehs6770hp8wg/</id>
+    <link href="http://mjackie.github.io/Tech/cjizmkil3003gktog9xjwjk4n/"/>
+    <id>http://mjackie.github.io/Tech/cjizmkil3003gktog9xjwjk4n/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2018-02-03T11:14:44.410Z</updated>
     
@@ -1289,369 +1923,6 @@ nvm install stable
       <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
     
       <category term="hexo" scheme="http://mjackie.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机试题</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgo002wehs6d0g6zmo8/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgo002wehs6d0g6zmo8/</id>
-    <published>2017-07-19T15:30:00.000Z</published>
-    <updated>2017-07-31T11:49:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>给夏令营学生出的机试题，虽然很简单，但要写出复杂度较低的方法并不容易。</p>
-<h3 id="相对排名"><a href="#相对排名" class="headerlink" title="相对排名"></a>相对排名</h3><p>给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.</p>
-<p><em>例子：</em></p>
-<pre><code>Input: [5, 4, 3, 2, 1]
-Output: [&quot;Gold Medal&quot;, &quot;Silver Medal&quot;, &quot;Bronze Medal&quot;, &quot;4&quot;, &quot;5&quot;]
-
-Explanation: 
-前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
-剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
-</code></pre><a id="more"></a>
-<p><em>注意：</em></p>
-<ol>
-<li>N 是不大于10000的正整数.</li>
-<li>所有运动员的分数不会重复.</li>
-</ol>
-<h3 id="比特翻转"><a href="#比特翻转" class="headerlink" title="比特翻转"></a>比特翻转</h3><p>翻转给定的32位无符号整数。<br>例如，给定输入43261596（二进制为： <strong>00000010100101000001111010011100</strong>）,返回964176192（二进制为： <strong>00111001011110000010100101000000</strong>）</p>
-<p><em>思考：</em>如果这个函数被多次调用，你会怎样最优化它?</p>
-<h3 id="轮转有序数组中的最小值"><a href="#轮转有序数组中的最小值" class="headerlink" title="轮转有序数组中的最小值"></a>轮转有序数组中的最小值</h3><p>假设一个按升序排序的数组在预先未知的某个旋转轴上旋转,</p>
-<p>(i.e., <code>0 1 2 4 5 6 7</code> 可能变为 <code>4 5 6 7 0 1 2</code>)</p>
-<p>找出其中最小的元素.</p>
-<p>你可以假设数组中没有重复值.</p>
-<p><em>思考：</em>你写的算法时间，空间复杂度为多少？</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;给夏令营学生出的机试题，虽然很简单，但要写出复杂度较低的方法并不容易。&lt;/p&gt;
-&lt;h3 id=&quot;相对排名&quot;&gt;&lt;a href=&quot;#相对排名&quot; class=&quot;headerlink&quot; title=&quot;相对排名&quot;&gt;&lt;/a&gt;相对排名&lt;/h3&gt;&lt;p&gt;给定 N 个运动员的分数，计算他们的相对排名和得分最高的三个人，他们将分别获得奖项：”Gold Medal”, “Silver Medal” 和 “Bronze Medal”.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;例子：&lt;/em&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Input: [5, 4, 3, 2, 1]
-Output: [&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot;, &amp;quot;Bronze Medal&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;]
-
-Explanation: 
-前三个是得分最高的三个人，他们分别获得&amp;quot;Gold Medal&amp;quot;, &amp;quot;Silver Medal&amp;quot; 和 &amp;quot;Bronze Medal&amp;quot;.
-剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java值传递与引用传递</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg3001fehs6vbeaokzz/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg3001fehs6vbeaokzz/</id>
-    <published>2017-07-06T00:00:00.000Z</published>
-    <updated>2017-07-31T11:28:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Java值传递"><a href="#Java值传递" class="headerlink" title="Java值传递"></a>Java值传递</h3><p>指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在<strong>两个</strong>相等的基本类型，即实际参数和形式参数，后面方法中的操作都是对形参这个值的修改，不影响实际参数的值.</p>
-<pre><code>public class ParamTest {
-    public static void main(String[] args) {
-        int price = 5;
-        doubleValue(price);
-        System.out.print(price);    //【输出结果】: 5
-    }
-
-    public static void doubleValue(int x) {
-        x = 2 * x;
-    }
-}
-</code></pre><a id="more"></a>
-<h4 id="过程解析"><a href="#过程解析" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
-<li>x被初始化为price值的一个拷贝，即5</li>
-<li>x乘以2后等于10。但是price没有变化，依然是5</li>
-<li>doubleValue执行完后，参数变量不再使用</li>
-</ul>
-<p><img src="/post_image/java-chuandi/zhichuandi.jpg" alt="zhichuandi"></p>
-<h3 id="Java引用传递"><a href="#Java引用传递" class="headerlink" title="Java引用传递"></a>Java引用传递</h3><p>指的是在方法调用时，传递的参数是按引用进行传递，也就是变量所对应的内存空间的地址。在方法执行中，形参和实参内容相同，指向同一块内存地址，方法执行中对引用的操作将会影响到实际对象.</p>
-<pre><code>class Student {
-    private float score;
-    public Student(float score) {
-        this.score = score;
-    }
-    public void setScore(float score) {
-        this.score = score;
-    }
-    public float getScore() {
-        return score;
-    }
-}
-
-public class ParamTest {
-    public static void main(String[] args) {
-        Student stu = new Student(80);
-        raiseScore(stu);
-        System.out.print(stu.getScore());    //【运行结果】：90
-    }
-
-    public static void raiseScore(Student s) {
-        s.setScore(s.getScore() + 10);
-    }
-}
-</code></pre><h4 id="过程解析-1"><a href="#过程解析-1" class="headerlink" title="过程解析"></a>过程解析</h4><ul>
-<li>s被赋予stu值的拷贝，这里是一个对象的引用</li>
-<li>raiseScore方法应用于这个应用。s和stu指向同一对象，该对象的分数增加了10</li>
-<li>raiseScore方法结束后，s不再使用，stu指向的那个对象分数增加了10</li>
-</ul>
-<p><img src="/post_image/java-chuandi/yinyongchuandi.jpg" alt="yinyongchuandi"></p>
-<h3 id="为什么说Java没有引用传递"><a href="#为什么说Java没有引用传递" class="headerlink" title="为什么说Java没有引用传递"></a>为什么说Java没有引用传递</h3><pre><code>class Student {
-
-    private float score;
-
-    public Student(float score) {
-        this.score = score;
-    }
-
-    public void setScore(float score) {
-        this.score = score;
-    }
-
-    public float getScore() {
-        return score;
-    }
-}
-
-public class ParamTest {
-    public static void main(String[] args) {
-        Student a = new Student(0);
-        Student b = new Student(100);
-
-        System.out.println(&quot;交换前：&quot;);        
-        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
-
-        swap(a, b);
-
-        System.out.println(&quot;交换后：&quot;);
-        System.out.println(&quot;a的分数：&quot; + a.getScore() + &quot;--- b的分数：&quot; + b.getScore());        //【运行结果】：a的分数：0.0--- b的分数：100.0
-    }
-
-    public static void swap(Student x, Student y) {
-        Student temp = x;
-        x = y;
-        y = temp;
-    }
-}
-</code></pre><p>可以看出，上述代码运行后，a，b并没有实现交换。</p>
-<h4 id="过程解析-2"><a href="#过程解析-2" class="headerlink" title="过程解析"></a>过程解析</h4><p><img src="/post_image/java-chuandi/swap1.jpg" alt="swap1"><br><img src="/post_image/java-chuandi/swap2.jpg" alt="swap2"><br><img src="/post_image/java-chuandi/swap3.jpg" alt="swap3"></p>
-<p>从这个过程中可以看出，<strong>严格来讲，Java采用的不是引用调用</strong>。实际上，对象引用进行的是值传递，只不过是传递的对象的地址。</p>
-<p><strong>Java中引用传递更类似 C++ 中指针作为参数</strong>. C++ 中指针是一个变量，只不过这个变量存储的是一个地址，指向内存的一个存储单元；而引用跟原来的变量实质上是同一个东西，只不过是原变量的一个别名而已.</p>
-<p>总结一下java中方法参数的使用情况：</p>
-<ul>
-<li>一个方法不能修改一个基本数据类型的参数(即数值型和布尔型)</li>
-<li>一个方法可以改变一个对象中变量的值</li>
-<li>一个方法不能让对象参数引用一个新的对象</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Java值传递&quot;&gt;&lt;a href=&quot;#Java值传递&quot; class=&quot;headerlink&quot; title=&quot;Java值传递&quot;&gt;&lt;/a&gt;Java值传递&lt;/h3&gt;&lt;p&gt;指的是在方法调用时，传递的参数是按值的拷贝传递。此时内存中存在&lt;strong&gt;两个&lt;/strong&gt;相等的基本类型，即实际参数和形式参数，后面方法中的操作都是对形参这个值的修改，不影响实际参数的值.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public class ParamTest {
-    public static void main(String[] args) {
-        int price = 5;
-        doubleValue(price);
-        System.out.print(price);    //【输出结果】: 5
-    }
-
-    public static void doubleValue(int x) {
-        x = 2 * x;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="java" scheme="http://mjackie.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Data Matrix 解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg00019ehs6347ghh08/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg00019ehs6347ghh08/</id>
-    <published>2017-05-27T05:00:00.000Z</published>
-    <updated>2017-07-31T11:28:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
-<p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
-<p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
-<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br><a id="more"></a></p>
-<h3 id="Data-Matrix-检测算法"><a href="#Data-Matrix-检测算法" class="headerlink" title="Data Matrix 检测算法"></a>Data Matrix 检测算法</h3><p>之前文章我们已经介绍过二维码的解码流程，本篇文章主要介绍Data Matrix Detect 算法，也就是如何从一幅图片中找出符号码的部分。</p>
-<p>Data Matrix 不同于有显示定位符的二维码，例如 QR 码。所以定位符号图像的方式较为低效，即从图像中心向四周搜索，直到框住整个符号图像。这种检测方式也限定了图像中心区域必须为符号图像，否则则会检测失败。</p>
-<p>检测步骤分为如下几步：</p>
-<ol>
-<li><p><strong>大致划出符号图像的位置。</strong>从图像中间画一个小矩形框，然后依次向四边推行，检测四边上是否有黑色的点，直到每一边都没有黑色的点为止。</p>
-<p> 最终检测完四条边就会得到符号图像的大致位置。<br> <img src="/post_image/datamatrix/datamatrix2.jpg" alt="datamatrix2"></p>
-</li>
-<li><p><strong>找寻符号图像四个顶点。</strong>大致范围确定以后就需要确定符号图像四个角的顶点，有了四个角的顶点就可以进行透视变换，符号码图像也就能够取出。首先在大检测框的四个角用斜45度的直线去检测，如下图所示：</p>
-<p> <img src="/post_image/datamatrix/datamatrix3.jpg" alt="datamatrix3"></p>
-</li>
-<li><p><strong>确定顶点方位和纬度。</strong><br>DataMatrix符号图像边缘的一圈成两个L形，一个L是实线，一个L是虚线。搜索的方法就是沿4条边的直线进行黑白变换次数的检测。黑白变换次数少的就是实线的边，多的就是虚线的边，再去找两个L形的交点，就确定了左下角和右上角这两点，然后再经过两点间距离的比较确定出四个顶点。</p>
-<p> <img src="/post_image/datamatrix/datamatrix4.jpg" alt="datamatrix4"></p>
-<p> 纬度就是符号的一边上有多少个模块，计算方法就是去找虚线定位符那一边有多少次黑白变换（DataMatrix的纬度都是偶数，所以要进行误差修正）。纬度计算出来了就可以知道每个模块的宽度，再由此就可以计算出四条边分别有多少个模块。这样就可以计算出符号的长宽比，就能够确定是长方形还是正方形。</p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Data-Matrix&quot;&gt;&lt;a href=&quot;#Data-Matrix&quot; class=&quot;headerlink&quot; title=&quot;Data Matrix&quot;&gt;&lt;/a&gt;Data Matrix&lt;/h3&gt;&lt;p&gt;Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。&lt;/p&gt;
-&lt;p&gt;Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。&lt;/p&gt;
-&lt;p&gt;定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/post_image/datamatrix/datamatrix.png&quot; alt=&quot;datamatrix&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ccnSim 模拟器</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vg2001cehs6ib8amhgq/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vg2001cehs6ib8amhgq/</id>
-    <published>2017-04-08T13:22:00.000Z</published>
-    <updated>2017-08-15T13:16:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
-<h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
-<ul>
-<li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
-<li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
-<li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
-<li>执行仿真</li>
-</ul>
-<a id="more"></a>
-<h2 id="OMNeT-简介"><a href="#OMNeT-简介" class="headerlink" title="OMNeT ++ 简介"></a>OMNeT ++ 简介</h2><p>既然想要读懂 ccnSim 的代码，首先要对 Omnet++ 有所了解。OMNeT++是一个免费的、开源的多协议网络仿真软件，在网络仿真领域中占有十分重要的地位。</p>
-<ul>
-<li>OMNeT + + 是基于模块化的，最底层不可分割的模块是简单模块（ simple modules），简单模块可以组成复合模块（ compound modules）。</li>
-<li>在 OMNeT + + 平台上，用户使用 NED 语言来定义组件的结构，一般一个组件（.h 和其对应的 .cc 文件）同时对应一个.net文件</li>
-<li>组件之间通过 Message 进行交互，<code>handleMessage()</code> 方法用来处理消息</li>
-</ul>
-<p>不了解 Omnet++ 的可以先读一下软件的 Manual 文档和软件包中附带的 tictoc 示例代码</p>
-<h2 id="ccnSim-架构"><a href="#ccnSim-架构" class="headerlink" title="ccnSim 架构"></a>ccnSim 架构</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>在了解相应代码之前，我们首先需要了解一下 ccnSim 作者在面向对象编程时的思路。</p>
-<ul>
-<li>网络由各个节点组成，每个节点都是一个 <code>core_layer</code> 对象，<code>core_layer</code> 又包含了 <code>base_cache</code> 和 <code>strategy_layer</code> 两个对象。</li>
-<li>每个节点可以连接0个或1个 client ,client 代表一组用户，可以向网络发起内容请求。</li>
-<li>用户可以在配置文件中设置相关的仿真参数，决定相应的缓存策略，路由策略<br><img src="/post_image/ccnSim.png" alt="ccnSim"></li>
-</ul>
-<h3 id="目录，核心文件介绍"><a href="#目录，核心文件介绍" class="headerlink" title="目录，核心文件介绍"></a>目录，核心文件介绍</h3><ul>
-<li>include: 包含程序的头文件，多数.h文件对应 src 文件夹下的 .cc 文件<ul>
-<li>ccnsim.h 是程序的入口文件，定义了一些全部变量，数据结构及相应的处理方法</li>
-<li>需要注意的是<strong>缓存决策</strong>方法的源代码文件都在此目录下，直接在.h文件中定义了方法，没有与之对应的 src 文件。例如 ProbCache 算法对应 <code>prob_cache.h</code> 文件，LCD 算法对应 <code>lcd_policy.h</code> 文件</li>
-</ul>
-</li>
-<li>modules： 模型文件（.ned）目录，所有的模型都由三个文件组成（<code>.ned</code>模型文件，<code>.h</code>声明文件，<code>.cc</code>源代码文件），目录结构与 src 一样，在 src 目录下统一介绍</li>
-<li>networks：测试用的网络拓扑结构文件（<code>.ned</code>）目录</li>
-<li>packets： 定义的交换信息格式文件存放的目录。定义时仅需定义 <code>.msg</code> 文件，对应的 <code>.cc</code> 和 <code>.h</code> 文件会在编译时自动产生</li>
-<li>results 仿真实验结果数据存放目录</li>
-<li>src 源代码目录<ul>
-<li>clients <ul>
-<li><code>client.cc</code> 定义 client 对象，client 会发起请求，处理返回的 data 数据，以及相应的数据统计</li>
-</ul>
-</li>
-<li>content<ul>
-<li><code>content_distribution.cc</code>  实现了内容初始化。初始化内容源仓库，内容分配等</li>
-<li><code>zipf.cc</code> 实现内容 zipf 分布</li>
-</ul>
-</li>
-<li>node<ul>
-<li>cache ： 替换算法目录<ul>
-<li><code>base_cache.cc</code>: base_cache 对象作为节点缓存空间的承载体，是<strong>其他缓存替换算法的父类</strong>。实现了缓存存取，查找的功能。</li>
-<li><code>fifo_cache.cc</code>： 先进先出替换算法</li>
-<li><code>lru_cache.cc</code>: 近期最少使用替换算法</li>
-<li><code>random_cache.cc</code>: 随机替换算法</li>
-</ul>
-</li>
-<li>strategy： 路由策略代码目录<ul>
-<li><code>strategy_layer.cc</code>： 路由算法的父类，初始化FIB</li>
-<li><code>MonopathStrategyLayer.cc</code>： 继承自<code>strategy_layer.cc</code> <strong>多数路由算法继承此类</strong>定义了路径选择方法等</li>
-<li><code>spr.cc</code> ： 最近路由策略算法，将请求路由至最近的内容源仓库</li>
-</ul>
-</li>
-<li><code>core_layer.cc</code>: <strong>节点的承载对象</strong>，处理请求（interest）与数据（data）</li>
-</ul>
-</li>
-<li>statistics<ul>
-<li><code>statistics.cc</code>: 统计代码，定义了统计规则，对仿真进行数据统计</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>omnetpp.ini</code>： 仿真配置文件，omnetpp 的配置文件语法规则</li>
-</ul>
-<h3 id="请求内容"><a href="#请求内容" class="headerlink" title="请求内容"></a>请求内容</h3><p>client 通过生成一个0到1的随机数，通过zipf函数，得到该分布概率下的最有一个内容。如果把内容按热度排序，那么从1到n的热度内容概率分布是这个随机数，n就是要发起请求的内容。<br>INTEREST 中的 chunk 由 id + number 组成，第一个 number 为0</p>
-<h3 id="LRU-替换算法"><a href="#LRU-替换算法" class="headerlink" title="LRU 替换算法"></a>LRU 替换算法</h3><p>LRU 替换算法通过一个哈希表和一个双向链表实现。哈希表记录内容号，用于快速查找。双向链表通过两个指针分别记录刚被使用的和最久未被使用的。</p>
-<pre><code>lru_pos* lru; //least recently used item
-lru_pos* mru; //most recently used item
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。&lt;/p&gt;
-&lt;h2 id=&quot;什么是-ccnSim&quot;&gt;&lt;a href=&quot;#什么是-ccnSim&quot; class=&quot;headerlink&quot; title=&quot;什么是 ccnSim&quot;&gt;&lt;/a&gt;什么是 ccnSim&lt;/h2&gt;&lt;p&gt;ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。&lt;br&gt;ccnSim 模拟步骤以下三个阶段：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;编译 ccnSim 源文件， 链接 Omnet + + 框架&lt;/li&gt;
-&lt;li&gt;编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)&lt;/li&gt;
-&lt;li&gt;初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。&lt;/li&gt;
-&lt;li&gt;执行仿真&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="icn" scheme="http://mjackie.github.io/tags/icn/"/>
-    
-      <category term="c++" scheme="http://mjackie.github.io/tags/c/"/>
-    
-      <category term="c" scheme="http://mjackie.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网站作品展示</title>
-    <link href="http://mjackie.github.io/Tech/cjera9vgc0020ehs6655syl4o/"/>
-    <id>http://mjackie.github.io/Tech/cjera9vgc0020ehs6655syl4o/</id>
-    <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-31T13:21:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
-<h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"><br><a id="more"></a></p>
-<h5 id="支教邦"><a href="#支教邦" class="headerlink" title="支教邦"></a>支教邦</h5><p><img src="/post_image/web-zuopin/zhijiaobang.png" alt="image"><br><!--more--></p>
-<h5 id="特种功能材料重点实验室"><a href="#特种功能材料重点实验室" class="headerlink" title="特种功能材料重点实验室"></a>特种功能材料重点实验室</h5><p><img src="/post_image/web-zuopin/cailiaolab.png" alt="image"></p>
-<h5 id="民生学院人力资源部"><a href="#民生学院人力资源部" class="headerlink" title="民生学院人力资源部"></a>民生学院人力资源部</h5><p><img src="/post_image/web-zuopin/renliiziyuan.png" alt="image"></p>
-<h5 id="民生学院纪检监察网"><a href="#民生学院纪检监察网" class="headerlink" title="民生学院纪检监察网"></a>民生学院纪检监察网</h5><p><img src="/post_image/web-zuopin/jijianjiancha.png" alt="image"></p>
-<h5 id="艺术传媒学院"><a href="#艺术传媒学院" class="headerlink" title="艺术传媒学院"></a>艺术传媒学院</h5><p><img src="/post_image/web-zuopin/yishuchuanmei.png" alt="image"></p>
-<h5 id="医学院"><a href="#医学院" class="headerlink" title="医学院"></a>医学院</h5><p><img src="/post_image/web-zuopin/yixueyuan.png" alt="image"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。&lt;/p&gt;
-&lt;h5 id=&quot;民生学院财务部&quot;&gt;&lt;a href=&quot;#民生学院财务部&quot; class=&quot;headerlink&quot; title=&quot;民生学院财务部&quot;&gt;&lt;/a&gt;民生学院财务部&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/post_image/web-zuopin/caiwubu.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
     
   </entry>
   

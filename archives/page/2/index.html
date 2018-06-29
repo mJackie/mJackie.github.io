@@ -69,187 +69,174 @@
 	
 
 		
-	<article id="post-perl解析pcap文件" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-hadoop" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         11/25
+	         3/24
 	        </div>
 	        <div class="post_t_u">
-	         2017
+	         2018
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgf0026ehs6s042fj2a/">perl解析pcap文件</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkikc001bktogltm0pxyi/">Hadoop 笔记</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/pcap/">pcap</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/perl/">perl</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/大数据/">大数据</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>关于<code>Pcap</code>文件解析的方法网上有很多相关文章，<code>Pcap</code>文件的格式以及使用<code>Wireshark</code>查看Pcap文件的方法也都有详细教程。然而利用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析的相关代码和文章并没有。本文介绍了如何使用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析。</p>
-<h4 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h4><p> <code>Net::Pcap</code> 模块封装了用于解析Pcap文件的一些方法，首先介绍如何使用CPAN安装 <code>Net::Pcap</code>模块。</p>
-<pre><code>//CPAN相关命令
-//获得帮助　 
-cpan&gt;h　 
-
-//列出CPAN上所有模块的列表　 
-cpan&gt;m　 
-
-//安装模块　 
-cpan&gt;install　Net::Pcap 
-
-//退出　 
-cpan&gt;q　 
-</code></pre><p>　<br>
-	          	<p class="read-more"><a href="/Tech/cjera9vgf0026ehs6s042fj2a/">+ MORE</a></p>
+	        	<h2 id="Hadoop基础及演练"><a href="#Hadoop基础及演练" class="headerlink" title="Hadoop基础及演练"></a>Hadoop基础及演练</h2><h3 id="Hadoop-优点"><a href="#Hadoop-优点" class="headerlink" title="Hadoop 优点"></a>Hadoop 优点</h3><ul>
+<li>高扩展</li>
+<li>低成本</li>
+<li>成熟的生态圈<blockquote>
+<ul>
+<li>HIVE 降低了Hadoop使用门槛，可以将SQL语句转化为Hadoop任务</li>
+<li>HBase 是一个存储结构化数据的分布式数据库，放弃了事务特性，追求更高的特战，HBase提供数据的随机读写和实时访问，实现了对表数据的读写功能</li>
+<li>Zookeeper 监控Hadoop集群的一个状态，管理集群配置，维护节点间数据的一致性</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><ol>
+<li>安装JDK</li>
+<li>安装Hadoop</li>
+<li><p>配置Hadoop</p>
+<p>conf/start-all.sh</p>
+<pre><code>jps 查看本地启动进程
+</code></pre></li>
+</ol>
+<h3 id="HDFS-优点"><a href="#HDFS-优点" class="headerlink" title="HDFS 优点"></a>HDFS 优点</h3><ul>
+<li>适合大文件存储，支持TB、PB级的数据存储，并有副本策略</li>
+<li>可以构建在廉价的机器上，并有一定的容错和恢复机制</li>
+<li>支持流式数据访问，一次写入，多次读取最高效</li>
+</ul>
+<h3 id="HDFS-缺点"><a href="#HDFS-缺点" class="headerlink" title="HDFS 缺点"></a>HDFS 缺点</h3><ul>
+<li>不适合大量小文件存储</li>
+<li>不适合并发写入，不支持文件随机修改</li>
+<li>不支持随机读低延时的访问方式</li>
+</ul>
+	          	<p class="read-more"><a href="/Tech/cjizmkikc001bktogltm0pxyi/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-透视变换" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-实习面试" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         10/7
+	         3/15
 	        </div>
 	        <div class="post_t_u">
-	         2017
+	         2018
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgp002yehs6jarwtj13/">图像透视变换</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。</p>
-<p>记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。</p>
-<p>透视变换的通用公式是：</p>
-<p><img src="/post_image/toushibianhuan/1.png" alt="image"><br>其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为  <code>x=x&#39;/w&#39;,y=y&#39;/w&#39;</code> 。变换矩阵中， <code>a11,a12,a21,a22</code> 表示线性变换， <code>a31,a32</code> 表示平移， <code>a13,a23</code> 表示透视变换。<br>
-	          	<p class="read-more"><a href="/Tech/cjera9vgp002yehs6jarwtj13/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-开学" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         9/11
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/cjera9vgm002oehs6xlmn4t29/">好好学习，天天向上！</a></h2>
+		    <h2 class="post_h"><a href="/Life/cjizmkikr002dktogj1fqkdv8/">实习面试</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Life/">Life</a>
-		      
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法-机器学习/">算法, 机器学习</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。</p>
-<p>半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：</p>
-<ul>
-<li>科研工作的尝试</li>
-</ul>
-<p>从对科研工作的陌生与懵懂到了解与尝试，并试图提出自己的想法。在这个过程中，阅读文献的能力提高了，了解了期刊会议文章的组织结构。如何快速了解一篇文章的核心思想，找到自己的关注点。如何检索，下载自己所关注领域的文章。同时，自己的逻辑思维能力得到了锻炼，分析总结别人方法的优缺点，找到问题所在，并尝试提出自己的看法。这是一个不断尝试与修改的过程。每一个灵感的迸发与产生都是一次思维的升级。对科研工作也有了进一步的认识，科研所需的不仅仅是代码能力，学习能力的体现，而是一种综合能力的体现。写作能力，英语素质以及发现问题总结问题的能力都是科研中很重要的一部分。没有人会打开你的脑子看到你的想法，你要表达出来，写出来！</p>
-<ul>
-<li>工程项目的体会</li>
-</ul>
-<p>体会了一个实际项目从可行性分析到项目开发，性能优化，直到最后交付的过程。核心功能的开发时间反而比性能，可用性优化的时间要短。一个项目的完成，不仅仅是功能的实现，还要保证兼容性，性能，文档等多个方面的完成。在项目开发的过程中，自己读代码的能力也得到了明显的提升。阅读优秀的开源代码可以体会到别人的编程思想。读懂了别人的代码，才能在此基础上实现自己的需求。最后一点体会就是不要害怕困难，简单的问题，做着很开心，但收货往往很少。越是困难的问题，硬着头皮做下去，收获往往很大。</p>
-<ul>
-<li>小伙伴</li>
-</ul>
-<p>最大的收货莫过于朋友与友谊。还记得刚到所里的那几天，陌生的环境让我很不适应，大家仿佛都各行其是，似乎一下从学生阶段到了工作阶段，孤独感油然而生。渐渐的认识了许多同为大四提前入所的学生，和他们一起聚餐，一起出游，一起打游戏，让我渐渐找到了归属感。遇到他们，我真幸运！<br>特别要感谢我的导师张瀚文老师的关怀与指导，感谢课题组的每一位老师。</p>
-<p>新学期，新气象。上周一连开了三个开学典礼，院里的，所里的和学校的，认识了许多新同学，熟悉了校园新环境。安逸的环境似乎让自己放松了警惕，也变得些许懒散。</p>
-<p>时光易逝，要时刻督促自己不要浪费时光。希望在接下来的一年时间里能够</p>
-<p>好好学习！</p>
-<p>天天向上！</p>
-
-	        	<p class="read-more"><a> <br/></a></p>
+	        	<p>过完年回来开始准备找实习，才发现自己把寒假的时间都浪费了，什么事情都没有干。本来打算寒假准备一下，到北京直接开始面试的，没想到计划赶不上变化。分析原因可能来自两方面，一是作为研一新生，在家和校园里还没有感受到现实与工作的压力；二是自己本身自控能力就差吧，这也是老毛病了。</p>
+<p>终于还是到了北京，在双坤租的房子里待了将近一个星期。忽然到一个陌生的环境，让自己很不自在，也感受到了强烈的现实压迫感，好像忽然就要毕业了一样，每过一天，都像是自己失去了许多原本拥有的东西。不过这样也好，人无远虑，必有近忧，提早感受一下毕业找工作的压力，总比天天颓废堕落好了许多。</p>
+<p>急急忙忙写完了选修课的作业，花了一天时间做了份简历，开始在实习僧和拉勾网上投简历，也逐渐收到了各个公司HR打来的电话。主要投的就是机器学习算法岗，但其实自己是没有什么机器学习相关实际项目经验的，这也是我一直心虚的地方。</p>
+	          	<p class="read-more"><a href="/Life/cjizmkikr002dktogj1fqkdv8/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-利用Selenium爬取网络数据" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-算法课程笔记" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         8/27
+	         1/30
 	        </div>
 	        <div class="post_t_u">
-	         2017
+	         2018
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgg0028ehs6vjr3mj7d/">利用Selenium爬取网络数据</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkil5003kktog1lvxgub2/">算法课程笔记</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Selenium/">Selenium</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
-<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
-sudo apt-get update        #更新下apt-get库否则下载pip会出错
-sudo apt-get install python-pip        #默认是8.1.1
-sudo pip install selenium    #安装selenium
-sudo apt-get install firefox
-sudo apt-get install xvfb
-sudo pip install pyvirtualdisplay
-下载 geckodriver        https://github.com/mozilla/geckodriver/releases
-sudo chmod a+w geckodriver
-</code></pre>
-	          	<p class="read-more"><a href="/Tech/cjera9vgg0028ehs6vjr3mj7d/">+ MORE</a></p>
+	        	<h3 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h3><p>分治问题复杂度计算</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="/post_image/algo-note/DC.jpeg" alt="DC"></h3>
+	          	<p class="read-more"><a href="/Tech/cjizmkil5003kktog1lvxgub2/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-VBA" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-卜东波算法课程作业" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         8/19
+	         1/24
 	        </div>
 	        <div class="post_t_u">
-	         2017
+	         2018
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vfz0016ehs6sndmpcs2/">利用 VBA 处理 Excel 数据</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkikm0022ktogjsqkygt8/">卜东波算法课程作业</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/vba/">vba</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/数据处理/">数据处理</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/latex/">latex</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。</p>
-<p>VBA 编写的宏命令可以取代手动对 Excel 的大量操作，也可以实现 Excel 未提供的函数。相比其他语言， VBA 天然的支持 Excel 大规模数据处理，对 Excel 格式数据处理更快，省去了格式字符匹配等问题。同时 VBA 可与 Excel 中自带的函数混合使用，提高了易用性。</p>
-	          	<p class="read-more"><a href="/Tech/cjera9vfz0016ehs6sndmpcs2/">+ MORE</a></p>
+	        	<p>本学期的算法课程作业，一共6次，用LaTex完成。卜老师的算法课深入浅出，本学期的所有课程都由卜老师亲自授课，课程内容不仅包含面试中常见的分治、动规、贪心等方法，还详细介绍了线性规划、网络流、NP问题等内容。非常高质量密度的一门课，感谢卜东波老师。</p>
+<p><img src="/post_image/bdb-assign-answer/a_1.jpeg" alt="image"></p>
+	          	<p class="read-more"><a href="/Tech/cjizmkikm0022ktogjsqkygt8/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-LTY-Search" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         1/6
+	        </div>
+	        <div class="post_t_u">
+	         2018
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjizmkijx0007ktogpsf6a8yu/">基于Lucene、Servlet新闻搜索引擎</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/lucene/">lucene</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/servlet/">servlet</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>GitHub地址：<a href="https://github.com/mJackie/LTY-Search">https://github.com/mJackie/LTY-Search</a><br>详细文档参见 <a href="https://github.com/mJackie/LTY-Search/blob/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.pdf">设计文档</a><br><img src="/post_image/LTY-Search/index.png" alt="image"></p>
+	          	<p class="read-more"><a href="/Tech/cjizmkijx0007ktogpsf6a8yu/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -257,7 +244,7 @@ sudo chmod a+w geckodriver
 
 
   <nav id="page_nav">
-    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/3/">下一页</a>
   </nav>
 
 

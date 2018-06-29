@@ -81,46 +81,93 @@
         </div>
         <div class="archives">
     
-    	<article id="post-快速切换IP地址" class="article post article-type-post" itemscope itemprop="blogPost">
+    	<article id="post-The First ASM" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         7/21
+	         10/29
 	        </div>
 	        <div class="post_t_u">
 	         2014
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgn002rehs6zhwiomko/">快速切换IP地址</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkik90010ktogazr3emm3/">The First ASM</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
+	        	<p>写的第一个汇编程序，发出来纪念一下。</p>
 <hr>
-<p>自动获取IP：</p>
-<pre><code>@echo off
-cls
-Echo **********************************************************
-Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
-Echo **********************************************************
-netsh interface ip set address name=&quot;以太网&quot; source=dhcp
-netsh interface ip delete dns &quot;以太网&quot; all
-::将“以太网”换为网络连接名称
-ipconfig /flushdns
-ipconfig /all
-Echo **********************************************************
-Echo          OK！！已修改成功！请按任意键退出…………
-Echo          谢谢您的使用!Design By Liu
-Echo **********************************************************
-Pause
+<pre><code>;试编写程序，完成下面公式的计算。
+;A ←（X-Y+24）/ Z 的商，B ←（X-Y+24）/ Z 的余数
+;其中，变量 X 和 Y 是 32 位有符号数，变量 A、B、Z 是 16 位有符号数。
+
+DATA SEGMENT
+X DD 481
+Y DD 240
+A DW ?
+B DW ?
+Z DW 24
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME DS: DATA, CS: CODE
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, word ptr ds:[0]
+    MOV DX, word ptr ds:[2]
+    MOV BX, word ptr ds:[4]
+    MOV CX, word ptr ds:[6]
+    SUB AX, BX
+    SBB DX, CX
+    ADD AX, 24
+    ADC DX, 0
+    MOV BX, Z
+    IDIV BX
+    MOV A,AX
+    MOV B,DX
+
+    MOV AX, 4C00H
+    INT 21H
+CODE ENDS
+END START
 </code></pre>
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         10/13
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjizmkil00036ktogtvyrlzmv/">成绩查询系统</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Php/">Php</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>学校的成绩查询系统是没有排名与加权平均分的，9月份正巧在看PHP，便萌生了写个小的查询系统的想法，中间又感觉意义用途不大，停了一段时间想着算了不做了，周日闲的没事，又看了看，顺手把界面写了一下，差不多也完成了，过程也算是个练手。核心原理就是通过正则表达式查找csv文件，进行输出。还存在几个Bug，就这样吧。<br>演示地址：<a href="http://cj.liu13.com">http://cj.liu13.com</a></p>
 	        
 	      	
 	    </p>
@@ -129,33 +176,95 @@ Pause
   
     
     
-    	<article id="post-HelloWorld" class="article post article-type-post" itemscope itemprop="blogPost">
+    	<article id="post-SAE开启gzip加速" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         7/21
+	         9/16
 	        </div>
 	        <div class="post_t_u">
 	         2014
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vfj0006ehs6qmktdrf8/">Hello World!</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkik5000mktog7u9yjfeg/">SAE上博客开启gzip加速</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>网站基于Typecho0.9版，Theme基于原创作者Sloger加以修改。针对移动端做了优化。网站搭建于新浪SAE，二级域名liu13.sinaapp.com。</p>
-<p>感谢开源代码及作者。</p>
-<p>做网站不是为了博得什么，算作对过去一年大学生活交的一份作业，不求索取，过程便是最好的奖励。</p>
-<p>非同凡响，追求卓越。</p>
-<p>博客于2014年7月21日正式建立，留此纪念。</p>
-
+	        	<p>在sae上搭建博客的友友不在少数，开启SAE的gzip页面压缩，不但能提高访问速度，还能减少云豆的消耗。</p>
+<p>先来简单的介绍一下gzip压缩：<br>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
+	        
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-Typecho上的好用插件" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/7
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjizmkik9000yktogl0l7bnv9/">Typecho上的好用插件</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>typecho作为国内的博客程序，以其简洁，快速，高效的优点赢得了越来越多用户的青睐，是一个专注于博客的建站程序。<br>简洁的同时是用户需要更多功能时不得不寻找适合自己的插件，下面推荐一些我一直在用的一些好用的typcho插件：</p>
+	        
+	      	
+	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-JAVA知识点及细节注意" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/24
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjizmkijz000bktogbukvb6x4/">Typecho在SAE上的伪静态化</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>JAVA语言初学者注意的一些细节:</p>
+<hr>
+<p>◇wait醒了以后重新找锁，sleep锁还在.<br>◇static在codesegment中, 可用 类名.<em>*</em> 访问，可计数用.<br>◇static方法不能访问非静态的成员与函数.<br>◇Java使用extends关键字继承，不允许多继承.C中为:</p>
+<pre><code>class derived extends base｛...}    //java
+class derived:public base｛...}    //c
+</code></pre>
+	        
 	      	
 	    </p>
 	  </div> 
@@ -167,7 +276,7 @@ Pause
 
 
   <nav id="page_nav">
-    <a class="extend prev" rel="prev" href="/categories/Tech/page/7/">上一页</a><a class="page-number" href="/categories/Tech/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/Tech/page/6/">6</a><a class="page-number" href="/categories/Tech/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/categories/Tech/page/7/">上一页</a><a class="page-number" href="/categories/Tech/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/Tech/page/6/">6</a><a class="page-number" href="/categories/Tech/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/categories/Tech/page/9/">9</a><a class="extend next" rel="next" href="/categories/Tech/page/9/">下一页</a>
   </nav>
 
 

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Typecho在SAE上的伪静态化 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Just so so</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-Typecho在SAE上的伪静态化" class="article post article-type-post" itemscope itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         8/10
+        </div>
+        <div class="post_t_u">
+         2014
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cjizmkika0014ktogg52lxpf8/">
+    
+      Typecho在SAE上的伪静态化
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sae/">sae</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typecho/">typecho</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       <p>伪静态是相对真实静态来讲的，通常我们为了增强搜索引擎的友好面，都将文章内容生成静态页面，但是有的朋友为了实时的显示一些信息。或者还想运用动态脚本解决一些问题。不能用静态的方式来展示网站内容。但是这就损失了对搜索引擎的友好面。怎么样在两者之间找个中间方法呢，这就产生了伪静态技术。就是展示出来的是以html一类的静态页面形式。伪静态重写了URL的表现形式，实际上还是动态页面，严格意义上增加了服务器的消耗。（百度百科）</p>
+<a id="more"></a>
+<p>未实现伪静态前该篇文章的地址是：www.liu13.com/index.php/dmjs/typecho-sae-rewrite<br>实现伪静态后的地址是：www.liu13.com/typecho-sae-rewrite.html<br>下面来说一下Typecho在Sae上如何实现伪静态。</p>
+<p>开启SAE的地址重写功能,进入SAE管理的后台，在左侧功能面板中打开AppConfig，然后在AppConfig页面找到URL重写(rewrite)模块。点击“设置该项”，在弹出的对话框中，找到“确认”和“取消”按钮，在其旁边有个“高级语法”，打开。在AppConfig语法中填下以下内容：</p>
+<pre><code>- rewrite: if(!is_dir() &amp;&amp; !is_file()) goto &quot;index.php?%{QUERY_STRING}&quot;
+</code></pre><p>也可直接在代码管理中打开config.yaml文件添加到最后一行（一定要添加到最后一行）<br>进入Typecho后台&gt;&gt;设置&gt;&gt;永久链接，先修改一下文章自定义路径地址，启用地址重写功能，点击保存，出现红字提示，忽略仍然启用即可。</p>
+<p>出现红字的原因是typecho默认的方法是修改htaccess文件，而sae上用config.yaml代替了。<br>另外修改完成以后想要更换文章自定义路径地址是存在Bug的，需要先关闭地址重写功能，再更换文章自定义路径地址，再启用地址重写功能。</p>
+
+    </p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cjizmkijz000bktogbukvb6x4/" >            
+            
+              Typecho在SAE上的伪静态化
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cjizmkik3000jktogwm46a19c/" >            
+            
+              SAE域名绑定问题
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

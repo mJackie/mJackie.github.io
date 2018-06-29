@@ -69,83 +69,121 @@
 	
 
 		
-	<article id="post-Zxing Camera 调用代码解析" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-SpamMessage" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         8/13
+	         12/31
 	        </div>
 	        <div class="post_t_u">
 	         2017
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vg4001hehs6q53efr73/">Zxing Camera 调用代码解析</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkik8000vktog90dv3jwb/">垃圾短信识别系统</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/android/">android</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>Zxing 是一个开源的，支持多种一维二维条码格式的图像处理类库，用 JAVA 实现，支持多种语言接口。同时提供了 android 摄像头调用相关类库，用于手持设备的扫码解码。</p>
-<p>本文主要介绍了 Android 系统调用 Camera 实现扫码的过程解析。</p>
-<h4 id="目录及相关类"><a href="#目录及相关类" class="headerlink" title="目录及相关类"></a>目录及相关类</h4><ul>
-<li>activity: 扫码相关Activity<ul>
-<li>CaptureActivity: 扫码主界面Activity</li>
-<li>CaptureFragment: 承载预览界面SurfaceView 和取景框 ViewfinderView
-	          	<p class="read-more"><a href="/Tech/cjera9vg4001hehs6q53efr73/">+ MORE</a></p>
+	        	<p>GitHub地址：<a href="https://github.com/mJackie/SpamMessage">https://github.com/mJackie/SpamMessage</a><br>实现一个垃圾短信识别系统，在给定的数据集上验证效果.<br><img src="/post_image/SpamMessage/index.jpeg" alt="image"></p>
+	          	<p class="read-more"><a href="/Tech/cjizmkik8000vktog90dv3jwb/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-lru&amp;lfu" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-perl解析pcap文件" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         8/5
+	         11/25
 	        </div>
 	        <div class="post_t_u">
 	         2017
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vg7001rehs6u0vy2fs0/">LRU &amp; LFU 数据结构</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkikp0027ktogqgoayyp4/">perl解析pcap文件</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/pcap/">pcap</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/perl/">perl</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。</p>
-<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>LRU 即 <code>Least Recently Used</code>,最近最少使用算法。当有新内容需要缓存时,LRU 算法使用新内容替换掉最久没有使用的内容。</p>
-<p><img src="/post_image/lru&amp;lfu/lru.png" alt="image"><br>
-	          	<p class="read-more"><a href="/Tech/cjera9vg7001rehs6u0vy2fs0/">+ MORE</a></p>
+	        	<p>关于<code>Pcap</code>文件解析的方法网上有很多相关文章，<code>Pcap</code>文件的格式以及使用<code>Wireshark</code>查看Pcap文件的方法也都有详细教程。然而利用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析的相关代码和文章并没有。本文介绍了如何使用<code>Perl</code>脚本语言对<code>Pcap</code>文件进行解析。</p>
+<h4 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h4><p> <code>Net::Pcap</code> 模块封装了用于解析Pcap文件的一些方法，首先介绍如何使用CPAN安装 <code>Net::Pcap</code>模块。</p>
+<pre><code>//CPAN相关命令
+//获得帮助　 
+cpan&gt;h　 
+
+//列出CPAN上所有模块的列表　 
+cpan&gt;m　 
+
+//安装模块　 
+cpan&gt;install　Net::Pcap 
+
+//退出　 
+cpan&gt;q　 
+</code></pre><p>　<br>
+	          	<p class="read-more"><a href="/Tech/cjizmkikp0027ktogqgoayyp4/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-成绩查询系统" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-透视变换" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         7/31
+	         10/7
 	        </div>
 	        <div class="post_t_u">
 	         2017
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgk002iehs6lwkwdfmn/"></a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkil6003nktog88a1djxu/">图像透视变换</a></h2>
 		    <div class="post_tag"> 
-		      
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>透视变换（Perspective Transformation)是指利用透视中心、像点、目标点三点共线的条件，按透视旋转定律使承影面（透视面）绕迹线（透视轴）旋转某一角度，破坏原有的投影光线束，仍能保持承影面上投影几何图形不变的变换。</p>
+<p>记得本科时上的《计算机图形学》上学过图像的变换矩阵，当时还不知道有什么用，现在派上用场了。</p>
+<p>透视变换的通用公式是：</p>
+<p><img src="/post_image/toushibianhuan/1.png" alt="image"><br>其中，u，v是原始坐标点，写成增广向量形式，w=1。对应的变换后坐标为  <code>x=x&#39;/w&#39;,y=y&#39;/w&#39;</code> 。变换矩阵中， <code>a11,a12,a21,a22</code> 表示线性变换， <code>a31,a32</code> 表示平移， <code>a13,a23</code> 表示透视变换。<br>
+	          	<p class="read-more"><a href="/Tech/cjizmkil6003nktog88a1djxu/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-开学" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/11
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Life/cjizmkikv002qktogopt76z70/">好好学习，天天向上！</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      
 		    </div>
 	    </div> 
@@ -153,84 +191,64 @@
 	  <div class="post_t">
 	    <p>      
             
-	        	<h4 id="开启-关闭apache"><a href="#开启-关闭apache" class="headerlink" title="开启/关闭apache"></a>开启/关闭apache</h4><pre><code>sudo apachectl start
-sudo apachectl stop
-</code></pre>
+	        	<p>今天是17年9月11日，研究生正式上课的第一天。在这个时间节点上，总结过去半年的计算所实习经历，展望已经步入的研一校园生活。</p>
+<p>半年的计算所实习生活收获良多，受益匪浅，是一段令人难忘的时光。总结起来可以概括为三点：</p>
+<ul>
+<li>科研工作的尝试</li>
+</ul>
+<p>从对科研工作的陌生与懵懂到了解与尝试，并试图提出自己的想法。在这个过程中，阅读文献的能力提高了，了解了期刊会议文章的组织结构。如何快速了解一篇文章的核心思想，找到自己的关注点。如何检索，下载自己所关注领域的文章。同时，自己的逻辑思维能力得到了锻炼，分析总结别人方法的优缺点，找到问题所在，并尝试提出自己的看法。这是一个不断尝试与修改的过程。每一个灵感的迸发与产生都是一次思维的升级。对科研工作也有了进一步的认识，科研所需的不仅仅是代码能力，学习能力的体现，而是一种综合能力的体现。写作能力，英语素质以及发现问题总结问题的能力都是科研中很重要的一部分。没有人会打开你的脑子看到你的想法，你要表达出来，写出来！</p>
+<ul>
+<li>工程项目的体会</li>
+</ul>
+<p>体会了一个实际项目从可行性分析到项目开发，性能优化，直到最后交付的过程。核心功能的开发时间反而比性能，可用性优化的时间要短。一个项目的完成，不仅仅是功能的实现，还要保证兼容性，性能，文档等多个方面的完成。在项目开发的过程中，自己读代码的能力也得到了明显的提升。阅读优秀的开源代码可以体会到别人的编程思想。读懂了别人的代码，才能在此基础上实现自己的需求。最后一点体会就是不要害怕困难，简单的问题，做着很开心，但收货往往很少。越是困难的问题，硬着头皮做下去，收获往往很大。</p>
+<ul>
+<li>小伙伴</li>
+</ul>
+<p>最大的收货莫过于朋友与友谊。还记得刚到所里的那几天，陌生的环境让我很不适应，大家仿佛都各行其是，似乎一下从学生阶段到了工作阶段，孤独感油然而生。渐渐的认识了许多同为大四提前入所的学生，和他们一起聚餐，一起出游，一起打游戏，让我渐渐找到了归属感。遇到他们，我真幸运！<br>特别要感谢我的导师张瀚文老师的关怀与指导，感谢课题组的每一位老师。</p>
+<p>新学期，新气象。上周一连开了三个开学典礼，院里的，所里的和学校的，认识了许多新同学，熟悉了校园新环境。安逸的环境似乎让自己放松了警惕，也变得些许懒散。</p>
+<p>时光易逝，要时刻督促自己不要浪费时光。希望在接下来的一年时间里能够</p>
+<p>好好学习！</p>
+<p>天天向上！</p>
+
 	        	<p class="read-more"><a> <br/></a></p>
 	      	
 	    </p>
 	  </div> 
 	</article>
 
-	<article id="post-qrcode" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-利用Selenium爬取网络数据" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
-	         7/27
+	         8/27
 	        </div>
 	        <div class="post_t_u">
 	         2017
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vg9001uehs65ngphvci/">QR 码解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjizmkikn0025ktog9bngk041/">利用Selenium爬取网络数据</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Selenium/">Selenium</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
 		    </div>
 	    </div> 
 	  </hgroup>
 	  <div class="post_t">
 	    <p>      
             
-	        	<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
-<li>横向扫描，检测 黑白黑白黑 的组合</li>
-<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
-<li>验证是否满足1:1:3:1:1的比例</li>
-<li>检测纵向是否满足定位符特征</li>
-<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
-<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
-<li>否则继续扫描图片</li>
-<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
-<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
-<li>返回检测到的三个定位符的结果</li>
-</ul>
-	          	<p class="read-more"><a href="/Tech/cjera9vg9001uehs65ngphvci/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-换电脑后如何恢复Hexo环境" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         7/24
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjera9vgq0032ehs6770hp8wg/">换电脑后如何恢复Hexo环境</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
-
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
-nvm install stable
-</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
-</code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
-<p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
-	          	<p class="read-more"><a href="/Tech/cjera9vgq0032ehs6770hp8wg/">+ MORE</a></p>
+	        	<h4 id="Selenium-简介"><a href="#Selenium-简介" class="headerlink" title="Selenium 简介"></a>Selenium 简介</h4><p>Selenium 是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。框架底层使用 JavaScript 模拟真实用户对浏览器进行操作。测试脚本执行时，浏览器自动按照脚本代码做出点击，输入，打开，验证等操作，就像真实用户所做的一样，从终端用户的角度测试应用程序。</p>
+<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><pre><code>sudo apt-get install python默认2.7.12
+sudo apt-get update        #更新下apt-get库否则下载pip会出错
+sudo apt-get install python-pip        #默认是8.1.1
+sudo pip install selenium    #安装selenium
+sudo apt-get install firefox
+sudo apt-get install xvfb
+sudo pip install pyvirtualdisplay
+下载 geckodriver        https://github.com/mozilla/geckodriver/releases
+sudo chmod a+w geckodriver
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/cjizmkikn0025ktog9bngk041/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -238,7 +256,7 @@ nvm install stable
 
 
   <nav id="page_nav">
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
 
 
