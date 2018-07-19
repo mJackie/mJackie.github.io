@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jackie Liu&#39;s Blog</title>
-  <subtitle>Just so so</subtitle>
+  <subtitle>Born to be proud</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>逻辑回归&amp;特征框架分享</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjw003smvog8jp2hxt9/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjw003smvog8jp2hxt9/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrj0042yzoggexfhgst/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrj0042yzoggexfhgst/</id>
     <published>2018-06-23T06:50:00.000Z</published>
     <updated>2018-06-29T07:10:49.160Z</updated>
     
@@ -55,11 +55,11 @@
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="特征" scheme="http://mjackie.github.io/tags/%E7%89%B9%E5%BE%81/"/>
     
@@ -67,8 +67,8 @@
   
   <entry>
     <title>推荐系统笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjm0034mvogtws6yus7/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjm0034mvogtws6yus7/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelr9003ayzogyaoz6xeg/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelr9003ayzogyaoz6xeg/</id>
     <published>2018-05-27T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:13.071Z</updated>
     
@@ -115,18 +115,18 @@
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>特征工程</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjp003bmvog5mx0h29e/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjp003bmvog5mx0h29e/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrc003lyzog5sjrnwyk/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrc003lyzog5sjrnwyk/</id>
     <published>2018-05-10T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:23.142Z</updated>
     
@@ -181,18 +181,18 @@ good        (1, 1, 1)
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>计算广告</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjq003emvogv1fymuzq/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjq003emvogv1fymuzq/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrd003oyzogi1gjft6u/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrd003oyzogi1gjft6u/</id>
     <published>2018-04-14T02:50:00.000Z</published>
     <updated>2018-06-29T06:58:23.805Z</updated>
     
@@ -252,18 +252,18 @@ good        (1, 1, 1)
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>Spark 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bip000vmvogx7zbadr4/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bip000vmvogx7zbadr4/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqe0017yzogwqfwjslo/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqe0017yzogwqfwjslo/</id>
     <published>2018-03-29T02:50:00.000Z</published>
     <updated>2018-06-29T07:15:01.825Z</updated>
     
@@ -464,18 +464,18 @@ var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>Hadoop 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bj0001lmvog3tetixbw/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bj0001lmvog3tetixbw/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqo001tyzogjocrfukf/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqo001tyzogjocrfukf/</id>
     <published>2018-03-24T02:50:00.000Z</published>
     <updated>2018-06-29T07:13:48.914Z</updated>
     
@@ -660,18 +660,18 @@ yarn application -kill appid
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="计算广告" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
       <category term="大数据" scheme="http://mjackie.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>实习面试</title>
-    <link href="http://mjackie.github.io/Life/cjizn2bjh002omvogcrf9g7zj/"/>
-    <id>http://mjackie.github.io/Life/cjizn2bjh002omvogcrf9g7zj/</id>
+    <link href="http://mjackie.github.io/Life/cjjskelr80037yzogpthm1dxn/"/>
+    <id>http://mjackie.github.io/Life/cjjskelr80037yzogpthm1dxn/</id>
     <published>2018-03-14T16:09:00.000Z</published>
     <updated>2018-06-29T06:45:26.071Z</updated>
     
@@ -745,8 +745,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjs003imvogzkmlumdo/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjs003imvogzkmlumdo/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrg003vyzogkemt8foc/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrg003vyzogkemt8foc/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -840,8 +840,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bje002fmvogobmrvlgb/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bje002fmvogobmrvlgb/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelt4005wyzogp4g9pbz4/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelt4005wyzogp4g9pbz4/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -897,8 +897,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2big000dmvogf03v3kk6/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2big000dmvogf03v3kk6/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelp8000ayzogy4ggdyd7/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelp8000ayzogy4ggdyd7/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -956,8 +956,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bio000tmvogj3j5k0yd/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bio000tmvogj3j5k0yd/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqy002iyzogx451zwqh/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqy002iyzogx451zwqh/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -1048,16 +1048,16 @@ $ python Classifiers.py
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="机器学习" scheme="http://mjackie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bj70020mvogqe96f1ez/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bj70020mvogqe96f1ez/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrb003hyzogl2dsuyzy/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrb003hyzogl2dsuyzy/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -1298,8 +1298,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjv003pmvogyz4j5ze7/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjv003pmvogyz4j5ze7/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelrh003zyzogb1yqy2lt/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelrh003zyzogb1yqy2lt/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -1433,8 +1433,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjizn2bji002rmvogx9e1mhbb/"/>
-    <id>http://mjackie.github.io/Life/cjizn2bji002rmvogx9e1mhbb/</id>
+    <link href="http://mjackie.github.io/Life/cjjskelr3002wyzogklztswbq/"/>
+    <id>http://mjackie.github.io/Life/cjjskelr3002wyzogklztswbq/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -1474,8 +1474,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjd002cmvogu0dnsqfl/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjd002cmvogu0dnsqfl/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqz002lyzoghzb9yh3b/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqz002lyzoghzb9yh3b/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -1585,8 +1585,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2biu0018mvog87k27ero/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2biu0018mvog87k27ero/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelql001myzogc8n0657h/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelql001myzogc8n0657h/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -1670,8 +1670,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2biv001bmvogip22zdn6/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2biv001bmvogip22zdn6/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqn001qyzogyql6va6n/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqn001qyzogyql6va6n/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.000Z</updated>
     
@@ -1779,8 +1779,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bj6001xmvogll5nnnp8/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bj6001xmvogll5nnnp8/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqu0027yzog81689pwi/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqu0027yzog81689pwi/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.000Z</updated>
     
@@ -1812,8 +1812,8 @@ message.sendToTarget();
   
   <entry>
     <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bj80023mvogdqrr0351/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bj80023mvogdqrr0351/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelqw002byzogl12ftxtj/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelqw002byzogl12ftxtj/</id>
     <published>2017-07-26T16:00:00.000Z</published>
     <updated>2017-07-31T13:23:50.000Z</updated>
     
@@ -1860,16 +1860,16 @@ int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为
       <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
     
     
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+    
+      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cjizn2bjl002zmvogmhtalghd/"/>
-    <id>http://mjackie.github.io/Tech/cjizn2bjl002zmvogmhtalghd/</id>
+    <link href="http://mjackie.github.io/Tech/cjjskelr60034yzogfbulk11a/"/>
+    <id>http://mjackie.github.io/Tech/cjjskelr60034yzogfbulk11a/</id>
     <published>2017-07-24T11:43:00.000Z</published>
     <updated>2018-02-03T11:14:44.410Z</updated>
     
