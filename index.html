@@ -69,6 +69,55 @@
 	
 
 		
+	<article id="post-jmeter" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         9/6
+	        </div>
+	        <div class="post_t_u">
+	         2018
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjpqya0iq001fp7kf8eqnp82d/">压力测试与jmeter</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>组里项目项目需要接触的web压力测试相关的内容，在这里总结一波。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>性能测试从广义上讲分为压力测试、负载测试、强度测试、并发(用户)测试、大数据量测试、配置测试、可靠性测试等。压力测试是通过对被测系统不断加压，来发现该系统在什么条件下变得不可承受，从而获得系统能提供的最大服务级别的测试。查出程序对异常情况的抵抗能力，找出性能瓶颈。从本质上说，测试者是想破坏程序。目前一般压力测试都借助自动测试工具。 </p>
+<h4 id="性能测试常见术语"><a href="#性能测试常见术语" class="headerlink" title="性能测试常见术语"></a>性能测试常见术语</h4><p>性能测试中常见的术语主要有吞吐量、吞吐率、请求响应时间、事务响应时间、 并发、并发用户数量、点击率、资源利用率等</p>
+<ul>
+<li>吞吐量：指在一次性能测试过程中网络上传输数据量的总和</li>
+<li>吞吐率(Throughput)：单位时间内网络上传输的吞吐量，是衡量网络性能的重要指标</li>
+<li>请求响应时间：指从客户端发送一个请求开始计时到客户端接收到从服务器端返回最后一个 响应结果为止所消耗的时间 </li>
+<li>并发用户数量：并发主要针对服务器而言，是否并发的关键是看用户的操作是否对服务器产生了 影响。因此，并发用户数量是指在同一时刻与服务器进行交互的在线用户数量。这些 用户的特征是和服务器发生了交互，这种交互既可以是单向的数据传送，也可以是双 向的数据传送</li>
+<li>事务(Transaction): 用户在网页上的每一个操作都可以定义为一个事务。事务有可能是由一个请求组成，也可能是由几个请求组成。例如，我们在脚本中有一个数据 查询操作，为了衡量服务器执行查询操作的性能，我们把这个操作定义为一个事务。事务响应时间就是指用户为完成某个事务所需要的时间。它是衡量系统性能的重要指标</li>
+</ul>
+<h4 id="Jmeter"><a href="#Jmeter" class="headerlink" title="Jmeter"></a>Jmeter</h4><p>调研了主流的压力测试工具：微软的loadrunner和apache的jmeter。最终选用了jmeter，一是因为jemeter是apache下的开源项目，方便改写和二次开发，二是jmeter对于Web压力测试这块功能和组件非常完善，基本可以满足已有的各种需求。</p>
+<p>jmeter可用来测试静态资源请求和Web动态应用程序的性能。通过向预部署系统施加不同强度的工作负载来评估系统性能和用户体验。支持多种应用/服务类型压力、性能测试：</p>
+<ul>
+<li>Web - HTTP, HTTPS (Java, NodeJS, PHP, ASP.NET, …)</li>
+<li>SOAP / REST Webservices</li>
+<li>FTP</li>
+<li>Database via JDBC</li>
+</ul>
+<p>jmeter 可以通过GUI界面编写相应的脚本，进行测试。在高并发性能测试下，一般通过命令行参数来指定相应的配置文件，启动测试。jemeter支持测试报告模板编辑与导出功能，可生成html格式的测试报告文件。</p>
+<p>jmeter依靠用户编写的测试例脚本来执行相应的测试，配置文件实际上是xml格式，但以<code>.jmx</code>结尾。测试例脚本由各个组件组成，每个组件都可以配置相应的参数。</p>
+<p>测试组边包括线程组，控制器，监听器，定时器，断言，配置元件，属性和变量几个大类，每个大类下又包括多个组件。</p>
+
+	        	<p class="read-more"><a> <br/></a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
 	<article id="post-逻辑回归特征框架分享" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +129,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjjskelrj0042yzoggexfhgst/">逻辑回归&amp;特征框架分享</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpqya0jg003mp7kf2qvtoq45/">逻辑回归&amp;特征框架分享</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/特征/">特征</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
@@ -91,7 +140,7 @@
 	    <p>      
             
 	        	<p><img src="/post_image/LRppt/幻灯片01.jpeg" alt="image"></p>
-	          	<p class="read-more"><a href="/Tech/cjjskelrj0042yzoggexfhgst/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpqya0jg003mp7kf2qvtoq45/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -108,7 +157,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjjskelr9003ayzogyaoz6xeg/">推荐系统笔记</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpqya0jb0035p7kfq52xao9a/">推荐系统笔记</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/大数据/">大数据</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
@@ -130,7 +179,7 @@
 <li>用户用户相似度矩阵 * 物品用户评分矩阵 = 推荐列表</li>
 <li>推荐列表中，用户之前有过的行为置0</li>
 </ol>
-	          	<p class="read-more"><a href="/Tech/cjjskelr9003ayzogyaoz6xeg/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpqya0jb0035p7kfq52xao9a/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -147,7 +196,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjjskelrc003lyzog5sjrnwyk/">特征工程</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpqya0jf003jp7kf6p9xlb4c/">特征工程</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/大数据/">大数据</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
@@ -164,7 +213,7 @@
 <li>用户: 包括用户画像，用户浏览历史等</li>
 </ul>
 <h3 id="根据特征取值分类"><a href="#根据特征取值分类" class="headerlink" title="根据特征取值分类"></a>根据特征取值分类</h3><h4 id="连续（continuous）特征"><a href="#连续（continuous）特征" class="headerlink" title="连续（continuous）特征"></a>连续（continuous）特征</h4><p>连续特征 除了归一化（去中心，方差归一），不用做太多特殊处理，可以直接把连续特征扔到模型里使用。</p>
-	          	<p class="read-more"><a href="/Tech/cjjskelrc003lyzog5sjrnwyk/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpqya0jf003jp7kf6p9xlb4c/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -181,7 +230,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjjskelrd003oyzogi1gjft6u/">计算广告</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpqya0jc003cp7kf3imgxo7f/">计算广告</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/大数据/">大数据</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
@@ -198,55 +247,7 @@
 <li>线性模型，解释性强。当出现很大的波动（如发现某一天的预测结果非常差）时，这样的模型方便查找原因，越简单，解释性越好，就越方便debug</li>
 </ol>
 <p>这些优点都让logisticregression在做ctr预估的时候特别有优势，尤其是可扩展性，可以简单地增加特征，不需要太多的工作。</p>
-	          	<p class="read-more"><a href="/Tech/cjjskelrd003oyzogi1gjft6u/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-Spark" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         3/29
-	        </div>
-	        <div class="post_t_u">
-	         2018
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjjskelqe0017yzogwqfwjslo/">Spark 笔记</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/大数据/">大数据</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<h3 id="Spark-特点"><a href="#Spark-特点" class="headerlink" title="Spark 特点"></a>Spark 特点</h3><ul>
-<li>Spark是快速的. Spark是基于内存的计算，扩充了MapReduce.</li>
-<li>Spark是通用的.容纳了其他分布式系统的功能.批处理，迭代计算，交互查询和流处理.降低了维护成本.</li>
-<li>Spark是高度开放的.提供了JAVA,Python,Scala,SQL的API和丰富的内置库.和其他大数据工具整合很好,hadoop,kafca.</li>
-</ul>
-<h3 id="Spark-组件"><a href="#Spark-组件" class="headerlink" title="Spark 组件"></a>Spark 组件</h3><ul>
-<li>Spark Core</li>
-<li>Spark SQL</li>
-<li>Spark Streaming</li>
-<li>Spark Mlib</li>
-<li>Spark Graphx</li>
-<li>Cluster Manager</li>
-</ul>
-<blockquote>
-<p>Spark 组件紧密集成的优点</p>
-<ul>
-<li>Spark底层优化了，基于Spark底层的组件，也得到相应的优化</li>
-<li>节省了各组件部署，测试时间</li>
-<li>向Spark增加新组件时，其他组件可立即共享新组件功能</li>
-</ul>
-</blockquote>
-	          	<p class="read-more"><a href="/Tech/cjjskelqe0017yzogwqfwjslo/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpqya0jc003cp7kf3imgxo7f/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
