@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2018-06-29T07:10:49.160Z</updated>
+  <updated>2018-12-22T09:17:33.336Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,536 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>利用perl+extjs开发web应用</title>
+    <link href="http://mjackie.github.io/Tech/cjpz91cq3006972kfp66ntmv9/"/>
+    <id>http://mjackie.github.io/Tech/cjpz91cq3006972kfp66ntmv9/</id>
+    <published>2018-10-07T00:00:00.000Z</published>
+    <updated>2018-12-22T09:17:33.336Z</updated>
+    
+    <content type="html"><![CDATA[<p>组里的网络测试仪整个框架是用perl+extjs实现的。项目很大，看了好久了解了整体框架结构。perl+extjs的实现主要有以下几个好处：</p>
+<ul>
+<li>轻量级，web服务端与业务逻辑紧耦合，无需web服务器去承载应用</li>
+<li>调用外部命令行程序方便</li>
+<li>采用ajax技术，省去了频繁的页面跳转</li>
+<li>extjs封装了大量的组件，界面效果风格一致，省去了前端页面开发工作</li>
+</ul>
+<a id="more"></a>
+<p>入口程序为 <code>server.pl</code> , 启动web服务，监听端口，轮训请求，两个主要函数如下：</p>
+<pre><code>sub ServerInit
+{
+    my $group = shift;
+    my $server_sock = undef;
+
+    if($group eq &quot;GUI&quot;)
+    {
+        $server_sock = &amp;guiServerInit($ServerParams-&gt;{CONFIG});
+        GuiServer-&gt;removeShm();
+    }
+    elsif($group eq &quot;PKTGEN&quot;)
+    {$server_sock = &amp;pktgenInit($ServerParams-&gt;{CONFIG});}
+    elsif($group eq &quot;CLUSTER_TEST&quot;)
+    {$server_sock = &amp;clusterMasterInit($ServerParams-&gt;{CONFIG});}
+    elsif($group eq &quot;ATTACKENGINE&quot;)
+    {$server_sock = AttackEngineServer::init($ServerParams-&gt;{CONFIG});}
+
+    if( defined($server_sock) )
+    {$ServerParams-&gt;{&quot;$group&quot;}-&gt;{&quot;socket&quot;} = $server_sock;}
+    else
+    {
+        printf(&quot;Can not setup $group socket at--[%s, %s]\n&quot;, __FILE__, __LINE__);
+        return 0;
+    }
+    $ServerParams-&gt;{&quot;SELECT&quot;}-&gt;add($ServerParams-&gt;{&quot;$group&quot;}-&gt;{&quot;socket&quot;});
+
+    return 1;
+}
+
+
+sub mainLoop
+{
+    my @ready;
+    my $sock;
+    my $sel = $ServerParams-&gt;{&quot;SELECT&quot;};
+    my $GUIConnections = $ServerParams-&gt;{&quot;GUI&quot;}-&gt;{&quot;connections&quot;};
+    my $PKTGENConnections = $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;connections&quot;};
+    my $ATTACKENGINEConnections = $ServerParams-&gt;{&quot;ATTACKENGINE&quot;}-&gt;{&quot;connections&quot;};
+    my $CLUSTERConnections = $ServerParams-&gt;{&quot;CLUSTER_TEST&quot;}-&gt;{&quot;connections&quot;};
+    my $STATConnections =  $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;connections&quot;};
+    my $tmpSock;
+    my $tid; 
+    #starts looping
+    while(1)
+    {
+        #select: BLOCK, selection loop may be interrupted by signals.
+        @ready = $sel-&gt;can_read();
+
+        foreach my $fh (@ready)
+        {
+            if($fh == $ServerParams-&gt;{&quot;GUI&quot;}-&gt;{&quot;socket&quot;})
+            {
+                #accept the connection
+                $sock = $fh-&gt;accept();
+                #setup buffer for this connection
+                $GUIConnections-&gt;{&quot;$sock&quot;} = {
+                    &quot;buffer&quot; =&gt; &quot;&quot;
+                };
+                #add this socket into selection loop
+                $sel-&gt;add($sock);
+            }
+            #Connection from PKTGEN
+            elsif($fh == $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;socket&quot;})
+            {
+                $sock = $fh-&gt;accept();
+                $PKTGENConnections-&gt;{&quot;$sock&quot;} = {
+                    &quot;tid&quot; =&gt; &quot;-1&quot;,
+                    &quot;buffer&quot; =&gt; &quot;&quot;
+                };
+                $sel-&gt;add($sock);
+            }
+            elsif($fh == $ServerParams-&gt;{&quot;ATTACKENGINE&quot;}-&gt;{&quot;socket&quot;})
+            {
+                $sock = $fh-&gt;accept();
+                $sel-&gt;add($sock);
+                $ATTACKENGINEConnections-&gt;{&quot;$sock&quot;} = {};
+            }
+            elsif($fh == $ServerParams-&gt;{&quot;CLUSTER_TEST&quot;}-&gt;{&quot;socket&quot;})
+            {
+                # connection request from cluster master
+                $sock = $fh-&gt;accept();
+                $sel-&gt;add($sock);
+                $CLUSTERConnections-&gt;{&quot;$sock&quot;} = {
+                    status =&gt; &quot;CONNECTED&quot;,
+                    buffer =&gt; &quot;&quot;,
+                    &apos;length&apos; =&gt; 0,
+                    DFA =&gt; &quot;AUTH&quot;
+                };
+            }
+            elsif(&amp;WhichConnection($fh, &quot;GUI&quot;)) #for GUI requests
+            {
+                if(! &amp;processGUIRequest_keepalive($fh, $GUIConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $GUIConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            elsif(&amp;WhichConnection($fh, &quot;CLUSTER_TEST&quot;))
+            {
+                if(! &amp;processClusterMasterRequest($fh, $CLUSTERConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh);
+                }
+            }
+            #stat. from pkt-gens
+            elsif(&amp;WhichConnection($fh, &quot;PKTGEN&quot;)) #for PKTGEN running statistics
+            {
+                if(! &amp;processPKTGENMsg_keepalive($fh, $PKTGENConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $PKTGENConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            elsif(&amp;WhichConnection($fh, &quot;ATTACKENGINE&quot;))
+            {
+                if(! AttackEngineServer::processAttackEngineResponse($fh, $ATTACKENGINEConnections-&gt;{&quot;$fh&quot;}))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $ATTACKENGINEConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            else
+            {
+                #TODO: error
+                print(&quot;Isolated connection!!!!!!!Never should be here. Need debugging.&quot;);
+                #throw this connection away
+                $sel-&gt;remove($fh);
+                close($fh);
+            }
+        }
+        # can write
+    }
+}
+</code></pre><p>业务逻辑代码靠 GuiServer.pm 承载，并返回内容，主要函数如下：</p>
+<pre><code>sub guiServerInit
+{
+    my $config = shift;
+
+    $config_defs-&gt;{config} = $config;
+    $config_defs-&gt;{path} = $config-&gt;{database}-&gt;{xmlDatabasePath};
+    $config_defs-&gt;{maxHistory} = $config-&gt;{web}-&gt;{maxHistory};
+    $config_defs-&gt;{webRoot} = $config-&gt;{web}-&gt;{webRoot};
+    $config_defs-&gt;{cacheEnabled} = $config-&gt;{web}-&gt;{cacheEnabled};
+    $config_defs-&gt;{sessionExpires} = $config-&gt;{web}-&gt;{sessionExpires};
+    $config_defs-&gt;{port} = $config-&gt;{web}-&gt;{port};
+
+    $config_defs-&gt;{protocolTemplates} = $config-&gt;{msgCompiler}-&gt;{protocolTemplates};
+
+    $config_defs-&gt;{webVersion} = $config-&gt;{web}-&gt;{version} ? $config-&gt;{web}-&gt;{version} : &quot;0.1&quot;;
+    $config_defs-&gt;{msgCompilerVersion} = $config-&gt;{msgCompiler}-&gt;{version} ? $config-&gt;{msgCompiler}-&gt;{version} : &quot;0.1&quot;;
+    $config_defs-&gt;{pktgenVersion} = $config-&gt;{pktgenVersion}-&gt;{version} ? $config-&gt;{pktgenVersion}-&gt;{version} : &quot;0.1&quot;;
+
+
+    $config_defs-&gt;{protocolScripts} = $config-&gt;{msgCompiler}-&gt;{protocolScripts};
+    $config_defs-&gt;{attackScripts} = $config-&gt;{msgCompiler}-&gt;{attackScripts};
+    $config_defs-&gt;{database} = Database-&gt;getDatabaseConnection() or return undef;
+    $config_defs-&gt;{totParser} = ToTParser-&gt;new($config_defs-&gt;{protocolTemplates}, $config_defs-&gt;{protocolScripts});
+    #$config_defs-&gt;{&quot;physicalPortManager&quot;} = PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}/System/physicalPortManagement.config&quot;,&quot;$config_defs-&gt;{path}/System/ui_physicalPortMapping.config&quot;);
+    $config_defs-&gt;{&quot;physicalPortManager&quot;} = PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}&quot;);
+    #$config_defs-&gt;{&quot;physicalPortManager&quot;} = shared_clone(PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}&quot;));
+
+    #$config_defs-&gt;{&quot;ManagementIPConfig&quot;} = ManagementIPConfig-&gt;new($MANAGEMENTPORT);
+    $config_defs-&gt;{&quot;ManagementIPConfig&quot;} = ManagementIPConfig-&gt;new($config_defs-&gt;{path});
+
+    # set session time
+    $config_defs-&gt;{sessions} = Session-&gt;new($config_defs-&gt;{sessionExpires});
+    $config_defs-&gt;{preferences} = Preference-&gt;new($config_defs-&gt;{path});
+    $config_defs-&gt;{packetGenerator}={};
+    $config_defs-&gt;{packetGenerator}-&gt;{port} =  $config-&gt;{packetGenerator}-&gt;{port};
+
+    $config_defs-&gt;{DocGenerator} =  $config-&gt;{DocGenerator};
+
+    $config_defs-&gt;{PcapBuffer} =  $config-&gt;{PcapBuffer};
+
+    # printf(&quot;INIT GUI LOG FILE: $config-&gt;{web}-&gt;{logFile}\n&quot;);
+    if($config-&gt;{web}-&gt;{logFile} ne &quot;&quot;)
+    {
+        open($config_defs-&gt;{GUILOGFILE}, &quot;&gt;$config-&gt;{web}-&gt;{logFile}&quot;) || die &quot;failed to open gui log file!\n&quot;;
+        guiLog(&quot;GUI LOG FILE\n&quot;);
+    }
+    #print(Dumper($config_defs));
+    return IO::Socket::INET-&gt;new(LocalPort=&gt; $config_defs-&gt;{port}, Reuse =&gt; 1, Listen =&gt; SOMAXCONN);
+}
+
+sub parseGUIRequest_keepalive
+{
+    my ($sock, $request, $cleanSockFun) = @_;
+    my ($ret, $params, $file);
+
+    while(length($request-&gt;{&quot;buffer&quot;}) &gt; 0)
+    {
+        if(! defined($request-&gt;{&quot;state&quot;}))
+        {$request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;}
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;WAIT_FOR_HEADER&quot;)
+        {
+            # whether http header is ready
+            $ret = index($request-&gt;{&quot;buffer&quot;}, &quot;\r\n\r\n&quot;);
+            if($ret &lt;= 0) # negative
+            {return &quot;MORE_DATA&quot;;}
+
+            # cut request header
+            $request-&gt;{&quot;header&quot;} = substr($request-&gt;{&quot;buffer&quot;}, 0, $ret + 4);
+
+            guiLog(Dumper($request-&gt;{&quot;header&quot;}));
+
+            substr($request-&gt;{&quot;buffer&quot;}, 0, $ret + 4) = &quot;&quot;;
+
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*Accept-Language: ([^\r\n]+)\r\n/s)
+            {
+                #Accept-Language: zh-CN,zh;q=0.8
+                @{$request-&gt;{languages}} = split(/ *, */, $1);
+            }
+
+            # parse header
+            $request-&gt;{&quot;header&quot;} =~ m/^.*(GET|get|POST|post)\s+(\S+).*/s;
+            $request-&gt;{&quot;method&quot;} = uc($1);
+            $request-&gt;{&quot;uri&quot;} = $2;
+            $request-&gt;{&quot;header&quot;} =~ m/^.*Connection: (\S+)\r\n.*/s;
+            $request-&gt;{&quot;connection&quot;} = $1;
+
+            # parse cookie
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*Cookie: ([^\r\n]+)\r\n/s)
+            {$request-&gt;{&quot;cookies&quot;} = $1;}
+
+            # check Modifed-Since
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*If-None-Match/s)
+            {
+                print(&quot;TODO: return 304 not modifed\n&quot;);
+                print(Dumper($request-&gt;{header}));
+            }
+
+            $request-&gt;{&quot;uri&quot;} =~ /^([^?]+)(\?(.+))?/;
+            $request-&gt;{&quot;path&quot;} = $1;
+            if($3){
+                %{$params} = split(/&amp;|=/, $3);
+            }
+            foreach my $pp (keys(%{$params}))
+            {$request-&gt;{&quot;params&quot;}-&gt;{$pp} = &amp;urlDecode($params-&gt;{$pp});}
+
+            $request-&gt;{&quot;state&quot;} = &quot;HEADER_READY&quot;;
+        }
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;HEADER_READY&quot;)
+        {
+            if($request-&gt;{&quot;method&quot;} eq &quot;GET&quot;)
+            {$request-&gt;{&quot;state&quot;} = &quot;REQUEST_READY&quot;;}
+            else
+            {
+                if($request-&gt;{&quot;header&quot;} =~ m/^.*Content-Length:\s+(\d+).*/s)
+                {$request-&gt;{&quot;length&quot;} = $1;}
+                if($request-&gt;{&quot;length&quot;} &lt; 0) # wrong http post request, ignore it.
+                {return &quot;END&quot;;}
+                else
+                {
+                    if($request-&gt;{&quot;path&quot;} =~ /^\/upload\//i || $request-&gt;{&quot;path&quot;} =~ /^\/import\//i)
+                    {$request-&gt;{&quot;state&quot;} = &quot;FILE_UPLOADING&quot;;}
+                    elsif(length($request-&gt;{&quot;buffer&quot;}) &gt;= $request-&gt;{&quot;length&quot;})
+                    {
+                        $request-&gt;{&quot;data&quot;} = substr($request-&gt;{&quot;buffer&quot;}, 0, $request-&gt;{&quot;length&quot;});
+                        substr($request-&gt;{&quot;buffer&quot;}, 0, $request-&gt;{&quot;length&quot;}) = &quot;&quot;;
+                        $param = {};
+                        %{$params} = split(/&amp;|=/, $request-&gt;{&quot;data&quot;});
+                        foreach my $pp (keys(%{$params}))
+                        {
+                            my $tmpParam=&amp;urlDecode($params-&gt;{$pp});
+                            $tmpParam =~ s/^\s+|\s+$//g;#remove head and tail backspeace,equal to string trim
+                            $request-&gt;{&quot;params&quot;}-&gt;{$pp} = $tmpParam;
+                        }
+                        $request-&gt;{&quot;state&quot;} = &quot;REQUEST_READY&quot;;
+                    }
+                    else
+                    {return &quot;MORE_DATA&quot;;}
+                }
+            }
+        }
+        # http request is ready
+        if($request-&gt;{&quot;state&quot;} eq &quot;REQUEST_READY&quot;)
+        {
+            #print(&quot;\n++++++++++\n&quot;.$request-&gt;{&quot;path&quot;}.&quot;\n+++++++++++\n&quot;);
+
+            # forward to ajax,
+
+            if($request-&gt;{&quot;path&quot;} =~ /^\/ajax\//)
+            {$ret = &amp;ajaxRequest($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/attackQuery\//)
+            {$ret = &amp;attackQuery($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/testsQuery\//)
+            {$ret = &amp;testsQueryProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/login\//)
+            {$ret = &amp;loginProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/logout\//)
+            {$ret = &amp;logoutProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/session.js$/)
+            {$ret = &amp;sessionJSProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/command\//)
+            {$ret = &amp;commandProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/export\//)
+            {$ret = &amp;exportProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/testReportsDoc\//)
+            {$ret = &amp;testReportsDocProc($sock, $request, $cleanSockFun);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/monitor\//)
+            {$ret = &amp;monitorProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/util\//)
+            {$ret = &amp;utilProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/exportPcap\//)
+            {$ret = &amp;exportPcapProc($sock, $request, $cleanSockFun);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/onlineHelp\//)
+            {$ret = &amp;onlineHelpProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/loadresourcefile\//)
+            {$ret = &amp;loadResourceFileProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/license\//)
+            {$ret = &amp;licenseProc($sock, $request);}
+            else
+            {$ret = &amp;staticFileProc($sock, $request);}
+
+            if(! defined($ret))
+            {printf(&quot;connection closed!\n&quot;); return undef;}
+
+            foreach my $e (keys(%{$request}))
+            {
+                if($e eq &quot;state&quot; || $e eq &quot;buffer&quot;)
+                {next;}
+                delete $request-&gt;{$e};
+            }
+            # waiting for next round
+            $request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;
+
+        }
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;FILE_UPLOADING&quot;)
+        {
+            if(&amp;fileUploadProc($sock, $request))
+            {
+                foreach my $e (keys(%{$request}))
+                {
+                    if($e eq &quot;state&quot; || $e eq &quot;buffer&quot;)
+                    {next;}
+                    delete $request-&gt;{$e};
+                }
+                $request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;
+            }
+        }
+        if(defined($request-&gt;{&quot;connection&quot;})){
+            if($request-&gt;{&quot;connection&quot;} =~ /close/i)
+                {printf(&quot;Connection to be closed!\n&quot;); return &quot;END&quot;;}
+        }
+
+    }
+    return &quot;MORE_DATA&quot;;
+}
+</code></pre><p>extjs 在前端通过ajax发起请求，与后端进行交互，示例代码如下：</p>
+<pre><code>// 左侧导航历史结果列表数据
+var historyresultStore = new Ext.data.JsonStore({
+            // store configs
+            autoDestroy : true,
+            storeId : &apos;historyresultStore&apos;,
+            proxy : {
+                type : &apos;ajax&apos;,
+                url : &apos;/loadresultlist/&apos;,
+                reader : {
+                    type : &apos;json&apos;,
+                    root : &apos;history&apos;,
+                    idProperty : &apos;id&apos;
+                }
+            },
+            fields : [&apos;name&apos;, &apos;time&apos;, &apos;url&apos;]
+        });
+// 左侧导航历史结果列表数据的容器
+var historychart = Ext.create(&apos;Ext.grid.Panel&apos;, {
+    title : &apos;历史结果&apos;,
+    id : &apos;historychart&apos;,
+    store : Ext.data.StoreManager.lookup(&apos;historyresultStore&apos;),
+    columns : [{
+                header:&apos;&apos;,
+                xtype:&apos;rownumberer&apos;,
+                align:&apos;center&apos;
+            },{
+                text : &apos;名称&apos;,
+                dataIndex : &apos;name&apos;,
+                align:&apos;center&apos;
+            },{
+                text : &apos;时间&apos;,
+                dataIndex : &apos;time&apos;,
+                align:&apos;center&apos;
+            }],
+    width : &quot;100%&quot;,
+    forceFit : true,
+    listeners : {
+        &apos;itemcontextmenu&apos; : function(view, record, item, index, e, eOpts) {
+            // 禁用浏览器的右键相应事件
+            e.preventDefault();
+            e.stopEvent();
+            // var nodename = record.raw.name;
+            delete_menu.showAt(e.getXY());
+        }
+    },
+    viewConfig : {
+        listeners : {
+            scope : this,
+            itemdblclick : function(view, record, item, index, e) {
+                var filename = record.data.url;
+                Ext.Ajax.request({
+                    url : &quot;/getrunlog/&quot;,
+                    method : &apos;get&apos;,
+                    params : {
+                        name : filename
+                    },
+                    success : function(response, opts) {
+                        // 清空tabs内容
+                        Ext.getCmp(&apos;tabs&apos;).removeAll();
+                        if(Ext.getCmp(&apos;Onlynavigationpanel&apos;)!=undefined){Ext.getCmp(&apos;Onlynavigationpanel&apos;).destroy();}            
+                        var testreport = Ext.create(&apos;Mytestreport&apos;);
+                        Ext.getCmp(&apos;tabs&apos;).add(testreport);
+                        Ext.getCmp(&apos;tabs&apos;).doLayout(true);
+                        Ext.getCmp(&apos;testreport&apos;).body
+                                .update(&apos;&lt;iframe scrolling=&quot;auto&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;../../testResult/&apos;
+                                        + filename
+                                        + &apos;/index.html&quot;&gt;&lt;/iframe&gt;&apos;);
+                        // runlog.collapse();
+                        testreport.expand();
+                        // Ext.getCmp(&apos;runlog&apos;).body.update(response[&quot;responseText&quot;]);
+                    },
+                    failure : function(response, opts) {
+                        Ext.MessageBox.alert({
+                                    title : &apos;提示信息&apos;,
+                                    msg : &quot;运行日志获取失败！&quot;,
+                                    buttons : Ext.Msg.OK
+                                });
+                    }
+                });
+
+            }
+        }
+    }
+
+});
+// console.log(historyresultStore);
+historyresultStore.load();
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;组里的网络测试仪整个框架是用perl+extjs实现的。项目很大，看了好久了解了整体框架结构。perl+extjs的实现主要有以下几个好处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轻量级，web服务端与业务逻辑紧耦合，无需web服务器去承载应用&lt;/li&gt;
+&lt;li&gt;调用外部命令行程序方便&lt;/li&gt;
+&lt;li&gt;采用ajax技术，省去了频繁的页面跳转&lt;/li&gt;
+&lt;li&gt;extjs封装了大量的组件，界面效果风格一致，省去了前端页面开发工作&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="perl" scheme="http://mjackie.github.io/tags/perl/"/>
+    
+      <category term="js" scheme="http://mjackie.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>压力测试与jmeter</title>
+    <link href="http://mjackie.github.io/Tech/cjpz91ked006e72kf1ljgv5em/"/>
+    <id>http://mjackie.github.io/Tech/cjpz91ked006e72kf1ljgv5em/</id>
+    <published>2018-09-06T00:00:00.000Z</published>
+    <updated>2018-12-22T09:17:42.676Z</updated>
+    
+    <content type="html"><![CDATA[<p>组里项目项目需要接触的web压力测试相关的内容，在这里总结一波。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>性能测试从广义上讲分为压力测试、负载测试、强度测试、并发(用户)测试、大数据量测试、配置测试、可靠性测试等。压力测试是通过对被测系统不断加压，来发现该系统在什么条件下变得不可承受，从而获得系统能提供的最大服务级别的测试。查出程序对异常情况的抵抗能力，找出性能瓶颈。从本质上说，测试者是想破坏程序。目前一般压力测试都借助自动测试工具。 </p>
+<a id="more"></a>
+<h4 id="性能测试常见术语"><a href="#性能测试常见术语" class="headerlink" title="性能测试常见术语"></a>性能测试常见术语</h4><p>性能测试中常见的术语主要有吞吐量、吞吐率、请求响应时间、事务响应时间、 并发、并发用户数量、点击率、资源利用率等</p>
+<ul>
+<li>吞吐量：指在一次性能测试过程中网络上传输数据量的总和</li>
+<li>吞吐率(Throughput)：单位时间内网络上传输的吞吐量，是衡量网络性能的重要指标</li>
+<li>请求响应时间：指从客户端发送一个请求开始计时到客户端接收到从服务器端返回最后一个 响应结果为止所消耗的时间 </li>
+<li>并发用户数量：并发主要针对服务器而言，是否并发的关键是看用户的操作是否对服务器产生了 影响。因此，并发用户数量是指在同一时刻与服务器进行交互的在线用户数量。这些 用户的特征是和服务器发生了交互，这种交互既可以是单向的数据传送，也可以是双 向的数据传送</li>
+<li>事务(Transaction): 用户在网页上的每一个操作都可以定义为一个事务。事务有可能是由一个请求组成，也可能是由几个请求组成。例如，我们在脚本中有一个数据 查询操作，为了衡量服务器执行查询操作的性能，我们把这个操作定义为一个事务。事务响应时间就是指用户为完成某个事务所需要的时间。它是衡量系统性能的重要指标</li>
+</ul>
+<h4 id="Jmeter"><a href="#Jmeter" class="headerlink" title="Jmeter"></a>Jmeter</h4><p>调研了主流的压力测试工具：微软的loadrunner和apache的jmeter。最终选用了jmeter，一是因为jemeter是apache下的开源项目，方便改写和二次开发，二是jmeter对于Web压力测试这块功能和组件非常完善，基本可以满足已有的各种需求。</p>
+<p>jmeter可用来测试静态资源请求和Web动态应用程序的性能。通过向预部署系统施加不同强度的工作负载来评估系统性能和用户体验。支持多种应用/服务类型压力、性能测试：</p>
+<ul>
+<li>Web - HTTP, HTTPS (Java, NodeJS, PHP, ASP.NET, …)</li>
+<li>SOAP / REST Webservices</li>
+<li>FTP</li>
+<li>Database via JDBC</li>
+</ul>
+<p>jmeter 可以通过GUI界面编写相应的脚本，进行测试。在高并发性能测试下，一般通过命令行参数来指定相应的配置文件，启动测试。jemeter支持测试报告模板编辑与导出功能，可生成html格式的测试报告文件。</p>
+<p>jmeter依靠用户编写的测试例脚本来执行相应的测试，配置文件实际上是xml格式，但以<code>.jmx</code>结尾。测试例脚本由各个组件组成，每个组件都可以配置相应的参数。</p>
+<p>测试组边包括线程组，控制器，监听器，定时器，断言，配置元件，属性和变量几个大类，每个大类下又包括多个组件。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;组里项目项目需要接触的web压力测试相关的内容，在这里总结一波。&lt;/p&gt;
+&lt;h4 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h4&gt;&lt;p&gt;性能测试从广义上讲分为压力测试、负载测试、强度测试、并发(用户)测试、大数据量测试、配置测试、可靠性测试等。压力测试是通过对被测系统不断加压，来发现该系统在什么条件下变得不可承受，从而获得系统能提供的最大服务级别的测试。查出程序对异常情况的抵抗能力，找出性能瓶颈。从本质上说，测试者是想破坏程序。目前一般压力测试都借助自动测试工具。 &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="计算机网络" scheme="http://mjackie.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>逻辑回归&amp;特征框架分享</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2g00475lkftkai9l4w/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2g00475lkftkai9l4w/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z85e003l72kfou6ou8if/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z85e003l72kfou6ou8if/</id>
     <published>2018-06-23T06:50:00.000Z</published>
     <updated>2018-06-29T07:10:49.160Z</updated>
     
@@ -67,8 +594,8 @@
   
   <entry>
     <title>推荐系统笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2j004e5lkfb9vitjn9/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2j004e5lkfb9vitjn9/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z855003072kfbbjaie8b/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z855003072kfbbjaie8b/</id>
     <published>2018-05-27T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:13.071Z</updated>
     
@@ -125,8 +652,8 @@
   
   <entry>
     <title>特征工程</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2l004l5lkfehdpdpb9/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2l004l5lkfehdpdpb9/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z856003472kf15pqvcxa/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z856003472kf15pqvcxa/</id>
     <published>2018-05-10T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:23.142Z</updated>
     
@@ -191,8 +718,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>计算广告</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2e00405lkff5q4n8xe/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2e00405lkff5q4n8xe/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z859003e72kfqp7m1d65/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z859003e72kfqp7m1d65/</id>
     <published>2018-04-14T02:50:00.000Z</published>
     <updated>2018-06-29T06:58:23.805Z</updated>
     
@@ -262,8 +789,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>Spark 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1o00245lkfc2qxu870/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1o00245lkfc2qxu870/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84a000p72kfw7obm7dw/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84a000p72kfw7obm7dw/</id>
     <published>2018-03-29T02:50:00.000Z</published>
     <updated>2018-06-29T07:15:01.825Z</updated>
     
@@ -474,8 +1001,8 @@ var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
   
   <entry>
     <title>Hadoop 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1y002o5lkfocqxvvga/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1y002o5lkfocqxvvga/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84i001e72kfuxdeath1/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84i001e72kfuxdeath1/</id>
     <published>2018-03-24T02:50:00.000Z</published>
     <updated>2018-06-29T07:13:48.914Z</updated>
     
@@ -670,8 +1197,8 @@ yarn application -kill appid
   
   <entry>
     <title>实习面试</title>
-    <link href="http://mjackie.github.io/Life/cjpz8un2b003q5lkftspl7nmt/"/>
-    <id>http://mjackie.github.io/Life/cjpz8un2b003q5lkftspl7nmt/</id>
+    <link href="http://mjackie.github.io/Life/cjpz8z850002k72kfzitr35pm/"/>
+    <id>http://mjackie.github.io/Life/cjpz8z850002k72kfzitr35pm/</id>
     <published>2018-03-14T16:09:00.000Z</published>
     <updated>2018-06-29T06:45:26.071Z</updated>
     
@@ -745,8 +1272,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2k004i5lkfm1i8fyxs/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2k004i5lkfm1i8fyxs/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z857003772kfrt0vab9o/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z857003772kfrt0vab9o/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -840,8 +1367,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un29003l5lkf2oapuzyu/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un29003l5lkf2oapuzyu/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84x002c72kflwontk95/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84x002c72kflwontk95/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -897,8 +1424,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un0k000o5lkfjhl67x1h/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un0k000o5lkfjhl67x1h/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z83u000772kf6aup867b/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z83u000772kf6aup867b/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -956,8 +1483,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un0m000q5lkfqvie2v4e/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un0m000q5lkfqvie2v4e/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z849000n72kf540xchdy/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z849000n72kf540xchdy/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -1056,8 +1583,8 @@ $ python Classifiers.py
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un27003f5lkf9dq6as3z/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un27003f5lkf9dq6as3z/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84p002072kfs9r7wunk/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84p002072kfs9r7wunk/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -1298,8 +1825,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2i004b5lkfvh6k26u1/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2i004b5lkfvh6k26u1/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z85a003i72kfk5jxyii1/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z85a003i72kfk5jxyii1/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -1433,8 +1960,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjpz8un2400385lkf8dxvosyq/"/>
-    <id>http://mjackie.github.io/Life/cjpz8un2400385lkf8dxvosyq/</id>
+    <link href="http://mjackie.github.io/Life/cjpz8z84z002h72kfb8oug83d/"/>
+    <id>http://mjackie.github.io/Life/cjpz8z84z002h72kfb8oug83d/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -1474,8 +2001,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2200315lkfxbbg5uag/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2200315lkfxbbg5uag/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84t002672kfdei2mcu1/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84t002672kfdei2mcu1/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -1585,8 +2112,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1n00225lkfz5831als/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1n00225lkfz5831als/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84d000x72kfnirdto4n/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84d000x72kfnirdto4n/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -1670,8 +2197,8 @@ End Sub
   
   <entry>
     <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1m00215lkfg2rdtblt/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1m00215lkfg2rdtblt/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84f001472kf27vure23/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84f001472kf27vure23/</id>
     <published>2017-08-13T12:21:00.000Z</published>
     <updated>2017-08-15T13:19:40.000Z</updated>
     
@@ -1779,8 +2306,8 @@ message.sendToTarget();
   
   <entry>
     <title>LRU &amp; LFU 数据结构</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1x002k5lkf421nd784/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1x002k5lkf421nd784/</id>
+    <link href="http://mjackie.github.io/Tech/cjpz8z84l001q72kfofm727bl/"/>
+    <id>http://mjackie.github.io/Tech/cjpz8z84l001q72kfofm727bl/</id>
     <published>2017-08-05T03:21:00.000Z</published>
     <updated>2017-08-11T09:22:13.000Z</updated>
     
@@ -1807,120 +2334,6 @@ message.sendToTarget();
       <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数据结构" scheme="http://mjackie.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QR 码解析算法</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un1z002r5lkf4jw0cte4/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un1z002r5lkf4jw0cte4/</id>
-    <published>2017-07-26T16:00:00.000Z</published>
-    <updated>2017-07-31T13:23:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
-<li>横向扫描，检测 黑白黑白黑 的组合</li>
-<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
-<li>验证是否满足1:1:3:1:1的比例</li>
-<li>检测纵向是否满足定位符特征</li>
-<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
-<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
-<li>否则继续扫描图片</li>
-<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
-<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
-<li>返回检测到的三个定位符的结果</li>
-</ul>
-<a id="more"></a>
-<h4 id="计算一个模块的大小"><a href="#计算一个模块的大小" class="headerlink" title="计算一个模块的大小"></a>计算一个模块的大小</h4><ul>
-<li><code>calculateModuleSize()</code>按照x轴y轴分别计算，取平均值。</li>
-<li>同时每次计算又分别调换参数计算两次，取平均值<code>calculateModuleSizeOneWay()</code></li>
-<li>定位符的宽度/7，得到一个模块的像素数</li>
-</ul>
-<h4 id="计算维度，即一行有多少块"><a href="#计算维度，即一行有多少块" class="headerlink" title="计算维度，即一行有多少块"></a>计算维度，即一行有多少块</h4><pre><code>int tltrCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, topRight) / moduleSize);
-int tlblCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, bottomLeft) / moduleSize);
-int dimension = ((tltrCentersDimension + tlblCentersDimension) / 2) + 7;//因为坐标点是定位符中心点，所以要+7
-</code></pre><h4 id="根据维度得到版本号"><a href="#根据维度得到版本号" class="headerlink" title="根据维度得到版本号"></a>根据维度得到版本号</h4><h4 id="计算alignment，预估右下角坐标"><a href="#计算alignment，预估右下角坐标" class="headerlink" title="计算alignment，预估右下角坐标"></a>计算alignment，预估右下角坐标</h4><h4 id="透视变换得到比特数组"><a href="#透视变换得到比特数组" class="headerlink" title="透视变换得到比特数组"></a>透视变换得到比特数组</h4>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;检测定位符流程&quot;&gt;&lt;a href=&quot;#检测定位符流程&quot; class=&quot;headerlink&quot; title=&quot;检测定位符流程&quot;&gt;&lt;/a&gt;检测定位符流程&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;横向扫描，检测 黑白黑白黑 的组合&lt;/li&gt;
-&lt;li&gt;默认隔&lt;code&gt;(3 * maxI) / (4 * MAX_MODULES)&lt;/code&gt;行扫描一次，TRY_HARDER开启后逐行扫描&lt;/li&gt;
-&lt;li&gt;验证是否满足1:1:3:1:1的比例&lt;/li&gt;
-&lt;li&gt;检测纵向是否满足定位符特征&lt;/li&gt;
-&lt;li&gt;如果已经确定了两个定位符，则可跳过 &lt;code&gt;(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;&lt;/code&gt; 行，继续扫描&lt;/li&gt;
-&lt;li&gt;如果提前确定3个定位符，且模块大小相近，则停止扫描 &lt;code&gt;haveMultiplyConfirmedCenters()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;否则继续扫描图片&lt;/li&gt;
-&lt;li&gt;筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符&lt;/li&gt;
-&lt;li&gt;确定三个定位符的中心坐标和各自位置 &lt;code&gt;orderBestPatterns()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;返回检测到的三个定位符的结果&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="算法" scheme="http://mjackie.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>换电脑后如何恢复Hexo环境</title>
-    <link href="http://mjackie.github.io/Tech/cjpz8un2c003t5lkf265y2yy2/"/>
-    <id>http://mjackie.github.io/Tech/cjpz8un2c003t5lkf265y2yy2/</id>
-    <published>2017-07-24T11:43:00.000Z</published>
-    <updated>2018-02-03T11:14:44.410Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
-
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
-nvm install stable
-</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
-</code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
-<p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
-<a id="more"></a>
-<h3 id="拷贝原文件"><a href="#拷贝原文件" class="headerlink" title="拷贝原文件"></a>拷贝原文件</h3><p>必须拷贝的文件：</p>
-<ul>
-<li><code>_config.yml</code> 站点配置文件</li>
-<li><code>theme</code> 主题文件夹</li>
-<li><code>source</code> 博文内容文件夹</li>
-</ul>
-<p>按需拷贝的文件：</p>
-<ul>
-<li><code>scaffolds</code> 文章模板文件夹</li>
-<li><code>package.json</code> 使用哪些包</li>
-<li><code>.gitignore</code> 指明部署时忽略的文件</li>
-</ul>
-<p>不必拷贝的文件：</p>
-<ul>
-<li><code>node_modules</code> npm install 会重新生成</li>
-<li><code>public</code> hexo g 会重新生成</li>
-<li><code>.deploy_git</code> hexo d 会重新生成</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;首先本地安装-Git-和-Node-js&quot;&gt;&lt;a href=&quot;#首先本地安装-Git-和-Node-js&quot; class=&quot;headerlink&quot; title=&quot;首先本地安装 Git 和 Node.js&quot;&gt;&lt;/a&gt;首先本地安装 Git 和 Node.js&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;sudo apt-get install git-core    //安装 Git
-
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
-nvm install stable
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;安装Hexo&quot;&gt;&lt;a href=&quot;#安装Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装Hexo&quot;&gt;&lt;/a&gt;安装Hexo&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g hexo-cli&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;设置-Github-秘钥&quot;&gt;&lt;a href=&quot;#设置-Github-秘钥&quot; class=&quot;headerlink&quot; title=&quot;设置 Github 秘钥&quot;&gt;&lt;/a&gt;设置 Github 秘钥&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。&lt;/p&gt;
-&lt;p&gt;登陆GitHub，打开「Settings」-&amp;gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="blog" scheme="http://mjackie.github.io/tags/blog/"/>
-    
-      <category term="hexo" scheme="http://mjackie.github.io/tags/hexo/"/>
     
   </entry>
   

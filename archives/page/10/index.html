@@ -69,6 +69,82 @@
 	
 
 		
+	<article id="post-SAE域名绑定问题" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/9
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjpz8z843000c72kfr7c1lctk/">SAE域名绑定问题</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/sae/">sae</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>今天为网站购买了顶级域名，折腾了几个小时终于算是弄好了，在此分享一些关于SAE上的绑定经验，也避免像我一样的新手少走弯路。<br>新浪还未开启域名备案服务，大多数站长的域名也应该未备案，下文讲的也是未备案域名的绑定，先说下域名绑定相关的几个名词吧。</p>
+<p>A记录：域名绑定A记录就是告诉DNS，当输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。绑定的是主机IPV4地址。<br>CNAME：CNAME指别名记录也被称为规范名字。这种记录允许您将多个名字映射到同一台计算机。可以指向http地址。</p>
+<p>可以将一个域名做A记录指向服务器IP，然后将其他的域名做别名(即CNAME)到A记录的域名上；那么当服务器IP地址变更时，就可以不必对一个一个域名做更改指向了，只需要更改A记录的那个域名到服务器新IP上，其他做别名（即CNAME）的那些域名的指向将自动更改到新的IP地址上（以上操作均需要在DNS处执行）。</p>
+	          	<p class="read-more"><a href="/Tech/cjpz8z843000c72kfr7c1lctk/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-快速切换IP地址" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/21
+	        </div>
+	        <div class="post_t_u">
+	         2014
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjpz8z851002o72kfv5l4z54c/">快速切换IP地址</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<p>辗转于宿舍与实验室，不同的网线需要不同的IP地址。将以下代码用记事本保存为bat格式文件即可实现快速切换IP。<br>注意：以管理员身份运行，否则会报错。</p>
+<hr>
+<p>自动获取IP：</p>
+<pre><code>@echo off
+cls
+Echo **********************************************************
+Echo           正在修改IP地址和DNS服务器地址,请耐心等待…………
+Echo **********************************************************
+netsh interface ip set address name=&quot;以太网&quot; source=dhcp
+netsh interface ip delete dns &quot;以太网&quot; all
+::将“以太网”换为网络连接名称
+ipconfig /flushdns
+ipconfig /all
+Echo **********************************************************
+Echo          OK！！已修改成功！请按任意键退出…………
+Echo          谢谢您的使用!Design By Liu
+Echo **********************************************************
+Pause
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/cjpz8z851002o72kfv5l4z54c/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
 	<article id="post-HelloWorld" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +156,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un0900075lkfe24nds7c/">Hello World!</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz8z85f003p72kfoaxslfwr/">Hello World!</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li></ul>

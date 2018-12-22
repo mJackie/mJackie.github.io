@@ -69,6 +69,80 @@
 	
 
 		
+	<article id="post-qrcode" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/27
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjpz8z84m001t72kfwrql3zoh/">QR 码解析算法</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
+<li>横向扫描，检测 黑白黑白黑 的组合</li>
+<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
+<li>验证是否满足1:1:3:1:1的比例</li>
+<li>检测纵向是否满足定位符特征</li>
+<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
+<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
+<li>否则继续扫描图片</li>
+<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
+<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
+<li>返回检测到的三个定位符的结果</li>
+</ul>
+	          	<p class="read-more"><a href="/Tech/cjpz8z84m001t72kfwrql3zoh/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
+	<article id="post-换电脑后如何恢复Hexo环境" class="article post article-type-post" itemscope itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         7/24
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjpz8z853002t72kft6krlw55/">换电脑后如何恢复Hexo环境</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	<h3 id="首先本地安装-Git-和-Node-js"><a href="#首先本地安装-Git-和-Node-js" class="headerlink" title="首先本地安装 Git 和 Node.js"></a>首先本地安装 Git 和 Node.js</h3><pre><code>sudo apt-get install git-core    //安装 Git
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
+nvm install stable
+</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
+</code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
+<p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
+	          	<p class="read-more"><a href="/Tech/cjpz8z853002t72kft6krlw55/">+ MORE</a></p>
+	      	
+	    </p>
+	  </div> 
+	</article>
+
 	<article id="post-机试题" class="article post article-type-post" itemscope itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +154,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un2a003o5lkfd024iqsx/">机试题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz8z854002x72kfga9k4g31/">机试题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -100,7 +174,7 @@ Explanation:
 前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
 剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cjpz8un2a003o5lkfd024iqsx/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpz8z854002x72kfga9k4g31/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -117,7 +191,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un1s002b5lkflodoyffm/">Java值传递与引用传递</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz8z84k001k72kfysovz0qm/">Java值传递与引用传递</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -140,7 +214,7 @@ Explanation:
     }
 }
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cjpz8un1s002b5lkflodoyffm/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpz8z84k001k72kfysovz0qm/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
@@ -157,7 +231,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un1v002h5lkfo051e4o2/">Data Matrix 解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz8z84h001a72kfi8wvpvix/">Data Matrix 解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -171,71 +245,7 @@ Explanation:
 <p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
 <p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
 <p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br>
-	          	<p class="read-more"><a href="/Tech/cjpz8un1v002h5lkfo051e4o2/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-ccnSim" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         4/8
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un1p00265lkfk4n28vvh/">ccnSim 模拟器</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c++</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/icn/">icn</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
-<h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
-<ul>
-<li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
-<li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
-<li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
-<li>执行仿真</li>
-</ul>
-	          	<p class="read-more"><a href="/Tech/cjpz8un1p00265lkfk4n28vvh/">+ MORE</a></p>
-	      	
-	    </p>
-	  </div> 
-	</article>
-
-	<article id="post-web-zuopin" class="article post article-type-post" itemscope itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         1/3
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8un20002v5lkfqmektazn/">网站作品展示</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	<p>总结了一下大学做的一些网站工作。后台统一是学校的站群，所以工作主要集中在前端。民生学院作为河南大学的独立学院，宣传部的网站制作与维护工作都交给了我们实验室。统计了一下，自己独立完成的一共大概有十几个。虽然工作技术难度不大，不过在实践中还是学到了很多东西。</p>
-<h5 id="民生学院财务部"><a href="#民生学院财务部" class="headerlink" title="民生学院财务部"></a>民生学院财务部</h5><p><img src="/post_image/web-zuopin/caiwubu.jpg" alt="image"><br>
-	          	<p class="read-more"><a href="/Tech/cjpz8un20002v5lkfqmektazn/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjpz8z84h001a72kfi8wvpvix/">+ MORE</a></p>
 	      	
 	    </p>
 	  </div> 
