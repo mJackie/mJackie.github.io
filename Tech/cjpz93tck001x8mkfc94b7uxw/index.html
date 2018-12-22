@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>压力测试与jmeter | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+</html>
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Born to be proud</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-jmeter" class="article post article-type-post" itemscope="" itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         9/6
+        </div>
+        <div class="post_t_u">
+         2018
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cjpz93tck001x8mkfc94b7uxw/">
+    
+      压力测试与jmeter
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       </p><p>组里项目项目需要接触的web压力测试相关的内容，在这里总结一波。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>性能测试从广义上讲分为压力测试、负载测试、强度测试、并发(用户)测试、大数据量测试、配置测试、可靠性测试等。压力测试是通过对被测系统不断加压，来发现该系统在什么条件下变得不可承受，从而获得系统能提供的最大服务级别的测试。查出程序对异常情况的抵抗能力，找出性能瓶颈。从本质上说，测试者是想破坏程序。目前一般压力测试都借助自动测试工具。 </p>
+<a id="more"></a>
+<h4 id="性能测试常见术语"><a href="#性能测试常见术语" class="headerlink" title="性能测试常见术语"></a>性能测试常见术语</h4><p>性能测试中常见的术语主要有吞吐量、吞吐率、请求响应时间、事务响应时间、 并发、并发用户数量、点击率、资源利用率等</p>
+<ul>
+<li>吞吐量：指在一次性能测试过程中网络上传输数据量的总和</li>
+<li>吞吐率(Throughput)：单位时间内网络上传输的吞吐量，是衡量网络性能的重要指标</li>
+<li>请求响应时间：指从客户端发送一个请求开始计时到客户端接收到从服务器端返回最后一个 响应结果为止所消耗的时间 </li>
+<li>并发用户数量：并发主要针对服务器而言，是否并发的关键是看用户的操作是否对服务器产生了 影响。因此，并发用户数量是指在同一时刻与服务器进行交互的在线用户数量。这些 用户的特征是和服务器发生了交互，这种交互既可以是单向的数据传送，也可以是双 向的数据传送</li>
+<li>事务(Transaction): 用户在网页上的每一个操作都可以定义为一个事务。事务有可能是由一个请求组成，也可能是由几个请求组成。例如，我们在脚本中有一个数据 查询操作，为了衡量服务器执行查询操作的性能，我们把这个操作定义为一个事务。事务响应时间就是指用户为完成某个事务所需要的时间。它是衡量系统性能的重要指标</li>
+</ul>
+<h4 id="Jmeter"><a href="#Jmeter" class="headerlink" title="Jmeter"></a>Jmeter</h4><p>调研了主流的压力测试工具：微软的loadrunner和apache的jmeter。最终选用了jmeter，一是因为jemeter是apache下的开源项目，方便改写和二次开发，二是jmeter对于Web压力测试这块功能和组件非常完善，基本可以满足已有的各种需求。</p>
+<p>jmeter可用来测试静态资源请求和Web动态应用程序的性能。通过向预部署系统施加不同强度的工作负载来评估系统性能和用户体验。支持多种应用/服务类型压力、性能测试：</p>
+<ul>
+<li>Web - HTTP, HTTPS (Java, NodeJS, PHP, ASP.NET, …)</li>
+<li>SOAP / REST Webservices</li>
+<li>FTP</li>
+<li>Database via JDBC</li>
+</ul>
+<p>jmeter 可以通过GUI界面编写相应的脚本，进行测试。在高并发性能测试下，一般通过命令行参数来指定相应的配置文件，启动测试。jemeter支持测试报告模板编辑与导出功能，可生成html格式的测试报告文件。</p>
+<p>jmeter依靠用户编写的测试例脚本来执行相应的测试，配置文件实际上是xml格式，但以<code>.jmx</code>结尾。测试例脚本由各个组件组成，每个组件都可以配置相应的参数。</p>
+<p>测试组边包括线程组，控制器，监听器，定时器，断言，配置元件，属性和变量几个大类，每个大类下又包括多个组件。</p>
+
+    <p></p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cjpz93tcs00238mkfhrux8yn1/">            
+            
+              利用perl+extjs开发web应用
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cjpz93tdw003w8mkf3ahwez5r/">            
+            
+              逻辑回归&amp;特征框架分享
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>

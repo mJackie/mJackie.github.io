@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>归档: 2016/3 | Jackie Liu&#39;s Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
@@ -19,7 +19,7 @@
   
 
 </head>
-
+</html>
 
  <body class="archive category category-think category-1">
   <div id="page">
@@ -69,7 +69,7 @@
 	
 
 		
-	<article id="post-keybd_event函数" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-keybd_event函数" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
@@ -80,7 +80,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8z84k001m72kftlbwknyi/">keybd_event函数</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz93tcd001u8mkfl91hqyiq/">keybd_event函数</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c++</a></li></ul>
@@ -90,20 +90,20 @@
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
+	        	</p><p>keybd_event函数，系统可使用这种合成的击键事件来产生WM_KEYUP或WM_KEYDOWN消息。<br>函数原型；void keybd_event(BYTE bVk，BYTE bScan，DWORD dwFlags，DWORD dwExtralnfo);<br>包含4个参数：<br>  第一个为按键的虚拟键值，如回车键为vk_return, tab键为vk_tab（其他具体的参见附录：常用模拟键的键值对照表）；<br>  第二个参数为扫描码，一般不用设置，用0代替就行；<br>  第三个参数为选项标志，如果为keydown则置0即可，如果为keyup则设成”KEYEVENTF_KEYUP”；<br>  第四个参数一般也是置0即可。</p>
 <pre><code>//模拟按下&apos;ALT+F4&apos;键
 keybd_event(18,0,0,0);
 keybd_event(115,0,0,0);
 keybd_event(115,0,KEYEVENTF_KEYUP,0);
 keybd_event(18,0,KEYEVENTF_KEYUP,0);
 </code></pre>
-	        	<p class="read-more"><a> <br/></a></p>
+	        	<p class="read-more"><a> <br></a></p>
 	      	
-	    </p>
+	    <p></p>
 	  </div> 
 	</article>
 
-	<article id="post-姿态角" class="article post article-type-post" itemscope itemprop="blogPost">
+	<article id="post-姿态角" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
 	        <div class="post_t_d">
@@ -114,7 +114,7 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz8z84y002e72kf5oly4vvi/">姿态角</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjpz93tda002o8mkftppnybxv/">姿态角</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      
@@ -124,11 +124,11 @@ keybd_event(18,0,KEYEVENTF_KEYUP,0);
 	  <div class="post_t">
 	    <p>      
             
-	        	<p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
+	        	</p><p>载体的姿态是载体坐标系在地理坐标系的表示，常用航向角、俯仰角和横滚角作为载体的姿态角。基于地理坐标系及载体坐标系，可得出姿态角的定义：</p>
 <p><img src="/post_image/zitaijiao/zitaijiao1.gif" alt="image"><br>航向角：载体的x b 轴在水平面的投影与地磁北极夹角，叫做航向角，其表示范围为 0～360°；<br>
-	          	<p class="read-more"><a href="/Tech/cjpz8z84y002e72kf5oly4vvi/">+ MORE</a></p>
+	          	</p><p class="read-more"><a href="/Tech/cjpz93tda002o8mkftppnybxv/">+ MORE</a></p>
 	      	
-	    </p>
+	    <p></p>
 	  </div> 
 	</article>
 
