@@ -69,6 +69,36 @@
 	
 
 		
+	<article id="post-lru&amp;lfu" class="article post article-type-post" itemscope="" itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         8/5
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjqc5uv2a001thhkfkxq207gi/">LRU &amp; LFU 数据结构</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	</p><p>在内容替换算法中，LRU 与 LFU 是最为经典的两种置换算法。替换策略本身简单易懂，但在大规模内容处理时，设计高效的数据结构与插入查找方法使得时间复杂度较低并不简单。</p>
+<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>LRU 即 <code>Least Recently Used</code>,最近最少使用算法。当有新内容需要缓存时,LRU 算法使用新内容替换掉最久没有使用的内容。</p>
+<p><img src="/post_image/lru&amp;lfu/lru.png" alt="image"><br>
+	          	</p><p class="read-more"><a href="/Tech/cjqc5uv2a001thhkfkxq207gi/">+ MORE</a></p>
+	      	
+	    <p></p>
+	  </div> 
+	</article>
+
 	<article id="post-qrcode" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +110,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz93td100278mkfssg28vz3/">QR 码解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjqc5uv2c0020hhkffzsp618b/">QR 码解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -102,7 +132,7 @@
 <li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
 <li>返回检测到的三个定位符的结果</li>
 </ul>
-	          	<p class="read-more"><a href="/Tech/cjpz93td100278mkfssg28vz3/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjqc5uv2c0020hhkffzsp618b/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -119,7 +149,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz93tdf00338mkfssj82orq/">换电脑后如何恢复Hexo环境</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjqc5uv2s0034hhkfrsf5c5ep/">换电脑后如何恢复Hexo环境</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -133,11 +163,11 @@
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash        //安装 Node.js
 nvm install stable
-</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+</code></pre><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <h3 id="设置-Github-秘钥"><a href="#设置-Github-秘钥" class="headerlink" title="设置 Github 秘钥"></a>设置 Github 秘钥</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 
 </code></pre><p>执行后会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，id_rsa.pub是公钥。</p>
 <p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」。</p>
-	          	<p class="read-more"><a href="/Tech/cjpz93tdf00338mkfssj82orq/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjqc5uv2s0034hhkfrsf5c5ep/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -154,7 +184,7 @@ nvm install stable
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz93tdk003e8mkf3qteltlf/">机试题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjqc5uv2r0032hhkfbpu9u293/">机试题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -174,7 +204,7 @@ Explanation:
 前三个是得分最高的三个人，他们分别获得&quot;Gold Medal&quot;, &quot;Silver Medal&quot; 和 &quot;Bronze Medal&quot;.
 剩下的两名运动员，你只需根据他们的分数输出他们的相对排名.
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cjpz93tdk003e8mkf3qteltlf/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjqc5uv2r0032hhkfbpu9u293/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -191,7 +221,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz93tca001o8mkfa936t5j5/">Java值传递与引用传递</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjqc5uv2d0022hhkfo6e2rs9t/">Java值传递与引用传递</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -214,38 +244,7 @@ Explanation:
     }
 }
 </code></pre>
-	          	<p class="read-more"><a href="/Tech/cjpz93tca001o8mkfa936t5j5/">+ MORE</a></p>
-	      	
-	    <p></p>
-	  </div> 
-	</article>
-
-	<article id="post-datamatrix-detect" class="article post article-type-post" itemscope="" itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         5/27
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjpz93tc5001f8mkfllj13ex5/">Data Matrix 解析算法</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	</p><h3 id="Data-Matrix"><a href="#Data-Matrix" class="headerlink" title="Data Matrix"></a>Data Matrix</h3><p>Data Matrix 是二维码的一种编码格式，原名Data code，由美国国际资料公司(International Data Matrix, 简称ID Matrix)于1989年发明。</p>
-<p>Data Matrix二维条码的外观是一个由许多小方格所组成的正方形或长方形符号，以二位元码(Binary-code)方式来编码。深色代表“1”，浅色代表“0”。</p>
-<p>定位图形是资料区域的一个周界，为一个模组宽度。其中两条邻边为暗实线，主要用于限定物理尺寸；定位和符号失真。另两条邻边由交替的深色和浅色模组组成，主要用于限定符号的单元结构，但也能帮助确定物理尺寸及失真。</p>
-<p><img src="/post_image/datamatrix/datamatrix.png" alt="datamatrix"><br>
-	          	</p><p class="read-more"><a href="/Tech/cjpz93tc5001f8mkfllj13ex5/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjqc5uv2d0022hhkfo6e2rs9t/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 

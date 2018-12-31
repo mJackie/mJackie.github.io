@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spark 笔记 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+</html>
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Born to be proud</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-Spark" class="article post article-type-post" itemscope="" itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         3/29
+        </div>
+        <div class="post_t_u">
+         2018
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cjqc5uv1s000vhhkfv5vymfvw/">
+    
+      Spark 笔记
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算广告/">计算广告</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       </p><h3 id="Spark-特点"><a href="#Spark-特点" class="headerlink" title="Spark 特点"></a>Spark 特点</h3><ul>
+<li>Spark是快速的. Spark是基于内存的计算，扩充了MapReduce.</li>
+<li>Spark是通用的.容纳了其他分布式系统的功能.批处理，迭代计算，交互查询和流处理.降低了维护成本.</li>
+<li>Spark是高度开放的.提供了JAVA,Python,Scala,SQL的API和丰富的内置库.和其他大数据工具整合很好,hadoop,kafca.</li>
+</ul>
+<h3 id="Spark-组件"><a href="#Spark-组件" class="headerlink" title="Spark 组件"></a>Spark 组件</h3><ul>
+<li>Spark Core</li>
+<li>Spark SQL</li>
+<li>Spark Streaming</li>
+<li>Spark Mlib</li>
+<li>Spark Graphx</li>
+<li>Cluster Manager</li>
+</ul>
+<blockquote>
+<p>Spark 组件紧密集成的优点</p>
+<ul>
+<li>Spark底层优化了，基于Spark底层的组件，也得到相应的优化</li>
+<li>节省了各组件部署，测试时间</li>
+<li>向Spark增加新组件时，其他组件可立即共享新组件功能</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="Spark-与-Hadoop-比较"><a href="#Spark-与-Hadoop-比较" class="headerlink" title="Spark 与 Hadoop 比较"></a>Spark 与 Hadoop 比较</h3><ul>
+<li>Hadoop主要应用于离线处理，对实时性要求不高的场景</li>
+<li>Spark主要应用于对实时性要求较高的场景，机器学习等领域</li>
+</ul>
+<h3 id="Spark-Shell"><a href="#Spark-Shell" class="headerlink" title="Spark Shell"></a>Spark Shell</h3><ul>
+<li>处理分布在集群上的数据</li>
+<li>加载到节点内存中，运行速度是秒级的</li>
+<li>快速迭代计算，实时查询，分析一般可以在Shell中完成</li>
+<li>提供了 Python Shell(bin/pyspark) 和 Scala Shell(bin/spark-shell)</li>
+<li>Scala Shell 修改日志级别 <code>log4j.rootCategory = WARN, console</code></li>
+</ul>
+<h3 id="Spark-开发环境搭建"><a href="#Spark-开发环境搭建" class="headerlink" title="Spark 开发环境搭建"></a>Spark 开发环境搭建</h3><ul>
+<li>下载 Spark</li>
+<li>下载 Intellj IDEA(注册码地址: <code>http://idea.lanyus.com</code>)</li>
+<li><p>插件安装：Plugins,搜索Scala直接安装，插件中有scala和sbt</p>
+<p>  //配置免密登录<br>  touch authorized_keys<br>  cat id_rsa.pub &gt; authorized_keys<br>  chmod 600 authorized_keys</p>
+</li>
+</ul>
+<blockquote>
+<p>Spark与Scala版本匹配</p>
+<ul>
+<li>Spark1.6.2 - Scala2.10</li>
+<li>Spark2.0.0 - Scala2.11</li>
+</ul>
+</blockquote>
+<h3 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h3><pre><code>//java home 目录, jdk与scala版本
+ /Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/bin
+
+//配置sbt
+libraryDependencies += &quot;org.apache.spark&quot; % &quot;spark-core_2.11&quot; % &quot;2.0.2&quot;
+
+//写代码
+
+//配置jar包
+进入 File &gt; Project Structure &gt; Artifacts &gt; + &gt; JARs &gt; From Module... &gt; 第二个选项
+
+//build
+</code></pre><h3 id="Spark-相关命令"><a href="#Spark-相关命令" class="headerlink" title="Spark 相关命令"></a>Spark 相关命令</h3><pre><code>启动 master
+./sbin/start_master.sh
+:quit
+
+启动 worker
+./bin/spark-class
+
+hdfs dfs -rm -R /user/algo/liujiaqi/wordcount-output-spark/
+
+提交作业
+//单机
+spark-submit --master yarn-client --class WordCount myspark.jar
+
+//集群
+spark-submit --master yarn-cluster --conf spark.storage.memoryFraction=0.7 --conf spark.shuffle.memoryFraction=0.3 --conf spark.broadcast.blockSize=4096 --conf spark.broadcast.factory=org.apache.spark.broadcast.TorrentBroadcastFactory --conf spark.broadcast.compress=true --conf spark.serializer=org.apache.spark.serializer.JavaSerializer --conf spark.akka.threads=8 --conf spark.default.parallelism=63 --conf spark.port.maxRetries=100 --class WordCount  myspark.jar
+
+//查看结果
+hdfs dfs -cat /user/algo/liujiaqi/wordcount-output-spark/part-00000
+
+//查看日志
+yarn logs -applicationId xxxx
+</code></pre><h3 id="RDDs-弹性分布式数据集"><a href="#RDDs-弹性分布式数据集" class="headerlink" title="RDDs 弹性分布式数据集"></a>RDDs 弹性分布式数据集</h3><ul>
+<li><p>Driver programs: 包含程序main方法，RDDs的定义和操作。管理很多节点，称为executors。<br>image</p>
+</li>
+<li><p>SparkContex: Driver programs通过SparkContex对象访问Spark，SparkContex代表和一个集群的连接,在Shell中SparkContex自动创建好了，就是sc</p>
+</li>
+</ul>
+<h4 id="RDDs"><a href="#RDDs" class="headerlink" title="RDDs"></a>RDDs</h4><p><img src="/post_image/RDDs.jpg" alt="image"></p>
+<ul>
+<li>并行的分布在整个集群中，是Spark分发数据和计算的基础数据类</li>
+<li>一个RDD是一个不可改变的分布式集合对象</li>
+<li>Spark 中所有的计算都是通过RDDs的创建，转换，操作完成的</li>
+<li>一个RDD内部由许多Partitions组成</li>
+</ul>
+<h4 id="RDDs-创建方法"><a href="#RDDs-创建方法" class="headerlink" title="RDDs 创建方法"></a>RDDs 创建方法</h4><ol>
+<li><p>把一个存在的集合传给SparkContex的parallelize()方法</p>
+<pre><code>val rdd = sc.parallelize(Array(1,2,3,4),4)
+//第一个参数待处理的集合，第二个参数为分区个数
+</code></pre></li>
+<li><p>加载外部数据集</p>
+<pre><code>val addText = sc.textFile(&quot;helloSpark.txt&quot;);
+</code></pre></li>
+</ol>
+<h4 id="Scala-基础知识"><a href="#Scala-基础知识" class="headerlink" title="Scala 基础知识"></a>Scala 基础知识</h4><ul>
+<li>变量声明: 必须用 val(不可修改) 或 var（可改）</li>
+<li><p>匿名函数与类型推断</p>
+<pre><code>lines.filter(line.contains(&quot;world&quot;));
+//定义一个匿名函数，接受一个参数line
+</code></pre></li>
+</ul>
+<h4 id="基本操作Transformation"><a href="#基本操作Transformation" class="headerlink" title="基本操作Transformation"></a>基本操作Transformation</h4><ul>
+<li><code>map()</code>: 把函数应用到RDD的每一个元素，返回新RDD</li>
+<li><code>filter()</code>: 返回只包含满足filter()函数的元素的新RDD</li>
+<li><code>flatMap()</code>: 对每个输入元素，输出多个输出元素，flat是压扁的意思，将RDD元素压扁后返回新RDD</li>
+<li>支持数据集合运算，例如并集交集计算</li>
+</ul>
+<h4 id="基本操作Action"><a href="#基本操作Action" class="headerlink" title="基本操作Action"></a>基本操作Action</h4><ul>
+<li><code>reduce()</code>: 接收一个函数，作用在RDD两个类型相同的元素上，返回新元素，实现累加计数等</li>
+<li><code>collect()</code>: 遍历整个RDD，向Driver programs返回RDD内容，需要单机内存能够容纳下，大数据时用<code>saveAsTextFile</code></li>
+<li><code>take(n)</code>: 返回RDD的n个元素（同时尝试访问最少partition），返回结果无需，测试使用</li>
+<li><code>top(n)</code>: 排序（根据RDD中数据比较器），前n个</li>
+<li><code>foreach()</code>: 遍历每个元素，但不返回本地，可以配合println(),友好的打印出数据</li>
+<li><code>reduceByKey</code></li>
+<li><code>groupByKey</code></li>
+<li><code>combineByKey()</code>: 最常用的key的聚合函数，返回类型可以与输入类型不一样</li>
+</ul>
+<h4 id="RDDs特性"><a href="#RDDs特性" class="headerlink" title="RDDs特性"></a>RDDs特性</h4><ul>
+<li>血统关系图: Spark维护着RDDs间的依赖关系和创建关系，叫做血统关系图，使用血统关系图计算RDD需求，恢复丢失的数据</li>
+<li>延迟计算: Spark对RDDs的计算是在第一次使用action操作的时候，可以减少数据的传输</li>
+<li>持久化: 默认每次在RDDs上进行action操作时，Spark都重新计算RDDs.若想重复利用一个RDD,可以使用<code>RDD.persist()</code>, <code>unpersist()</code>从缓存中移除</li>
+</ul>
+<h3 id="DataFrame-amp-DataSet"><a href="#DataFrame-amp-DataSet" class="headerlink" title="DataFrame &amp; DataSet"></a>DataFrame &amp; DataSet</h3><blockquote>
+<p>RDD</p>
+<ol>
+<li>RDD一般和spark mlib同时使用</li>
+<li>RDD不支持sparksql操作</li>
+</ol>
+<p>DataFrame</p>
+<ol>
+<li>与RDD和Dataset不同，DataFrame每一行的类型固定为Row，只有通过解析才能获取各个字段的值<pre><code>testDF.foreach{
+  line =&gt;
+    val col1=line.getAs[String](&quot;col1&quot;)
+    val col2=line.getAs[String](&quot;col2&quot;)
+}
+</code></pre></li>
+<li>DataFrame与Dataset一般与spark ml同时使用</li>
+<li>DataFrame与Dataset均支持sparksql的操作，比如select，groupby之类，还能注册临时表/视窗，进行sql语句操作，如<pre><code>dataDF.createOrReplaceTempView(&quot;tmp&quot;)
+spark.sql(&quot;select  ROW,DATE from tmp where DATE is not null order by DATE&quot;).show(100,false)
+</code></pre></li>
+<li>DataFrame与Dataset支持一些特别方便的保存方式，比如保存成csv，可以带上表头，这样每一列的字段名一目了然</li>
+</ol>
+<p>DataSet</p>
+</blockquote>
+<ul>
+<li>这里主要对比Dataset和DataFrame，因为Dataset和DataFrame拥有完全相同的成员函数，区别只是每一行的数据类型不同.</li>
+<li>DataFrame也可以叫Dataset[Row],每一行的类型是Row，不解析，每一行究竟有哪些字段，各个字段又是什么类型都无从得知</li>
+<li>而Dataset中，每一行是什么类型是不一定的，在自定义了case class之后可以很自由的获得每一行的信息</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>var lines = sc.textFile(&quot;liu&quot;)
+lines.foreach(println)
+lines.count()
+var lines2 = lines.foreach(println)
+var lines3 = lines.map(word=&gt;(word,1))
+var lines4 = lines.fileter(word=&gt;word.contains(&quot;hello&quot;))
+print(lines.first())
+var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
+</code></pre><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>newAPIHadoopRDD(path,format,key,value)
+</code></pre>
+    <p></p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Tech/cjqc5uv2u003ahhkff84tms8z/">            
+            
+              计算广告
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cjqc5uv25001lhhkfvt29twn0/">            
+            
+              Hadoop 笔记
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>
