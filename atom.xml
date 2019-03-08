@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2018-12-31T10:12:15.022Z</updated>
+  <updated>2019-03-08T11:33:40.109Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Leetcode 指南</title>
+    <link href="http://mjackie.github.io/Tech/cjszzece7000fa0kfo6cmiz9x/"/>
+    <id>http://mjackie.github.io/Tech/cjszzece7000fa0kfo6cmiz9x/</id>
+    <published>2019-03-08T11:28:00.000Z</published>
+    <updated>2019-03-08T11:33:40.109Z</updated>
+    
+    <content type="html"><![CDATA[<p>自己日常刷题经过是这样的：</p>
+<ol>
+<li>拿到题目，看一眼<code>Difficulty</code>，然后自己思考一下解题思路。如果解不出来，就记下在哪里卡住了，难点在哪。</li>
+<li>如果对应的题目有<code>Solution</code>，就看<code>Solution</code>，没有的话就点<code>Discuss</code>，按<code>Most Votes</code>排序，看排名最高的解法。</li>
+<li>对比一下自己的解法与最优的解法的差别，总结一下为什么没想起来，记录下来这个思考的过程。</li>
+<li>关掉别人的代码，开始Coding，Debug，Submit。</li>
+</ol>
+<p>附上自己总结的几条经验：</p>
+<ul>
+<li><p>先刷两个Top专题。Leetcode 上有个<code>List</code>选项，里边有两个专题，分别是<code>Top 100 Liked Questions</code>和<code>Top Interview Questions</code>。这两个List中有很多重复的题，加起来一共150道左右。都是经典的题目，将这150道刷完基本上所有的题型都见过了，而且多数经典题目都会涉及，是提升最快的一个方法。</p>
+</li>
+<li><p>注意记录、总结与复习。自己写过的代码一定要保存下来，刷题的时候也要记下主要思路和注意点，这样在复习的时候也能对比发现自己哪里还能改进，之前犯得错误有没有重犯。可以将相互关联的题目对比着一起看，方便总结与记忆。一定要时常复习刷过的题，复习比一味的追求数量更重要。</p>
+</li>
+<li><p>做好Easy，没必要死扣Hard。LeetCode上很多Easy的题目看似简单，实则想要写出Perfect的代码并非易事。多思考如何优化Easy，Medium的解法实际上比花精力解Hard题更能提高自己。况且面试的时候Hard被问的概率太小了。</p>
+</li>
+<li><p>切忌眼高手低。不要想着自己知道思路解法了就是会了，一定要亲自Coding，手撸出来。我在刷的过程中就经常在Debug的时候才发现自己忘记考虑了某些条件。不把代码写出来，只看别人的答案对自己是没有多大的提高的，只有亲自AC了题目，才能算做过一道题。</p>
+</li>
+</ul>
+<p>最后附上我的刷题仓库，欢迎Start <a href="https://github.com/mJackie/leetcode" target="_blank" rel="noopener">https://github.com/mJackie/leetcode</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自己日常刷题经过是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拿到题目，看一眼&lt;code&gt;Difficulty&lt;/code&gt;，然后自己思考一下解题思路。如果解不出来，就记下在哪里卡住了，难点在哪。&lt;/li&gt;
+&lt;li&gt;如果对应的题目有&lt;code&gt;Solution&lt;/code&gt;，就看&lt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Leetcode" scheme="http://mjackie.github.io/tags/Leetcode/"/>
+    
+      <category term="JAVA" scheme="http://mjackie.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2018总结</title>
-    <link href="http://mjackie.github.io/Life/cjszzax2q00027qkfa1imw5tz/"/>
-    <id>http://mjackie.github.io/Life/cjszzax2q00027qkfa1imw5tz/</id>
+    <link href="http://mjackie.github.io/Life/cjszzecdq0001a0kfjd7sakxo/"/>
+    <id>http://mjackie.github.io/Life/cjszzecdq0001a0kfjd7sakxo/</id>
     <published>2018-12-31T00:00:00.000Z</published>
     <updated>2018-12-31T10:12:15.022Z</updated>
     
@@ -63,8 +109,8 @@
   
   <entry>
     <title>利用perl+extjs开发web应用</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax65006n7qkf2pt39wqa/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax65006n7qkf2pt39wqa/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecif006ha0kfycsrc84h/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecif006ha0kfycsrc84h/</id>
     <published>2018-10-07T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:33.336Z</updated>
     
@@ -545,8 +591,8 @@ historyresultStore.load();
   
   <entry>
     <title>压力测试与jmeter</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3u002h7qkfbamk34iw/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3u002h7qkfbamk34iw/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecex001ta0kftn57psrg/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecex001ta0kftn57psrg/</id>
     <published>2018-09-06T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:42.676Z</updated>
     
@@ -590,8 +636,8 @@ historyresultStore.load();
   
   <entry>
     <title>逻辑回归&amp;特征框架分享</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax4d003x7qkf2shtrqk0/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax4d003x7qkf2shtrqk0/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecht005na0kfbabxf0ca/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecht005na0kfbabxf0ca/</id>
     <published>2018-06-23T06:50:00.000Z</published>
     <updated>2018-06-29T07:10:49.160Z</updated>
     
@@ -640,8 +686,8 @@ historyresultStore.load();
   
   <entry>
     <title>推荐系统笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax47003g7qkf3nx5gbu7/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax47003g7qkf3nx5gbu7/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechk0053a0kfni2q7hps/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechk0053a0kfni2q7hps/</id>
     <published>2018-05-27T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:13.071Z</updated>
     
@@ -698,8 +744,8 @@ historyresultStore.load();
   
   <entry>
     <title>特征工程</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax45003d7qkf30ud5by9/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax45003d7qkf30ud5by9/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechm0056a0kft7ey4yck/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechm0056a0kft7ey4yck/</id>
     <published>2018-05-10T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:23.142Z</updated>
     
@@ -764,8 +810,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>计算广告</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax4a003n7qkffufo6f00/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax4a003n7qkffufo6f00/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechn005aa0kfs6ou68te/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechn005aa0kfs6ou68te/</id>
     <published>2018-04-14T02:50:00.000Z</published>
     <updated>2018-06-29T06:58:23.805Z</updated>
     
@@ -835,8 +881,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>Spark 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3c00177qkfcv61cfqz/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3c00177qkfcv61cfqz/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecem0017a0kfxym00wr6/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecem0017a0kfxym00wr6/</id>
     <published>2018-03-29T02:50:00.000Z</published>
     <updated>2018-06-29T07:15:01.825Z</updated>
     
@@ -1047,8 +1093,8 @@ var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
   
   <entry>
     <title>Hadoop 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3h001n7qkfm8v0b1i4/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3h001n7qkfm8v0b1i4/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechv005qa0kfxzxjd0jo/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechv005qa0kfxzxjd0jo/</id>
     <published>2018-03-24T02:50:00.000Z</published>
     <updated>2018-06-29T07:13:48.914Z</updated>
     
@@ -1243,8 +1289,8 @@ yarn application -kill appid
   
   <entry>
     <title>实习面试</title>
-    <link href="http://mjackie.github.io/Life/cjszzax40002y7qkf17doq8ej/"/>
-    <id>http://mjackie.github.io/Life/cjszzax40002y7qkf17doq8ej/</id>
+    <link href="http://mjackie.github.io/Life/cjszzecfb002ma0kfcltr5ggg/"/>
+    <id>http://mjackie.github.io/Life/cjszzecfb002ma0kfcltr5ggg/</id>
     <published>2018-03-14T16:09:00.000Z</published>
     <updated>2018-06-29T06:45:26.071Z</updated>
     
@@ -1317,55 +1363,9 @@ Output: Map&lt;String, Int&gt; idf
   </entry>
   
   <entry>
-    <title>Leetcode 指南</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax37000s7qkfl4349zin/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax37000s7qkfl4349zin/</id>
-    <published>2018-03-08T11:28:00.000Z</published>
-    <updated>2019-03-08T11:29:06.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>自己日常刷题经过是这样的：</p>
-<ol>
-<li>拿到题目，看一眼<code>Difficulty</code>，然后自己思考一下解题思路。如果解不出来，就记下在哪里卡住了，难点在哪。</li>
-<li>如果对应的题目有<code>Solution</code>，就看<code>Solution</code>，没有的话就点<code>Discuss</code>，按<code>Most Votes</code>排序，看排名最高的解法。</li>
-<li>对比一下自己的解法与最优的解法的差别，总结一下为什么没想起来，记录下来这个思考的过程。</li>
-<li>关掉别人的代码，开始Coding，Debug，Submit。</li>
-</ol>
-<p>附上自己总结的几条经验：</p>
-<ul>
-<li><p>先刷两个Top专题。Leetcode 上有个<code>List</code>选项，里边有两个专题，分别是<code>Top 100 Liked Questions</code>和<code>Top Interview Questions</code>。这两个List中有很多重复的题，加起来一共150道左右。都是经典的题目，将这150道刷完基本上所有的题型都见过了，而且多数经典题目都会涉及，是提升最快的一个方法。</p>
-</li>
-<li><p>注意记录、总结与复习。自己写过的代码一定要保存下来，刷题的时候也要记下主要思路和注意点，这样在复习的时候也能对比发现自己哪里还能改进，之前犯得错误有没有重犯。可以将相互关联的题目对比着一起看，方便总结与记忆。一定要时常复习刷过的题，复习比一味的追求数量更重要。</p>
-</li>
-<li><p>做好Easy，没必要死扣Hard。LeetCode上很多Easy的题目看似简单，实则想要写出Perfect的代码并非易事。多思考如何优化Easy，Medium的解法实际上比花精力解Hard题更能提高自己。况且面试的时候Hard被问的概率太小了。</p>
-</li>
-<li><p>切忌眼高手低。不要想着自己知道思路解法了就是会了，一定要亲自Coding，手撸出来。我在刷的过程中就经常在Debug的时候才发现自己忘记考虑了某些条件。不把代码写出来，只看别人的答案对自己是没有多大的提高的，只有亲自AC了题目，才能算做过一道题。</p>
-</li>
-</ul>
-<p>最后附上我的刷题仓库，欢迎Start <a href="https://github.com/mJackie/leetcode" target="_blank" rel="noopener">https://github.com/mJackie/leetcode</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;自己日常刷题经过是这样的：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;拿到题目，看一眼&lt;code&gt;Difficulty&lt;/code&gt;，然后自己思考一下解题思路。如果解不出来，就记下在哪里卡住了，难点在哪。&lt;/li&gt;
-&lt;li&gt;如果对应的题目有&lt;code&gt;Solution&lt;/code&gt;，就看&lt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="Leetcode" scheme="http://mjackie.github.io/tags/Leetcode/"/>
-    
-      <category term="JAVA" scheme="http://mjackie.github.io/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax49003k7qkf3e4ww9xl/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax49003k7qkf3e4ww9xl/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechp005da0kf5i16yv9s/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechp005da0kf5i16yv9s/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -1459,8 +1459,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3x002p7qkfcr5lsl7b/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3x002p7qkfcr5lsl7b/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecf8002ca0kfevjs3htc/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecf8002ca0kfevjs3htc/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -1516,8 +1516,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax31000g7qkf5tif05x8/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax31000g7qkf5tif05x8/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzece9000ha0kfhqe6za2y/"/>
+    <id>http://mjackie.github.io/Tech/cjszzece9000ha0kfhqe6za2y/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -1575,8 +1575,8 @@ Output: Map&lt;String, Int&gt; idf
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax39000x7qkfegnsgxwh/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax39000x7qkfegnsgxwh/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecei000xa0kfpgi1cjkk/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecei000xa0kfpgi1cjkk/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -1675,8 +1675,8 @@ $ python Classifiers.py
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3q00257qkf0g3fe0q3/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3q00257qkf0g3fe0q3/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecf20021a0kf81ql8h6h/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecf20021a0kf81ql8h6h/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -1917,8 +1917,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax4b003q7qkfk32xy4jo/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax4b003q7qkfk32xy4jo/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzechr005ga0kfu7faid8q/"/>
+    <id>http://mjackie.github.io/Tech/cjszzechr005ga0kfu7faid8q/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -2052,8 +2052,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjszzax3z002v7qkfuxl4emwg/"/>
-    <id>http://mjackie.github.io/Life/cjszzax3z002v7qkfuxl4emwg/</id>
+    <link href="http://mjackie.github.io/Life/cjszzecfc002pa0kfm6hgr68o/"/>
+    <id>http://mjackie.github.io/Life/cjszzecfc002pa0kfm6hgr68o/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -2093,8 +2093,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3v002k7qkfq6b97crq/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3v002k7qkfq6b97crq/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecf70029a0kfwx7atetl/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecf70029a0kfwx7atetl/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -2204,8 +2204,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjszzax3d001a7qkfrftjg5nl/"/>
-    <id>http://mjackie.github.io/Tech/cjszzax3d001a7qkfrftjg5nl/</id>
+    <link href="http://mjackie.github.io/Tech/cjszzecen001aa0kfe2pkmmf1/"/>
+    <id>http://mjackie.github.io/Tech/cjszzecen001aa0kfe2pkmmf1/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
