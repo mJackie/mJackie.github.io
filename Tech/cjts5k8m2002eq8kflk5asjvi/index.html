@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>利用perl+extjs开发web应用 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+</html>
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Born to be proud</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		<article id="post-perl_extjs" class="article post article-type-post" itemscope="" itemprop="blogPost">
+  <hgroup class="post_hctn"> 
+    <div class="post_time">
+        <div class="post_t_d">
+         10/7
+        </div>
+        <div class="post_t_u">
+         2018
+        </div>
+    </div>
+   <div class="post_h_l"> 
+   <h2 class="post_h"><a href="/Tech/cjts5k8m2002eq8kflk5asjvi/">
+    
+      利用perl+extjs开发web应用
+    
+    </a></h2>
+    <div class="post_tag"> 
+      <a class="article-category-link" href="/categories/Tech/">Tech</a>
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perl/">perl</a></li></ul>
+    </div>
+   </div> 
+  </hgroup>
+  <div class="post_t">
+    <p>      
+       </p><p>组里的网络测试仪整个框架是用perl+extjs实现的。项目很大，看了好久了解了整体框架结构。perl+extjs的实现主要有以下几个好处：</p>
+<ul>
+<li>轻量级，web服务端与业务逻辑紧耦合，无需web服务器去承载应用</li>
+<li>调用外部命令行程序方便</li>
+<li>采用ajax技术，省去了频繁的页面跳转</li>
+<li>extjs封装了大量的组件，界面效果风格一致，省去了前端页面开发工作</li>
+</ul>
+<a id="more"></a>
+<p>入口程序为 <code>server.pl</code> , 启动web服务，监听端口，轮训请求，两个主要函数如下：</p>
+<pre><code>sub ServerInit
+{
+    my $group = shift;
+    my $server_sock = undef;
+
+    if($group eq &quot;GUI&quot;)
+    {
+        $server_sock = &amp;guiServerInit($ServerParams-&gt;{CONFIG});
+        GuiServer-&gt;removeShm();
+    }
+    elsif($group eq &quot;PKTGEN&quot;)
+    {$server_sock = &amp;pktgenInit($ServerParams-&gt;{CONFIG});}
+    elsif($group eq &quot;CLUSTER_TEST&quot;)
+    {$server_sock = &amp;clusterMasterInit($ServerParams-&gt;{CONFIG});}
+    elsif($group eq &quot;ATTACKENGINE&quot;)
+    {$server_sock = AttackEngineServer::init($ServerParams-&gt;{CONFIG});}
+
+    if( defined($server_sock) )
+    {$ServerParams-&gt;{&quot;$group&quot;}-&gt;{&quot;socket&quot;} = $server_sock;}
+    else
+    {
+        printf(&quot;Can not setup $group socket at--[%s, %s]\n&quot;, __FILE__, __LINE__);
+        return 0;
+    }
+    $ServerParams-&gt;{&quot;SELECT&quot;}-&gt;add($ServerParams-&gt;{&quot;$group&quot;}-&gt;{&quot;socket&quot;});
+
+    return 1;
+}
+
+
+sub mainLoop
+{
+    my @ready;
+    my $sock;
+    my $sel = $ServerParams-&gt;{&quot;SELECT&quot;};
+    my $GUIConnections = $ServerParams-&gt;{&quot;GUI&quot;}-&gt;{&quot;connections&quot;};
+    my $PKTGENConnections = $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;connections&quot;};
+    my $ATTACKENGINEConnections = $ServerParams-&gt;{&quot;ATTACKENGINE&quot;}-&gt;{&quot;connections&quot;};
+    my $CLUSTERConnections = $ServerParams-&gt;{&quot;CLUSTER_TEST&quot;}-&gt;{&quot;connections&quot;};
+    my $STATConnections =  $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;connections&quot;};
+    my $tmpSock;
+    my $tid; 
+    #starts looping
+    while(1)
+    {
+        #select: BLOCK, selection loop may be interrupted by signals.
+        @ready = $sel-&gt;can_read();
+
+        foreach my $fh (@ready)
+        {
+            if($fh == $ServerParams-&gt;{&quot;GUI&quot;}-&gt;{&quot;socket&quot;})
+            {
+                #accept the connection
+                $sock = $fh-&gt;accept();
+                #setup buffer for this connection
+                $GUIConnections-&gt;{&quot;$sock&quot;} = {
+                    &quot;buffer&quot; =&gt; &quot;&quot;
+                };
+                #add this socket into selection loop
+                $sel-&gt;add($sock);
+            }
+            #Connection from PKTGEN
+            elsif($fh == $ServerParams-&gt;{&quot;PKTGEN&quot;}-&gt;{&quot;socket&quot;})
+            {
+                $sock = $fh-&gt;accept();
+                $PKTGENConnections-&gt;{&quot;$sock&quot;} = {
+                    &quot;tid&quot; =&gt; &quot;-1&quot;,
+                    &quot;buffer&quot; =&gt; &quot;&quot;
+                };
+                $sel-&gt;add($sock);
+            }
+            elsif($fh == $ServerParams-&gt;{&quot;ATTACKENGINE&quot;}-&gt;{&quot;socket&quot;})
+            {
+                $sock = $fh-&gt;accept();
+                $sel-&gt;add($sock);
+                $ATTACKENGINEConnections-&gt;{&quot;$sock&quot;} = {};
+            }
+            elsif($fh == $ServerParams-&gt;{&quot;CLUSTER_TEST&quot;}-&gt;{&quot;socket&quot;})
+            {
+                # connection request from cluster master
+                $sock = $fh-&gt;accept();
+                $sel-&gt;add($sock);
+                $CLUSTERConnections-&gt;{&quot;$sock&quot;} = {
+                    status =&gt; &quot;CONNECTED&quot;,
+                    buffer =&gt; &quot;&quot;,
+                    &apos;length&apos; =&gt; 0,
+                    DFA =&gt; &quot;AUTH&quot;
+                };
+            }
+            elsif(&amp;WhichConnection($fh, &quot;GUI&quot;)) #for GUI requests
+            {
+                if(! &amp;processGUIRequest_keepalive($fh, $GUIConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $GUIConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            elsif(&amp;WhichConnection($fh, &quot;CLUSTER_TEST&quot;))
+            {
+                if(! &amp;processClusterMasterRequest($fh, $CLUSTERConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh);
+                }
+            }
+            #stat. from pkt-gens
+            elsif(&amp;WhichConnection($fh, &quot;PKTGEN&quot;)) #for PKTGEN running statistics
+            {
+                if(! &amp;processPKTGENMsg_keepalive($fh, $PKTGENConnections))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $PKTGENConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            elsif(&amp;WhichConnection($fh, &quot;ATTACKENGINE&quot;))
+            {
+                if(! AttackEngineServer::processAttackEngineResponse($fh, $ATTACKENGINEConnections-&gt;{&quot;$fh&quot;}))
+                {
+                    $sel-&gt;remove($fh);
+                    close($fh); 
+                    delete $ATTACKENGINEConnections-&gt;{&quot;$fh&quot;};
+                }
+            }
+            else
+            {
+                #TODO: error
+                print(&quot;Isolated connection!!!!!!!Never should be here. Need debugging.&quot;);
+                #throw this connection away
+                $sel-&gt;remove($fh);
+                close($fh);
+            }
+        }
+        # can write
+    }
+}
+</code></pre><p>业务逻辑代码靠 GuiServer.pm 承载，并返回内容，主要函数如下：</p>
+<pre><code>sub guiServerInit
+{
+    my $config = shift;
+
+    $config_defs-&gt;{config} = $config;
+    $config_defs-&gt;{path} = $config-&gt;{database}-&gt;{xmlDatabasePath};
+    $config_defs-&gt;{maxHistory} = $config-&gt;{web}-&gt;{maxHistory};
+    $config_defs-&gt;{webRoot} = $config-&gt;{web}-&gt;{webRoot};
+    $config_defs-&gt;{cacheEnabled} = $config-&gt;{web}-&gt;{cacheEnabled};
+    $config_defs-&gt;{sessionExpires} = $config-&gt;{web}-&gt;{sessionExpires};
+    $config_defs-&gt;{port} = $config-&gt;{web}-&gt;{port};
+
+    $config_defs-&gt;{protocolTemplates} = $config-&gt;{msgCompiler}-&gt;{protocolTemplates};
+
+    $config_defs-&gt;{webVersion} = $config-&gt;{web}-&gt;{version} ? $config-&gt;{web}-&gt;{version} : &quot;0.1&quot;;
+    $config_defs-&gt;{msgCompilerVersion} = $config-&gt;{msgCompiler}-&gt;{version} ? $config-&gt;{msgCompiler}-&gt;{version} : &quot;0.1&quot;;
+    $config_defs-&gt;{pktgenVersion} = $config-&gt;{pktgenVersion}-&gt;{version} ? $config-&gt;{pktgenVersion}-&gt;{version} : &quot;0.1&quot;;
+
+
+    $config_defs-&gt;{protocolScripts} = $config-&gt;{msgCompiler}-&gt;{protocolScripts};
+    $config_defs-&gt;{attackScripts} = $config-&gt;{msgCompiler}-&gt;{attackScripts};
+    $config_defs-&gt;{database} = Database-&gt;getDatabaseConnection() or return undef;
+    $config_defs-&gt;{totParser} = ToTParser-&gt;new($config_defs-&gt;{protocolTemplates}, $config_defs-&gt;{protocolScripts});
+    #$config_defs-&gt;{&quot;physicalPortManager&quot;} = PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}/System/physicalPortManagement.config&quot;,&quot;$config_defs-&gt;{path}/System/ui_physicalPortMapping.config&quot;);
+    $config_defs-&gt;{&quot;physicalPortManager&quot;} = PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}&quot;);
+    #$config_defs-&gt;{&quot;physicalPortManager&quot;} = shared_clone(PhysicalPortManager-&gt;new(&quot;$config_defs-&gt;{path}&quot;));
+
+    #$config_defs-&gt;{&quot;ManagementIPConfig&quot;} = ManagementIPConfig-&gt;new($MANAGEMENTPORT);
+    $config_defs-&gt;{&quot;ManagementIPConfig&quot;} = ManagementIPConfig-&gt;new($config_defs-&gt;{path});
+
+    # set session time
+    $config_defs-&gt;{sessions} = Session-&gt;new($config_defs-&gt;{sessionExpires});
+    $config_defs-&gt;{preferences} = Preference-&gt;new($config_defs-&gt;{path});
+    $config_defs-&gt;{packetGenerator}={};
+    $config_defs-&gt;{packetGenerator}-&gt;{port} =  $config-&gt;{packetGenerator}-&gt;{port};
+
+    $config_defs-&gt;{DocGenerator} =  $config-&gt;{DocGenerator};
+
+    $config_defs-&gt;{PcapBuffer} =  $config-&gt;{PcapBuffer};
+
+    # printf(&quot;INIT GUI LOG FILE: $config-&gt;{web}-&gt;{logFile}\n&quot;);
+    if($config-&gt;{web}-&gt;{logFile} ne &quot;&quot;)
+    {
+        open($config_defs-&gt;{GUILOGFILE}, &quot;&gt;$config-&gt;{web}-&gt;{logFile}&quot;) || die &quot;failed to open gui log file!\n&quot;;
+        guiLog(&quot;GUI LOG FILE\n&quot;);
+    }
+    #print(Dumper($config_defs));
+    return IO::Socket::INET-&gt;new(LocalPort=&gt; $config_defs-&gt;{port}, Reuse =&gt; 1, Listen =&gt; SOMAXCONN);
+}
+
+sub parseGUIRequest_keepalive
+{
+    my ($sock, $request, $cleanSockFun) = @_;
+    my ($ret, $params, $file);
+
+    while(length($request-&gt;{&quot;buffer&quot;}) &gt; 0)
+    {
+        if(! defined($request-&gt;{&quot;state&quot;}))
+        {$request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;}
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;WAIT_FOR_HEADER&quot;)
+        {
+            # whether http header is ready
+            $ret = index($request-&gt;{&quot;buffer&quot;}, &quot;\r\n\r\n&quot;);
+            if($ret &lt;= 0) # negative
+            {return &quot;MORE_DATA&quot;;}
+
+            # cut request header
+            $request-&gt;{&quot;header&quot;} = substr($request-&gt;{&quot;buffer&quot;}, 0, $ret + 4);
+
+            guiLog(Dumper($request-&gt;{&quot;header&quot;}));
+
+            substr($request-&gt;{&quot;buffer&quot;}, 0, $ret + 4) = &quot;&quot;;
+
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*Accept-Language: ([^\r\n]+)\r\n/s)
+            {
+                #Accept-Language: zh-CN,zh;q=0.8
+                @{$request-&gt;{languages}} = split(/ *, */, $1);
+            }
+
+            # parse header
+            $request-&gt;{&quot;header&quot;} =~ m/^.*(GET|get|POST|post)\s+(\S+).*/s;
+            $request-&gt;{&quot;method&quot;} = uc($1);
+            $request-&gt;{&quot;uri&quot;} = $2;
+            $request-&gt;{&quot;header&quot;} =~ m/^.*Connection: (\S+)\r\n.*/s;
+            $request-&gt;{&quot;connection&quot;} = $1;
+
+            # parse cookie
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*Cookie: ([^\r\n]+)\r\n/s)
+            {$request-&gt;{&quot;cookies&quot;} = $1;}
+
+            # check Modifed-Since
+            if($request-&gt;{&quot;header&quot;} =~ m/^.*If-None-Match/s)
+            {
+                print(&quot;TODO: return 304 not modifed\n&quot;);
+                print(Dumper($request-&gt;{header}));
+            }
+
+            $request-&gt;{&quot;uri&quot;} =~ /^([^?]+)(\?(.+))?/;
+            $request-&gt;{&quot;path&quot;} = $1;
+            if($3){
+                %{$params} = split(/&amp;|=/, $3);
+            }
+            foreach my $pp (keys(%{$params}))
+            {$request-&gt;{&quot;params&quot;}-&gt;{$pp} = &amp;urlDecode($params-&gt;{$pp});}
+
+            $request-&gt;{&quot;state&quot;} = &quot;HEADER_READY&quot;;
+        }
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;HEADER_READY&quot;)
+        {
+            if($request-&gt;{&quot;method&quot;} eq &quot;GET&quot;)
+            {$request-&gt;{&quot;state&quot;} = &quot;REQUEST_READY&quot;;}
+            else
+            {
+                if($request-&gt;{&quot;header&quot;} =~ m/^.*Content-Length:\s+(\d+).*/s)
+                {$request-&gt;{&quot;length&quot;} = $1;}
+                if($request-&gt;{&quot;length&quot;} &lt; 0) # wrong http post request, ignore it.
+                {return &quot;END&quot;;}
+                else
+                {
+                    if($request-&gt;{&quot;path&quot;} =~ /^\/upload\//i || $request-&gt;{&quot;path&quot;} =~ /^\/import\//i)
+                    {$request-&gt;{&quot;state&quot;} = &quot;FILE_UPLOADING&quot;;}
+                    elsif(length($request-&gt;{&quot;buffer&quot;}) &gt;= $request-&gt;{&quot;length&quot;})
+                    {
+                        $request-&gt;{&quot;data&quot;} = substr($request-&gt;{&quot;buffer&quot;}, 0, $request-&gt;{&quot;length&quot;});
+                        substr($request-&gt;{&quot;buffer&quot;}, 0, $request-&gt;{&quot;length&quot;}) = &quot;&quot;;
+                        $param = {};
+                        %{$params} = split(/&amp;|=/, $request-&gt;{&quot;data&quot;});
+                        foreach my $pp (keys(%{$params}))
+                        {
+                            my $tmpParam=&amp;urlDecode($params-&gt;{$pp});
+                            $tmpParam =~ s/^\s+|\s+$//g;#remove head and tail backspeace,equal to string trim
+                            $request-&gt;{&quot;params&quot;}-&gt;{$pp} = $tmpParam;
+                        }
+                        $request-&gt;{&quot;state&quot;} = &quot;REQUEST_READY&quot;;
+                    }
+                    else
+                    {return &quot;MORE_DATA&quot;;}
+                }
+            }
+        }
+        # http request is ready
+        if($request-&gt;{&quot;state&quot;} eq &quot;REQUEST_READY&quot;)
+        {
+            #print(&quot;\n++++++++++\n&quot;.$request-&gt;{&quot;path&quot;}.&quot;\n+++++++++++\n&quot;);
+
+            # forward to ajax,
+
+            if($request-&gt;{&quot;path&quot;} =~ /^\/ajax\//)
+            {$ret = &amp;ajaxRequest($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/attackQuery\//)
+            {$ret = &amp;attackQuery($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/testsQuery\//)
+            {$ret = &amp;testsQueryProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/login\//)
+            {$ret = &amp;loginProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/logout\//)
+            {$ret = &amp;logoutProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/session.js$/)
+            {$ret = &amp;sessionJSProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/command\//)
+            {$ret = &amp;commandProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/export\//)
+            {$ret = &amp;exportProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/testReportsDoc\//)
+            {$ret = &amp;testReportsDocProc($sock, $request, $cleanSockFun);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/monitor\//)
+            {$ret = &amp;monitorProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/util\//)
+            {$ret = &amp;utilProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/exportPcap\//)
+            {$ret = &amp;exportPcapProc($sock, $request, $cleanSockFun);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/onlineHelp\//)
+            {$ret = &amp;onlineHelpProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/loadresourcefile\//)
+            {$ret = &amp;loadResourceFileProc($sock, $request);}
+            elsif($request-&gt;{&quot;path&quot;} =~ /^\/license\//)
+            {$ret = &amp;licenseProc($sock, $request);}
+            else
+            {$ret = &amp;staticFileProc($sock, $request);}
+
+            if(! defined($ret))
+            {printf(&quot;connection closed!\n&quot;); return undef;}
+
+            foreach my $e (keys(%{$request}))
+            {
+                if($e eq &quot;state&quot; || $e eq &quot;buffer&quot;)
+                {next;}
+                delete $request-&gt;{$e};
+            }
+            # waiting for next round
+            $request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;
+
+        }
+
+        if($request-&gt;{&quot;state&quot;} eq &quot;FILE_UPLOADING&quot;)
+        {
+            if(&amp;fileUploadProc($sock, $request))
+            {
+                foreach my $e (keys(%{$request}))
+                {
+                    if($e eq &quot;state&quot; || $e eq &quot;buffer&quot;)
+                    {next;}
+                    delete $request-&gt;{$e};
+                }
+                $request-&gt;{&quot;state&quot;} = &quot;WAIT_FOR_HEADER&quot;;
+            }
+        }
+        if(defined($request-&gt;{&quot;connection&quot;})){
+            if($request-&gt;{&quot;connection&quot;} =~ /close/i)
+                {printf(&quot;Connection to be closed!\n&quot;); return &quot;END&quot;;}
+        }
+
+    }
+    return &quot;MORE_DATA&quot;;
+}
+</code></pre><p>extjs 在前端通过ajax发起请求，与后端进行交互，示例代码如下：</p>
+<pre><code>// 左侧导航历史结果列表数据
+var historyresultStore = new Ext.data.JsonStore({
+            // store configs
+            autoDestroy : true,
+            storeId : &apos;historyresultStore&apos;,
+            proxy : {
+                type : &apos;ajax&apos;,
+                url : &apos;/loadresultlist/&apos;,
+                reader : {
+                    type : &apos;json&apos;,
+                    root : &apos;history&apos;,
+                    idProperty : &apos;id&apos;
+                }
+            },
+            fields : [&apos;name&apos;, &apos;time&apos;, &apos;url&apos;]
+        });
+// 左侧导航历史结果列表数据的容器
+var historychart = Ext.create(&apos;Ext.grid.Panel&apos;, {
+    title : &apos;历史结果&apos;,
+    id : &apos;historychart&apos;,
+    store : Ext.data.StoreManager.lookup(&apos;historyresultStore&apos;),
+    columns : [{
+                header:&apos;&apos;,
+                xtype:&apos;rownumberer&apos;,
+                align:&apos;center&apos;
+            },{
+                text : &apos;名称&apos;,
+                dataIndex : &apos;name&apos;,
+                align:&apos;center&apos;
+            },{
+                text : &apos;时间&apos;,
+                dataIndex : &apos;time&apos;,
+                align:&apos;center&apos;
+            }],
+    width : &quot;100%&quot;,
+    forceFit : true,
+    listeners : {
+        &apos;itemcontextmenu&apos; : function(view, record, item, index, e, eOpts) {
+            // 禁用浏览器的右键相应事件
+            e.preventDefault();
+            e.stopEvent();
+            // var nodename = record.raw.name;
+            delete_menu.showAt(e.getXY());
+        }
+    },
+    viewConfig : {
+        listeners : {
+            scope : this,
+            itemdblclick : function(view, record, item, index, e) {
+                var filename = record.data.url;
+                Ext.Ajax.request({
+                    url : &quot;/getrunlog/&quot;,
+                    method : &apos;get&apos;,
+                    params : {
+                        name : filename
+                    },
+                    success : function(response, opts) {
+                        // 清空tabs内容
+                        Ext.getCmp(&apos;tabs&apos;).removeAll();
+                        if(Ext.getCmp(&apos;Onlynavigationpanel&apos;)!=undefined){Ext.getCmp(&apos;Onlynavigationpanel&apos;).destroy();}            
+                        var testreport = Ext.create(&apos;Mytestreport&apos;);
+                        Ext.getCmp(&apos;tabs&apos;).add(testreport);
+                        Ext.getCmp(&apos;tabs&apos;).doLayout(true);
+                        Ext.getCmp(&apos;testreport&apos;).body
+                                .update(&apos;&lt;iframe scrolling=&quot;auto&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;../../testResult/&apos;
+                                        + filename
+                                        + &apos;/index.html&quot;&gt;&lt;/iframe&gt;&apos;);
+                        // runlog.collapse();
+                        testreport.expand();
+                        // Ext.getCmp(&apos;runlog&apos;).body.update(response[&quot;responseText&quot;]);
+                    },
+                    failure : function(response, opts) {
+                        Ext.MessageBox.alert({
+                                    title : &apos;提示信息&apos;,
+                                    msg : &quot;运行日志获取失败！&quot;,
+                                    buttons : Ext.Msg.OK
+                                });
+                    }
+                });
+
+            }
+        }
+    }
+
+});
+// console.log(historyresultStore);
+historyresultStore.load();
+</code></pre>
+    <p></p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <ul class="post-near">
+      
+        <li>上一篇: <a href="/Life/cjts5k8kk0002q8kfa35w1z2l/">            
+            
+              2018总结
+            
+          </a>
+        </li>
+      
+      
+        <li>下一篇: <a href="/Tech/cjts5k8ly0021q8kfuxzumy51/">            
+            
+              压力测试与jmeter
+            
+          </a>
+        </li>
+      
+    </ul>
+    
+</article>
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>
