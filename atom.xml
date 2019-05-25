@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2019-03-08T11:34:37.457Z</updated>
+  <updated>2019-05-25T04:52:21.611Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -16,9 +16,158 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ByteCamp编程题</title>
+    <link href="http://mjackie.github.io/Tech/cjw31fpgr0003k3kf4v7g6e68/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpgr0003k3kf4v7g6e68/</id>
+    <published>2019-05-25T04:47:00.000Z</published>
+    <updated>2019-05-25T04:52:21.611Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>给定一个数组，求<code>ai＋aj＋i-j</code>的最大值（j＞i）要求时间复杂度＜<code>n²</code>。自己暴力写的，交卷以后调通了，有点遗憾。</p>
+<pre><code>public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int res = Integer.MIN_VALUE;
+        int[] dp = new int[n];
+        dp[0] = arr[0];
+        for (int i = 1; i &lt; n; i++) {
+            dp[i] = Math.max(dp[i-1], arr[i]+i);
+        }
+        for (int i = 1; i &lt; n ; i++) {
+            res = Math.max(arr[i]-i+dp[i-1], res);
+        }
+        System.out.println(res);
+    }
+</code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        if(m*n==0) {
+            System.out.println(0);
+            return;
+        }
+        int[][] grid = new int[n][m];
+        for(int i = 0; i &lt; n; i++){
+            for(int j = 0; j &lt; m; j++){
+                grid[i][j] = sc.nextInt();
+            }
+        }
+        int count = 0;
+        for (int i = 0; i &lt; n ; i++) {
+            for (int j = 0; j &lt; m ; j++) {
+                if( grid[i][j]==1 ){
+                    count++;
+                    grid[i][j] = 0;   //置0， 下次不用考虑
+                    search(grid,i,j);
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
+    public static void search(int[][] grid, int i, int j){
+        if( i&gt;0 &amp;&amp; grid[i-1][j]==1) {
+            grid[i-1][j] = 0;     //置0， 下次不用考虑
+            search(grid, i - 1, j);
+        }
+        if( j&gt;0 &amp;&amp; grid[i][j-1]==1) {
+            grid[i][j-1] = 0;
+            search(grid, i, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; grid[i+1][j]==1) {
+            grid[i+1][j] = 0;
+            search(grid, i + 1, j);
+        }
+        if( j+1&lt;grid[0].length &amp;&amp; grid[i][j+1]==1) {
+            grid[i][j+1] = 0;
+            search(grid, i, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j&gt;0 &amp;&amp; grid[i-1][j-1]==1){
+            grid[i-1][j-1] = 0;
+            search(grid, i-1, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i+1][j+1]==1){
+            grid[i+1][j+1] = 0;
+            search(grid, i+1, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i-1][j+1]==1){
+            grid[i-1][j+1] = 0;
+            search(grid, i-1, j+1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j&gt;0 &amp;&amp; grid[i+1][j-1]==1){
+            grid[i+1][j-1] = 0;
+            search(grid, i+1, j-1);
+        }
+        return;
+    }
+</code></pre><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>完美AC</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        Stack&lt;Character&gt; st = new Stack();
+        int i = 0;
+        char[] str_arr = s.toCharArray();
+        StringBuilder res = new StringBuilder();
+
+        while(i&lt;s.length()){
+            if(str_arr[i]==&apos;#&apos;){
+                StringBuilder temp = new StringBuilder();
+                StringBuilder num = new StringBuilder();
+                while(st.peek()!=&apos;%&apos;){
+                    temp.insert(0, st.pop());
+                }
+                st.pop();   // pop出 [
+                while(!st.isEmpty() &amp;&amp; Character.isDigit(st.peek())){
+                    num.insert(0, st.pop());
+                }
+                StringBuilder temp2 = new StringBuilder();
+                for (int j = 0; j &lt; Integer.valueOf(num.toString()) ; j++) {
+                    temp2.append(temp.toString());
+                }
+                //入栈
+                for (int j = 0; j &lt; temp2.toString().length() ; j++) {
+                    st.push(temp2.toString().toCharArray()[j]);
+                }
+            }else{
+                st.push(str_arr[i]);
+            }
+            i++;
+        }
+        // 别忘了末尾的
+        StringBuilder sb1 = new StringBuilder();
+        while(!st.isEmpty()){
+            sb1.insert(0, st.pop());
+        }
+        res.append(sb1);
+        System.out.println(res.toString());
+    }
+</code></pre><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>没时间</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;第一题&quot;&gt;&lt;a href=&quot;#第一题&quot; class=&quot;headerlink&quot; title=&quot;第一题&quot;&gt;&lt;/a&gt;第一题&lt;/h3&gt;&lt;p&gt;给定一个数组，求&lt;code&gt;ai＋aj＋i-j&lt;/code&gt;的最大值（j＞i）要求时间复杂度＜&lt;code&gt;n²&lt;/code&gt;。自己暴
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
+    
+    
+      <category term="Leetcode" scheme="http://mjackie.github.io/tags/Leetcode/"/>
+    
+      <category term="JAVA" scheme="http://mjackie.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode 指南</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8ld000xq8kfl26yo4xn/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8ld000xq8kfl26yo4xn/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpgy000ek3kfhb48s6zj/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpgy000ek3kfhb48s6zj/</id>
     <published>2019-03-08T11:28:00.000Z</published>
     <updated>2019-03-08T11:34:37.457Z</updated>
     
@@ -67,8 +216,8 @@
   
   <entry>
     <title>2018总结</title>
-    <link href="http://mjackie.github.io/Life/cjts5k8kk0002q8kfa35w1z2l/"/>
-    <id>http://mjackie.github.io/Life/cjts5k8kk0002q8kfa35w1z2l/</id>
+    <link href="http://mjackie.github.io/Life/cjw31fpgk0000k3kfgtf40lnm/"/>
+    <id>http://mjackie.github.io/Life/cjw31fpgk0000k3kfgtf40lnm/</id>
     <published>2018-12-31T00:00:00.000Z</published>
     <updated>2018-12-31T10:12:15.022Z</updated>
     
@@ -113,8 +262,8 @@
   
   <entry>
     <title>利用perl+extjs开发web应用</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8m2002eq8kflk5asjvi/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8m2002eq8kflk5asjvi/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpjf006hk3kfrfcoa3tf/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpjf006hk3kfrfcoa3tf/</id>
     <published>2018-10-07T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:33.336Z</updated>
     
@@ -595,8 +744,8 @@ historyresultStore.load();
   
   <entry>
     <title>压力测试与jmeter</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8ly0021q8kfuxzumy51/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8ly0021q8kfuxzumy51/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphk0023k3kfoyin8m1o/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphk0023k3kfoyin8m1o/</id>
     <published>2018-09-06T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:42.676Z</updated>
     
@@ -640,8 +789,8 @@ historyresultStore.load();
   
   <entry>
     <title>逻辑回归&amp;特征框架分享</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8mk003rq8kf2ulrycz5/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8mk003rq8kf2ulrycz5/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpi5003tk3kf44990aqa/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpi5003tk3kf44990aqa/</id>
     <published>2018-06-23T06:50:00.000Z</published>
     <updated>2018-06-29T07:10:49.160Z</updated>
     
@@ -690,8 +839,8 @@ historyresultStore.load();
   
   <entry>
     <title>推荐系统笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8mm003vq8kf9r2xxznc/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8mm003vq8kf9r2xxznc/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphv0031k3kfq4zfqcdd/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphv0031k3kfq4zfqcdd/</id>
     <published>2018-05-27T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:13.071Z</updated>
     
@@ -748,8 +897,8 @@ historyresultStore.load();
   
   <entry>
     <title>特征工程</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8nf006jq8kfvxhdpok3/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8nf006jq8kfvxhdpok3/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphy003ck3kfu5wbtxmx/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphy003ck3kfu5wbtxmx/</id>
     <published>2018-05-10T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:23.142Z</updated>
     
@@ -814,8 +963,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>计算广告</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8mg003hq8kflrlj5pm6/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8mg003hq8kflrlj5pm6/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphz003fk3kfqndb1sph/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphz003fk3kfqndb1sph/</id>
     <published>2018-04-14T02:50:00.000Z</published>
     <updated>2018-06-29T06:58:23.805Z</updated>
     
@@ -885,8 +1034,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>Spark 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8li001aq8kf2qfolbjd/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8li001aq8kf2qfolbjd/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fph5000xk3kf2zjuproh/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fph5000xk3kf2zjuproh/</id>
     <published>2018-03-29T02:50:00.000Z</published>
     <updated>2018-06-29T07:15:01.825Z</updated>
     
@@ -1097,8 +1246,8 @@ var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
   
   <entry>
     <title>Hadoop 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8lu001tq8kf9ucmsxc7/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8lu001tq8kf9ucmsxc7/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphd001nk3kfu6jbvzqb/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphd001nk3kfu6jbvzqb/</id>
     <published>2018-03-24T02:50:00.000Z</published>
     <updated>2018-06-29T07:13:48.914Z</updated>
     
@@ -1293,8 +1442,8 @@ yarn application -kill appid
   
   <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8me003eq8kfodzs1lly/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8me003eq8kfodzs1lly/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpi2003jk3kfm4il8vxe/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpi2003jk3kfm4il8vxe/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -1388,8 +1537,8 @@ yarn application -kill appid
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8m6002qq8kfaxmfe3fl/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8m6002qq8kfaxmfe3fl/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphp002ik3kfyb5dfoxu/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphp002ik3kfyb5dfoxu/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -1445,8 +1594,8 @@ yarn application -kill appid
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8ku000bq8kf5yytoxsw/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8ku000bq8kf5yytoxsw/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpgz000gk3kfpnx7h83y/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpgz000gk3kfpnx7h83y/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -1504,8 +1653,8 @@ yarn application -kill appid
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8lb000tq8kf1qiyspxa/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8lb000tq8kf1qiyspxa/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fph4000uk3kfwqo86mfr/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fph4000uk3kfwqo86mfr/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -1604,8 +1753,8 @@ $ python Classifiers.py
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8m00028q8kfro8benhy/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8m00028q8kfro8benhy/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphn002ck3kfa0nyq48f/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphn002ck3kfa0nyq48f/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -1846,8 +1995,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8mj003oq8kfv52d3aq4/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8mj003oq8kfv52d3aq4/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fpi4003qk3kfoutpsvhd/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fpi4003qk3kfoutpsvhd/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -1981,8 +2130,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjts5k8m8002vq8kfgzmgwvjs/"/>
-    <id>http://mjackie.github.io/Life/cjts5k8m8002vq8kfgzmgwvjs/</id>
+    <link href="http://mjackie.github.io/Life/cjw31fpht002uk3kfflhrwdmb/"/>
+    <id>http://mjackie.github.io/Life/cjw31fpht002uk3kfflhrwdmb/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -2022,8 +2171,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8m9002xq8kf9cqs5pzj/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8m9002xq8kf9cqs5pzj/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fphq002lk3kfj6cxdo4r/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fphq002lk3kfj6cxdo4r/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -2133,8 +2282,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8ll001fq8kf58zafbd0/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8ll001fq8kf58zafbd0/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31fph80016k3kfsiaj85ot/"/>
+    <id>http://mjackie.github.io/Tech/cjw31fph80016k3kfsiaj85ot/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
@@ -2213,115 +2362,6 @@ End Sub
       <category term="vba" scheme="http://mjackie.github.io/tags/vba/"/>
     
       <category term="数据处理" scheme="http://mjackie.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zxing Camera 调用代码解析</title>
-    <link href="http://mjackie.github.io/Tech/cjts5k8ln001jq8kft09jrj5n/"/>
-    <id>http://mjackie.github.io/Tech/cjts5k8ln001jq8kft09jrj5n/</id>
-    <published>2017-08-13T12:21:00.000Z</published>
-    <updated>2017-08-15T13:19:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Zxing 是一个开源的，支持多种一维二维条码格式的图像处理类库，用 JAVA 实现，支持多种语言接口。同时提供了 android 摄像头调用相关类库，用于手持设备的扫码解码。</p>
-<p>本文主要介绍了 Android 系统调用 Camera 实现扫码的过程解析。</p>
-<h4 id="目录及相关类"><a href="#目录及相关类" class="headerlink" title="目录及相关类"></a>目录及相关类</h4><ul>
-<li>activity: 扫码相关Activity<ul>
-<li>CaptureActivity: 扫码主界面Activity</li>
-<li>CaptureFragment: 承载预览界面SurfaceView 和取景框 ViewfinderView<a id="more"></a></li>
-</ul>
-</li>
-<li>camera： 摄像头调用相关类<ul>
-<li>AutoFocusCallback: 自动对焦后回调类</li>
-<li>CameraConfigurationManager: Camera 配置管理与初始化</li>
-<li>CameraManager: 封装了 Camera 操作相关方法，例如获取Camera图像，请求自动对焦等</li>
-<li>PreviewCallback: 预览图像发生变化时的回调类</li>
-</ul>
-</li>
-<li>decoding: 解码相关类<ul>
-<li>CaptureActivityHandler: CaptureActivity 回调类，处理各种消息，例如：解码成功失败，对焦，请求预览图像等</li>
-<li>DecodeHandler: 解码回调类，解码处理类，封装了调用 Zxing-core 的方法</li>
-<li>DecodeThread: 解码线程，会根据解码类型调用 DecodeHandler</li>
-</ul>
-</li>
-<li>view ： CaptureFragment中控件<ul>
-<li>ViewfinderView: 取景框控件，绘制取景器，扫描线等</li>
-</ul>
-</li>
-</ul>
-<h4 id="扫码过程"><a href="#扫码过程" class="headerlink" title="扫码过程"></a>扫码过程</h4><ul>
-<li>new CaptureActivity，初始化摄像头参数</li>
-<li>new DecodeThread, 开始获取预览图像</li>
-</ul>
-<pre><code>decodeThread.start();
-state = State.SUCCESS;
-// Start ourselves capturing previews and decoding.
-CameraManager.get().startPreview();
-restartPreviewAndDecode();
-</code></pre><ul>
-<li>初始化PreviewCallback， 开始自动对焦， 绘制取景框</li>
-</ul>
-<pre><code>state = State.PREVIEW;      
-CameraManager.get().requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
-CameraManager.get().requestAutoFocus(this, R.id.auto_focus);
-fragment.drawViewfinder();
-</code></pre><ul>
-<li>循环执行自动对焦，获取预览图像到CaptureFragment</li>
-<li>当预览图象发生变化时，会调用 PreviewCallback 中 onPreviewFrame() 方法, 获取图像 data 并发送 message 给DecodeHandler</li>
-</ul>
-<pre><code>Message message = previewHandler.obtainMessage(previewMessage, cameraResolution.x,cameraResolution.y, data);
-message.sendToTarget();
-</code></pre><ul>
-<li>DecodeHandler 调用 decode 方法尝试解码，并发送解码结果message 给 CaptureActivityHandler。</li>
-</ul>
-<pre><code>if (rawResult != null) {
-    long end = System.currentTimeMillis();
-    Log.d(TAG, &quot;Found barcode (&quot; + (end - start) + &quot; ms):\n&quot; + rawResult.toString());
-    Message message = Message.obtain(fragment.getHandler(), R.id.decode_succeeded, rawResult);
-    Bundle bundle = new Bundle();
-    bundle.putParcelable(DecodeThread.BARCODE_BITMAP, source.renderCroppedGreyscaleBitmap());
-    message.setData(bundle);
-    //Log.d(TAG, &quot;Sending decode succeeded message...&quot;);
-    message.sendToTarget();
-} else {
-    Message message = Message.obtain(fragment.getHandler(), R.id.decode_failed);
-    message.sendToTarget();
-}
-</code></pre><ul>
-<li>CaptureActivityHandler 处理结果，解码失败继续尝试解码，解码成功返回结果进行跳转</li>
-</ul>
-<pre><code>if (message.what == R.id.decode_succeeded) {
-        Log.d(TAG, &quot;Got decode succeeded message&quot;);
-        state = State.SUCCESS;
-        Bundle bundle = message.getData();
-        Bitmap barcode = bundle == null ? null :
-                (Bitmap) bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
-
-        fragment.handleDecode((Result) message.obj, barcode);
-
-} else if (message.what == R.id.decode_failed) {
-
-        state = State.PREVIEW;
-        CameraManager.get().requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Zxing 是一个开源的，支持多种一维二维条码格式的图像处理类库，用 JAVA 实现，支持多种语言接口。同时提供了 android 摄像头调用相关类库，用于手持设备的扫码解码。&lt;/p&gt;
-&lt;p&gt;本文主要介绍了 Android 系统调用 Camera 实现扫码的过程解析。&lt;/p&gt;
-&lt;h4 id=&quot;目录及相关类&quot;&gt;&lt;a href=&quot;#目录及相关类&quot; class=&quot;headerlink&quot; title=&quot;目录及相关类&quot;&gt;&lt;/a&gt;目录及相关类&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;activity: 扫码相关Activity&lt;ul&gt;
-&lt;li&gt;CaptureActivity: 扫码主界面Activity&lt;/li&gt;
-&lt;li&gt;CaptureFragment: 承载预览界面SurfaceView 和取景框 ViewfinderView
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://mjackie.github.io/categories/Tech/"/>
-    
-    
-      <category term="二维码" scheme="http://mjackie.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    
-      <category term="android" scheme="http://mjackie.github.io/tags/android/"/>
     
   </entry>
   

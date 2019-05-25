@@ -69,6 +69,159 @@
 	
 
 		
+	<article id="post-ByteCamp编程题" class="article post article-type-post" itemscope="" itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         5/25
+	        </div>
+	        <div class="post_t_u">
+	         2019
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjw31fpgr0003k3kf4v7g6e68/">ByteCamp编程题</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	</p><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>给定一个数组，求<code>ai＋aj＋i-j</code>的最大值（j＞i）要求时间复杂度＜<code>n²</code>。自己暴力写的，交卷以后调通了，有点遗憾。</p>
+<pre><code>public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int res = Integer.MIN_VALUE;
+        int[] dp = new int[n];
+        dp[0] = arr[0];
+        for (int i = 1; i &lt; n; i++) {
+            dp[i] = Math.max(dp[i-1], arr[i]+i);
+        }
+        for (int i = 1; i &lt; n ; i++) {
+            res = Math.max(arr[i]-i+dp[i-1], res);
+        }
+        System.out.println(res);
+    }
+</code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        if(m*n==0) {
+            System.out.println(0);
+            return;
+        }
+        int[][] grid = new int[n][m];
+        for(int i = 0; i &lt; n; i++){
+            for(int j = 0; j &lt; m; j++){
+                grid[i][j] = sc.nextInt();
+            }
+        }
+        int count = 0;
+        for (int i = 0; i &lt; n ; i++) {
+            for (int j = 0; j &lt; m ; j++) {
+                if( grid[i][j]==1 ){
+                    count++;
+                    grid[i][j] = 0;   //置0， 下次不用考虑
+                    search(grid,i,j);
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
+    public static void search(int[][] grid, int i, int j){
+        if( i&gt;0 &amp;&amp; grid[i-1][j]==1) {
+            grid[i-1][j] = 0;     //置0， 下次不用考虑
+            search(grid, i - 1, j);
+        }
+        if( j&gt;0 &amp;&amp; grid[i][j-1]==1) {
+            grid[i][j-1] = 0;
+            search(grid, i, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; grid[i+1][j]==1) {
+            grid[i+1][j] = 0;
+            search(grid, i + 1, j);
+        }
+        if( j+1&lt;grid[0].length &amp;&amp; grid[i][j+1]==1) {
+            grid[i][j+1] = 0;
+            search(grid, i, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j&gt;0 &amp;&amp; grid[i-1][j-1]==1){
+            grid[i-1][j-1] = 0;
+            search(grid, i-1, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i+1][j+1]==1){
+            grid[i+1][j+1] = 0;
+            search(grid, i+1, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i-1][j+1]==1){
+            grid[i-1][j+1] = 0;
+            search(grid, i-1, j+1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j&gt;0 &amp;&amp; grid[i+1][j-1]==1){
+            grid[i+1][j-1] = 0;
+            search(grid, i+1, j-1);
+        }
+        return;
+    }
+</code></pre><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>完美AC</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        Stack&lt;Character&gt; st = new Stack();
+        int i = 0;
+        char[] str_arr = s.toCharArray();
+        StringBuilder res = new StringBuilder();
+
+        while(i&lt;s.length()){
+            if(str_arr[i]==&apos;#&apos;){
+                StringBuilder temp = new StringBuilder();
+                StringBuilder num = new StringBuilder();
+                while(st.peek()!=&apos;%&apos;){
+                    temp.insert(0, st.pop());
+                }
+                st.pop();   // pop出 [
+                while(!st.isEmpty() &amp;&amp; Character.isDigit(st.peek())){
+                    num.insert(0, st.pop());
+                }
+                StringBuilder temp2 = new StringBuilder();
+                for (int j = 0; j &lt; Integer.valueOf(num.toString()) ; j++) {
+                    temp2.append(temp.toString());
+                }
+                //入栈
+                for (int j = 0; j &lt; temp2.toString().length() ; j++) {
+                    st.push(temp2.toString().toCharArray()[j]);
+                }
+            }else{
+                st.push(str_arr[i]);
+            }
+            i++;
+        }
+        // 别忘了末尾的
+        StringBuilder sb1 = new StringBuilder();
+        while(!st.isEmpty()){
+            sb1.insert(0, st.pop());
+        }
+        res.append(sb1);
+        System.out.println(res.toString());
+    }
+</code></pre><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>没时间</p>
+
+	        	<p class="read-more"><a> <br></a></p>
+	      	
+	    <p></p>
+	  </div> 
+	</article>
+
 	<article id="post-LeetCode" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -80,7 +233,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjts5k8ld000xq8kfl26yo4xn/">Leetcode 指南</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw31fpgy000ek3kfhb48s6zj/">Leetcode 指南</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -97,7 +250,7 @@
 <li>对比一下自己的解法与最优的解法的差别，总结一下为什么没想起来，记录下来这个思考的过程。</li>
 <li>关掉别人的代码，开始Coding，Debug，Submit。</li>
 </ol>
-	          	<p class="read-more"><a href="/Tech/cjts5k8ld000xq8kfl26yo4xn/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjw31fpgy000ek3kfhb48s6zj/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>归档: 2019/5 | Jackie Liu&#39;s Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Jackie Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.opacity.css" media="screen" type="text/css">
+  
+    <link rel="stylesheet" href="/css/code.css" media="screen" type="text/css">
+  
+
+</head>
+</html>
+
+ <body class="archive category category-think category-1">
+  <div id="page">
+   <hgroup id="ctn_header">
+    <div id="title">
+     <div id="site-title"><a href="/" >Jackie Liu&#39;s Blog</a></div>
+     <div id="site-description">Born to be proud</div>
+    </div>
+    <div id="title_r">
+     <a href="http://weibo.com/liu133" title="SinaWeibo" ><button class="tr_weibo"></button></a> 
+     <a href="http://github.com/mJackie" title="Github"><button class="tr_github"></button></a> 
+     
+     	<a href="/atom.xml"><button class="tr_rss"></button></a> 
+     
+     <span id="tr_clear"></span>
+     <!--form id="tr_s_f" method="get" action=""> 
+      <input id="tr_search" name="s" placeholder="" size="10" type="text" />
+     </form-->
+    </div>
+    <div class="clearfix"></div> 
+   </hgroup>
+   <div id="float">
+    <a href="/" rel="home"><img id="logo" src="/img/logo.jpg" /></a>
+    <nav id="nav" role="navigation">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/categories/Tech">Tech</a></li>
+        
+          <li><a href="/categories/Life">Life</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+    <nav id="next">
+     <div>
+      <ul class="menu">
+        
+          <li><a href="/AboutMe">About Me</a></li>
+        
+      </ul>
+     </div>
+    </nav>
+   </div>
+   <div id="ctn">
+    <div id="content"> 
+	
+
+		
+	<article id="post-ByteCamp编程题" class="article post article-type-post" itemscope="" itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         5/25
+	        </div>
+	        <div class="post_t_u">
+	         2019
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjw31fpgr0003k3kf4v7g6e68/">ByteCamp编程题</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	</p><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>给定一个数组，求<code>ai＋aj＋i-j</code>的最大值（j＞i）要求时间复杂度＜<code>n²</code>。自己暴力写的，交卷以后调通了，有点遗憾。</p>
+<pre><code>public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int res = Integer.MIN_VALUE;
+        int[] dp = new int[n];
+        dp[0] = arr[0];
+        for (int i = 1; i &lt; n; i++) {
+            dp[i] = Math.max(dp[i-1], arr[i]+i);
+        }
+        for (int i = 1; i &lt; n ; i++) {
+            res = Math.max(arr[i]-i+dp[i-1], res);
+        }
+        System.out.println(res);
+    }
+</code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        if(m*n==0) {
+            System.out.println(0);
+            return;
+        }
+        int[][] grid = new int[n][m];
+        for(int i = 0; i &lt; n; i++){
+            for(int j = 0; j &lt; m; j++){
+                grid[i][j] = sc.nextInt();
+            }
+        }
+        int count = 0;
+        for (int i = 0; i &lt; n ; i++) {
+            for (int j = 0; j &lt; m ; j++) {
+                if( grid[i][j]==1 ){
+                    count++;
+                    grid[i][j] = 0;   //置0， 下次不用考虑
+                    search(grid,i,j);
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
+    public static void search(int[][] grid, int i, int j){
+        if( i&gt;0 &amp;&amp; grid[i-1][j]==1) {
+            grid[i-1][j] = 0;     //置0， 下次不用考虑
+            search(grid, i - 1, j);
+        }
+        if( j&gt;0 &amp;&amp; grid[i][j-1]==1) {
+            grid[i][j-1] = 0;
+            search(grid, i, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; grid[i+1][j]==1) {
+            grid[i+1][j] = 0;
+            search(grid, i + 1, j);
+        }
+        if( j+1&lt;grid[0].length &amp;&amp; grid[i][j+1]==1) {
+            grid[i][j+1] = 0;
+            search(grid, i, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j&gt;0 &amp;&amp; grid[i-1][j-1]==1){
+            grid[i-1][j-1] = 0;
+            search(grid, i-1, j-1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i+1][j+1]==1){
+            grid[i+1][j+1] = 0;
+            search(grid, i+1, j+1);
+        }
+        if( i&gt;0 &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i-1][j+1]==1){
+            grid[i-1][j+1] = 0;
+            search(grid, i-1, j+1);
+        }
+        if( i+1&lt;grid.length &amp;&amp; j&gt;0 &amp;&amp; grid[i+1][j-1]==1){
+            grid[i+1][j-1] = 0;
+            search(grid, i+1, j-1);
+        }
+        return;
+    }
+</code></pre><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>完美AC</p>
+<pre><code>public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        Stack&lt;Character&gt; st = new Stack();
+        int i = 0;
+        char[] str_arr = s.toCharArray();
+        StringBuilder res = new StringBuilder();
+
+        while(i&lt;s.length()){
+            if(str_arr[i]==&apos;#&apos;){
+                StringBuilder temp = new StringBuilder();
+                StringBuilder num = new StringBuilder();
+                while(st.peek()!=&apos;%&apos;){
+                    temp.insert(0, st.pop());
+                }
+                st.pop();   // pop出 [
+                while(!st.isEmpty() &amp;&amp; Character.isDigit(st.peek())){
+                    num.insert(0, st.pop());
+                }
+                StringBuilder temp2 = new StringBuilder();
+                for (int j = 0; j &lt; Integer.valueOf(num.toString()) ; j++) {
+                    temp2.append(temp.toString());
+                }
+                //入栈
+                for (int j = 0; j &lt; temp2.toString().length() ; j++) {
+                    st.push(temp2.toString().toCharArray()[j]);
+                }
+            }else{
+                st.push(str_arr[i]);
+            }
+            i++;
+        }
+        // 别忘了末尾的
+        StringBuilder sb1 = new StringBuilder();
+        while(!st.isEmpty()){
+            sb1.insert(0, st.pop());
+        }
+        res.append(sb1);
+        System.out.println(res.toString());
+    }
+</code></pre><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>没时间</p>
+
+	        	<p class="read-more"><a> <br></a></p>
+	      	
+	    <p></p>
+	  </div> 
+	</article>
+
+
+
+
+    </div>
+   </div>
+   
+
+   <div id="link" style="display:block">
+    <div id="link_content">
+     <h3 id="link_h">友情链接</h3> 
+     
+      <a href="https://mjackie.github.io">Jackie Liu&#39;s Blog</a>
+     
+    </div>
+   </div>
+   
+   <footer id="footer" role="contentinfo">
+     Power by <a href="#" style=" display:inline-block ">Jackie Liu</a>
+   </footer>
+    <script rel="stylesheet" src="/js/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+	        change();
+	        //代码高亮开始
+	        var pre = document.getElementsByTagName('pre');
+	        for(i=0,l=pre.length;i<l;i++) 
+	          pre[i].className += " prettyprint linenums";
+	        prettyPrint();
+	    }
+
+      function change(){
+        var i = Math.random();  //产生0-1之间的随机数
+		i = i * 10;             //用随机数乘以10
+		i = Math.round(i);      //取整
+		var path = "";
+		switch(i){
+		  case 0: path = "/img/background0.jpg";break;    //图片位置
+		  case 1: path = "/img/background1.jpg";break;
+		  case 2: path = "/img/background2.jpg";break;
+		  case 3: path = "/img/background3.jpg";break;
+		  case 4: path = "/img/background4.jpg";break;
+		  case 5: path = "/img/background5.jpg";break;
+		  case 6: path = "/img/background6.jpg";break;
+		  case 7: path = "/img/background7.jpg";break;
+		  case 8: path = "/img/background8.jpg";break;
+		  case 9: path = "/img/background9.jpg";break;
+		  case 10: path = "/img/background10.jpg";break;
+/*      case 0: path = "http://ogzyt1sa2.bkt.clouddn.com/background0.jpg";break;    //图片位置
+      case 1: path = "http://ogzyt1sa2.bkt.clouddn.com/background1.jpg";break;
+      case 2: path = "http://ogzyt1sa2.bkt.clouddn.com/background2.jpg";break;
+      case 3: path = "http://ogzyt1sa2.bkt.clouddn.com/background3.jpg";break;
+      case 4: path = "http://ogzyt1sa2.bkt.clouddn.com/background4.jpg";break;
+      case 5: path = "http://ogzyt1sa2.bkt.clouddn.com/background5.jpg";break;
+      case 6: path = "http://ogzyt1sa2.bkt.clouddn.com/background6.jpg";break;
+      case 7: path = "http://ogzyt1sa2.bkt.clouddn.com/background7.jpg";break;
+      case 8: path = "http://ogzyt1sa2.bkt.clouddn.com/background8.jpg";break;
+      case 9: path = "http://ogzyt1sa2.bkt.clouddn.com/background9.jpg";break;
+      case 10: path = "http://ogzyt1sa2.bkt.clouddn.com/background10.jpg";break;*/
+    }
+    document.body.style.backgroundImage = "URL("+path+")";  //显示对应的图片
+    }
+
+  </script>
+  
+  </div>
+ </body>
+</html>
