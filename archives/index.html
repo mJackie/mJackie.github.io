@@ -80,7 +80,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31fpgr0003k3kf4v7g6e68/">ByteCamp编程题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw31gg9m0006ktkfg1ii7mi3/">ByteCamp编程题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -110,113 +110,8 @@
         }
         System.out.println(res);
     }
-</code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
-<pre><code>public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        if(m*n==0) {
-            System.out.println(0);
-            return;
-        }
-        int[][] grid = new int[n][m];
-        for(int i = 0; i &lt; n; i++){
-            for(int j = 0; j &lt; m; j++){
-                grid[i][j] = sc.nextInt();
-            }
-        }
-        int count = 0;
-        for (int i = 0; i &lt; n ; i++) {
-            for (int j = 0; j &lt; m ; j++) {
-                if( grid[i][j]==1 ){
-                    count++;
-                    grid[i][j] = 0;   //置0， 下次不用考虑
-                    search(grid,i,j);
-                }
-            }
-        }
-        System.out.println(count);
-    }
-
-    public static void search(int[][] grid, int i, int j){
-        if( i&gt;0 &amp;&amp; grid[i-1][j]==1) {
-            grid[i-1][j] = 0;     //置0， 下次不用考虑
-            search(grid, i - 1, j);
-        }
-        if( j&gt;0 &amp;&amp; grid[i][j-1]==1) {
-            grid[i][j-1] = 0;
-            search(grid, i, j-1);
-        }
-        if( i+1&lt;grid.length &amp;&amp; grid[i+1][j]==1) {
-            grid[i+1][j] = 0;
-            search(grid, i + 1, j);
-        }
-        if( j+1&lt;grid[0].length &amp;&amp; grid[i][j+1]==1) {
-            grid[i][j+1] = 0;
-            search(grid, i, j+1);
-        }
-        if( i&gt;0 &amp;&amp; j&gt;0 &amp;&amp; grid[i-1][j-1]==1){
-            grid[i-1][j-1] = 0;
-            search(grid, i-1, j-1);
-        }
-        if( i+1&lt;grid.length &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i+1][j+1]==1){
-            grid[i+1][j+1] = 0;
-            search(grid, i+1, j+1);
-        }
-        if( i&gt;0 &amp;&amp; j+1&lt;grid[0].length &amp;&amp; grid[i-1][j+1]==1){
-            grid[i-1][j+1] = 0;
-            search(grid, i-1, j+1);
-        }
-        if( i+1&lt;grid.length &amp;&amp; j&gt;0 &amp;&amp; grid[i+1][j-1]==1){
-            grid[i+1][j-1] = 0;
-            search(grid, i+1, j-1);
-        }
-        return;
-    }
-</code></pre><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>完美AC</p>
-<pre><code>public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        Stack&lt;Character&gt; st = new Stack();
-        int i = 0;
-        char[] str_arr = s.toCharArray();
-        StringBuilder res = new StringBuilder();
-
-        while(i&lt;s.length()){
-            if(str_arr[i]==&apos;#&apos;){
-                StringBuilder temp = new StringBuilder();
-                StringBuilder num = new StringBuilder();
-                while(st.peek()!=&apos;%&apos;){
-                    temp.insert(0, st.pop());
-                }
-                st.pop();   // pop出 [
-                while(!st.isEmpty() &amp;&amp; Character.isDigit(st.peek())){
-                    num.insert(0, st.pop());
-                }
-                StringBuilder temp2 = new StringBuilder();
-                for (int j = 0; j &lt; Integer.valueOf(num.toString()) ; j++) {
-                    temp2.append(temp.toString());
-                }
-                //入栈
-                for (int j = 0; j &lt; temp2.toString().length() ; j++) {
-                    st.push(temp2.toString().toCharArray()[j]);
-                }
-            }else{
-                st.push(str_arr[i]);
-            }
-            i++;
-        }
-        // 别忘了末尾的
-        StringBuilder sb1 = new StringBuilder();
-        while(!st.isEmpty()){
-            sb1.insert(0, st.pop());
-        }
-        res.append(sb1);
-        System.out.println(res.toString());
-    }
-</code></pre><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>没时间</p>
-
-	        	<p class="read-more"><a> <br></a></p>
+</code></pre>
+	          	<p class="read-more"><a href="/Tech/cjw31gg9m0006ktkfg1ii7mi3/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -233,7 +128,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31fpgy000ek3kfhb48s6zj/">Leetcode 指南</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw31gg9w000hktkf4la35irb/">Leetcode 指南</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -250,7 +145,7 @@
 <li>对比一下自己的解法与最优的解法的差别，总结一下为什么没想起来，记录下来这个思考的过程。</li>
 <li>关掉别人的代码，开始Coding，Debug，Submit。</li>
 </ol>
-	          	<p class="read-more"><a href="/Tech/cjw31fpgy000ek3kfhb48s6zj/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjw31gg9w000hktkf4la35irb/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -267,7 +162,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Life/cjw31fpgk0000k3kfgtf40lnm/">2018总结</a></h2>
+		    <h2 class="post_h"><a href="/Life/cjw31gg9d0001ktkf5que3b5k/">2018总结</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Life/">Life</a>
 		      
@@ -281,7 +176,7 @@
 <ul>
 <li><code>第一次面试实习</code><br>春节过完年回来开始忙着写简历与面试，从面试中也提前体验了一把准备面试与面试的过程，发现了自己专业技能上很多的不足。从面试到实习还是很感谢这段经历，不仅提前了解了面试的流程与侧重点，还体验了互联网公司工作的氛围，也经历的第一次找房租房生活的体验。不管是每周二早上6点多起床赶班车，晚上在公司看课程直播，还是一个人冒雪下班骑单车，都成了自己难忘的经历。研一的下学期也伴随着实习的结束而接近尾声。要感谢leader祥林哥，给了一个准备不充分的面试者实习的机会，也把我带进了计算广告，推荐系统的大门。</li>
 </ul>
-	          	<p class="read-more"><a href="/Life/cjw31fpgk0000k3kfgtf40lnm/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Life/cjw31gg9d0001ktkf5que3b5k/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -298,7 +193,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31fpjf006hk3kfrfcoa3tf/">利用perl+extjs开发web应用</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw31ggbl0041ktkfdcxh6m69/">利用perl+extjs开发web应用</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/js/">js</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/perl/">perl</a></li></ul>
@@ -315,7 +210,7 @@
 <li>采用ajax技术，省去了频繁的页面跳转</li>
 <li>extjs封装了大量的组件，界面效果风格一致，省去了前端页面开发工作</li>
 </ul>
-	          	<p class="read-more"><a href="/Tech/cjw31fpjf006hk3kfrfcoa3tf/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjw31ggbl0041ktkfdcxh6m69/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
@@ -332,7 +227,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31fphk0023k3kfoyin8m1o/">压力测试与jmeter</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw31ggam001zktkft6adbxq1/">压力测试与jmeter</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
@@ -344,7 +239,7 @@
             
 	        	</p><p>组里项目项目需要接触的web压力测试相关的内容，在这里总结一波。</p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>性能测试从广义上讲分为压力测试、负载测试、强度测试、并发(用户)测试、大数据量测试、配置测试、可靠性测试等。压力测试是通过对被测系统不断加压，来发现该系统在什么条件下变得不可承受，从而获得系统能提供的最大服务级别的测试。查出程序对异常情况的抵抗能力，找出性能瓶颈。从本质上说，测试者是想破坏程序。目前一般压力测试都借助自动测试工具。 </p>
-	          	<p class="read-more"><a href="/Tech/cjw31fphk0023k3kfoyin8m1o/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjw31ggam001zktkft6adbxq1/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 

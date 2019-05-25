@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mjackie.github.io/"/>
-  <updated>2019-05-25T04:52:21.611Z</updated>
+  <updated>2019-05-25T04:54:03.971Z</updated>
   <id>http://mjackie.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>ByteCamp编程题</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpgr0003k3kf4v7g6e68/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpgr0003k3kf4v7g6e68/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31gg9m0006ktkfg1ii7mi3/"/>
+    <id>http://mjackie.github.io/Tech/cjw31gg9m0006ktkfg1ii7mi3/</id>
     <published>2019-05-25T04:47:00.000Z</published>
-    <updated>2019-05-25T04:52:21.611Z</updated>
+    <updated>2019-05-25T04:54:03.971Z</updated>
     
     <content type="html"><![CDATA[<h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>给定一个数组，求<code>ai＋aj＋i-j</code>的最大值（j＞i）要求时间复杂度＜<code>n²</code>。自己暴力写的，交卷以后调通了，有点遗憾。</p>
 <pre><code>public static void main (String[] args) {
@@ -42,7 +42,8 @@
         }
         System.out.println(res);
     }
-</code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
+</code></pre><a id="more"></a>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>过了80%。报的错误是数组越界，看了半天，不知道哪里错了。</p>
 <pre><code>public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -151,7 +152,27 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;第一题&quot;&gt;&lt;a href=&quot;#第一题&quot; class=&quot;headerlink&quot; title=&quot;第一题&quot;&gt;&lt;/a&gt;第一题&lt;/h3&gt;&lt;p&gt;给定一个数组，求&lt;code&gt;ai＋aj＋i-j&lt;/code&gt;的最大值（j＞i）要求时间复杂度＜&lt;code&gt;n²&lt;/code&gt;。自己暴
+      &lt;h3 id=&quot;第一题&quot;&gt;&lt;a href=&quot;#第一题&quot; class=&quot;headerlink&quot; title=&quot;第一题&quot;&gt;&lt;/a&gt;第一题&lt;/h3&gt;&lt;p&gt;给定一个数组，求&lt;code&gt;ai＋aj＋i-j&lt;/code&gt;的最大值（j＞i）要求时间复杂度＜&lt;code&gt;n²&lt;/code&gt;。自己暴力写的，交卷以后调通了，有点遗憾。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &amp;lt; n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int res = Integer.MIN_VALUE;
+        int[] dp = new int[n];
+        dp[0] = arr[0];
+        for (int i = 1; i &amp;lt; n; i++) {
+            dp[i] = Math.max(dp[i-1], arr[i]+i);
+        }
+        for (int i = 1; i &amp;lt; n ; i++) {
+            res = Math.max(arr[i]-i+dp[i-1], res);
+        }
+        System.out.println(res);
+    }
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -166,8 +187,8 @@
   
   <entry>
     <title>Leetcode 指南</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpgy000ek3kfhb48s6zj/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpgy000ek3kfhb48s6zj/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31gg9w000hktkf4la35irb/"/>
+    <id>http://mjackie.github.io/Tech/cjw31gg9w000hktkf4la35irb/</id>
     <published>2019-03-08T11:28:00.000Z</published>
     <updated>2019-03-08T11:34:37.457Z</updated>
     
@@ -216,8 +237,8 @@
   
   <entry>
     <title>2018总结</title>
-    <link href="http://mjackie.github.io/Life/cjw31fpgk0000k3kfgtf40lnm/"/>
-    <id>http://mjackie.github.io/Life/cjw31fpgk0000k3kfgtf40lnm/</id>
+    <link href="http://mjackie.github.io/Life/cjw31gg9d0001ktkf5que3b5k/"/>
+    <id>http://mjackie.github.io/Life/cjw31gg9d0001ktkf5que3b5k/</id>
     <published>2018-12-31T00:00:00.000Z</published>
     <updated>2018-12-31T10:12:15.022Z</updated>
     
@@ -262,8 +283,8 @@
   
   <entry>
     <title>利用perl+extjs开发web应用</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpjf006hk3kfrfcoa3tf/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpjf006hk3kfrfcoa3tf/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggbl0041ktkfdcxh6m69/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggbl0041ktkfdcxh6m69/</id>
     <published>2018-10-07T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:33.336Z</updated>
     
@@ -744,8 +765,8 @@ historyresultStore.load();
   
   <entry>
     <title>压力测试与jmeter</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphk0023k3kfoyin8m1o/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphk0023k3kfoyin8m1o/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggam001zktkft6adbxq1/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggam001zktkft6adbxq1/</id>
     <published>2018-09-06T00:00:00.000Z</published>
     <updated>2018-12-22T09:17:42.676Z</updated>
     
@@ -789,8 +810,8 @@ historyresultStore.load();
   
   <entry>
     <title>逻辑回归&amp;特征框架分享</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpi5003tk3kf44990aqa/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpi5003tk3kf44990aqa/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggbj003xktkflivo1x6m/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggbj003xktkflivo1x6m/</id>
     <published>2018-06-23T06:50:00.000Z</published>
     <updated>2018-06-29T07:10:49.160Z</updated>
     
@@ -839,8 +860,8 @@ historyresultStore.load();
   
   <entry>
     <title>推荐系统笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphv0031k3kfq4zfqcdd/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphv0031k3kfq4zfqcdd/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggb8003bktkf0alo5lo2/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggb8003bktkf0alo5lo2/</id>
     <published>2018-05-27T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:13.071Z</updated>
     
@@ -897,8 +918,8 @@ historyresultStore.load();
   
   <entry>
     <title>特征工程</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphy003ck3kfu5wbtxmx/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphy003ck3kfu5wbtxmx/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggb9003ektkfuo33xb6f/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggb9003ektkfuo33xb6f/</id>
     <published>2018-05-10T02:50:00.000Z</published>
     <updated>2018-06-29T06:41:23.142Z</updated>
     
@@ -963,8 +984,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>计算广告</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphz003fk3kfqndb1sph/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphz003fk3kfqndb1sph/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggbg003rktkfp3v6t3fb/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggbg003rktkfp3v6t3fb/</id>
     <published>2018-04-14T02:50:00.000Z</published>
     <updated>2018-06-29T06:58:23.805Z</updated>
     
@@ -1034,8 +1055,8 @@ good        (1, 1, 1)
   
   <entry>
     <title>Spark 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fph5000xk3kf2zjuproh/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fph5000xk3kf2zjuproh/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggab001aktkfe9zwhh18/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggab001aktkfe9zwhh18/</id>
     <published>2018-03-29T02:50:00.000Z</published>
     <updated>2018-06-29T07:15:01.825Z</updated>
     
@@ -1246,8 +1267,8 @@ var lines2 = lines.map(line=&gt;(line.split(&quot;\t&quot;)(34),line))
   
   <entry>
     <title>Hadoop 笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphd001nk3kfu6jbvzqb/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphd001nk3kfu6jbvzqb/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggal001wktkf2x1uar0k/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggal001wktkf2x1uar0k/</id>
     <published>2018-03-24T02:50:00.000Z</published>
     <updated>2018-06-29T07:13:48.914Z</updated>
     
@@ -1442,8 +1463,8 @@ yarn application -kill appid
   
   <entry>
     <title>算法课程笔记</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpi2003jk3kfm4il8vxe/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpi2003jk3kfm4il8vxe/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggbd003lktkfnkbg5hsq/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggbd003lktkfnkbg5hsq/</id>
     <published>2018-01-29T18:47:00.000Z</published>
     <updated>2018-02-23T18:49:33.239Z</updated>
     
@@ -1537,8 +1558,8 @@ yarn application -kill appid
   
   <entry>
     <title>卜东波算法课程作业</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphp002ik3kfyb5dfoxu/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphp002ik3kfyb5dfoxu/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggb2002zktkf56mhrwrg/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggb2002zktkf56mhrwrg/</id>
     <published>2018-01-24T02:50:00.000Z</published>
     <updated>2018-02-22T14:22:59.931Z</updated>
     
@@ -1594,8 +1615,8 @@ yarn application -kill appid
   
   <entry>
     <title>基于Lucene、Servlet新闻搜索引擎</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpgz000gk3kfpnx7h83y/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpgz000gk3kfpnx7h83y/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31gg9y000lktkffj16t0d4/"/>
+    <id>http://mjackie.github.io/Tech/cjw31gg9y000lktkffj16t0d4/</id>
     <published>2018-01-06T12:50:00.000Z</published>
     <updated>2018-02-23T18:43:12.027Z</updated>
     
@@ -1653,8 +1674,8 @@ yarn application -kill appid
   
   <entry>
     <title>垃圾短信识别系统</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fph4000uk3kfwqo86mfr/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fph4000uk3kfwqo86mfr/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31gga60010ktkfbz2wdkz7/"/>
+    <id>http://mjackie.github.io/Tech/cjw31gga60010ktkfbz2wdkz7/</id>
     <published>2017-12-31T02:50:00.000Z</published>
     <updated>2018-02-23T18:42:51.493Z</updated>
     
@@ -1753,8 +1774,8 @@ $ python Classifiers.py
   
   <entry>
     <title>perl解析pcap文件</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphn002ck3kfa0nyq48f/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphn002ck3kfa0nyq48f/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggax002mktkfvg2aksnk/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggax002mktkfvg2aksnk/</id>
     <published>2017-11-25T10:24:00.000Z</published>
     <updated>2018-02-22T03:41:26.819Z</updated>
     
@@ -1995,8 +2016,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>图像透视变换</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fpi4003qk3kfoutpsvhd/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fpi4003qk3kfoutpsvhd/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggbi003uktkf6zjuzo35/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggbi003uktkf6zjuzo35/</id>
     <published>2017-10-07T04:46:00.000Z</published>
     <updated>2017-10-16T15:58:17.000Z</updated>
     
@@ -2130,8 +2151,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>好好学习，天天向上！</title>
-    <link href="http://mjackie.github.io/Life/cjw31fpht002uk3kfflhrwdmb/"/>
-    <id>http://mjackie.github.io/Life/cjw31fpht002uk3kfflhrwdmb/</id>
+    <link href="http://mjackie.github.io/Life/cjw31ggb30032ktkfonyvfdit/"/>
+    <id>http://mjackie.github.io/Life/cjw31ggb30032ktkfonyvfdit/</id>
     <published>2017-09-11T03:21:00.000Z</published>
     <updated>2017-09-11T13:45:47.000Z</updated>
     
@@ -2171,8 +2192,8 @@ cpan&amp;gt;q　
   
   <entry>
     <title>利用Selenium爬取网络数据</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fphq002lk3kfj6cxdo4r/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fphq002lk3kfj6cxdo4r/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggaw002kktkfja5gz40j/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggaw002kktkfja5gz40j/</id>
     <published>2017-08-27T07:07:00.000Z</published>
     <updated>2017-08-31T09:03:31.000Z</updated>
     
@@ -2282,8 +2303,8 @@ sudo chmod a+w geckodriver
   
   <entry>
     <title>利用 VBA 处理 Excel 数据</title>
-    <link href="http://mjackie.github.io/Tech/cjw31fph80016k3kfsiaj85ot/"/>
-    <id>http://mjackie.github.io/Tech/cjw31fph80016k3kfsiaj85ot/</id>
+    <link href="http://mjackie.github.io/Tech/cjw31ggad001hktkfwsf3v5yi/"/>
+    <id>http://mjackie.github.io/Tech/cjw31ggad001hktkfwsf3v5yi/</id>
     <published>2017-08-19T07:32:00.000Z</published>
     <updated>2017-08-22T09:12:24.000Z</updated>
     
