@@ -81,47 +81,6 @@
         </div>
         <div class="archives">
     
-    	<article id="post-qrcode" class="article post article-type-post" itemscope="" itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         7/27
-	        </div>
-	        <div class="post_t_u">
-	         2017
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31ggau002ektkfm4diyo04/">QR 码解析算法</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	</p><h3 id="检测定位符流程"><a href="#检测定位符流程" class="headerlink" title="检测定位符流程"></a>检测定位符流程</h3><ul>
-<li>横向扫描，检测 黑白黑白黑 的组合</li>
-<li>默认隔<code>(3 * maxI) / (4 * MAX_MODULES)</code>行扫描一次，TRY_HARDER开启后逐行扫描</li>
-<li>验证是否满足1:1:3:1:1的比例</li>
-<li>检测纵向是否满足定位符特征</li>
-<li>如果已经确定了两个定位符，则可跳过 <code>(Math.abs(firstConfirmedCenter.getX() - center.getX())-Math.abs(firstConfirmedCenter.getY() - center.getY())) / 2;</code> 行，继续扫描</li>
-<li>如果提前确定3个定位符，且模块大小相近，则停止扫描 <code>haveMultiplyConfirmedCenters()</code></li>
-<li>否则继续扫描图片</li>
-<li>筛选掉和其他相差较大的定位符，选择匹配最好的3个定位符</li>
-<li>确定三个定位符的中心坐标和各自位置 <code>orderBestPatterns()</code></li>
-<li>返回检测到的三个定位符的结果</li>
-</ul>
-	        
-	      	
-	    <p></p>
-	  </div> 
-	</article>
-  
-    
-    
     	<article id="post-换电脑后如何恢复Hexo环境" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -133,7 +92,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31ggb70038ktkfgm1bbd1h/">换电脑后如何恢复Hexo环境</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw7jxod5003jidkfixl40hmh/">换电脑后如何恢复Hexo环境</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/blog/">blog</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -170,7 +129,7 @@ nvm install stable
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31ggb50035ktkfg9ikiv2m/">机试题</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw7jxocx002yidkf9pg5gaq2/">机试题</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -209,7 +168,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31ggaq0025ktkf7a762rvn/">Java值传递与引用传递</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw7jxocd001nidkfic8u84mc/">Java值传递与引用传递</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -251,7 +210,7 @@ Explanation:
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31ggai001qktkfkll39aph/">Data Matrix 解析算法</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw7jxoca001eidkfz6ik04yr/">Data Matrix 解析算法</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/二维码/">二维码</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -268,6 +227,43 @@ Explanation:
 	        
 	      	
 	    </p>
+	  </div> 
+	</article>
+  
+    
+    
+    	<article id="post-ccnSim" class="article post article-type-post" itemscope="" itemprop="blogPost">
+	  <hgroup class="post_hctn"> 
+		<div class="post_time">
+	        <div class="post_t_d">
+	         4/8
+	        </div>
+	        <div class="post_t_u">
+	         2017
+	        </div>
+	    </div>
+	    <div class="post_h_l"> 
+		    <h2 class="post_h"><a href="/Tech/cjw7jxoc80017idkfyblms6uj/">ccnSim 模拟器</a></h2>
+		    <div class="post_tag"> 
+		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
+		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/c/">c++</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/icn/">icn</a></li></ul>
+		    </div>
+	    </div> 
+	  </hgroup>
+	  <div class="post_t">
+	    <p>      
+            
+	        	</p><p>本文主要解析 ccnSim 的架构及源码包各文件作用，关于 ccnSim 的各项配置参数，安装方法等 manual 文档中已介绍的内容本文不再介绍。</p>
+<h2 id="什么是-ccnSim"><a href="#什么是-ccnSim" class="headerlink" title="什么是 ccnSim"></a>什么是 ccnSim</h2><p>ccnSim 是一个可扩展 chunk-level 的网络模拟器，基于OMNeT++框架，使用 C + + 编写，允许在大数量级的场景下模拟 CCN 网络。<br>ccnSim 模拟步骤以下三个阶段：</p>
+<ul>
+<li>编译 ccnSim 源文件， 链接 Omnet + + 框架</li>
+<li>编写拓扑描述(通常用户只需要设置 CCN 节点之间的连接)</li>
+<li>初始化每个模块的参数。这个可以直接读取 ned 文件或者 omnetpp.ini 初始化文件。</li>
+<li>执行仿真</li>
+</ul>
+	        
+	      	
+	    <p></p>
 	  </div> 
 	</article>
   

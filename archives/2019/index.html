@@ -69,54 +69,6 @@
 	
 
 		
-	<article id="post-ByteCamp编程题" class="article post article-type-post" itemscope="" itemprop="blogPost">
-	  <hgroup class="post_hctn"> 
-		<div class="post_time">
-	        <div class="post_t_d">
-	         5/25
-	        </div>
-	        <div class="post_t_u">
-	         2019
-	        </div>
-	    </div>
-	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31gg9m0006ktkfg1ii7mi3/">ByteCamp编程题</a></h2>
-		    <div class="post_tag"> 
-		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
-		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
-		    </div>
-	    </div> 
-	  </hgroup>
-	  <div class="post_t">
-	    <p>      
-            
-	        	</p><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>给定一个数组，求<code>ai＋aj＋i-j</code>的最大值（j＞i）要求时间复杂度＜<code>n²</code>。自己暴力写的，交卷以后调通了，有点遗憾。</p>
-<pre><code>public static void main (String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i &lt; n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        int res = Integer.MIN_VALUE;
-        int[] dp = new int[n];
-        dp[0] = arr[0];
-        for (int i = 1; i &lt; n; i++) {
-            dp[i] = Math.max(dp[i-1], arr[i]+i);
-        }
-        for (int i = 1; i &lt; n ; i++) {
-            res = Math.max(arr[i]-i+dp[i-1], res);
-        }
-        System.out.println(res);
-    }
-</code></pre>
-	          	<p class="read-more"><a href="/Tech/cjw31gg9m0006ktkfg1ii7mi3/">+ MORE</a></p>
-	      	
-	    <p></p>
-	  </div> 
-	</article>
-
 	<article id="post-LeetCode" class="article post article-type-post" itemscope="" itemprop="blogPost">
 	  <hgroup class="post_hctn"> 
 		<div class="post_time">
@@ -128,7 +80,7 @@
 	        </div>
 	    </div>
 	    <div class="post_h_l"> 
-		    <h2 class="post_h"><a href="/Tech/cjw31gg9w000hktkf4la35irb/">Leetcode 指南</a></h2>
+		    <h2 class="post_h"><a href="/Tech/cjw7jxoch001tidkf2pej70lh/">Leetcode 指南</a></h2>
 		    <div class="post_tag"> 
 		      <a class="post_tag-link" href="/categories/Tech/">Tech</a>
 		      <ul class="post_tag-list"><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="post_tag-list-item"><a class="post_tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -145,7 +97,7 @@
 <li>对比一下自己的解法与最优的解法的差别，总结一下为什么没想起来，记录下来这个思考的过程。</li>
 <li>关掉别人的代码，开始Coding，Debug，Submit。</li>
 </ol>
-	          	<p class="read-more"><a href="/Tech/cjw31gg9w000hktkf4la35irb/">+ MORE</a></p>
+	          	<p class="read-more"><a href="/Tech/cjw7jxoch001tidkf2pej70lh/">+ MORE</a></p>
 	      	
 	    <p></p>
 	  </div> 
